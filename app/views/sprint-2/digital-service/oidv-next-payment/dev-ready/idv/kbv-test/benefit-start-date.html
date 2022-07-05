@@ -1,0 +1,77 @@
+{% extends "layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm Your Identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+<a href="javascript:history.go(-1)" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/kbv-test/benefit-pay-day" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="benefit-claim-date">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              When was your claim for one of your other benefits accepted?
+            </h1>
+          </legend>
+          <div id="benefit-claim-date-hint">
+            <p class="govuk-hint">Enter the date you started claiming any of your other benefits from the last 3 years. </p>
+          </div>
+          <div class="govuk-date-input" id="last-pip-date">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="benefit-claim-date">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="benefit-claim-date" name="benefit-claim-date" type="text" pattern="[0-9]*" maxlength="2" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="last-pip-date-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="last-pip-date-month" name="last-pip-date-month" type="text" pattern="[0-9]*" maxlength="2" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="last-pip-date-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="last-pip-date-year" name="last-pip-date-year" type="text" pattern="[0-9]*" maxlength="4" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to one hour if you need to check your answer.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

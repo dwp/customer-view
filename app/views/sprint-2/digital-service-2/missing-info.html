@@ -1,0 +1,122 @@
+{% extends "header-e-four.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What information do you need is missing from this page?
+{% endblock %}
+
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+<br>
+<!-- <a class="govuk-back-link" href="your-contact-channels">Back</a> -->
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form class="form" action="thank-you-close" method="post">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                    <h1 class="govuk-fieldset__heading">
+                      What information do you need is missing from this page?
+                    </h1>
+              </legend>
+
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+
+              <div class="govuk-radios">
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="contact-channel-2" name="contact-channel" type="radio" value="govuk" aria-describedby="contact-channel-2-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="contact-channel-2">
+                    More payment information about my benefits
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    I have not been able to find the payment information I need.
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="contact-channel-2" name="contact-channel" type="radio" value="esa-service" aria-describedby="contact-channel-2-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="contact-channel-2">
+                    Other information related to me and my benefits
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    I need to understand additional details not related to payments.
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="contact-channel-2" name="contact-channel" type="radio" value="dla-service" aria-describedby="contact-channel-2-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="contact-channel-2">
+                    Information about another benefit
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    I now need information on another benefit I am claiming and their information.
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="pip-service" aria-describedby="contact-channel-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="contact-channel">
+                    No other information needed
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                     I have found all the information I need.
+                  </div>
+                </div>
+
+                <!-- <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="local-authority" aria-describedby="contact-channel-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="contact-channel">
+                    Find your local council
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    Find the website for your local council
+                  </div>
+                </div> -->
+
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="adviser" aria-describedby="contact-channel-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="contact-channel">
+                    I would like to talk to an adviser by phone
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    I like talking to an DWP adviser to get any information. I don't trust online information. 
+                  </div>
+                </div>
+              </div>
+
+            </fieldset>
+        </div>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+          <button class="govuk-button" data-module="govuk-button">Select and continue</button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

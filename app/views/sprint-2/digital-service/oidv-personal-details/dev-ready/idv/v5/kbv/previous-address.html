@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What was your previous address? -
+{{ data['service-name'] }}
+- GOV.UK
+{% endblock %}
+
+
+
+{% block content %}
+<form action="/idv/v5/kbv/previous-name" method="post" autocomplete="off">
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="address-postcode">
+        <span class="govuk-caption-l">Confirm your identity</span>
+        What was your previous address?
+      </label>
+    </h1>
+    <div id="event-name-hint" class="govuk-hint">
+      This is your most recent address before you moved to your current address. Enter a postcode to search for the
+      address.
+    </div>
+    <div class="govuk-form-group">
+      <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text"
+        autocomplete="postal-code">
+    </div>
+  </div>
+
+  <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        I do not have this information now
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p>You can stay on this page for up to 20 minutes. Leave your web browser open if you need to check your answer
+        elsewhere on your device.</p>
+      <p>If you need more time, you can try again later. You might be asked a different question.</p>
+    </div>
+  </details>
+
+  {{ govukButton({
+  text: "Find address"
+  }) }}
+
+  <p><a href="#">I cannot answer this question</a></p>
+  
+</form>
+{% endblock %}

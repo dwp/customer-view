@@ -1,0 +1,141 @@
+{% extends "layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/idv/v4/kbv-blank-set/dvla-knockout-submit-2" method="get" autocomplete="off">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="has-driving-license-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">Confirm your identity</span>
+              Do you have a UK photo driving licence?
+            </h1>
+          </legend>
+          <span id="has-driving-license-hint" class="govuk-hint">
+            You can confirm your identity by entering some information from a driving licence that has your photo on it. You can use either a full or provisional driving licence.
+          </span>
+          <span id="has-driving-license-hint" class="govuk-hint">
+            If you do not have a driving licence, we will help you to confirm your identity another way.
+          </span>
+
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="has-driving-license-yes" name="has-driving-license" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="has-driving-license-yes">
+                Yes - I have a driving licence
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="has-driving-license-no" name="has-driving-license" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="has-driving-license-no">
+                No - confirm my identity another way
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+    <!-- <form action="/idv/default/dvla-knockout-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="has-driving-license-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Do you have a UK driving license?
+            </h1>
+          </legend>
+          <span id="has-driving-license-hint" class="govuk-hint">
+            HINT TEXT
+          </span>
+          <div class="govuk-radios govuk-radios--conditional">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="has-driving-license" name="how-contacted" type="radio" value="email" data-aria-controls="conditional-has-driving-license">
+              <label class="govuk-label govuk-radios__label" for="has-driving-license">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-has-driving-license">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-email">
+                  Yes
+                </label>
+                <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false">
+              </div>
+      
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="has-driving-license-yes" name="has-driving-license" type="radio"
+                value="yes" data-aria-controls="conditional-has-driving-license-yes">
+              <label class="govuk-label govuk-radios__label" for="has-driving-license-yes">Yes</label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden"
+              id="conditional-has-driving-license-yes">
+              
+              
+
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="example-hint" data-required=""
+                  data-error="Select yes if you consent to HMRC sharing your drivers licence details with the DVLA">
+                  <legend class="govuk-fieldset__legend govuk-label--m">
+
+                  </legend>
+                  <span id="example-hint" class="govuk-hint">
+
+                  </span>
+                  <div class="govuk-radios govuk-radios--inline">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="yes" name="dvlaPermission" type="radio" value="yes" "="">
+                          <label class=" govuk-label govuk-radios__label " for=" yes">
+                      Yes
+                      </label>
+                      <span id="yes-hint" class="govuk-hint govuk-radios__hint">
+
+                      </span>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="no" name="dvlaPermission" type="radio" value="no" "="">
+                          <label class=" govuk-label govuk-radios__label " for=" no">
+                      No
+                      </label>
+                      <span id="no-hint" class="govuk-hint govuk-radios__hint">
+
+                      </span>
+                    </div>
+
+                  </div>
+                </fieldset>
+              </div>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="has-driving-license-no" name="has-driving-license" type="radio"
+                value="no">
+              <label class="govuk-label govuk-radios__label" for="has-driving-license-no">No</label>
+            </div>
+          </div>
+        </fieldset>
+      </div> -->
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

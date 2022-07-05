@@ -1,0 +1,130 @@
+{% extends "header-e-three-digital-service.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Talk to an adviser over a phone call
+{% endblock %}
+
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+<br>
+<a class="govuk-back-link" href="b1-information">Back</a>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Talk to an adviser over a phone call
+      </h1>
+
+
+
+            <div class="govuk-details__text">
+            <p>You can find <a href="https://www.gov.uk/browse/benefits">help and information about other benefits on GOV.UK.</a> You can also find contact details on a recent letter about your benefit. </p>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+
+
+                 <!-- phone numbers group -->
+                  <p class="govuk-heading-m"> Employment and Support Allowance (ESA)</p>
+
+
+                    <p class="govuk-heading-s">  Universal Credit helpline</p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li> Telephone: 0800 328 5644 (choose option 3)</li>
+                      <li>Textphone: 0800 328 1344 (choose option 3)</li>
+                      <li>Welsh language telephone: 0800 328 1744</li>
+                      <li><a href="https://www.relayuk.bt.com/">Reply UK</a>(if you cannot hear or speak on the phone): 18001 then 0800 328 5644</li>
+                      <li> <a href="#">Video relay service</a> for British Sign Language (BSL) users - <a href="#">check you can use the service</a></li>
+                    </ul>
+
+
+                    <p>Monday to Friday, 8am to 6pm</p>
+                    <p><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
+
+
+                  <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+    <div class="govuk-button-list__item govuk-button-list__item--with-icon">
+      <a href="#" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+        <span class="govuk-button-list__icon">    <img src="/public/images/printer-img.png" alt="printer icon"></span>
+        <span class="underline">Print page</span>
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19"
+          viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+  <!-- information -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/e-three/more-info-need" method="post">
+        <div class="govuk-form-group">
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--hidden">
+
+            <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Do you want to view any other ESA related information?
+                    </h1>
+              </legend>
+              <br>
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="info-need-2" name="more-info-need" type="radio" value="yes" aria-describedby="info-need-2-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="more-info-need-2">
+                    Yes
+                  </label>
+
+                </div>
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="info-need" name="more-info-need" type="radio" value="no" aria-describedby="info-need-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="more-info-need">
+                    No
+                  </label>
+
+                </div>
+
+
+            </fieldset>
+        </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Select and continue</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
