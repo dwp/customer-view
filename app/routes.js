@@ -797,7 +797,9 @@ router.post('/sprint-2/digital-service/pob-esa', function (req, res) {
 
 })
 
-// Sprint 2 information channel routes - what do you want to do?
+// SPRINT 9 ROUTES
+
+// Sprint 9 information channel routes - what do you want to do?
 router.post('/sprint-9/digital-service/information-channels', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
@@ -833,8 +835,257 @@ router.post('/sprint-9/digital-service/information-channels', function (req, res
     }
 
     else  {
-      res.redirect('/sprint-2/digital-service/information-channels-error')
+      res.redirect('/sprint-9/digital-service/information-channels-error')
     }
+
+})
+
+// Sprint 9 information channel routes - what do you want to do?
+router.post('/sprint-9/digital-service/information-channels-page-two  ', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const optionSelection = req.session.data['option-selection']
+
+  if (optionSelection === 'next-payment') {
+    res.redirect('/sprint-9/digital-service/next-payment')
+  }
+
+  else if (optionSelection === 'payment-history') {
+    res.redirect('/sprint-9/digital-service/payments-history')
+  }
+
+  else if (optionSelection === 'personal-details') {
+    res.redirect('/sprint-9/digital-service/personal-details')
+  }
+
+  else if (optionSelection === 'bank-details') {
+    res.redirect('/sprint-9/digital-service/bank-details')
+  }
+
+  else if (optionSelection === 'chat-bots') {
+    res.redirect('/sprint-9/concept-2/webchat-service')
+  }
+
+    else if (optionSelection === 'pob') {
+      res.redirect('/sprint-9/digital-service/pob-overview')
+    }
+    else if (optionSelection === 'no-i-do-not') {
+      res.redirect('/e-four/concept-2/thank-you-close')
+    }
+
+    else  {
+      res.redirect('/sprint-9/digital-service/information-channels-error')
+    }
+
+})
+
+//Sprint 2 next-payment page - do you want to do anything else question
+router.post('/sprint-9/digital-service/next-payment', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const anythingElse = req.session.data['anything-else']
+
+  if (anythingElse === 'yes') {
+    res.redirect('/sprint-9/digital-service/information-channels-page-two')
+  }
+
+  else if (anythingElse === 'no') {
+    res.redirect('/sprint-9/digital-service/thank-you-close')
+  }
+
+  else  {
+    res.redirect('/sprint-9/digital-service/next-payment-error')
+  }
+
+
+})
+
+//Sprint 2 payments-history page - do you want to do anything else question
+router.post('/sprint-9/digital-service/payments-history', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const anythingElse = req.session.data['anything-else']
+
+  if (anythingElse === 'yes') {
+    res.redirect('/sprint-9/digital-service/information-channels-page-two')
+  }
+
+  else if (anythingElse === 'no') {
+    res.redirect('/sprint-9/digital-service/thank-you-close')
+  }
+
+  else  {
+    res.redirect('/sprint-9/digital-service/payments-history-error')
+  }
+
+
+})
+
+//Sprint 9 personal details page - do you want to do anything else question
+router.post('/sprint-9/digital-service/personal-details', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const anythingElse = req.session.data['anything-else']
+
+  if (anythingElse === 'yes') {
+    res.redirect('/sprint-9/digital-service/information-channels-page-two')
+  }
+
+  else if (anythingElse === 'no') {
+    res.redirect('/sprint-9/digital-service/thank-you-close')
+  }
+
+  else  {
+    res.redirect('/sprint-9/digital-service/personal-details-error')
+  }
+
+
+})
+
+//Sprint 9 bank details page - do you want to do anything else question
+router.post('/sprint-9/digital-service/bank-details', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const anythingElse = req.session.data['anything-else']
+
+  if (anythingElse === 'yes') {
+    res.redirect('/sprint-9/digital-service/information-channels-page-two')
+  }
+
+  else if (anythingElse === 'no') {
+    res.redirect('/sprint-9/digital-service/thank-you-close')
+  }
+
+  else  {
+    res.redirect('/sprint-9/digital-service/bank-details-error')
+  }
+
+
+})
+
+//Sprint 9 telephne information page - do you want to do anything else question
+router.post('/sprint-9/digital-service/telephone-information', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const anythingElse = req.session.data['anything-else']
+
+  if (anythingElse === 'yes') {
+    res.redirect('/sprint-9/digital-service/information-channels-page-two')
+  }
+
+  else if (anythingElse === 'no') {
+    res.redirect('/sprint-9/digital-service/thank-you-close')
+  }
+
+  else  {
+    res.redirect('/sprint-9/digital-service/telephone-information-error')
+  }
+
+
+})
+
+//Sprint 9 payments-history page - do you want to do anything else question
+router.post('/sprint-9/digital-service/return-to-tasks', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const anythingElse = req.session.data['anything-else']
+
+  if (anythingElse === 'yes') {
+    res.redirect('/sprint-9/digital-service/information-channels-page-two')
+  }
+
+  else if (anythingElse === 'no') {
+    res.redirect('/sprint-9/digital-service/thank-you-close')
+  }
+  
+  else {
+    res.redirect('/sprint-9/digital-service/return-to-tasks-error')
+  }
+
+
+})
+
+//Sprint 2 pob-selection page
+router.post('/sprint-9/digital-service/pob-selection-digital', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const pobSelection = req.session.data['pob-selection']
+
+  if (pobSelection === 'esa-letter') {
+    res.redirect('/sprint-9/digital-service/pob-esa')
+  }
+
+  else if (pobSelection === 'carers-letter') {
+
+    res.redirect('/sprint92/digital-service/pob-carers')
+  }
+
+  else {
+    res.redirect('/sprint-9/digital-service/pob-selection-digital-error')
+  }
+
+})
+
+
+//Sprint 9 pob-carers do you want more proof of benefits?
+router.post('/sprint-9/digital-service/pob-carers', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const otherPOB = req.session.data['other-pob']
+
+
+  if (otherPOB === 'yes-more') {
+    res.redirect('/sprint-9/digital-service/pob-selection-digital')
+  }
+
+  else if (otherPOB === 'no-more') {
+    res.redirect('/sprint-9/digital-service/return-to-tasks')
+  }
+
+  else {
+    res.redirect('/sprint-9/digital-service/pob-carers-error')
+  }
+
+})
+
+
+//Sprint 2 pob-esa do you want more proof of benefits?
+router.post('/sprint-9/digital-service/pob-esa', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  const otherPOB = req.session.data['other-pob']
+
+  if (otherPOB === 'yes-more') {
+    res.redirect('/sprint-9/digital-service/pob-selection-digital')
+  }
+
+  else if (otherPOB === 'no-more') {
+    res.redirect('/sprint-9/digital-service/return-to-tasks')
+  }
+
+  else {
+    res.redirect('/sprint-9/digital-service/pob-esa-error')
+  }
 
 })
 
