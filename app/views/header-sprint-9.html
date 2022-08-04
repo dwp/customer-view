@@ -1,12 +1,5 @@
-{% extends "header-sprint-9.html" %}
-{% extends "layout.html" %}
-
-
-{% block pageTitle %}
-  Check your benefit payments
-{% endblock %}
-
 {% block header %}
+
 
 <div class="remove-border-from-header">
   <header class="govuk-header " role="banner" data-module="govuk-header">
@@ -24,55 +17,19 @@
         </span>
       </a>
     </div>
-
+      <!--Header chance-->
+    <div class="govuk-header__content">
+      <a href="/" class="govuk-header__link govuk-header__link--service-name">
+        Check my benefits
+      </a>
+    </a><p style="font-weight: 700; text-align:right; float:right; color:#ffffff; text-decoration:none;"> <a href="thank-you-close" class="white-link" style="text-decoration:none;"></a></p>
+    <!--
+      <span style="text-align:right !important; float:right;" >&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;<a href="/sprint-2/digital-service/thank-you-close" class="govuk-link govuk-body" style="color:#ffffff !important; text-align:right;" >Sign out</a></span>
+    --> 
+    </div>
+    </div>
 
   </div>
 </header>
 
-
 {% endblock %}
-
-
-
-  {% block content %}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-
-        <h1 class="govuk-heading-xl">
-          Get a proof of benefit letter
-        </h1>
-
-        <p>Use this service to:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>view your proof of benefit letter online</li>
-        <li>get a printed proof of benefit letter in the post</li>
-      </ul>
-
-      <p>You may need a proof of benefit letter to show your work history, prove that you live in the UK, or that you are entitled to things like:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>free school meals</li>
-        <li>help with health costs, like prescriptions or opticians</li>
-        <li>training and travel</li>
-        <li>other benefits</li>
-       </ul>
-
-      <p>Payment information is available to people already claiming ESA and Carer's allowance. </p>
-      <p>For information about other benefits visit <a href="https://www.gov.uk/browse/benefits">GOV.UK.</a> If you'd like to speak to someone about your benefits, you can also find contact details on your benefits letter.</p>
-
-        <a href="pob-format-selection" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-          Start  now
-          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
-            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-          </svg>
-        </a>
-      <!--    
-        <h2 class="govuk-heading-m">Before you start</h2>
-       <p>The service is also available in <a href="#">Welsh (Cymraeg)</a>.</p> 
-      -->
-      </div>
-
-    
-    </div>
-  {% endblock %}
