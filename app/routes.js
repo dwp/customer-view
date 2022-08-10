@@ -490,19 +490,19 @@ router.post('/sprint-2/digital-service/information-channels', function (req, res
   const optionSelection = req.session.data['option-selection']
 
   if (optionSelection === 'next-payment') {
-    res.redirect('/sprint-2/digital-service/oidv-next-payment/dev-ready/sign-in')
+    res.redirect('/sprint-2/digital-service/next-payment')
   }
 
   else if (optionSelection === 'payment-history') {
-    res.redirect('/sprint-2/digital-service/oidv-payment-history/dev-ready/sign-in')
+    res.redirect('/sprint-2/digital-service/payments-history')
   }
 
   else if (optionSelection === 'personal-details') {
-    res.redirect('/sprint-2/digital-service/oidv-personal-details/dev-ready/sign-in')
+    res.redirect('/sprint-2/digital-service/personal-details')
   }
 
   else if (optionSelection === 'bank-details') {
-    res.redirect('/sprint-2/digital-service/oidv-bank-details/dev-ready/sign-in')
+    res.redirect('/sprint-2/digital-service/bank-details')
   }
 
   else if (optionSelection === 'chat-bots') {
@@ -510,7 +510,7 @@ router.post('/sprint-2/digital-service/information-channels', function (req, res
   }
 
     else if (optionSelection === 'pob') {
-      res.redirect('/sprint-2/digital-service/oidv-pob/dev-ready/sign-in')
+      res.redirect('/sprint-2/digital-service/pob-overview')
     }
     else if (optionSelection === 'no-i-do-not') {
       res.redirect('/e-four/concept-2/thank-you-close')
