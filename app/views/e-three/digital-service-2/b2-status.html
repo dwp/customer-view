@@ -1,0 +1,74 @@
+{% extends "header-e-three-digital-service-2.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start session
+{% endblock %}
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+
+<br>
+<a class="govuk-back-link" href="b2-information">Back</a>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds  govuk-!-padding-4">
+
+
+  <h1 class="govuk-heading-m">
+    <span class="govuk-body-m">Status:  </span><br>
+   Your request for benefit status check has been completed
+</h1>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+</div>
+</div>
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds govuk-!-padding-4 govuk-!-margin-left-4" style="border:1px #333333 solid;">
+  <p class="govuk-body-m">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;</p>
+  <br>
+  <h1 class="govuk-body">
+   Our intial check indicates that your
+</h1>
+          <h1 class="govuk-heading-xl">
+           Personal Independence Payment (PIP) for National Insurance number indicated above is 'Active'
+        </h1>
+        <div class="govuk-inset-text"> <h3 class="govuk-heading-s govuk-!-margin-bottom-1">More information</h3>
+
+        <p>If you need any more information or have any queries, please contact <a href="telephone-information">DWP - PIP Claims</a>. Call charges may apply.</p>
+      </div>
+    </div>
+  </div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-padding-4">
+  <p class="govuk-heading-m">If you want to check a different benefit</p>
+  <div class="govuk-body">
+  You can find <a href="https://www.gov.uk/browse/benefits">help and information about other benefits on GOV.UK.</a> You can also find contact details on a recent letter about your benefit.  </div>
+  </div>
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "customer-view/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/idv/v4/kbv-external-2/consent-submit" method="get" autocomplete="off">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="has-driving-license-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">Confirm your identity</span>
+              Do you consent to DWP checking your details with our nominated credit agency?
+            </h1>
+          </legend>
+          <p class="govuk-body">To confirm your identity, we need to ask you some questions about your credit record. This will not affect your credit rating.</p>
+          <p class="govuk-body">We need your consent to check the information you give us with our nominated credit reference agency.</p>
+          <p class="govuk-body">For details about how we store and process your information, see our <a href="#" class="govuk-link">privacy notice (opens in new window or tab)</a>.</p>
+
+          <div class="govuk-radios govuk-radios--inline govuk-!-margin-bottom-4">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="yes" name="consent" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label " for="yes">
+                Yes
+              </label>
+              <span id="yes-hint" class="govuk-hint govuk-radios__hint">
+
+              </span>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="no" name="consent" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label " for="no">
+                No
+              </label>
+            </div>
+          </div>
+          <input class="govuk-button " type="submit" value="Continue">
+        </fieldset>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,8 +1,0 @@
-{
-    "serviceName":"Customer View",
-    "plugins": {
-      "govuk-frontend": {
-        "rebrand": true
-      }
-    }
-}

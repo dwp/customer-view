@@ -1,0 +1,90 @@
+{% extends "header-e-four.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Scenario
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Scenario
+      </h1>
+
+        <div class="govuk-grid-row govuk-!-padding-4 ">
+            <form class="form " action="scenario" method="post">
+              <div class="govuk-grid-row govuk-!-padding-left-4">
+
+              <h1 class="govuk-heading-m">
+                Imagine you receive the following benefits
+              </h1>
+              <ul class="govuk-list govuk-list--bullet govuk-body-m">
+                <li>Employment and Support Allowance (ESA)</li>
+                <li>Personal Independence payment (PIP)</li>
+                <li>Disability Living Allowance (DLA) for your child</li>
+              </ul>
+              </div>
+              <br>
+              <div class="govuk-grid-row govuk-!-padding-4 " style="border:2px solid #999999; background-color:#f1f1f1">
+                <h1 class="govuk-heading-m">
+                  Your hypothetical situation:
+                </h1>
+              <p class="govuk-body-l">You are planning for a new home and the landlord needs to see the following evidence for each benefit:</p>
+
+              <ul class="govuk-list govuk-list--bullet govuk-body-l">
+                <li>proof of benefit (letter of entitlement)</li>
+                <li>proof of current payment amounts</li>
+              </ul>
+              </div>
+        </form>
+
+        </div>
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+
+        <form class="form" id="name-form"  action="/e-four/concepts" method="post">
+
+            <div class="govuk-form-group">
+              <label class="govuk-heading-m" for="full-name">
+              Enter your name
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="full-name" name="full-name" type="text" value="{{ data['full-name'] }}" spellcheck="false" aria-describedby="name-hint">
+            </div>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+            <p class="govuk-heading-m">Select what concept you want to view</p>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="concepts" name="concepts" type="radio" value="concept-1" aria-describedby="contact-channel-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="contact-channel-2">
+                  Concept 1
+                </label>
+              </div>
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="concepts" name="concepts" type="radio" value="concept-2" aria-describedby="contact-channel-item-hint">
+                <label class="govuk-label govuk-radios__label" for="contact-channel">
+                  Concept 2
+                </label>
+              </div>
+
+            </div>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+            <button class="govuk-button" data-module="govuk-button">View selected concept <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
+              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+            </svg></button>
+
+          </form>
+
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

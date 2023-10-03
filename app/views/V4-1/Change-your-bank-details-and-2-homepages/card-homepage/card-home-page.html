@@ -1,0 +1,103 @@
+{% extends "V4-1/Change-your-bank-details-and-2-homepages/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}
+  Cards home page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Sarah Phillips</h1>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Payments</h2>
+          <ul class="govuk-grid-row customer-view-card-group">
+            <li class="govuk-grid-column-one-half customer-view-card-group__item">
+              <div class="customer-view-card customer-view-card--clickable">
+                <div class="customer-view-card__content">
+                  <h2 class="customer-view-card__heading govuk-heading-m">
+                    <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="end-page/what-happen-next-checknextpayments.html">Check your next payment</a>
+                  </h2>
+                  <p class="govuk-body customer-view-card__description">View your next payment amount and date</p>
+                </div>
+              </div>
+            </li>
+            <li class="govuk-grid-column-one-half customer-view-card-group__item">
+              <div class="customer-view-card customer-view-card--clickable">
+                <div class="customer-view-card__content">
+                  <h2 class="customer-view-card__heading govuk-heading-m">
+                    <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="end-page/what-happen-next-viewpaymenthstory.html">View your payment history</a>
+                  </h2>
+                  <p class="govuk-body customer-view-card__description">Check your past payments for your benefits or State Pension</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Personal details</h2>
+          <ul class="govuk-grid-row customer-view-card-group">
+            <li class="govuk-grid-column-one-half customer-view-card-group__item">
+              <div class="customer-view-card customer-view-card--clickable">
+                <div class="customer-view-card__content">
+                  <h2 class="customer-view-card__heading govuk-heading-m">
+                    <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="end-page/what-happen-next-viewpersonaldetails.html">View your personal details</a>
+                  </h2>
+                  <p class="govuk-body customer-view-card__description">Check your personal details are correct</p>
+                </div>
+              </div>
+            </li>
+            <li class="govuk-grid-column-one-half customer-view-card-group__item">
+              <div class="customer-view-card customer-view-card--clickable">
+                <div class="customer-view-card__content">
+                  <h2 class="customer-view-card__heading govuk-heading-m">
+                    <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="change-bank-details.html">Change your bank details</a>
+                  </h2>
+                  <p class="govuk-body customer-view-card__description">Choose where your money gets paid</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Documents</h2>
+          <ul class="govuk-grid-row customer-view-card-group">
+            <li class="govuk-grid-column-one-half customer-view-card-group__item">
+              <div class="customer-view-card customer-view-card--clickable">
+                <div class="customer-view-card__content">
+                  <h2 class="customer-view-card__heading govuk-heading-m">
+                    <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="end-page/what-happen-next-get-letter.html">Send documents to us</a>
+                  </h2>
+                  <p class="govuk-body customer-view-card__description">Upload evidence or share letters with us</p>
+                </div>
+              </div>
+            </li>
+            <li class="govuk-grid-column-one-half customer-view-card-group__item">
+              <div class="customer-view-card customer-view-card--clickable">
+                <div class="customer-view-card__content">
+                  <h2 class="customer-view-card__heading govuk-heading-m">
+                    <a class="govuk-link govuk-link--no-visited-state customer-view-card__link" href="end-page/what-happen-next-uploadevidence.html">Get proof of your benefits</a>
+                  </h2>
+                  <p class="govuk-body customer-view-card__description">Save or print a letter to prove you get benefits</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

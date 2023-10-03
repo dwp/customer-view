@@ -1,0 +1,75 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+Sign in
+{% endblock %}
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+{% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Sign in</h1>
+
+    <form class="form" action="/url/of/next/page" method="post">
+
+      <p class="govuk-body">If you have used any of these services, you can use the same email and password to sign in
+        here:
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Get your state pension</li>
+        <li>Check your state pension</li>
+        <li>Apply for Attendance Allowance</li>
+      </ul>
+      </p>
+      <p class="govuk-body">
+        
+        If you have not used any of these services, <a href="start">register now</a> to create an account.
+      </p>
+
+      <p class="govuk-body">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="event-name">
+          Email address
+        </label>
+        <input class="govuk-input" id="event-name" name="event-name" type="text">
+      </div>
+      </p>
+
+      <p class="govuk-body">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="event-name">
+          Password
+        </label>
+        <input class="govuk-input" id="event-name" name="event-name" type="text">
+      </div>
+      </p>
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+    <p>
+    <h2 class="govuk-heading-m">Problems signing in</h2>
+    </p>
+    <p>
+    <a href="reset-password/start">I forgot my password</a>
+    </p>
+
+      <P>
+      <a href=#>I cannot access the email or mobile phone number I use to sign in</a>
+      </p>
+
+  </div>
+</div>
+
+{% endblock %}

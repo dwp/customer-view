@@ -1,0 +1,63 @@
+{% extends "V4-1/Change-your-bank-details-and-2-homepages/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  List home page
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Sarah Phillips</h1>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Payments</h2>
+          <ul class="govuk-list">
+            <li class="govuk-!-margin-bottom-3">
+              <a class="govuk-link" href="#">Check your next payment</a>
+            </li>
+            <li class="govuk-!-margin-bottom-3">
+              <a class="govuk-link" href="#">View your payment history</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Personal details</h2>
+          <ul class="govuk-list">
+            <li class="govuk-!-margin-bottom-3">
+              <a class="govuk-link" href="#">View your personal details</a>
+            </li>
+            <li class="govuk-!-margin-bottom-3">
+              <a class="govuk-link" href="change-bank-details.html">Change your bank details</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">Documents</h2>
+          <ul class="govuk-list">
+            <li class="govuk-!-margin-bottom-3">
+              <a class="govuk-link" href="#">Get a letter to prove you get benefits</a>
+            </li>
+            <li class="govuk-!-margin-bottom-3">
+              <a class="govuk-link" href="#">Upload evidence or send us documents</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

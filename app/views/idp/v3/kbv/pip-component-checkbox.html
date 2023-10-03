@@ -1,0 +1,111 @@
+{% extends "layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">Confirm your identity</span>
+              Which <abbr title="Personal Independence Payment">PIP</abbr> components do you receive?
+            </h1>
+          </legend>
+          <span id="pip-component-hint" class="govuk-hint">
+            This information is in the decison letter you received when you started claiming. You can also <a href="https://www.gov.uk/pip/eligibility" target="blank">check which PIP components you might be getting on GOV.UK</a>.
+          </span>
+          <span id="pip-component-hint" class="govuk-hint">
+            Select all that apply.
+          </span>
+          <div class="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="standard-living" name="pip-component" type="checkbox" value="standard-living">
+              <label class="govuk-label govuk-checkboxes__label" for="standard-living">
+                Standard daily living
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="enhanced-living" name="pip-component" type="checkbox" value="enhanced-living">
+              <label class="govuk-label govuk-checkboxes__label" for="enhanced-living">
+                Enhanced daily living
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="standard-mobility" name="pip-component" type="checkbox" value="standard-mobility">
+              <label class="govuk-label govuk-checkboxes__label" for="standard-mobility">
+                Standard mobility
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="enhanced-mobility" name="pip-component" type="checkbox" value="enhanced-mobility">
+              <label class="govuk-label govuk-checkboxes__label" for="enhanced-mobility">
+                Enhanced mobility
+              </label>
+            </div>
+          </div>
+          
+        </fieldset>
+      </div>
+
+      <p class="govuk-body"><a href="">I do not receive any of these components</a></p>
+
+      <!-- <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="pip-component-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Which parts of PIP do you claim?
+            </h1>
+          </legend>
+          <span id="pip-component-hint" class="govuk-hint">
+            This information is in the decison letter you received when you started claiming. You can also <a href="https://www.gov.uk/pip/eligibility" target="blank">check which part of PIP you might be getting on GOV.UK</a>.
+          </span>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pip-component-1" name="pip-component" type="radio" value="Mobility">
+              <label class="govuk-label govuk-radios__label" for="pip-component-1">Mobility</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pip-component-2" name="pip-component" type="radio" value="Daily living">
+              <label class="govuk-label govuk-radios__label" for="pip-component-2">Daily living</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pip-component-3" name="pip-component" type="radio" value="Both mobility and daily living">
+              <label class="govuk-label govuk-radios__label" for="pip-component-3">Both mobility and daily living</label>
+            </div>
+          </div>
+        </fieldset>
+      </div> -->
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to 20 minutes if you need to check your answer. Make sure you leave your web browser open if you need to use another app on your phone.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

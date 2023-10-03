@@ -1,0 +1,85 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-with-signed-out.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Enter your bank, building society or credit union account details
+{% endblock %}
+
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="check-answers" method="post" novalidate>
+          <h1 class="govuk-heading-l">
+            Enter your bank, building society or credit union account details
+          </h1>
+            <span class="govuk-caption-m">Benefit {{ loop.index0 + 1 }} of {{ loop.length}}</span>
+            <h2 class="govuk-heading-m">{{ benefit }}</h2>
+          
+          <!-- {% if loop.index == 2 %}
+          <span class="govuk-caption-m">Benefit 2 of 2</span>
+          <h2 class="govuk-heading-m">{{ benefit }}</h2>
+          {% endif %} -->
+         
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-name-on-the-account">
+              Name on the account or card
+            </label>
+            <input class="govuk-input" id="new-name-on-the-account" name="new-name-on-the-account" type="text" spellcheck="false" autocomplete="name" value="{{ data['new-name-on-the-account'] }}">
+          </div>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with accents or special characters
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">If the name has an accent or special character, choose the same letter without the accent. For example:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>instead of Zöe, type Zoe</li>
+                <li>instead of José, type Jose</li>
+              </ul>
+            </div>
+          </details>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-sort-code">
+              Sort code
+            </label>
+            <div id="sort-code-hint" class="govuk-hint">
+              Must be 6 digits long. You can use spaces, hypens or dashes
+            </div>
+            <input class="govuk-input govuk-input--width-5" id="new-sort-code" name="new-sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" inputmode="numeric" value="{{ data['new-sort-code'] }}">
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-account-numberr">
+              Account number
+            </label>
+            <div id="account-number-hint" class="govuk-hint">
+              Must be between 6 and 8 digits long
+            </div>
+            <input class="govuk-input govuk-input--width-10" id="new-account-number" name="new-account-number" type="text" spellcheck="false" aria-describedby="account-number-hint" inputmode="numeric" value="{{ data['new-account-number'] }}">
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-roll-number">
+              Building society roll number or credit union membership number (if you have one)
+            </label>
+            <div id="roll-number-hint" class="govuk-hint">
+              Find this on your card, statement or passbook
+            </div>
+            <input class="govuk-input govuk-input--width-10" id="new-roll-number" name="new-roll-number" type="text" spellcheck="false" aria-describedby="roll-number-hint" value="{{ data['new-roll-number'] }}">
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

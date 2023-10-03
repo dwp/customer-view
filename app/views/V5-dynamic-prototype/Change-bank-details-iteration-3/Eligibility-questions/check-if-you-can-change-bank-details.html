@@ -1,0 +1,53 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  check if you can change bank details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Check if you can use this service</h1>
+      <p class="govuk-body govuk-!-margin-bottom-6">Answer questions to find out if you can change your bank details for your benefits or State Pension online.<p>
+          <form action="eligibility-question-1" method="post" novalidate>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    Have you used this service before?
+                  </h1>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="Have-you-used-this-service-before" name="Have-you-used-this-service-before" type="radio" value="No">
+                    <label class="govuk-label govuk-radios__label" for="Have-you-used-this-service-before">
+                      No
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="Have-you-used-this-service-before-2" name="Have-you-used-this-service-before" type="radio" value="Yes">
+                    <label class="govuk-label govuk-radios__label" for="Have-you-used-this-service-before-2">
+                      Yes
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+    </div>
+  </div>
+
+{% endblock %}

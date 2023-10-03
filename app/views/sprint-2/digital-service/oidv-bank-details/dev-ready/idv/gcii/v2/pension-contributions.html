@@ -1,0 +1,56 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="ni-contributions" method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-label-wrapper">
+            <span class="govuk-caption-l">Confirm your identity</span>
+            <label for="pension-contr-amount" class="govuk-label govuk-label--l">Looking at one payslip from the last 3 months, enter the amount it says you paid into your pension</label>
+          </h1>
+        </legend>
+          <ul class="govuk-list govuk-list--bullet govuk-hint">
+            <li>Give the exact figure for the period covered by your payslip – not the year to date</li>
+            <li>Only enter the amount in the deductions section and not your employer's contributions</li>
+            <li>For example, 120.00</li>
+          </ul>
+        <div class="currency-input">
+          <div class="currency-input__symbol" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-10" id="pension-contr-amount" name="pension-contr-amount" type="text" aria-describedby="pension-contr-hint">
+        </div>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to 20 minutes if you need to check your answer.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

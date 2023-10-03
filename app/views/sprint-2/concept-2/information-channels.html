@@ -1,0 +1,70 @@
+{% extends "customer-view/common/header-e-four-c2.html" %}
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  How do you want to find out about your benefits?
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/e-four/information-channels" method="post">
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                  <h1 class="govuk-fieldset__heading">
+                    How do you want to find out about your benefits?
+                  </h1>
+            </legend>
+
+            <div class="govuk-inset-text">
+              You may have to prove your identity before you access some information.
+            </div>
+
+            <div class="govuk-radios">
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="contact-channel-2" name="contact-channel" type="radio" value="dss-signin" aria-describedby="contact-channel-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="contact-channel-2">
+                  Use the online DWP self-service hub
+                </label>
+                <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                  Find information about all your benefits in one place.
+                </div>
+              </div>
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="telephone" aria-describedby="contact-channel-item-hint">
+                <label class="govuk-label govuk-radios__label" for="contact-channel">
+                  Talk to an adviser by phone
+                </label>
+                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  You will have to phone each benefit line individually if you get more than one benefit.
+                </div>
+              </div>
+
+              <!-- <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="chat-bots" aria-describedby="contact-channel-item-hint">
+                <label class="govuk-label govuk-radios__label" for="contact-channel">
+                  Use webchat service
+                </label>
+                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  You can talk to one of our agents over chat to find out more information. You may have to prove your identity for senstive information sharing.
+                </div>
+              </div> -->
+            </div>
+
+          </fieldset>
+      </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

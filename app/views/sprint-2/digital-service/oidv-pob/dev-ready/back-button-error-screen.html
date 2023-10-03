@@ -1,0 +1,26 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  The action you tried is not possible
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Sorry, the action you tried is not possible</h1>
+
+            <p>We saved your answers but you cannot go back and make changes.</p>
+
+            {{ govukButton({
+                text: "Continue",
+                href: "#"
+            }) }}
+        
+        </div>
+    </div>
+{% endblock %}

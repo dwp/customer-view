@@ -1,0 +1,39 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-with-signed-out.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">We are updating your new bank details</h1>
+        <div class="govuk-panel__body">
+          Your reference number<br><strong>HDJ2123F</strong>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">What happens next</h2>
+      <p class="govuk-body">Your next benefit payment will most likely get paid into the new account details you provide us today.</p>
+      <p class="govuk-body">It can take up to two working days for your changes to show on our records.</p>
+      <p class="govuk-body"><a href="#" class="govuk-link">Save or print this page</a>.</p>
+      <p class="govuk-body"><a href="list-home-page.html" class="govuk-link">Go back to the home page</a>.</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">Help improve this service</h2>
+      <p><a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

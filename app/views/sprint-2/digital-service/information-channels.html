@@ -1,0 +1,102 @@
+{% extends "customer-view/common/header-task-based-start.html" %}
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  What benefit information would you like to check?
+{% endblock %}
+
+{% block beforeContent %}
+<br>
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/sprint-2/digital-service/information-channels" method="post">
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="benefit-information-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                  <h1 class="govuk-fieldset__heading">
+                    What would you like to do?
+                  </h1>
+                  
+            </legend>
+            
+            <span class="govuk-caption-l">
+              Select one option.
+            </span>
+            <br>
+            <br>
+
+           <!--
+            <div class="govuk-inset-text">
+              To keep your information secure, we need to verify your identity when you sign in.
+            </div>
+          -->
+            <div class="govuk-radios">
+              <!--View my next benefit payment -->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection" name="option-selection" type="radio" value="next-payment" aria-describedby="option-selection-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection">
+                  Check my next payment
+                </label>
+              </div>
+
+              <!--View my benefit payment history-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-2" name="option-selection" type="radio" value="payment-history" aria-describedby="option-selection-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-2">
+                  View my payment history
+                </label>
+              </div>
+              <!--View my personal details-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-5" name="option-selection" type="radio" value="personal-details" aria-describedby="option-selection-5-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-5">
+                   Check and change my personal details 
+                </label>
+                <div id="personal-details-2-item-hint" class="govuk-hint govuk-radios__hint">
+                </div>
+              </div>
+             <!--View my bank details -->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-6" name="option-selection" type="radio" value="bank-details" aria-describedby="option-selection-6-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-6">
+                  Check and change my bank details
+                </label>
+                <div id="bank-details-2-item-hint" class="govuk-hint govuk-radios__hint">
+                </div>
+              </div>
+             <!--Get proof of my benefits-->
+             <div class="govuk-radios__item govuk-!-padding-bottom-3">
+              <input class="govuk-radios__input" id="option-selection-3" name="option-selection" type="radio" value="pob" aria-describedby="option-selection-3-item-hint">
+              <label class="govuk-label govuk-radios__label" for="option-selection-3">
+                Save or print a letter to prove I get benefits
+              </label>
+            </div>
+            <!--Upload my evidence-->
+            <div class="govuk-radios__item govuk-!-padding-bottom-3">
+              <input class="govuk-radios__input" id="option-selection-7" name="option-selection" type="radio" value="evidence" aria-describedby="option-selection-7-item-hint">
+              <label class="govuk-label govuk-radios__label" for="option-selection-7">
+                Upload evidence or send my documents
+              </label>
+            </div>
+
+            </div>
+
+          </fieldset>
+      </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

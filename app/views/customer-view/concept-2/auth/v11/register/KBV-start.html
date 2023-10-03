@@ -1,0 +1,44 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Confirm your identity
+        {{ data['service-name']  }}
+    - GOV.UK 
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+       
+        <h1 class="govuk-heading-l">Confirm your identity <h1>
+        
+        {% if data['service-name'] == '' %}
+
+        {% else %}
+        <p>You can now sign in to {{ data['service-name'] }}.</p>
+        {% endif %} 
+        <p>We're going to ask you some security questions about your personal details held in our records.
+
+        <p>This is so we can confirm your identity and help protect you from fraud.</p>
+
+        {{ govukDetails({
+          summaryText: "I don't want to confirm my identity this way",
+          html: '<p>[INSERT SUPPORT INSTRUCTIONS]</p>'
+      }) }}
+        
+        {{ govukButton({
+          text: "Continue",
+          href: "/auth/v11/register/partner-dob"
+        }) }}
+      </div>
+    </div>
+{% endblock %}
+
+
+
+

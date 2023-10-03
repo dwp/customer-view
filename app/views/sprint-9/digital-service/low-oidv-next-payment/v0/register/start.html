@@ -1,0 +1,50 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Set up sign in details start
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Register</h1>
+
+            <p>Register so you can securely sign in whenever you use this service.</p>
+
+            <h2 class="govuk-heading-m">Before you start</h2>
+            <p>You will need:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>an email address</li>
+                <li>a mobile phone</li>
+            </ul>
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+            <p>We will send security codes to your email and mobile phone to check that they belong to you.</p>
+
+            <p>Whenever you sign in we will send a new security code to your mobile phone.</p>
+
+            <p>You will also need to:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>create a password</li>
+                <li>answer some basic questions about yourself</li>
+            </ul>
+ 
+            <p>We will check your answers against our records to make sure we are dealing with the right person. 
+                This also helps protect you from fraud.</p>
+            
+
+            {{ govukButton({
+                text: "Continue",
+                href: "email-address.html"
+            }) }}
+
+        </div>
+    </div>
+{% endblock %}

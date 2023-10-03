@@ -1,0 +1,41 @@
+{% extends "header-e-three.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirm your identity
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Confirm your identity
+      </h1>
+
+            <form class="form" action="idv-success" method="post">
+              <p>Before you can show you your information, we need to check your identity.</p>
+              <p>Confirming that you are who you say you are helps us to protect your personal details</p>
+
+              <p class="govuk-heading-m">Before you continue</p>
+              <p>We may need your</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>X document </li>
+                <li>Y document </li>
+              </ul>
+              <p></p>
+
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+            </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

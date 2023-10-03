@@ -1,0 +1,38 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Identity check complete -
+        {{ data['service-name']  }}
+    - GOV.UK 
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+       
+        <h1 class="govuk-heading-l">Identity check complete <h1>
+        
+        {% if data['service-name'] == '' %}
+
+        {% else %}
+        <p>You can now sign in to{{ data['service-name'] }}.</p>
+        {% endif %} 
+        <p>You have completed the identity check successfully.</p>
+        
+        {{ govukButton({
+          text: "Continue",
+<<<<<<< HEAD:app/views/sprint-2/digital-service/oidv-next-payment/v11/register/success.html
+          href: "../../../next-payment"
+=======
+          href: "../../../payments-history"
+>>>>>>> f7dbc92209aa2dbb2489e34ae3a4a5c9dcce3af5:app/views/sprint-2/digital-service/low-oidv-payment-history/v11/register/success.html
+        }) }}
+      </div>
+    </div>
+{% endblock %}
+
+
+
+

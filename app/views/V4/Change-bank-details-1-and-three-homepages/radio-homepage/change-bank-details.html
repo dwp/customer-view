@@ -1,0 +1,44 @@
+{% extends "V4-1/Change-your-bank-details-and-2-homepages/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Change Bank Details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Change your bank details</h1>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Benefits</h2>
+      <hr class="govuk-section-break govuk-section-break--visible">
+      <div class="govuk-form-group">
+        <dl class="govuk-summary-list hmrc-list-with-actions hmrc-list-with-actions--short">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+              Employment and Support Allowance (ESA)
+            </dt>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="esa-changebankdetails.html">Change<span class="govuk-visually-hidden">your bank details</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+              Carer’s Allowance
+            </dt>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">your bank details</span></a>
+            </dd>
+          </div>
+        </dl>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

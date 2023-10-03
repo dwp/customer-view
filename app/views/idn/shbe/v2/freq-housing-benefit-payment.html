@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="landlord-name" method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <span class="govuk-caption-l">Confirm your identity</span>
+          <label class="govuk-label govuk-label--l" for="freq-housing-benefit-payment">How often is your Housing Benefit paid?</label>
+        </h1>
+        <!-- <span id="freq-housing-benefit-payment-hint" class="govuk-hint">
+          Choose the day you receive money for one of your other benefits.
+        </span> -->
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-monday" name="freq-housing-benefit-payment" type="radio" value="weekly">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-monday">Every week</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-tuesday" name="freq-housing-benefit-payment" type="radio" value="2-wekks">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-tuesday">Every 2 weeks</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-wednesday" name="freq-housing-benefit-payment" type="radio"
+              value="4-weeks">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-wednesday">Every 4 weeks</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-thursday" name="freq-housing-benefit-payment" type="radio"
+              value="monthly">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-thursday">Every calendar month – usually paid on the same day every month</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-friday" name="freq-housing-benefit-payment" type="radio" value="3-months">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-friday">Every 3 months</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-sunday" name="freq-housing-benefit-payment" type="radio" value="6-months">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-sunday">Every 6 months</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="freq-housing-benefit-payment-none" name="freq-housing-benefit-payment" type="radio" value="none">
+            <label class="govuk-label govuk-radios__label" for="freq-housing-benefit-payment-none">None of these</label>
+          </div>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to 20 minutes if you need to check your answer. Make sure you leave your web browser open if you need to use another app on your phone.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

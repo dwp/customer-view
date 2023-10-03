@@ -1,0 +1,82 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-with-signed-out.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers before sending your bank details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">Check your details before you send them</h1>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name on account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['new-name-on-the-account'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="esa-New-bankdetails.html">
+                Change<span class="govuk-visually-hidden"> Sort code</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['new-sort-code'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="esa-New-bankdetails.html">
+                Change<span class="govuk-visually-hidden"> Sort code</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['new-account-number'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="esa-New-bankdetails.html">
+                Change<span class="govuk-visually-hidden"> Account number</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Building society roll number or credit union membership number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['new-roll-number'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="esa-New-bankdetails.html">
+                Change<span class="govuk-visually-hidden"> contact details</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">Send your new details</h2>
+        <p class="govuk-body">When you send this information, you confirm that the details you have given us are correct, and you believe they are true.</p>
+        <form action="confirmation" method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button class="govuk-button" data-module="govuk-button">
+            Confirm and send
+          </button>
+        </form>
+      </div>
+    </div>
+{% endblock %}

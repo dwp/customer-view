@@ -1,0 +1,47 @@
+{% import 'V3/common/_globals.html' as globals %}
+{% extends globals.common + "header.html" %}
+{% extends globals.common + "layout.html" %}
+
+{% block pageTitle %}
+  What benefit information would you like to check?
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+	{
+	  text: "Home",
+	  href: globals.url_home
+	}
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+	<h1 class="govuk-heading-xl">
+	  User research
+	</h1>
+	<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-2"></hr>
+
+	<h2 class="gem-c-heading govuk-heading-m govuk-!-margin-bottom-7">Radio</h2>  
+	<div class="govuk-body">
+	  <a href="V3-2/1/start" class="govuk-link govuk-link--no-visited-state">Radios</a>
+	</div>
+	<div class="govuk-body">
+		<a href="V3-2/2/start" class="govuk-link govuk-link--no-visited-state">List</a>
+	</div>
+	<div class="govuk-body">
+		<a href="V3-2/3/start" class="govuk-link govuk-link--no-visited-state">Cards</a>
+	</div>
+
+</div>
+
+{% endblock %}

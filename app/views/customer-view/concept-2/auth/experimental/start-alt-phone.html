@@ -1,0 +1,44 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Set up sign in details start
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Do you have a mobile phone?
+      </h1>
+    </legend>
+    <div id="sources-hint" class="govuk-hint">
+      We will send security codes to your mobile phone to check that it belongs to you.
+    </div>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="do-you-have-a-mobile-phone" name="do-you-have-a-mobile-phone" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="do-you-have-a-mobile-phone">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="do-you-have-a-mobile-phone-2" name="do-you-have-a-mobile-phone-2" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="do-you-have-a-mobile-phone-2">
+          No
+        </label>
+      </div>
+  </fieldset>
+</div>
+
+{{ govukButton({
+  text: "Continue",
+  href: "email-address"
+}) }}
+
+{% endblock %}

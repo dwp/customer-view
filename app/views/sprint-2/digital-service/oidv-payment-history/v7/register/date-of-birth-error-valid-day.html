@@ -1,0 +1,67 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Date of birth
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="postcode" method="post">
+              {{ govukErrorSummary({
+                  "titleText": "There is a problem",
+                  "errorList": [
+                    {
+                      "text": "Enter a valid day",
+                      "href": "#date-of-birth"
+                    }
+                  ]
+                }) }}
+
+               {{ govukDateInput({
+                id: "date-of-birth",
+                namePrefix: "date-of-birth",
+                fieldset: {
+                    legend: {
+                    text: "What is your date of birth?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                    }
+                },
+                hint: {
+                    text: "For example, 27 3 1979"
+                },
+                errorMessage: {
+                  text: "Enter a valid day"
+                },
+                items: [
+                  {
+                    classes: "govuk-input--width-2 govuk-input--error",
+                    name: "day",
+                    value: "33"
+                  },
+                  {
+                    classes: "govuk-input--width-2",
+                    name: "month",
+                    value: "3"
+                  },
+                  {
+                    classes: "govuk-input--width-4",
+                    name: "year",
+                    value: "1977"
+                  }
+                ]
+                }) }}
+
+                 {{ govukButton({
+                    text: "Continue"
+                 }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

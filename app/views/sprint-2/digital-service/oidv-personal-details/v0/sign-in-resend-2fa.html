@@ -1,0 +1,32 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="sign-in-2fa" method="post">
+                {{ govukFieldset({
+                    legend: {
+                        html: 'Send me another security code',
+                        classes: "govuk-fieldset__legend--l",
+                        isPageHeading: true
+                    }
+                })}}
+
+                <p>We will send you a text message with a new security code. </p>
+                <p>If you have not received a code after several attempts, try again later.</p>
+
+                <p><a href="sign-in-2fa" class="govuk-button">Continue</a></p>
+
+                {{ govukDetails({
+                            summaryText: "I do not have access to the phone I use to sign in",
+                            html: 'Email <a href="#">DWP sign in support</a> if you need the security code sent to a new phone number.'
+                        }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

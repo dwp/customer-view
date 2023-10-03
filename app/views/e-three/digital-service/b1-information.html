@@ -1,0 +1,92 @@
+{% extends "header-e-three-digital-service.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What info you are looking for?
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+<!--
+
+<br>
+<a class="govuk-back-link" href="ni-number">Back</a> -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/e-three/b1-information" method="post">
+      <div class="govuk-form-group">
+        <p class="govuk-body-m">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;<a href="ni-number">Change</a></p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                  <h1 class="govuk-fieldset__heading">
+                    Select what information you want to view
+                  </h1>
+            </legend>
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+            <div class="govuk-radios">
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="info-need-2" name="info-need" type="radio" value="loe" aria-describedby="info-need-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="info-need-2">
+                  Letter of entitlement (LoE)
+                </label>
+              </div>
+
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="info-need" name="info-need" type="radio" value="payment-info" aria-describedby="info-need-item-hint">
+                <label class="govuk-label govuk-radios__label" for="info-need">
+                  Payment information
+                </label>
+                <!-- <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  You will have to phone each benefit line individually if you get more than one benefit.
+                </div> -->
+              </div>
+
+              <!-- <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="info-need" name="info-need" type="radio" value="status" aria-describedby="info-need-item-hint">
+                <label class="govuk-label govuk-radios__label" for="info-need">
+                  Current ESA status
+                </label>
+              </div> -->
+
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="info-need" name="info-need" type="radio" value="adviser" aria-describedby="info-need-item-hint">
+                <label class="govuk-label govuk-radios__label" for="info-need">
+                  Talk to an ESA adviser by phone
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+        <button class="govuk-button" data-module="govuk-button">Select and continue</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

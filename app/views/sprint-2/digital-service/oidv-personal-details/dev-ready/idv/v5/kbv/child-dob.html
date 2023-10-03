@@ -1,0 +1,82 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="child-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">Confirm your identity</span>
+              What is your eldest child's date of birth?
+            </h1>
+          </legend>
+          <span id="govuk-date-input" class="govuk-hint">
+            For example, 27 3 2015
+        </span>
+          <!-- <div id="child-name-hint">
+            <p class="govuk-hint">Enter the date of birth of any child included on one of your other benefit claims from the last 3 years.</p>
+  
+            <p class="govuk-hint">For example, 12 6 2010</p>
+          </div> -->
+          <div class="govuk-date-input" id="child-name">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="child-name-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="child-name-day" name="child-name-day" type="text" pattern="[0-9]*" maxlength="2" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="child-name-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="child-name-month" name="child-name-month" type="text" pattern="[0-9]*" maxlength="2" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="child-name-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="child-name-year" name="child-name-year" type="text" pattern="[0-9]*" maxlength="4" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to 20 minutes if you need to check your answer. Do not close the web page.</p>
+          <p>If you need more time, you can come back and confirm your identity later. You might be asked for different information.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+      <p><a href="#">I cannot answer this question</a></p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

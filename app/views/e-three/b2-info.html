@@ -1,0 +1,58 @@
+{% extends "header-e-three.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How do you want to find out about your benefits?
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/e-three/b2-info" method="post">
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                  <h1 class="govuk-fieldset__heading">
+                    How do you want to find out Personal Independence Payment (PIP) contact information?
+                  </h1>
+            </legend>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+
+            <div class="govuk-radios">
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="search-channel-2" name="search-channel" type="radio" value="google" aria-describedby="search-channel-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="search-channel-2">
+                  Google search
+                </label>
+              </div>
+
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="search-channel" name="search-channel" type="radio" value="govuk" aria-describedby="search-channel-item-hint">
+                <label class="govuk-label govuk-radios__label" for="search-channel">
+                  Search info in GOV.UK website
+                </label>
+                <!-- <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  You will have to phone each benefit line individually if you get more than one benefit.
+                </div> -->
+              </div>
+
+            </div>
+
+          </fieldset>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+        <button class="govuk-button" data-module="govuk-button">Select and continue</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

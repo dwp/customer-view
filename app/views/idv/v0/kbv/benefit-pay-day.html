@@ -1,0 +1,69 @@
+{% extends "layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm Your Identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+<a href="javascript:history.go(-1)" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="day-of-week">Which day are you usually paid one of your other benefits?</label>
+        </h1>
+        <span id="day-of-week-hint" class="govuk-hint">
+          Choose the day you receive money for one of your other benefits.  
+        </span>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-monday" name="day-of-week" type="radio" value="monday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-monday">Monday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-tuesday" name="day-of-week" type="radio" value="tuesday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-tuesday">Tuesday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-wednesday" name="day-of-week" type="radio" value="wednesday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-wednesday">Wednesday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-thursday" name="day-of-week" type="radio" value="thursday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-thursday">Thursday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-friday" name="day-of-week" type="radio" value="friday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-friday">Friday</label>
+          </div>
+        </div>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to one hour if you need to check your answer.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

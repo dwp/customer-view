@@ -1,0 +1,75 @@
+{% extends "V4/Change-bank-details-1-and-three-homepages/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Radio home page
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/V4/Change-bank-details-1-and-three-homepages/radio-homepage/change-bank-details" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What would you like to do?
+              </h1>
+            </legend>
+            <div id="contact-hint" class="govuk-hint">
+              Select one option.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="What-would-you-like-to-do-1" name="What-would-you-like-to-do" type="radio" value="Check my next payment">
+                <label class="govuk-label govuk-radios__label" for="What-would-you-like-to-do-1">
+                  Check my next payment
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="What-would-you-like-to-do-2" name="What-would-you-like-to-do" type="radio" value="View my payment history">
+                <label class="govuk-label govuk-radios__label" for="What-would-you-like-to-do-2">
+                  View my payment history
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="What-would-you-like-to-do-3" name="What-would-you-like-to-do" type="radio" value="View my personal details">
+                <label class="govuk-label govuk-radios__label" for="What-would-you-like-to-do-3">
+                  View my personal details
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="What-would-you-like-to-do-4" name="What-would-you-like-to-do" type="radio" value="Change my bank details">
+                <label class="govuk-label govuk-radios__label" for="What-would-you-like-to-do-4">
+                  Change my bank details
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="What-would-you-like-to-do-5" name="What-would-you-like-to-do" type="radio" value="Save or print a letter to prove I get benefits">
+                <label class="govuk-label govuk-radios__label" for="What-would-you-like-to-do-5">
+                  Save or print a letter to prove I get benefits
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="What-would-you-like-to-do-4" name="What-would-you-like-to-do" type="radio" value="Upload evidence or send my documents">
+                <label class="govuk-label govuk-radios__label" for="What-would-you-like-to-do-4">
+                  Upload evidence or send my documents
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

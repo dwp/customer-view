@@ -1,0 +1,55 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-with-OIDV-journey-not-tested/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Is your new account based in the UK?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-with-OIDV-journey-not-tested/common/phase-banner.html" %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="eligibility-question-7" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Is your new account based in the UK?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes-uk-bank-account" name="new-account-based-in-the-UK_withOIDV" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="yes-uk-bank-account">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no-overseas account" name="new-account-based-in-the-UK_withOIDV" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="no-overseas account">
+                  No, it is an account based overseas
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="not-sue" name="new-account-based-in-the-UK_withOIDV" type="radio" value="not-sue">
+                <label class="govuk-label govuk-radios__label" for="not-sue">
+                  I’m not sure
+                </label>
+              </div>
+            </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

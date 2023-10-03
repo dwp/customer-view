@@ -1,0 +1,36 @@
+{% extends "V42_2-Change-bank-details-user-testing-2/Change-bank-details-with-OIDV-journey-not-tested/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Enter your email address - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V42_2-Change-bank-details-user-testing-2/Change-bank-details-with-OIDV-journey-not-tested/common/phase-banner.html" %}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Enter your email address</h1>
+      <p class="govuk-body">We will send a security code to this email address.</p>
+      <form action="email-code" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label" for="register-email-address">
+                  Email address
+            </label>
+          </h1>
+          <input class="govuk-input" id="register-email-address" name="register-email-address" type="text">
+        </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

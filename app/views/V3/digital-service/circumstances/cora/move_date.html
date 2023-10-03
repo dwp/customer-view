@@ -1,0 +1,56 @@
+{% import 'V3/common/_globals.html' as globals %}
+{% extends globals.common + "header.html" %}
+{% extends globals.common + "layout.html" %}
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+<a class="govuk-back-link" href="{{globals.url_version_sub}}circumstances/personal-details">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        {% if error %}
+        {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+            {
+            text: "Error",
+            href: "#UKRES"
+
+            }
+        ]
+        }) }}
+        {% endif %}
+      <form action="move_date" method="post" novalidate>
+        <span class="govuk-caption-l">Residential</span>
+
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "move-date",
+          namePrefix: "move-date",
+          fieldset: {
+            legend: {
+              text: "When did you move?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          errorMessage: { text: "error"} if error else null,
+          hint: {
+            text: "For example, 27 12 2022"
+          }
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+        
+      </form>
+    </div>
+  </div>
+{% endblock %}

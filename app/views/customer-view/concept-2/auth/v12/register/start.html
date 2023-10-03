@@ -1,0 +1,51 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Register
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Register</h1>
+
+            <p>Create an account so you can sign in securely each time you visit.</p>
+
+            <div class="govuk-inset-text">
+              <a href="/auth/default/sign-in">Sign in if you have already created an account</a>
+            </div>
+
+            <h2 class="govuk-heading-m">Before you start</h2>
+            <p>You will need:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>an email address</li>
+                <li>a mobile phone</li>
+            </ul>
+
+            <p>We will send security codes to your email and phone to check they belong to you.</p>
+
+            <h2 class="govuk-heading-m">Confirm your identity</h2>
+
+            <p>When you create your account and sign in for the first time, you will be asked some security questions.</p>
+
+            <p>This is so we can confirm your identity and help protect you from fraud.</p>
+
+            {{ govukDetails({
+                summaryText: "I cannot continue",
+                html: '<p>[INSERT SUPPORT INSTRUCTIONS]</p>'
+            }) }}
+
+            {{ govukButton({
+                text: "Continue",
+                href: "/auth/default/register/email-address"
+            }) }}
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+Sign in these services
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+{% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        Have you used any of these services before?
+                    </h1>
+                    <!-- </legend> -->
+                    <p>
+                    <ul class="govuk-list  govuk-list--bullet">
+                        <li>Get your state pension</li>
+                        <li>Check your state pension</li>
+                        <li>Apply for Attendance Allowance</li>
+                    </ul>
+                    </p>
+                </legend>
+
+                <form action="/auth/experimental/no-name-2/sign-in-branch-these-services" id="form" method="post" >
+                <div class="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="services-used-before" name="sign-in-branch-these-services"
+                            type="radio" value="yes">
+                        <label class="govuk-label govuk-radios__label" for="services-used-before">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <!-- make change to auth.js to route to new 'sign-in-existing-credentials' pages-->
+                        <input class="govuk-radios__input" id="services-used-before-2" name="sign-in-branch-these-services"
+                            type="radio" value="no">
+                        <label class="govuk-label govuk-radios__label" for="services-used-before-2">
+                            No
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <!-- make change to auth.js to route to new 'sign-in-existing-credentials' pages-->
+                        <input class="govuk-radios__input" id="services-used-before-3" name="sign-in-branch-these-services"
+                            type="radio" value="I do not know">
+                        <label class="govuk-label govuk-radios__label" for="services-used-before-3">
+                            I do not know
+                        </label>
+                    </div>
+
+                </div>
+
+
+            </fieldset>
+
+        </div>
+
+            <!-- <form action="/auth/default/sign-in-branch" id="form" method="post" >
+                {{ govukRadios({
+                idPrefix: "sign-in-register-branch",
+                name: "sign-in-register-branch",
+                fieldset: {
+                    legend: {
+                    text: "Have you used this " + serviceName + " service before?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                    }
+                },
+                items: [
+                    {
+                    value: "yes",
+                    text: "Yes"
+                    },
+                    {
+                    value: "no",
+                    text: "No"
+                    }
+                ]
+                }) }} -->
+
+
+            {{ govukButton({
+            text: "Continue"
+            }) }}
+
+
+
+            <!-- </form> -->
+        </div>
+    </div>
+</div>
+{% endblock %}

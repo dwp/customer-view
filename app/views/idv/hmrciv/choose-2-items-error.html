@@ -1,18 +1,16 @@
-{% set isHMRCPage = false %}
-{% set serviceName = "Confirm who you are" %}
-{% extends "layouts/main.html" %}
+{% set isHMRCPage = true %}
+
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-Choose 2 items we can ask you about - GOV.UK
+Choose 2 items we can ask you about
 {% endblock %}
 
 {% block serviceName %}
 {% endblock %}
 
-{% block beforeContent %}
-{% include 'includes/phase-banner.njk' %}
-{% include 'includes/language-toggle.njk' %}
-{% endblock %}
+
+
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -133,9 +131,9 @@ Choose 2 items we can ask you about - GOV.UK
                   <div class="govuk-radios">
                     <div class="govuk-radios__item" data-children-count="1"><input class="govuk-radios__input"
                         id="payslip" name="payslipOrP60" type="radio" value="payslip"><label
-                        class="govuk-label govuk-radios__label" for="payslip">Payslip</label></div>
+                        class="govuk-label govuk-radios__label " for="payslip">Payslip</label></div>
                     <div class="govuk-radios__item" data-children-count="1"><input class="govuk-radios__input" id="p60"
-                        name="payslipOrP60" type="radio" value="p60"><label class=" govuk-label
+                        name="payslipOrP60" type="radio" value="p60" "=""><label class=" govuk-label
                         govuk-radios__label " for=" p60">P60</label></div>
                   </div>
                 </fieldset>

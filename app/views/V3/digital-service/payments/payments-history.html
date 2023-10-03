@@ -1,0 +1,151 @@
+{% import 'V3/common/_globals.html' as globals %}
+{% extends globals.common + "header.html" %}
+{% extends globals.common + "layout.html" %}
+
+{% block pageTitle %}
+  Payment history
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: globals.url_home
+    },
+    {
+      text: "View my benefit payment history",
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-xl">
+          Your payment history
+          <!-- <span class="govuk-caption-l">
+          View and access your benefits in one place
+        </span> -->
+        </h1>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Benefit</th>
+              <th scope="col" class="govuk-table__header ">Payment date</th>
+              <th scope="col" class="govuk-table__header ">Payment amount</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 8 March 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Employment and Support Allowance (ESA)</td>
+              <td class="govuk-table__cell  ">Tuesday 1 March 2022</td>
+              <td class="govuk-table__cell  ">£56.70</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 1 March 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 22 February 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Employment and Support Allowance (ESA)</td>
+              <td class="govuk-table__cell  ">Tuesday 15 February 2022</td>
+              <td class="govuk-table__cell  ">£56.70</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 15 February 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 8 February 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Employment and Support Allowance (ESA)</td>
+              <td class="govuk-table__cell  ">Tuesday 1 February 2022</td>
+              <td class="govuk-table__cell  ">£56.70</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 1 February 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell  ">Carer's Allowance</td>
+              <td class="govuk-table__cell  ">Tuesday 25 January 2022</td>
+              <td class="govuk-table__cell  ">£60.60</td>
+            </tr>
+            <!-- extended history -->
+        
+        
+          </tbody>
+        </table>
+
+        {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    },
+    {
+      number: 4,
+      href: "#"
+    },
+    {
+      number: 5,
+      href: "#"
+    },
+    {
+      number: 6,
+      href: "#"
+    }
+  ]
+}) }}
+
+<p class="govuk-!-font-size-16"><a href="" target="_blank">Print</a> <br><br> <a class="govuk-!-font-size-16"><a href="" target="_blank">Download</a></p> 
+<br>
+<a class="govuk-button" href="{{globals.url_home}}">
+   Return to menu
+ </a>
+
+        
+</div>
+
+</div>
+
+{% endblock %}

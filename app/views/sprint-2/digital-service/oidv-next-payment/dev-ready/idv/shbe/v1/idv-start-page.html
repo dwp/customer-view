@@ -1,0 +1,31 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+  {% include 'includes/phase-banner.njk' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+      We need to check your identity
+    </h1>
+    <p>This helps us protect against fraud and keep you secure.</p>
+    <p>To complete the identity check, you will need to answer some questions about your personal details and income from work or benefits.</p>
+    <p>It can help to have some documents to hand, such as:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>a payslip from the last 3 months</li>
+        <li>information about housing benefit, if you claim it</li>
+      </ul>
+    <p>
+      <a href="benefit-cap" class="govuk-button">Continue</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

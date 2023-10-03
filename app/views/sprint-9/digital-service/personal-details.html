@@ -1,0 +1,142 @@
+{% extends "customer-view/common/header-sprint-9.html" %}
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Talk to an adviser over a phone call
+{% endblock %}
+
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+<br>
+<!--Crumble menu-->
+<br>
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Your personal details
+      </h1>
+
+
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-thirds">
+      
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+      
+            <!-- <p class="govuk-heading-l">Personal details</p> -->
+            
+            <!--Personal details form-->
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Sarah Philips
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  5 January 1978
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  72 Guild Street<br>London<br>SE23 6FH
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Contact details
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">07700 900457</p>
+                  <p class="govuk-body">sarah.phillips@example.com</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+            </dl>
+            <p><a href="telephone-information">Contact us</a> to update your personal details.</p>
+            <!--Personal details form end-->
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-three-thirds">
+                <form class="form" action="/sprint-2/digital-service/personal-details" method="post">
+                  <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="benefit-information-hint">
+                        
+                        <form class="form" action="/sprint-9/digital-service/information-channels" method="post">
+                          <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset" aria-describedby="anything-else">
+                              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h2 class="govuk-fieldset__heading">
+                                  Would you like to return to the main menu?
+                                </h2>
+                              </legend>
+                              <div id="anything-else-hint" class="govuk-hint">
+                                
+                              </div>
+                              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                  <input class="govuk-radios__input" id="anything-else" name="anything-else" type="radio" value="yes">
+                                  <label class="govuk-label govuk-radios__label" for="anything-else">
+                                    Yes, let me check more information about my benefits
+                                  </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                  <input class="govuk-radios__input" id="anything-else-2" name="anything-else" type="radio" value="no">
+                                  <label class="govuk-label govuk-radios__label" for="anything-else-2">
+                                    No, I’d like to sign out
+                                  </label>
+                                </div>
+                              </div>
+                          
+                            </fieldset>
+                          </div>
+              
+                        </fieldset>
+                    </div>
+                      <button class="govuk-button" data-module="govuk-button">Continue</button>
+                  </form>
+            
+            
+{% endblock %}

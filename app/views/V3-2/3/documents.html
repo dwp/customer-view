@@ -1,0 +1,55 @@
+{% import 'V3-2/3/common/_globals.html' as globals %}
+{% extends globals.common + "header.html" %}
+{% extends globals.common + "layout.html" %}
+
+{% set pagedocuments = "true" %}
+
+{% block pageTitle %}
+  What benefit information would you like to check?
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: globals.url_home
+    },
+    {
+      text: "Documents",
+      href: "documents"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Documents
+    </h1>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-8"></hr>
+<!--Get proof of my benefits-->
+<div class="govuk-body">
+  <a href="pob-overview" class="govuk-link govuk-link--no-visited-state">Save or print a letter if you need to prove you get benefits</a>
+</div>
+<!--Upload my evidence-->
+<div class="govuk-body">
+  <a href="upload" class="govuk-link govuk-link--no-visited-state">Upload evidence or send your documents to us</a>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-8"></hr>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

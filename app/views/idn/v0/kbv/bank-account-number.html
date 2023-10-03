@@ -1,0 +1,38 @@
+{% extends "layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm Your Identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+<a href="javascript:history.go(-1)" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="bank-account-number">Enter the last 4 digits of your bank account number</label>
+        </h1>
+        <span id="bank-account-number-hint" class="govuk-hint">
+          This should be the bank account that your benefits or pension are paid into. We will only use this information to confirm your identity.
+        </span>
+
+        <!-- <span class="govuk-!-font-weight-bold govuk-!-padding-right-1">* * * *</span> -->
+        <input class="govuk-input govuk-input--width-3" id="account-number" name="account-number" type="text" aria-describedby="bank-account-number-hint" pattern="[0-9]*" inputmode="numeric" spellcheck="false" maxlength="4">
+      </div>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

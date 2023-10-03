@@ -1,0 +1,52 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  Access
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/auth/default/account-recovery/access" method="post">
+
+              {{ govukRadios({
+                idPrefix: "what-access",
+                name: "what-access",
+                fieldset: {
+                  legend: {
+                    text: "What do you have access to?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "mobile-phone",
+                    text: "Mobile phone"
+                  },
+                  {
+                    value: "email",
+                    text: "Email address"
+                  },
+                  {
+                    value: "neither",
+                    text: "Neither"
+                  }
+                ]
+              }) }}
+
+              {{ govukButton({
+                text: "Continue"
+              }) }}
+
+             </form>
+  </div>
+</div>
+
+{% endblock %}

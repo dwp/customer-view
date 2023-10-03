@@ -1,0 +1,75 @@
+{% extends "V4/Change-bank-details-1-and-three-homepages/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  ESA - Add New Bank details
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/V4/Change-bank-details-1-and-three-homepages/card-homepage/check-answers" method="post" novalidate>
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">Employment and Support Allowance (ESA)</span>
+            Enter your new bank details
+          </h1>
+          <p class="govuk-body">This is the account you need your future ESA payments to go into.</p>
+          <h2 class="govuk-heading-m">Bank, building society or credit union account details</h2>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-name-on-the-account">
+              Name on the account
+            </label>
+            <input class="govuk-input" id="new-name-on-the-account" name="new-name-on-the-account" type="text" spellcheck="false" autocomplete="name" value="Sarah Phillips">
+          </div>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with accents or special characters
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+            </div>
+          </details>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-sort-code">
+              Sort code
+            </label>
+            <div id="sort-code-hint" class="govuk-hint">
+              Must be 6 digits long. You can use spaces, hypens or dashes
+            </div>
+            <input class="govuk-input govuk-input--width-5" id="new-sort-code" name="new-sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" inputmode="numeric" value="65-43-21">
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-account-numberr">
+              Account number
+            </label>
+            <div id="account-number-hint" class="govuk-hint">
+              Must be between 6 and 8 digits long
+            </div>
+            <input class="govuk-input govuk-input--width-10" id="new-account-number" name="new-account-number" type="text" spellcheck="false" aria-describedby="account-number-hint" inputmode="numeric" value="87654321">
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="new-roll-number">
+              Building society roll number (if you have one)
+            </label>
+            <div id="roll-number-hint" class="govuk-hint">
+              You can find it on your card, statement or passbook
+            </div>
+            <input class="govuk-input govuk-input--width-10" id="new-roll-number" name="new-roll-number" type="text" spellcheck="false" aria-describedby="roll-number-hint" value="{{ data['new-roll-number'] }}">
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

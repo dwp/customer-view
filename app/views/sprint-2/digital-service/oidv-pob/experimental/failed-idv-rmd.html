@@ -1,0 +1,42 @@
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+  We have been unable to confirm your identity -
+        {{ data['service-name']  }}
+    - GOV.UK 
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+       
+        <h1 class="govuk-heading-xl">We have been unable to confirm your identity</h1>
+        
+        <p>This is because we could not match the information you entered with our records.</p>
+
+        <p>You can use the account you have created to sign in and try the identity confirmation again after 24 hours.</p>
+
+        <p>You might be asked for different information.</p>
+
+        <h2 class="govuk-heading-l">Confirm your identity another way</h2>
+
+        <p>You can sign in with your security code and date of birth instead.</p>
+
+        <p>The security code is on the letter we sent you, it contains only numbers and it can be up to 11 digits.</p>
+        
+        {{ govukButton({
+          text: "Continue",
+          href: "auth/default/idv/v5/kbv/child-dob"
+        }) }}
+      </div>
+    </div>
+{% endblock %}
+
+
+
+

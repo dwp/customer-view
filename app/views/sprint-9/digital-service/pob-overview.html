@@ -1,0 +1,87 @@
+{% extends "customer-view/common/header-sprint-9.html" %}
+{% extends "customer-view/common/layout.html" %}
+
+{% block pageTitle %}
+Which benefit do you need a proof of benefits letter for?
+{% endblock %}
+
+{% block beforeContent %}
+<br>
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/sprint-2/digital-service/pob-selection-digital" method="post">
+      <div class="govuk-form-group">
+          
+        <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Proof of benefits 
+                  <span class="govuk-caption-l">
+                  Get printed or digital evidence of your benefits 
+                  </span>
+                </h1>
+          </legend>
+            
+            <br>
+            <br>
+
+            <!--
+            <div class="govuk-inset-text">
+              To keep your information secure, we need to verify your identity when you sign in.
+            </div>
+            -->
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+            <p>You may need a proof of benefit letter to show your work history, prove that you live in the UK, or that you’re entitled to things like:</p>
+
+            <ul class="govuk-list govuk-list--bullet govuk-body">
+              <li>free school meals</li>
+              <li>help with health costs, like prescriptions or eye tests</li>
+              <li>training and travel </li>
+            </ul>
+            
+         
+            
+            <a class="govuk-button" href="pob-selection-digital">
+              Continue
+            </a>
+            
+           
+            
+            
+            
+            <p><a class="govuk-link" href="telephone-information">Contact us</a> if you:</p>
+            
+            <ul class="govuk-list govuk-list--bullet govuk-body">
+              <li>need us to send a letter to you in an alternative format, such as Welsh or braille</li>
+              <li>have recently moved house and need to update your address</li>
+              <li>live outside Great Britain or Northern Ireland </li>
+            </ul>
+            
+              <!-- <li>
+                <a class="govuk-link" href="b2-status">Request benefit status check</a>
+              </li> -->
+            </ul>
+            
+</div>
+
+            </div>
+
+          </fieldset>
+      </div>
+
+
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
