@@ -1,0 +1,114 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which benefits do you get?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+{% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="eligibility-question-4" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which benefits do you get?
+              </h1>
+            </legend>
+            <div id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Attendance-Allowance" name="Which-benefits-do-you-get" type="checkbox" value="Attendance Allowance" {{ checked("Which-benefits-do-you-get", "Attendance Allowance") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Attendance-Allowance">
+                  Attendance Allowance
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Carers-Allowance" name="Which-benefits-do-you-get" type="checkbox" value="Carer’s Allowance" {{ checked("Which-benefits-do-you-get", "Carer’s Allowance") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Carers-Allowance">
+                  Carer’s Allowance
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Disability-Living-Allowance-(DLA)-for-adults" name="Which-benefits-do-you-get" type="checkbox" value="Disability Living Allowance (DLA) for adults" {{ checked("Which-benefits-do-you-get", "Disability Living Allowance (DLA) for adults") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Disability-Living-Allowance-(DLA)-for-adults">
+                  Disability Living Allowance (DLA) for adults
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Employment-and-Support-Allowance-(ESA)" name="Which-benefits-do-you-get" type="checkbox" value="Employment and Support Allowance (ESA)" {{ checked("Which-benefits-do-you-get", "Employment and Support Allowance (ESA)") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Employment-and-Support-Allowance-(ESA)">
+                  Employment and Support Allowance (ESA)
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Income-Support" name="Which-benefits-do-you-get" type="checkbox" value="Income Support" {{ checked("Which-benefits-do-you-get", "Income Support") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Income-Support">
+                  Income Support
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Industrial-Industries-Disablement-Benefit" name="Which-benefits-do-you-get" type="checkbox" value="Industrial Industries Disablement Benefit" {{ checked("Which-benefits-do-you-get", "Industrial Industries Disablement Benefit") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Industrial-Industries-Disablement-Benefit">
+                  Industrial Industries Disablement Benefit
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Incapacity-Benefit" name="Which-benefits-do-you-get" type="checkbox" value="Incapacity Benefit" {{ checked("Which-benefits-do-you-get", "Incapacity Benefit") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Incapacity-Benefit">
+                  Incapacity Benefit
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Jobseekers-Allowance" name="Which-benefits-do-you-get" type="checkbox" value="Jobseeker’s Allowance" {{ checked("Which-benefits-do-you-get", "Jobseeker’s Allowance") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Jobseekers-Allowance">
+                  Jobseeker’s Allowance
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Maternity-Allowance" name="Which-benefits-do-you-get" type="checkbox" value="Maternity Allowance" {{ checked("Which-benefits-do-you-get", "Maternity Allowance") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Maternity-Allowance">
+                  Maternity Allowance
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Personal-Independence-Payments" name="Which-benefits-do-you-get" type="checkbox" value="Personal Independence Payment (PIP)" {{ checked("Which-benefits-do-you-get", "Personal Independence Payment (PIP)") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Personal-Independence-Payments">
+                  Personal Independence Payment (PIP)
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="Winter-Fuel-Payment" name="Which-benefits-do-you-get" type="checkbox" value="Winter Fuel Payment" {{ checked("Which-benefits-do-you-get", "Winter Fuel Payment") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="Winter-Fuel-Payment">
+                  Winter Fuel Payment
+                </label>
+              </div>
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="I-get-none-of-these-benefits" name="Which-benefits-do-you-get" type="checkbox" value="I get a different benefit" data-behaviour="exclusive"  {{ checked("Which-benefits-do-you-get", "I get a different benefit") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="I-get-none-of-these-benefits">
+                  I get a different benefit
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,793 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-with-signed-out.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers before sending your bank details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">Check your details before you send them</h1>
+
+
+    {% if data['oneAccount'] %}
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name on account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-name-on-the-account'] or "Not provided"  }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="all-benefits-in-One-account.html">
+            Change<span class="govuk-visually-hidden"> Sort code</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-sort-code'] or "Not provided" }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="all-benefits-in-One-account.html">
+            Change<span class="govuk-visually-hidden"> Sort code</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Account number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-account-number'] or "Not provided"  }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="all-benefits-in-One-account.html">
+            Change<span class="govuk-visually-hidden"> Account number</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Building society roll number or credit union membership number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-roll-number'] or "Not provided" }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="all-benefits-in-One-account.html">
+            Change<span class="govuk-visually-hidden"> contact details</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    
+      {% else %}
+
+      <!-- check attendance allowance -->
+      {% if data['attendance-allowance-done'] %}
+        <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+        <h2 class="govuk-heading-m">Attendance Allowance</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name on account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['attendance-allowance-new-name-on-the-account'] or "Not provided" }}
+              <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="all-benefits-in-One-account.html">
+                Change<span class="govuk-visually-hidden"> Sort code</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['attendance-allowance-new-sort-code'] or "Not provided" }}
+              <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="all-benefits-in-One-account.html">
+                Change<span class="govuk-visually-hidden"> Sort code</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['attendance-allowance-new-account-number'] or "Not provided" }}
+              <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="all-benefits-in-One-account.html">
+                Change<span class="govuk-visually-hidden"> Account number</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Building society roll number or credit union membership number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['attendance-allowance-new-roll-number'] or "Not provided" }}
+              <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="all-benefits-in-One-account.html">
+                Change<span class="govuk-visually-hidden"> contact details</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+
+      <!-- check for carers alowance -->
+      {% if data['carers-allowance-done'] %}
+      <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+      <h2 class="govuk-heading-m">Carer’s Allowance</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name on account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['carers-allowance-new-name-on-the-account'] or "Not provided" }}
+            <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="all-benefits-in-One-account.html">
+              Change<span class="govuk-visually-hidden"> Sort code</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sort code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['carers-allowance-new-sort-code'] or "Not provided" }}
+            <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="all-benefits-in-One-account.html">
+              Change<span class="govuk-visually-hidden"> Sort code</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Account number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['carers-allowance-new-account-number'] or "Not provided" }}
+            <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="all-benefits-in-One-account.html">
+              Change<span class="govuk-visually-hidden"> Account number</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Building society roll number or credit union membership number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['carers-allowance-new-roll-number'] or "Not provided" }}
+            <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="all-benefits-in-One-account.html">
+              Change<span class="govuk-visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+      {% endif %}
+
+      <!-- check for ESA alowance -->
+      {% if data['DLA-done'] %}
+      <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+      <h2 class="govuk-heading-m">Disability Living Allowance (DLA) for adults</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name on account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['DLA-new-name-on-the-account'] or "Not provided" }}
+                  <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['DLA-new-sort-code'] or "Not provided" }}
+                  <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Account number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['DLA-new-account-number'] or "Not provided" }}
+                  <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Account number</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Building society roll number or credit union membership number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['DLA-new-roll-number'] or "Not provided" }}
+                  <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> contact details</span>
+                  </a>
+                </dd>
+              </div>
+      </dl>
+      {% endif %}
+
+      <!-- check for ESA alowance -->
+      {% if data['ESA-done'] %}
+      <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+      <h2 class="govuk-heading-m">Employment and Support Allowance (ESA)</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name on account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['ESA-new-name-on-the-account'] or "Not provided" }}
+                  <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['ESA-new-sort-code'] or "Not provided" }}
+                  <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Account number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['ESA-new-account-number'] or "Not provided" }}
+                  <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Account number</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Building society roll number or credit union membership number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['ESA-new-roll-number'] or "Not provided" }}
+                  <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> contact details</span>
+                  </a>
+                </dd>
+              </div>
+      </dl>
+      {% endif %}
+      
+      <!-- check for IS alowance -->
+      {% if data['IS-done'] %} 
+      <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+      <h2 class="govuk-heading-m">Income Support</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name on account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['IS-new-name-on-the-account'] or "Not provided" }}
+                  <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['IS-new-sort-code'] or "Not provided" }}
+                  <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Account number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['IS-new-account-number'] or "Not provided" }}
+                  <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Account number</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Building society roll number or credit union membership number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['IS-new-roll-number'] or "Not provided" }}
+                  <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> contact details</span>
+                  </a>
+                </dd>
+              </div>
+      </dl>
+      {% endif %}
+
+       <!-- check for IIDB alowance -->
+       {% if data['IIDB-done'] %} 
+       <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+       <h2 class="govuk-heading-m">Industrial Industries Disablement Benefit</h2>
+       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Name on account
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IIDB-new-name-on-the-account'] or "Not provided" }}
+                   <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                   <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> Sort code</span>
+                   </a>
+                 </dd>
+               </div>
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Sort code
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IIDB-new-sort-code'] or "Not provided" }}
+                   <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                   <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> Sort code</span>
+                   </a>
+                 </dd>
+               </div>
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Account number
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IIDB-new-account-number'] or "Not provided" }}
+                   <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> Account number</span>
+                   </a>
+                 </dd>
+               </div>
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Building society roll number or credit union membership number
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IIDB-new-roll-number'] or "Not provided" }}
+                   <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                   <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> contact details</span>
+                   </a>
+                 </dd>
+               </div>
+       </dl>
+       {% endif %}           
+      
+       <!-- check for IB alowance -->
+       {% if data['IB-done'] %} 
+       <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+       <h2 class="govuk-heading-m">Incapacity Benefit</h2>
+       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Name on account
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IB-new-name-on-the-account'] or "Not provided" }}
+                   <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                   <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> Sort code</span>
+                   </a>
+                 </dd>
+               </div>
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Sort code
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IB-new-sort-code'] or "Not provided" }}
+                   <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                   <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> Sort code</span>
+                   </a>
+                 </dd>
+               </div>
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Account number
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IB-new-account-number'] or "Not provided" }}
+                   <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> Account number</span>
+                   </a>
+                 </dd>
+               </div>
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key">
+                   Building society roll number or credit union membership number
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   {{ data['IB-new-roll-number'] or "Not provided" }}
+                   <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                 </dd>
+                 <dd class="govuk-summary-list__actions">
+                   <a class="govuk-link" href="all-benefits-in-One-account.html">
+                     Change<span class="govuk-visually-hidden"> contact details</span>
+                   </a>
+                 </dd>
+               </div>
+       </dl>
+       {% endif %}       
+
+      <!-- check for JA alowance -->
+      {% if data['JA-done'] %} 
+      <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+      <h2 class="govuk-heading-m">Jobseeker’s Allowance</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name on account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['JA-new-name-on-the-account'] or "Not provided" }}
+                  <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['JA-new-sort-code'] or "Not provided" }}
+                  <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Account number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['JA-new-account-number'] or "Not provided" }}
+                  <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Account number</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Building society roll number or credit union membership number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['JA-new-roll-number'] or "Not provided" }}
+                  <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> contact details</span>
+                  </a>
+                </dd>
+              </div>
+      </dl>
+      {% endif %}  
+      
+      <!-- check for MA alowance -->
+      {% if data['MA-done'] %} 
+      <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+      <h2 class="govuk-heading-m">Maternity Allowance</h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name on account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['MA-new-name-on-the-account'] or "Not provided" }}
+                  <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['MA-new-sort-code'] or "Not provided" }}
+                  <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Sort code</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Account number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['MA-new-account-number'] or "Not provided" }}
+                  <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> Account number</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Building society roll number or credit union membership number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['MA-new-roll-number'] or "Not provided" }}
+                  <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="all-benefits-in-One-account.html">
+                    Change<span class="govuk-visually-hidden"> contact details</span>
+                  </a>
+                </dd>
+              </div>
+      </dl>
+      {% endif %} 
+      
+     <!-- check for PIP alowance -->
+     {% if data['PIP-done'] %}
+     <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+     <h2 class="govuk-heading-m">Personal Independence Payment (PIP)</h2>
+     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Name on account
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['PIP-new-name-on-the-account'] or "Not provided" }}
+                 <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> Sort code</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Sort code
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['PIP-new-sort-code'] or "Not provided" }}
+                 <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> Sort code</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Account number
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['PIP-new-account-number'] or "Not provided" }}
+                 <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+               <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> Account number</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Building society roll number or credit union membership number
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['PIP-new-roll-number'] or "Not provided" }}
+                 <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> contact details</span>
+                 </a>
+               </dd>
+             </div>
+     </dl>
+     {% endif %} 
+
+     <!-- check for PIP alowance -->
+     {% if data['WFP-done'] %}
+     <!-- <span class="govuk-caption-m">Your new bank details for</span> -->
+     <h2 class="govuk-heading-m">Winter Fuel Payment</h2>
+     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Name on account
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['WFP-new-name-on-the-account'] or "Not provided" }}
+                 <!-- {{ data['new-name-on-the-account'] or "Not provided"  }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> Sort code</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Sort code
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['WFP-new-sort-code'] or "Not provided" }}
+                 <!-- {{ data['new-sort-code'] or "Not provided" }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> Sort code</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Account number
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['WFP-new-account-number'] or "Not provided" }}
+                 <!-- {{ data['new-account-number'] or "Not provided"  }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+               <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> Account number</span>
+                 </a>
+               </dd>
+             </div>
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 Building society roll number or credit union membership number
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['WFP-new-roll-number'] or "Not provided" }}
+                 <!-- {{ data['new-roll-number'] or "Not provided" }} -->
+               </dd>
+               <dd class="govuk-summary-list__actions">
+                 <a class="govuk-link" href="all-benefits-in-One-account.html">
+                   Change<span class="govuk-visually-hidden"> contact details</span>
+                 </a>
+               </dd>
+             </div>
+     </dl>
+     {% endif %} 
+  {% endif %}
+      
+        <h2 class="govuk-heading-m">Send your new details</h2>
+        <p class="govuk-body">When you send this information, you confirm that the details you have given us are correct, and you believe they are true.</p>
+        <form action="confirmation" method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button class="govuk-button" data-module="govuk-button">
+            Confirm and send
+          </button>
+        </form>
+      </div>
+    </div>
+{% endblock %}

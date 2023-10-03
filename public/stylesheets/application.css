@@ -10707,9 +10707,6 @@ html.no-scroll {
   border-color: #aeb7bd;
 }
 
-.customer-view-card--clickable:hover, .customer-view-card--clickable:active {
-  /*cursor: pointer;*/
-}
 
 .customer-view-card--clickable:active {
   border-color: #aeb7bd;

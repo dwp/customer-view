@@ -1793,3 +1793,296 @@ router.post('/V5-dynamic-prototype/Change-bank-details-iteration-3/list-homepage
 
 
 
+
+ //just for OIDV for Andy's demo - remove after that
+ 
+
+// Common error page for OIDV Security number
+// this is for NINO number for UR round-5
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/list-home-page', function (req, res) {
+if (req.session.data['signin-code'] == '471350') {
+  // Send user to next page
+  res.render('V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/list-home-page')
+} else {
+  var errMsg = "";
+  if (req.session.data['signin-code'] == '' || req.session.data['signin-code'] == undefined) {
+    errMsg = "Enter your security code";
+  } else {
+    errMsg = "Security code does not match the one we sent you";
+  }
+  // Send user to error page
+  res.render('V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/OIDV/authenticate/sign-in-2fa-Error', { "errMsg": errMsg });
+}
+})
+
+
+// How did you find about this service
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/check-if-you-can-change-bank-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['How-did-you-find-out-about-this-service']
+
+  // Check whether the variable matches a condition
+  if (findService == "Letter"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/check-if-you-can-change-bank-details');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/unhappy-path/can-not-use-this-service');
+  }
+
+})
+
+//radio options
+// this is for radio selection for 1st page
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-1', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var usedServicebefore = req.session.data['Have-you-used-this-service-before']
+
+  // Check whether the variable matches a condition
+  if (usedServicebefore == "No"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-1');
+  } else {
+    // Send user back to same page
+    res.redirect('back');
+  }
+
+})
+
+// this is for radio selection for 2nd page
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-2', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var changeDetail = req.session.data['change-bank-details-for-benefits-State-Pension-or-both']
+
+  // Check whether the variable matches a condition
+  if (changeDetail == "Benefits"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-2');
+  } else {
+    // Send user back to same page
+    res.redirect('back');
+  }
+
+})
+
+
+// for who does the payment belongs to?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-3', function (req, res) {
+
+  req.session.data['Which-benefits-do-you-get']='';
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var changeFor = req.session.data['Do-you-need-to-change-bank-details-for-your-own-benefit-payments']
+
+  // Check whether the variable matches a condition
+  if (changeFor == "Yes for my own"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-3');
+
+  } else {
+      // Check whether the variable matches a condition
+    if (changeFor == "someone else"){
+      // Send user to next page
+      res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/unhappy-path/someone-else');
+   } else {
+    // Send user back to same page
+    res.redirect('back');
+  }
+}
+
+})
+
+// for who does the payment belongs to?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-4', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var benefitsYouGet = req.session.data['Which-benefits-do-you-get']
+
+  // Check whether the variable matches a condition
+  if (benefitsYouGet == "I get a different benefit"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/unhappy-path/get-different-benefits');
+
+  } else {
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-4');
+}
+})
+
+
+// this is for radio selection for 3rd page
+router.post('V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-5', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var benefitPaid = req.session.data['benefits-get-paid']
+
+  // Check whether the variable matches a condition
+  if (benefitPaid == "Not-sure"){
+    // Send user to next page
+     res.redirect('V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-5');
+  } else {
+            // Send user back to same page
+            res.redirect('back');
+  }
+
+}) 
+
+
+// Do you benefit paid into UK bank account?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-6', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var benefitPaidUK = req.session.data['paid-into-UK-bank-account']
+
+  // Check whether the variable matches a condition
+  if (benefitPaidUK == "Yes"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-6');
+  } else {
+    if (benefitPaidUK == "No"){
+    // Send on contact us page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/unhappy-path/non-UKBank-message');
+    } else {
+    // Send user back to same page
+    res.redirect('back');
+  }
+}
+})
+
+// Do you benefit paid into UK bank account?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-7', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var newBankUK = req.session.data['Is-your-new-account-also-based-in-the-UK']
+
+  // Check whether the variable matches a condition
+  if (newBankUK == "Yes"){
+       // Send next page
+       res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-question-7');
+  } else {
+    if (newBankUK == "No"){
+      // Send on contact us page
+      res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/unhappy-path/non-UKBank-message');
+      }
+      else {
+      // Send user back to same page
+      res.redirect('back');
+    }
+  }
+})
+
+// Do you benefit paid into UK bank account?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-eligible', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var duePayment = req.session.data['payment-due-within-the-next-six-working-days']
+
+  // Check whether the variable matches a condition
+  if (duePayment == "No"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-eligible');
+
+    } else {
+      // Send user payment due page
+      res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/paymentdue');
+    }
+
+})
+
+
+// Do you benefit paid into UK bank account?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-eligible-2', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var basedAnswerCont = req.session.data['Do-you-want-to-continue']
+
+  // Check whether the variable matches a condition
+  if (basedAnswerCont == "No"){
+    // Send user to next page
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/unhappy-path/contactUs');
+
+    } else {
+      // Send user payment due page
+      res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/Eligibility-questions/eligibility-eligible-2');
+    }
+
+})
+
+
+// // Do you benefit paid into UK bank account?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/Before-you-change-bank-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var paymentDue = req.session.data['payment-due-within-the-next-six-working-days']
+
+  // Check whether the variable matches a condition
+  if (paymentDue == "Yes") {
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/payment-in-progress');
+  }
+  else {
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/Before-you-change-bank-details');
+  }
+})
+
+
+
+// Do you benefit paid into UK bank account?
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/all-benefits-in-One-account', function (req, res) {
+  // Make a variable and give it the value from 'how-many-balls'
+  var confirmBeforeChange = req.session.data['Before-you-change-bank-details']
+  var benefitPayAccount = req.session.data['payments-into-one-bank-account']
+  // Check whether the variable matches a condition
+  if (confirmBeforeChange == "No") {
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/contactus'); 
+  } else {  
+      req.session.data['oneAccount'] = '';
+      req.session.data['dataName'] = '';
+      req.session.data['new-name-on-the-account'] = '';
+      req.session.data['new-sort-code'] = '';
+      req.session.data['new-account-number'] = '';
+      req.session.data['new-roll-number'] = '';
+      if (benefitPayAccount == "into one account") {
+        res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/all-benefits-in-One-account');
+      } else if (benefitPayAccount == "into separate account") {  
+        req.session.data['benefitNumber'] = 0
+        res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/multiple-account/new-bankdetail-for-1');
+      }
+  } 
+
+})
+
+
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/multiple-account/new-bankdetail-for-1-answers', function (req, res) {
+
+  var benefitAmount = req.session.data['Which-benefits-do-you-get-1']
+  var nextBenefitNumber = req.session.data['benefitNumber'] + 1
+  
+  if(benefitAmount.length == nextBenefitNumber ){
+    res.redirect('../check-answers')
+  }
+  else {
+    // Make sure we change this benefitNumber 
+    req.session.data['benefitNumber'] = nextBenefitNumber
+    res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/multiple-account/new-bankdetail-for-1')
+  }
+})
+
+
+// confirmation page based on the due date within 6 days or not
+router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/confirmation', function (req, res) {
+
+   // Make a variable and give it the value from 'how-many-balls'
+   var paymentDue = req.session.data['payment-due-within-the-next-six-working-days']
+
+   // Check whether the variable matches a condition
+   if (paymentDue == "Yes") {
+     res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/confirmation-2');
+   }
+   else {
+     res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/confirmation');
+   }
+ })
