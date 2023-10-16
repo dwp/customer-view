@@ -39,13 +39,13 @@
     "lodash": "^4.17.21",
     "marked": "^4.1.1",
     "nhsuk-frontend": "^6.1.2",
-    "notifications-node-client": "^5.2.0",
+    "notifications-node-client": "^7.0.3",
     "nunjucks": "^3.2.1",
     "portscanner": "^2.1.1",
     "require-dir": "^1.0.0",
     "sass": "^1.55.0",
     "sync-request": "^6.0.0",
-    "universal-analytics": "^0.4.16",
+    "universal-analytics": "^0.5.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
