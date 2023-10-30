@@ -1,0 +1,37 @@
+{% import 'V3/common/_globals.html' as globals %}
+{% extends globals.common + "header-no-logout.html" %}
+{% extends globals.common + "layout.html" %}
+
+
+
+{% block content %}
+
+  <a class="govuk-back-link" href="#">Back</a>
+    <br><br>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <div>
+        <h1 class="govuk-heading-l">What you’ll need</h1>
+        <p>If you're signing in for the first time, you'll need:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>an email address</li>
+          <li>a mobile phone</li>
+         </ul>
+         <p>To keep your information secure, we will ask you security questions to prove your identity. We may ask for details about your:</p>
+         <ul class="govuk-list govuk-list--bullet">
+           <li>UK passport</li>
+           <li>payslip or <a href="https://www.gov.uk/paye-forms-p45-p60-p11d/p60">P60</a></li>
+           <li>Self Assessment</li>
+           <li>tax credits</li>
+           <li>credit file</li>
+          </ul>
+         </div>
+
+
+
+         <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </div>
+  {% endblock %}
