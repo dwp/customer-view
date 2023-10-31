@@ -1,0 +1,27 @@
+{% extends "V42_2-Change-bank-details-user-testing-2/Change-bank-details-user-testing-2/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You have signed out
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You have signed out</h1>
+    <p class="govuk-body govuk-!-margin-bottom-9">You can now close this window.</p>
+    <a href="../list-homepage/list-home-page" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+      Sign back in
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}
