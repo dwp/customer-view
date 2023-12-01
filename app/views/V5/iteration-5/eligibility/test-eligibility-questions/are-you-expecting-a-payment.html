@@ -1,0 +1,59 @@
+{% extends "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/header-task-based-start.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a payment due within the next 6 working days?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
+  {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="eligibility-eligible" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Are you expecting a payment/voucher in the next 2 working days?
+              </h1>
+            </legend>
+            <div class="govuk-inset-text">
+              We ask this to understand if adding your new bank account will be complete in time for your next payment.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes-payment-due" name="payment-due-within-the-next-six-working-days" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="yes-payment-due" formaction="you-can-use-this-service">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no-payment-due" name="payment-due-within-the-next-six-working-days" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="no-payment-due">
+                  No
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="not-sue" name="payment-due-within-the-next-six-working-days" type="radio" value="not-sue">
+                <label class="govuk-label govuk-radios__label" for="not-sue">
+                  I’m not sure
+                </label>
+              </div>
+            </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}
