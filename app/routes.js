@@ -2086,3 +2086,179 @@ router.post('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-h
      res.redirect('/V5-dynamic-prototype/Iteration4-with-returning-OIDV-journey/list-homepage/confirmation');
    }
  })
+
+ //User who gets benefts prototype start here
+
+// How did you find about this service
+router.post('/V5/iteration-5/eligibility/test-eligibility-questions/how-did-customer-find-out-about-this-service', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['How-did-you-find-out-about-this-service']
+
+  // Check whether the variable matches a condition
+  if (findService == "Letter"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/what-does-customer-need-to-do');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/can-not-use-this-service');
+  }
+
+})
+
+// Who does the payment belong to?
+router.post('/V5/iteration-5/eligibility/test-eligibility-questions/who-does-the-payment-belong-to', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['who-does-the-payment-belong-to']
+
+  // Check whether the variable matches a condition
+  if (findService == "Me"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/what-benefits-need-to-change');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/someone-else');
+  }
+
+})
+
+// Which benefits do you get?
+router.post('/V5/iteration-5/eligibility/test-eligibility-questions/which-benefits-does-customer-get', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var benefitsYouGet = req.session.data['Which-benefits-do-you-get']
+
+  // Check whether the variable matches a condition
+  if (benefitsYouGet == "I get a different benefit"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/someone-else');
+
+  } else {
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/adding-the-account-we-pay-your-benefits-into');
+}
+})
+
+
+// Adding the account we pay your benefits into
+router.post('/V5/iteration-5/eligibility/test-eligibility-questions/adding-the-account-we-pay-your-benefits-into', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['Is-your-new-account-also-based-in-the-UK']
+
+  // Check whether the variable matches a condition
+  if (findService == "Yes"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/are-you-expecting-a-payment');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/non-UKBank-message');
+  }
+
+})
+
+// Are you expecting a payment/voucher in the next 2 working days
+router.post('/V5/iteration-5/eligibility/test-eligibility-questions/are-you-expecting-a-payment', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['expecting-payment-in-the-next-2-working-days']
+
+  // Check whether the variable matches a condition
+  if (findService == "No"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/you-can-use-this-service');
+
+  } if (findService == "Yes"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/you-can-use-this-service-in-progress');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/contactUs');
+  }
+
+})
+
+//User who gets benefts prototype end here
+
+
+
+//User who gets benefts without (expecting payment/voucher page) prototype start here
+
+// How did you find about this service
+router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/how-did-customer-find-out-about-this-service', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['How-did-you-find-out-about-this-service']
+
+  // Check whether the variable matches a condition
+  if (findService == "Letter"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/what-does-customer-need-to-do');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/unhappy-path/can-not-use-this-service');
+  }
+
+})
+
+// Who does the payment belong to?
+router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/who-does-the-payment-belong-to', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['who-does-the-payment-belong-to']
+
+  // Check whether the variable matches a condition
+  if (findService == "Me"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/what-benefits-need-to-change');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/unhappy-path/someone-else');
+  }
+
+})
+
+// Which benefits do you get?
+router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/which-benefits-does-customer-get', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var benefitsYouGet = req.session.data['Which-benefits-do-you-get']
+
+  // Check whether the variable matches a condition
+  if (benefitsYouGet == "I get a different benefit"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/unhappy-path/someone-else');
+
+  } else {
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/adding-the-account-we-pay-your-benefits-into');
+}
+})
+
+
+// Adding the account we pay your benefits into
+router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/adding-the-account-we-pay-your-benefits-into', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var findService = req.session.data['Is-your-new-account-also-based-in-the-UK']
+
+  // Check whether the variable matches a condition
+  if (findService == "Yes"){
+    // Send user to next page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/you-can-use-this-service');
+
+  } else {
+    // Send on contact us page
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/unhappy-path/non-UKBank-message');
+  }
+
+})
+
+//User who gets benefts without (expecting payment/voucher page) prototype end here

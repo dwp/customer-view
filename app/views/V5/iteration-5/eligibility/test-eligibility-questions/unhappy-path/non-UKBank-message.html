@@ -2,23 +2,26 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Based on your answers, you can use this service
+  You can only use this service if you have a UK bank account
 {% endblock %}
 
 {% block beforeContent %}
   {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/phase-banner.html" %}
   {% include "V4_3-Change-bank-details-user-testing-3/Change-bank-details-iteration-3/common/welsh-language-toggle.html" %}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
+
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Based on your answers, you can use this service</h1>
-            <button class="govuk-button" data-module="govuk-button">
-              Continue
-            </button>
+
+      <h1 class="govuk-heading-l">You can only use this service if you have a UK bank account</h1>
+      <p class="govuk-body">To change your account details, <a href="#" class="govuk-link">contact your benefit office (opens in a new tab)</a>.</p>
+      <p class="govuk-body"><a href="#" class="govuk-link">Return to GOV.UK</a>.</p>
+
+
     </div>
   </div>
 

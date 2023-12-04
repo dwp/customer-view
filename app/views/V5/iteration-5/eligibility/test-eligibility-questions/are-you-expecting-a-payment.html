@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you have a payment due within the next 6 working days?
+  Are you expecting a payment/voucher in the next 6 working days?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,12 +15,12 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="eligibility-eligible" method="post" novalidate>
+      <form  method="post" novalidate>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Are you expecting a payment/voucher in the next 2 working days?
+                Are you expecting a payment/voucher in the next 6 working days?
               </h1>
             </legend>
             <div class="govuk-inset-text">
@@ -28,20 +28,20 @@
             </div>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="yes-payment-due" name="payment-due-within-the-next-six-working-days" type="radio" value="Yes">
-                <label class="govuk-label govuk-radios__label" for="yes-payment-due" formaction="you-can-use-this-service">
+                <input class="govuk-radios__input" id="yes-payment-due" name="expecting-payment-in-the-next-2-working-days" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="yes-payment-due">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="no-payment-due" name="payment-due-within-the-next-six-working-days" type="radio" value="No">
+                <input class="govuk-radios__input" id="no-payment-due" name="expecting-payment-in-the-next-2-working-days" type="radio" value="No">
                 <label class="govuk-label govuk-radios__label" for="no-payment-due">
                   No
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="not-sue" name="payment-due-within-the-next-six-working-days" type="radio" value="not-sue">
-                <label class="govuk-label govuk-radios__label" for="not-sue">
+                <input class="govuk-radios__input" id="not-sure" name="expecting-payment-in-the-next-2-working-days" type="radio" value="not-sure">
+                <label class="govuk-label govuk-radios__label" for="not-sure">
                   I’m not sure
                 </label>
               </div>
