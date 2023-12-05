@@ -2134,7 +2134,7 @@ router.post('/V5/iteration-5/eligibility/test-eligibility-questions/which-benefi
   // Check whether the variable matches a condition
   if (benefitsYouGet == "I get a different benefit"){
     // Send user to next page
-    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/someone-else');
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/unhappy-path/get-different-benefits');
 
   } else {
     // Send user to next page
@@ -2234,7 +2234,7 @@ router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/wh
   // Check whether the variable matches a condition
   if (benefitsYouGet == "I get a different benefit"){
     // Send user to next page
-    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/unhappy-path/someone-else');
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/unhappy-path/get-different-benefits');
 
   } else {
     // Send user to next page
