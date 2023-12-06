@@ -2138,13 +2138,13 @@ router.post('/V5/iteration-5/eligibility/test-eligibility-questions/which-benefi
 
   } else {
     // Send user to next page
-    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/adding-the-account-we-pay-your-benefits-into');
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-questions/changing-the-account-we-pay-your-benefits-into');
 }
 })
 
 
-// Adding the account we pay your benefits into
-router.post('/V5/iteration-5/eligibility/test-eligibility-questions/adding-the-account-we-pay-your-benefits-into', function (req, res) {
+// changing the account we pay your benefits into
+router.post('/V5/iteration-5/eligibility/test-eligibility-questions/changing-the-account-we-pay-your-benefits-into', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var findService = req.session.data['Is-your-new-account-also-based-in-the-UK']
@@ -2238,13 +2238,13 @@ router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/wh
 
   } else {
     // Send user to next page
-    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/adding-the-account-we-pay-your-benefits-into');
+    res.redirect('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/changing-the-account-we-pay-your-benefits-into');
 }
 })
 
 
-// Adding the account we pay your benefits into
-router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/adding-the-account-we-pay-your-benefits-into', function (req, res) {
+// changing the account we pay your benefits into
+router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/changing-the-account-we-pay-your-benefits-into', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var findService = req.session.data['Is-your-new-account-also-based-in-the-UK']
