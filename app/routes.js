@@ -1,7 +1,13 @@
-const express = require('express')
-const router = express.Router()
+//
+// For guidance on how to create routes see:
+// https://prototype-kit.service.gov.uk/docs/create-routes
+//
 
-// Add your routes here - above the module.exports line
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+// Add your routes here
+
 
 //radio options
 // this is for radio selection for 1st page
@@ -164,7 +170,6 @@ router.post('/V42_2-Change-bank-details-user-testing-2/Change-bank-details-user-
 })
 
 
-module.exports = router
 
 // Branching your-contact-channels
 router.post('/e-one/your-contact-channels', function (req, res) {
