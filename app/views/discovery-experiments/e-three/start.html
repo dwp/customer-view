@@ -1,0 +1,38 @@
+{% extends "discovery-experiments/e-three/common/header-e-three.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start session
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <br>
+      <br>
+      <h1 class="govuk-heading-xl">
+        What we want you to do today
+      </h1>
+
+            <form class="form" action="scenario" method="post">
+
+              <ul class="govuk-list govuk-list--bullet govuk-body-l">
+                <li>You will asked to go through two concepts for a scenarios</li>
+                <li>We will ask you how you feel about what you are seeing</li>
+              </ul>
+              <p></p>
+
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+
+              <button class="govuk-button" data-module="govuk-button">View scenario</button>
+
+            </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

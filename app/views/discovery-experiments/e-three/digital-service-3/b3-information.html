@@ -1,0 +1,97 @@
+{% extends "discovery-experiments/e-three/common/header-e-three-digital-service-3.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What info you are looking for?
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+<!--
+
+<br>
+<a class="govuk-back-link" href="ni-number">Back</a> -->
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/discovery-experiments/e-three/b3-information" method="post">
+
+      <p class="govuk-body-m">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;<a href="ni-number">Change</a></p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+        <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Disability Living Allowance (DLA)
+                </h1>
+          </legend>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+      <ul class="govuk-button-list govuk-button-list--no-margin">
+      <!-- <li class="govuk-button-list__item">
+        <a href="view-proof" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+          <span class="underline">View my proof of entitlement</span>
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19"
+            viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </a>
+      </li> -->
+      <li class="govuk-button-list__item">
+        <a href="b3-loe" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+          <span class="underline">View my proof of entitlement</span>
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </a>
+      </li>
+      <li class="govuk-button-list__item">
+        <a href="payments" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+          <span class="underline">View my payment and payment history</span>
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </a>
+      </li>
+      <!-- <li class="govuk-button-list__item">
+        <a href="b3-status" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+          <span class="underline">Current status of benefit</span>
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </a>
+      </li> -->
+      <li class="govuk-button-list__item">
+        <a href="telephone-information" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+          <span class="underline">Talk to an DLA adviser by phone</span>
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

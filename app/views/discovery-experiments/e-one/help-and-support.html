@@ -1,0 +1,112 @@
+{% extends "discovery-experiments/e-one/common/header-e-one-dss.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Help and support
+{% endblock %}
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual serice screens.
+    </span>
+  </p>
+</div>
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+      <nav class="navigation-secondary govuk-body">
+        <ul>
+          <li>
+            <a href="benefit-summary">Home</a>
+          </li>
+          <li>
+            <a href="payments">Payments</a>
+          </li>
+          <li>
+            <a href="notifications">Notifications</a>
+          </li>
+          <li>
+            <a href="contact-history"  >Contact history</a>
+          </li>
+          <!-- <li>
+            <a href="#">Manage account</a>
+          </li> -->
+          <li>
+            <a href="help-and-support" class="active" aria-current="section">Help and supoort</a>
+          </li>
+          <li>
+            <a href="help-and-support-telephone-webchat">Call us or use webchat</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</main>
+
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+      <h1 class="govuk-heading-xl">
+        Help and support
+      </h1>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--hidden">
+
+      <p class="govuk-heading-l">Ask a question</p>
+      <p>Ask us a question and we will reply back with an as much detail as we can. Currenlty our average reponse time is within 24 hours.</p>
+      <br>
+     <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="more-detail">
+            Can you provide more details about your question?
+          </label>
+        </h1>
+        <div id="more-detail-hint" class="govuk-hint">
+          Do not include personal or financial information, like your National Insurance number or credit card details.
+        </div>
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Send question
+      </button>
+
+      <p>View your previous <a href="ask-question"> questions and answers</a>.</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <p class="govuk-heading-l">Contact DWP using telephone</p>
+      <p>You’ll have to contact related benefits individually to get more information.</p>
+
+      <p>View <a href="https://www.gov.uk/browse/benefits/manage-your-benefit">benefit contact information</a>.</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+
+      <p class="govuk-heading-l">Use webchat service</p>
+      <p>You can talk to one of our agents over chat to find out more information. You may have to prove your identity for senstive information sharing.
+</p>
+
+      <p>Go to <a href="#">webchat service page</a>.</p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

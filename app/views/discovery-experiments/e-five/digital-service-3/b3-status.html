@@ -1,0 +1,97 @@
+{% extends "/discovery-experiments/e-five/common/header-e-four-ds3.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start session
+{% endblock %}
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+
+<br>
+<a class="govuk-back-link" href="b3-information">Back</a>
+
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds govuk-!-padding-4" style="border:1px #333333 solid;">
+
+
+          <h1 class="govuk-heading-xl">
+           Disability Living Allowance (DLA) status for National Insurance number <br/>{{ data['national-insurance-number'] }} is 'paused'
+        </h1>
+
+    </div>
+  </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      I want to check a different benefit
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+  You can find <a href="https://www.gov.uk/browse/benefits">help and information about other benefits on GOV.UK.</a> You can also find contact details on a recent letter about your benefit.  </div>
+  </details>
+
+  <!-- information -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/discovery-experiments/e-five/e-three/more-info-need-ca" method="post">
+        <div class="govuk-form-group">
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--hidden">
+
+            <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Do you want to view any other DLA related information?
+                    </h1>
+              </legend>
+              <br>
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="info-need-2" name="more-info-need" type="radio" value="yes" aria-describedby="info-need-2-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="more-info-need-2">
+                    Yes
+                  </label>
+
+                </div>
+
+                <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                  <input class="govuk-radios__input" id="info-need" name="more-info-need" type="radio" value="no" aria-describedby="info-need-item-hint">
+                  <label class="govuk-label govuk-radios__label" for="more-info-need">
+                    No
+                  </label>
+
+                </div>
+
+
+            </fieldset>
+        </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Select and continue</button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}
