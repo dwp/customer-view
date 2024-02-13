@@ -1,0 +1,110 @@
+{% extends "check-your-payment/v2/common/header-e-four.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Thank you
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Thank You</h1>
+        <!-- <div class="govuk-panel__body">
+          Your reference number<br><strong>HDJ2123F</strong>
+        </div> -->
+      </div>
+<!--
+      <p>
+        A DWP advisor will get in touch with you within the next 24 hours.
+      </p> -->
+
+      <p>You can now safely close this browser window. </p>
+
+
+      <br>
+      <p class="govuk-body">
+      You can  <a href="/e-four/concept-2/start">Find out about your DWP benefits </a> to get information you need. You can also find contact details on a recent letter about your benefit.  </p>
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+          <form class="form" action="thanks" method="post">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          How would you like to find out about your DWP benefit?
+                        </h1>
+                  </legend>
+
+                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+                  <div class="govuk-radios">
+                    <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                      <input class="govuk-radios__input" id="contact-channel-2" name="contact-channel" type="radio" value="no-i-did-not-found-info" aria-describedby="contact-channel-2-item-hint">
+                      <label class="govuk-label govuk-radios__label" for="contact-channel-2">
+                        I like to manage my benefits myself using online tools and services
+                      </label>
+                      <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                        Find information about benefits online using online DWP services.
+                      </div>
+
+                    </div>
+                    <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                      <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="no-i-do-not" aria-describedby="contact-channel-item-hint">
+                      <label class="govuk-label govuk-radios__label" for="contact-channel">
+                        Using correspondence by post
+                      </label>
+                      <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                        Apply & manage using postal service .
+                      </div>
+
+                    </div>
+                    <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                      <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="no-i-do-not" aria-describedby="contact-channel-item-hint">
+                      <label class="govuk-label govuk-radios__label" for="contact-channel">
+                        I like talking to an adviser about information
+                      </label>
+                      <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                        Get more information by calling DWP adviser
+                      </div>
+
+                    </div>
+
+                    <!-- <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                      <input class="govuk-radios__input" id="contact-channel" name="contact-channel" type="radio" value="chat-bots" aria-describedby="contact-channel-item-hint">
+                      <label class="govuk-label govuk-radios__label" for="contact-channel">
+                        Use webchat service
+                      </label>
+                      <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                        You can talk to one of our agents over chat to find out more information. You may have to prove your identity for senstive information sharing.
+                      </div>
+                    </div> -->
+                  </div>
+
+                </fieldset>
+            </div>
+
+
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+          </form>
+
+        </div>
+      </div>
+
+
+      <!-- <p> You can use <a href="/e-three/find-information">find out about my DWP benefits</a> service to access information about all your DWP benefits and other awards.      </p> -->
+
+
+    </div>
+  </div>
+
+{% endblock %}

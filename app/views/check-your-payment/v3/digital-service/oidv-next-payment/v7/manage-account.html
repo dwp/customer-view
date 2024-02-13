@@ -1,0 +1,40 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Manage your account
+{% endblock %}
+
+{% block beforeContent %}
+  {% include 'includes/phase-banner.njk' %}
+  {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row govuk-!-margin-top--4">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Manage your account
+    </h1>
+
+    <p>You can update your sign in details for {{ data['service-name']  }}below.</p> 
+    <p>You will need to sign in again if you change your sign in details.</p>
+        
+    <p></p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li><a href="../default/change-password/current-password">Change your password</a></li>
+        <li><a href="../default/change-phone-number/new-phone-number">Change your mobile phone number</a></li>
+        <li><a href="../default/change-email-address/new-email-address">Change your email address</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-s">Updating your contact details</h2>
+    <p>Any changes you make will only update your sign in details. If you want to change your contact details call the Department for Work and Pensions on 0800 123 456.</p>
+
+
+  </div>
+
+
+
+</div>
+
+{% endblock %}

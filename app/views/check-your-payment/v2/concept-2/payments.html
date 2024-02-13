@@ -1,0 +1,605 @@
+{% extends "check-your-payment/v2/common/header-e-four-c2.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Payments
+{% endblock %}
+
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong> &nbsp;
+    <strong class="govuk-tag govuk-tag--red">
+      Experimental
+    </strong> &nbsp;
+    <span class="govuk-phase-banner__text">
+        This is not a service. These are example conceptual screens.
+    </span>
+  </p>
+</div>
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-full">
+
+      <nav class="navigation-secondary govuk-body">
+        <ul>
+          <li>
+            <a href="benefit-summary" >Home</a>
+          </li>
+          <li>
+            <a href="payments" class="active">Payments</a>
+          </li>
+          <!-- <li>
+            <a href="notifications">Notifications</a>
+          </li> -->
+          <li>
+            <a href="contact-history"   >Contact history</a>
+          </li>
+          <!-- <li>
+            <a href="#">Manage account</a>
+          </li> -->
+          <li>
+            <a href="ask-question">Ask a question</a>
+          </li>
+          <!-- <li>
+            <a href="help-and-support-telephone-webchat">Call us or use webchat</a>
+          </li> -->
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+  <p class="govuk-body-m">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;<a href="ni-number">Change</a></p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-caption-l">{{ data['full-name'] }}</p>
+
+          <h1 class="govuk-heading-xl">
+          Your payments
+          <!-- <span class="govuk-caption-l">
+          View and access your benefits in one place
+        </span> -->
+        </h1>
+</div>
+
+</div>
+
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#benefits">
+        Benefits or awards
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#payment-history">
+        Payment history
+      </a>
+    </li>
+
+  </ul>
+  <div class="govuk-tabs__panel" id="benefits">
+    <h2 class="govuk-heading-l">Benefits or awards</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+
+
+<h1 class="govuk-heading-m">
+Employment and Support Allowance (ESA)
+
+</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Award amount
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £22.96
+        </dd>
+      </div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Payment frequency
+  </dt>
+  <dd class="govuk-summary-list__value">
+    Every 2 weeks
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Last paid date
+  </dt>
+  <dd class="govuk-summary-list__value">
+    29 May 2021
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Last payment amount
+  </dt>
+  <dd class="govuk-summary-list__value">
+    £22.92
+    <br>
+    <details class="govuk-details" data-module="govuk-details">
+
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        View payment breakdown
+                      </span>
+                    </summary>
+
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Payment type</th>
+            <th scope="col" class="govuk-table__header">Amount</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Award</td>
+            <td class="govuk-table__cell">£22.96</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Deductions</td>
+            <td class="govuk-table__cell">£0.04</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Allowances</td>
+            <td class="govuk-table__cell">£0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Premiums</td>
+            <td class="govuk-table__cell">£0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+
+            <th scope="row" class="govuk-table__header">Total estimated pay</th>
+            <td class="govuk-table__cell">£22.92</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+
+
+  </details>
+  </dd>
+
+
+
+
+
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Next payment date
+  </dt>
+  <dd class="govuk-summary-list__value">
+  31 June 2021
+  </dd>
+</div>
+</dl>
+
+
+<p><a class="govuk-link" href="payments-b1-p">View payment history</a></p>
+
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--hidden">
+
+
+
+<h1 class="govuk-heading-m">
+Carer's Allowance
+</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Award amount
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £22.96
+        </dd>
+      </div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Payment frequency
+  </dt>
+  <dd class="govuk-summary-list__value">
+    Monthly
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Last paid date
+  </dt>
+  <dd class="govuk-summary-list__value">
+    12 May 2021
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Last payment amount
+  </dt>
+  <dd class="govuk-summary-list__value">
+    £22.96
+    <br>
+    <details class="govuk-details" data-module="govuk-details">
+
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        View payment breakdown
+                      </span>
+                    </summary>
+
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Payment type</th>
+            <th scope="col" class="govuk-table__header">Amount</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Award</td>
+            <td class="govuk-table__cell">£22.96</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Deductions</td>
+            <td class="govuk-table__cell">£0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Allowances</td>
+            <td class="govuk-table__cell">£0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Premiums</td>
+            <td class="govuk-table__cell">£0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+
+            <th scope="row" class="govuk-table__header">Total estimated pay</th>
+            <td class="govuk-table__cell">£22.96</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+
+
+  </details>
+  </dd>
+
+
+
+
+
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Next payment date
+  </dt>
+  <dd class="govuk-summary-list__value">
+-
+ </dd>
+</div>
+</dl>
+<div class="govuk-inset-text">
+Your Carer's Allowance has been paused. You have to<a href="contact-history#notifications"> Update your capabilities </a> for the next payment calculation to resume.
+</div>
+<br>
+
+<p><a class="govuk-link" href="payments-b2-p">View payment history</a></p>
+
+
+
+
+
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--hidden">
+
+
+
+<h1 class="govuk-heading-m">
+Personal Independence Payment (PIP)
+
+</h1>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Award amount
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £143.96
+        </dd>
+      </div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Payment frequency
+  </dt>
+  <dd class="govuk-summary-list__value">
+    Monthly
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Last paid date
+  </dt>
+  <dd class="govuk-summary-list__value">
+    30 May 2021
+  </dd>
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Last payment amount
+  </dt>
+  <dd class="govuk-summary-list__value">
+    £123.26
+    <br>
+    <details class="govuk-details" data-module="govuk-details">
+
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        View payment breakdown
+                      </span>
+                    </summary>
+
+      <div class="govuk-details__text">
+        <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Payment type</th>
+            <th scope="col" class="govuk-table__header">Amount</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Award</td>
+            <td class="govuk-table__cell">£143.96</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Deductions</td>
+            <td class="govuk-table__cell">£20.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Allowances</td>
+            <td class="govuk-table__cell">£0.00</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Premiums</td>
+            <td class="govuk-table__cell">£0.70</td>
+          </tr>
+          <tr class="govuk-table__row">
+
+            <th scope="row" class="govuk-table__header">Total estimated pay</th>
+            <td class="govuk-table__cell">£123.26</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+
+
+  </details>
+  </dd>
+
+
+
+
+
+</div>
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Next payment date
+  </dt>
+  <dd class="govuk-summary-list__value">
+30 June 2021
+ </dd>
+</div>
+</dl>
+
+
+<p><a class="govuk-link" href="payments-b3-p">View payment history</a></p>
+
+
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="payment-history">
+    <h2 class="govuk-heading-l">Payment history</h2>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Benefit Name</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Payment amount</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Status</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Paid date</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" style="text-align:left;">Personal Independence Payment (PIP) </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£123.24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">30 May 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Employment and Support Allowance (ESA)</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">29 May 2021</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Employment and Support Allowance (ESA)</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£21.65</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">17 May 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Carer's Allowance </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">12 May 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Employment and Support Allowance (ESA)</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">10 May 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Employment and Support Allowance (ESA)</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£24.86</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">03 May 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" style="text-align:left;">Personal Independence Payment (PIP) </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£123.24</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">29 April 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Employment and Support Allowance (ESA)</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">22 April 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Employment and Support Allowance (ESA)</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£24.86</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">14 April 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td  class="govuk-table__cell " style="text-align:left;">Carer's Allowance </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£22.96</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">Paid</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">12 April 2021</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+    <p><a href="payments-history">View  payment history</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--hidden">
+  </div>
+
+</div>
+
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+    <!-- Help and support -->
+        <div class="govuk-grid-column-full" style="padding-left:0px;">
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+          <p class="govuk-heading-l">I need more help</p>
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link" href="ask-question">Ask a question</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="telephone-information">Talk to an adviser over a phone call</a>
+            </li>
+
+            <li>
+              <a class="govuk-link" href="webchat-service">Use webchat service</a>
+
+            </li>
+          </ul>
+
+        </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--hidden">
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+  <p><a href="missing-info" target="_blank">    What information you need is missing from this concept?
+  </a> (opens in new tab or window)</p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    <!-- <p class="govuk-heading-s">Page options</p> -->
+    </div>
+  <div class="govuk-grid-column-one-quarter">
+    <div class="govuk-button-list__item govuk-button-list__item--with-icon">
+      <a href="#" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+        <span class="govuk-button-list__icon"><img src="/public/images/download_icon.png" alt="download icon"></span>
+        <span class="underline">Download</span>
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19"
+          viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+      </div>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-button-list__item govuk-button-list__item--with-icon">
+
+      <a href="#" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+        <span class="govuk-button-list__icon">    <img src="/public/images/printer-img.png" alt="printer icon"></span>
+        <span class="underline">Print</span>
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19"
+          viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+      </div>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <div class="govuk-button-list__item govuk-button-list__item--with-icon">
+
+      <a href="#" class="govuk-button govuk-button--secondary govuk-button--no-underline">
+        <span class="govuk-button-list__icon">    <img src="/public/images/share_icon.png" alt="share icon"></span>
+        <span class="underline">Share</span>
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="19"
+          viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+    </div>
+    </div>
+
+  </div>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+{% endblock %}

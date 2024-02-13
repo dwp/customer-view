@@ -1,0 +1,38 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/idv/v4/kbv-external-2/consent-submit" method="get" autocomplete="off">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="has-driving-license-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">Confirm your identity</span>
+              Questions from your credit record
+            </h1>
+          </legend>
+          <p class="govuk-body">To confirm your identity, we need to ask you some questions about your credit record. This will not affect your credit rating.</p>
+          <p class="govuk-body">DWP are accessing information from a 3rd party credit reference agency, because we don't have enough information about you, to prove who you are. We need to ask these questions to help protect you against fraud.</p>
+          <p class="govuk-body">We are only using this information to prove your identity, and we will not store it in our database.</p>
+          <p class="govuk-body">This will not affect your benefits claim, and it will not affect your credit rating. </p>
+          <p class="govuk-body">For further details about how we store and process your information, see our <a href="#" class="govuk-link">privacy notice (opens in new window or tab)</a>.</p>
+
+          <input class="govuk-button " type="submit" value="Continue">
+        </fieldset>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

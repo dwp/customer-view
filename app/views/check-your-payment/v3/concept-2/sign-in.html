@@ -1,0 +1,209 @@
+{% extends "/check-your-payment/v3/common/header-e-one-dss-no-signout.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Sign into Digital Self-service Hub
+{% endblock %}
+
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    function validateForm() {
+      var emailAddress = document.getElementById("email-address-field").value;
+      var password = document.getElementById("password-field").value;
+
+      var emailAddress_error = document.getElementById("email-address-error");
+      var password_error = document.getElementById("password-error");
+
+      var error_summary = document.getElementById("no-email-password");
+      var error_summary_e = document.getElementById("no-email-only");
+      var error_summary_p = document.getElementById("no-password-only");
+
+      if (emailAddress == "" && password == "") {
+        error_summary.style.display="block";
+        emailAddress_error.style.display="block";
+        password_error.style.display="block";
+
+        error_summary_p.style.display="none";
+        error_summary_e.style.display="none";
+
+        document.getElementById("no-email-password").focus();
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+
+        $("#signin-form").addClass("govuk-form-group--error");
+        $("#email-address-field").addClass("govuk-input--error");
+        $("#password-field").addClass("govuk-input--error");
+        return false;
+
+      } else if (emailAddress == "" && password !="") {
+        error_summary_e.style.display="block";
+
+        error_summary_p.style.display="none";
+        error_summary.style.display="none";
+        emailAddress_error.style.display="block";
+        password_error.style.display="none";
+
+        document.getElementById("no-email-only").focus();
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+
+        $("#signin-form").removeClass("govuk-form-group--error");
+
+        $("#email-address-field").addClass("govuk-input--error");
+        $("#div-email-address").addClass("govuk-form-group--error");
+
+        $("#password-field").removeClass("govuk-input--error");
+        $("#div-password").removeClass("govuk-form-group--error");
+
+        return false;
+      } else if (emailAddress != "" && password =="") {
+        error_summary_p.style.display="block";
+
+        error_summary_e.style.display="none";
+        error_summary.style.display="none";
+        emailAddress_error.style.display="none";
+        password_error.style.display="block";
+
+        document.getElementById("no-password-only").focus();
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+
+        $("#signin-form").removeClass("govuk-form-group--error");
+
+        $("#password-field").addClass("govuk-input--error");
+        $("#div-password").addClass("govuk-form-group--error");
+
+        $("#email-address-field").removeClass("govuk-input--error");
+        $("#div-email-address").removeClass("govuk-form-group--error");
+
+        return false;
+      }
+    }
+  </script>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- Error Summary - Start -->
+<div class="govuk-error-summary govuk-radios__conditional--hidden" id="no-email-password" tabindex="-1" data-module="govuk-error-summary" >
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#email-address-error">Enter valid email address </a>
+      </li>
+    </ul>
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#password-error">Enter password </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Error Summary - End -->
+
+<!-- Error Summary - Start -->
+<div class="govuk-error-summary govuk-radios__conditional--hidden" id="no-email-only" tabindex="-1" data-module="govuk-error-summary" >
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#email-address-error">Enter valid email address </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Error Summary - End -->
+
+<!-- Error Summary - Start -->
+<div class="govuk-error-summary govuk-radios__conditional--hidden" id="no-password-only" tabindex="-1" data-module="govuk-error-summary" >
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#password-error">Enter password </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Error Summary - End -->
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">
+          Sign in to your Digital Self-service Hub
+
+          <p class="govuk-!-padding-top-6 govuk-hint">You’ll have an account if you’ve already proved your identity with DWP.</p>
+
+        </h1>
+
+     </div>
+
+      <div class="govuk-grid-column-two-thirds">
+      <form class="form" id="signin-form" action="benefit-summary" method="post" onsubmit="">
+
+              <div class="govuk-form-group" id="div-email-address">
+
+                  <fieldset class="govuk-fieldset" data-required data-error="Cannot be blank">
+                    <label class="govuk-label govuk-label--m" for="email-address">
+                    Email address
+                    </label>
+
+                    <span id="email-address-error" class="govuk-error-message govuk-radios__conditional--hidden" >
+                    <span class="govuk-visually-hidden">Error:</span> Enter valid email address
+                    </span>
+
+                    <input class="govuk-input govuk-input--width-20" id="email-address-field" name="sign-in" type="text">
+                  </fieldset>
+
+              </div>
+
+              <div class="govuk-form-group" id="div-password">
+
+                  <fieldset class="govuk-fieldset" data-required data-error="Cannot be blank">
+                  <label class="govuk-label govuk-label--m" for="password">
+                  Password
+                  </label>
+
+                  <span id="password-error" class="govuk-error-message govuk-radios__conditional--hidden" >
+                  <span class="govuk-visually-hidden">Error:</span> Enter password
+                  </span>
+
+                  <input class="govuk-input govuk-input--width-20" id="password-field" name="password" type="password">
+                  </fieldset>
+
+                </div>
+                <button class="govuk-button" data-module="govuk-button">Signin</button>
+        </form>
+
+
+        <br>
+        <br>
+        <label class="govuk-label govuk-label--m" for="email-address">
+        Problems signing in
+        </label>
+        <p><a href="#">I forgot my password</a><br>
+        <a href="#">I cannot access the email or mobile phone number I use to sign in</a>
+        </p>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+{% endblock %}

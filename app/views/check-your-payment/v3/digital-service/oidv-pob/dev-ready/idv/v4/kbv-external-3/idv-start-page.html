@@ -1,0 +1,29 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+  {% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+      Check your benefit payments
+    </h1>
+    <p>Before we can show you your payment information, we need to check your identity.</p>
+    <p>Confirming that you are who you say you are helps us to protect your personal details.</p>
+    <p>We need to ask you some questions to confirm who you are before you can access this service. You will not need to answer these questions again when you next sign in.</p>
+
+    <p>
+      <a href="/idv/v4/kbv-external-3/01-credit-card" class="govuk-button">Continue</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

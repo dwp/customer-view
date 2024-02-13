@@ -1,0 +1,54 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="pip-component-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">Confirm your identity</span>
+              Which part of <abbr title="Personal Independence Payment">PIP</abbr> do you claim?
+            </h1>
+          </legend>
+          <span id="pip-component-hint" class="govuk-hint">
+            You should find this information in the decison letter you received when you started claiming.
+          </span>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pip-component-1" name="pip-component" type="radio" value="Mobility">
+              <label class="govuk-label govuk-radios__label" for="pip-component-1">Mobility</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pip-component-2" name="pip-component" type="radio" value="Daily living">
+              <label class="govuk-label govuk-radios__label" for="pip-component-2">Daily living</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="pip-component-3" name="pip-component" type="radio" value="Both mobility and daily living">
+              <label class="govuk-label govuk-radios__label" for="pip-component-3">Both mobility and daily living</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

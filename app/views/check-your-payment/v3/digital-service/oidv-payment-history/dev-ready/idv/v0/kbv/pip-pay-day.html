@@ -1,0 +1,54 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm Your Identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+<a href="javascript:history.go(-1)" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="day-of-week">Which day do you receive your PIP payment?</label>
+        </h1>
+        <span id="day-of-week-hint" class="govuk-hint">
+          
+        </span>
+        <select class="govuk-select govuk-!-margin-top-2" id="day-of-week" name="day-of-week">
+          <option value="monday" selected>Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+        </select>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to one hour if you need to check your answer.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

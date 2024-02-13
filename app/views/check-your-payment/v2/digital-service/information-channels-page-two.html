@@ -1,0 +1,123 @@
+{% extends "check-your-payment/v2/common/header-sprint-9.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What benefit information would you like to check?
+{% endblock %}
+{% block beforeContent %}
+<br>
+
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/check-your-payment/v2/digital-service/information-channels" method="post">
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="benefit-information-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                  <h1 class="govuk-fieldset__heading">
+                    What benefit information would you like to check?
+                  </h1>
+                  
+            </legend>
+            
+            <span class="govuk-caption-l">
+              Select one option.
+            </span>
+            <br>
+            <br>
+
+           <!--
+            <div class="govuk-inset-text">
+              To keep your information secure, we need to verify your identity when you sign in.
+            </div>
+          -->
+            <div class="govuk-radios">
+              <!--View my next benefit payment -->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection" name="option-selection" type="radio" value="next-payment" aria-describedby="option-selection-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection">
+                  Check my next benefit payment
+                </label>
+                <div id="benefit-information-item-hint" class="govuk-hint govuk-radios__hint">
+                  Only available for Employment and Support Allowance (ESA) and Carer's Allowance.
+                </div>
+              </div>
+
+              <!--View my benefit payment history-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-2" name="option-selection" type="radio" value="payment-history" aria-describedby="option-selection-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-2">
+                  View my benefit payment history
+                </label>
+                <div id="benefit-information-2-item-hint" class="govuk-hint govuk-radios__hint">
+                  Only available for Employment and Support Allowance (ESA) and Carer's Allowance.
+                </div>
+              </div>
+
+              <!--Get proof of my benefits-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-3" name="option-selection" type="radio" value="pob" aria-describedby="option-selection-3-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-3">
+                  Prove to someone that I am getting benefits
+                </label>
+                <div id="benefit-information-2-item-hint" class="govuk-hint govuk-radios__hint">
+                 Get printed or digital evidence of your benefits.
+                </div>
+              </div>
+              <!--View my personal details-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-5" name="option-selection" type="radio" value="personal-details" aria-describedby="option-selection-5-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-5">
+                  View my personal details
+                </label>
+                <div id="personal-details-2-item-hint" class="govuk-hint govuk-radios__hint">
+                </div>
+              </div>
+             <!--View my bank details -->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-6" name="option-selection" type="radio" value="bank-details" aria-describedby="option-selection-6-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-6">
+                  View my bank details
+                </label>
+                <div id="bank-details-2-item-hint" class="govuk-hint govuk-radios__hint">
+                </div>
+              </div>
+              <!--Ask questions about my benefits-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-7" name="option-selection" type="radio" value="" aria-describedby="option-selection-7-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-7">
+                  Ask questions about my benefits
+                </label>
+                <div id="benefit-information-2-item-hint" class="govuk-hint govuk-radios__hint">
+                </div>
+              </div>
+              <!--Check my contact history with DWP-->
+              <div class="govuk-radios__item govuk-!-padding-bottom-3">
+                <input class="govuk-radios__input" id="option-selection-8" name="option-selection" type="radio" value="" aria-describedby="option-selection-8-item-hint">
+                <label class="govuk-label govuk-radios__label" for="option-selection-8">
+                  Check my contact history with benefit services
+                </label>
+                <div id="benefit-information-2-item-hint" class="govuk-hint govuk-radios__hint">
+                </div>
+              </div>
+
+            </div>
+
+          </fieldset>
+      </div>
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

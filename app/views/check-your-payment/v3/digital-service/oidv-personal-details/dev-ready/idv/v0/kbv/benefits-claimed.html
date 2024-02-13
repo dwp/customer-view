@@ -1,0 +1,66 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm Your Identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+<a href="javascript:history.go(-1)" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="benefits-claimed-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Choose a benefit from the list that you have claimed in the last 3 years
+            </h1>
+          </legend>
+          <span id="benefits-claimed-hint" class="govuk-hint">
+            You can use any benefit you have made a successful claim for since {{ data['three-years-ago'] }}.
+          </span>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="benefits-claimed-1" name="benefits-claimed" type="radio" value="Jobseeker's Allowance">
+              <label class="govuk-label govuk-radios__label" for="benefits-claimed-1">Jobseeker's Allowance</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="benefits-claimed-2" name="benefits-claimed" type="radio" value="Tax credits">
+              <label class="govuk-label govuk-radios__label" for="benefits-claimed-2">Tax credits</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="benefits-claimed-3" name="benefits-claimed" type="radio" value="Employment Support Allowance">
+              <label class="govuk-label govuk-radios__label" for="benefits-claimed-3">Employment Support Allowance</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="benefits-claimed-4" name="benefits-claimed" type="radio" value="Income Support">
+              <label class="govuk-label govuk-radios__label" for="benefits-claimed-4">Income Support</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="benefits-claimed-5" name="benefits-claimed" type="radio" value="Disability Living Allowance">
+              <label class="govuk-label govuk-radios__label" for="benefits-claimed-5">Disability Living Allowance</label>
+            </div>
+            <div class="govuk-radios__divider"><span class="govuk-hint">or</span></div> 
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="benefits-claimed-2" name="benefits-claimed" type="radio" value="No benefit">
+              <label class="govuk-label govuk-radios__label" for="benefits-claimed-2">I haven't claimed any other benefits</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

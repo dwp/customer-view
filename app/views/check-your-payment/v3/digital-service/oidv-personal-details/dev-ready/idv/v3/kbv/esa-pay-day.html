@@ -1,0 +1,83 @@
+{% extends "/check-your-payment/v3/common/layout-header-links-no-home.html" %}
+
+{% block pageTitle %}
+Confirm your identity
+{% endblock %}
+
+{% block beforeContent %}
+{% include 'includes/phase-banner.njk' %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/idv/default/kbv-submit" method="get" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <span class="govuk-caption-l">Confirm your identity</span>
+          <label class="govuk-label govuk-label--l" for="day-of-week">Which day do you receive your <abbr
+              title="Employment and Support Allowance">ESA</abbr> payment?</label>
+        </h1>
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-monday" name="day-of-week" type="radio" value="monday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-monday">Monday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-tuesday" name="day-of-week" type="radio" value="tuesday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-tuesday">Tuesday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-wednesday" name="day-of-week" type="radio"
+              value="wednesday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-wednesday">Wednesday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-thursday" name="day-of-week" type="radio"
+              value="thursday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-thursday">Thursday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-friday" name="day-of-week" type="radio" value="friday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-friday">Friday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-saturday" name="day-of-week" type="radio" value="saturday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-saturday">Saturday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-sunday" name="day-of-week" type="radio" value="sunday">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-sunday">Sunday</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="day-of-week-none" name="day-of-week" type="radio" value="none">
+            <label class="govuk-label govuk-radios__label" for="day-of-week-none">I do not receive ESA on the same day</label>
+          </div>
+        </div>
+      </div>
+
+      <details class="govuk-details govuk-!-margin-top-6" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not have this information now
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You can stay on this page for up to 20 minutes if you need to check your answer. Make sure you leave your web
+            browser open if you need to use another app on your phone.</p>
+          <p>If you need more time, you can try again later. You might be asked a different question.</p>
+        </div>
+      </details>
+
+      <button data-module="govuk-button" type="submit" class="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
