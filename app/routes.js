@@ -1,4 +1,5 @@
 // Please install Better Comments VSCode Plugin to make this file slightly easier to read
+
 // Key:
   // ! Scope of prototype (what service the prototype is for)
   // * Version of prototype
@@ -6,6 +7,7 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+// ! ----------------------------------------------------------------------------------------------------------------------------------
 
 // ! Discovery Prototypes
   // Put these in a separate routes file as they were dated and hefty.
@@ -13,7 +15,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 const discoveryRoutes = require('./routes/discovery-experiments')
 router.use('/', discoveryRoutes)
 
-
+// ! ----------------------------------------------------------------------------------------------------------------------------------
 
 // ! Check your Payments
 
@@ -469,7 +471,7 @@ router.post('/check-your-payment/v3/digital-service/information-channels-page-tw
 
 })
 
-//V3 pob-format-selection page
+// V3 pob-format-selection page
 router.post('/check-your-payment/v3/digital-service/pob-format-selection', function (req, res) {
 
 
@@ -677,6 +679,123 @@ router.post('/check-your-payment/v3/digital-service/pob-esa', function (req, res
   }
 
 })
+
+
+
+// ! ----------------------------------------------------------------------------------------------------------------------------------
+
+// ! Change your address
+
+// * ------------------------ Change your address V1 ------------------------
+
+router.post('/change-address/v1/digital-service/circumstances/cora/address_location', function (req, res) {
+  const editChoice = req.session.data['UKRES'];
+
+  if (editChoice === 'UK') {
+    res.redirect('/change-address/v1/digital-service/circumstances/cora/search-pattern');
+  } else if (editChoice === 'Other') {
+    res.redirect('/change-address/v1/digital-service/circumstances/cora/international_address_pattern');
+  } else {
+      res.render(__dirname + "/views/change-address/v1/digital-service/circumstances/cora/address_location", {"error":true});
+  }
+});
+
+
+router.post('/change-address/v1/digital-service/circumstances/cora/search-pattern-answer', function (req, res) {
+  const postcode = req.session.data['address-postcode'];
+  const property = req.session.data['address-property'];
+
+  if (postcode === 'LS1') {
+    res.redirect('/change-address/v1/digital-service/circumstances/cora/confirm-address-pattern');
+  } else if (postcode === 'LS2') {
+    res.redirect('/change-address/v1/digital-service/circumstances/cora/select_address_pattern');
+  }  else if (postcode === 'LS3') {
+      res.redirect('/change-address/v1/digital-service/circumstances/cora/no-address');
+    } else {
+      let errorObject = { "error": true };
+      if(!postcode) errorObject["errorPostcode"] = true;
+      if(!property) errorObject["errorProperty"] = true;
+console.log(postcode, property);
+      res.render(__dirname + "/views/change-address/v1/digital-service/circumstances/cora/search-pattern", errorObject);
+  }
+
+});
+
+// * ------------------------ Change your address V2 ------------------------
+
+
+router.post('/change-address/v2/digital-service/circumstances/cora/address_location', function (req, res) {
+  const editChoice = req.session.data['UKRES'];
+
+  if (editChoice === 'UK') {
+    res.redirect('/change-address/v2/digital-service/circumstances/cora/search-pattern');
+  } else if (editChoice === 'Other') {
+    res.redirect('/change-address/v2/digital-service/circumstances/cora/international_address_pattern');
+  } else {
+      res.render(__dirname + "/views/change-address/v2/digital-service/circumstances/cora/address_location", {"error":true});
+  }
+})
+
+
+router.post('/change-address/v2/digital-service/circumstances/cora/search-pattern-answer', function (req, res) {
+  const postcode = req.session.data['address-postcode'];
+  const property = req.session.data['address-property'];
+
+  if (postcode === 'LS1') {
+    res.redirect('/change-address/v2/digital-service/circumstances/cora/confirm-address-pattern');
+  } else if (postcode === 'LS2') {
+    res.redirect('/change-address/v2/digital-service/circumstances/cora/select_address_pattern');
+  }  else if (postcode === 'LS3') {
+      res.redirect('/change-address/v2/digital-service/circumstances/cora/no-address');
+    } else {
+      let errorObject = { "error": true };
+      if(!postcode) errorObject["errorPostcode"] = true;
+      if(!property) errorObject["errorProperty"] = true;
+console.log(postcode, property);
+      res.render(__dirname + "/views/change-address/v2/digital-service/circumstances/cora/search-pattern", errorObject);
+  }
+
+})
+
+// * ------------------------ Change your address V3 [DOES NOT WORK - DID NOT FIX] ------------------------
+
+router.post('/change-address/v3/circumstances/cora/address_location', function (req, res) {
+  const editChoice = req.session.data['UKRES'];
+
+  if (editChoice === 'UK') {
+    res.redirect('/change-address/v3/digital-service/circumstances/cora/search-pattern');
+  } else if (editChoice === 'Other') {
+    res.redirect('/change-address/v3/digital-service/circumstances/cora/international_address_pattern');
+  } else {
+      res.render(__dirname + "/views/change-address/v3/digital-service/circumstances/cora/address_location", {"error":true});
+  }
+});
+
+
+router.post('/change-address/v3/circumstances/cora/search-pattern', function (req, res) {
+  const postcode = req.session.data['address-postcode'];
+  const property = req.session.data['address-property'];
+
+  if (postcode === 'LS1') {
+    res.redirect('/change-address/v3/digital-service/circumstances/cora/confirm-address-pattern');
+  } else if (postcode === 'LS2') {
+    res.redirect('/change-address/v3/digital-service/circumstances/cora/select_address_pattern');
+  }  else if (postcode === 'LS3') {
+      res.redirect('/change-address/v3/digital-service/circumstances/cora/no-address');
+    } else {
+      let errorObject = { "error": true };
+      if(!postcode) errorObject["errorPostcode"] = true;
+      if(!property) errorObject["errorProperty"] = true;
+console.log(postcode, property);
+      res.render(__dirname + "/views/change-address/v3/digital-service/circumstances/cora/search-pattern", errorObject);
+  }
+
+});
+
+
+
+
+
 
 //radio options
 // this is for radio selection for 1st page
@@ -1853,3 +1972,7 @@ router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/ch
 })
 
 //User who gets benefts without (expecting payment/voucher page) prototype end here
+
+
+
+

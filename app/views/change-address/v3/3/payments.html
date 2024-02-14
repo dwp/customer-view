@@ -1,0 +1,56 @@
+{% import 'change-address/v3/3/common/_globals.html' as globals %}
+{% set pagepayment = "true" %}
+
+
+{% extends globals.common + "header.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What benefit information would you like to check?
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: globals.url_home
+    },
+    {
+      text: "Payments",
+      href: "payments"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Payments
+    </h1>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-8"></hr>
+<!--View my next benefit payment -->
+<div class="govuk-body">
+  <a href="payments/next-payment" class="govuk-link govuk-link--no-visited-state">Check your next payment</a>
+</div>
+<!--View my benefit payment history-->
+<div class="govuk-body">
+  <a href="payments/payments-history" class="govuk-link govuk-link--no-visited-state">View your payment history</a>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-8"></hr>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

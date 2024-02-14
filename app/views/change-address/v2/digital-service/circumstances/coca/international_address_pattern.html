@@ -1,0 +1,83 @@
+{% import 'change-address/v2/common/_globals.html' as globals %}
+{% extends globals.common + "header.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+    {{ super() }}
+    <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Passport details</h1>
+
+      <form action="/form-handler" method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: "Address line 1",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example, 502135326"
+          },
+          classes: "govuk-input--width-10",
+          id: "passport-number",
+          name: "passport-number"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Address line 2 (optional)",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example, 502135326"
+          },
+          classes: "govuk-input--width-10",
+          id: "passport-number",
+          name: "passport-number"
+        }) }}
+
+
+        {{ govukInput({
+          label: {
+            text: "Address line 3 (optional)",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example, 502135326"
+          },
+          classes: "govuk-input--width-10",
+          id: "passport-number",
+          name: "passport-number"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Country",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example, 502135326"
+          },
+          classes: "govuk-input--width-10",
+          id: "passport-number",
+          name: "passport-number"
+        }) }}
+
+        
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

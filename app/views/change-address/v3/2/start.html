@@ -1,0 +1,75 @@
+{% import 'change-address/v3/2/common/_globals.html' as globals %}
+{% extends globals.common + "header.html" %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What benefit information would you like to check?
+{% endblock %}
+
+{% block beforeContent %}
+{{ super() }}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: globals.url_home
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Sarah Philips
+    </h1>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-2"></hr>
+
+    <h2 class="gem-c-heading govuk-heading-m govuk-!-margin-bottom-7">Payments</h2>  
+<!--View my next benefit payment -->
+<div class="govuk-body">
+  <a href="payments/next-payment" class="govuk-link govuk-link--no-visited-state">Check your next payment</a>
+</div>
+<!--View my benefit payment history-->
+<div class="govuk-body">
+  <a href="payments/payments-history" class="govuk-link govuk-link--no-visited-state">View your payment history</a>
+</div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-2"></hr>
+<h2 class="gem-c-heading govuk-heading-m govuk-!-margin-bottom-6">Personal details</h2>  
+<!--<p class="govuk-!-margin-bottom-4">
+  Keep your details up to date to make sure you get paid correctly.
+</p>-->
+<!--View my personal details-->
+<div class="govuk-body">
+  <a href="circumstances/personal-details" class="govuk-link govuk-link--no-visited-state">Check and change your personal details</a>
+</div>
+<div class="govuk-body">
+  <a href="circumstances/bank-details" class="govuk-link govuk-link--no-visited-state">Check and change your bank details</a>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-2"></hr>
+<h2 class="gem-c-heading govuk-heading-m govuk-!-margin-bottom-6">Documents</h2>  
+<!--<p class="govuk-!-margin-bottom-4">
+  View, save or send us your documents.
+</p>-->
+<!--Get proof of my benefits-->
+<div class="govuk-body">
+  <a href="pob-overview" class="govuk-link govuk-link--no-visited-state">Save or print a letter if you need to prove you get benefits</a>
+</div>
+<!--Upload my evidence-->
+<div class="govuk-body">
+  <a href="upload" class="govuk-link govuk-link--no-visited-state">Upload evidence or send your documents to us</a>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-8"></hr>
+
+  </div>
+</div>
+
+{% endblock %}
