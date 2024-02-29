@@ -131,4 +131,38 @@ router.post('/auth/experimental/no-name-2/sign-in-branch-these-services', functi
     }
   });
 
+  // Run this code when a form is submitted to '/pre-oidv/iteration-1/routes'
+  router.post('/pre-oidv/iteration-1/routes', function (req, res) {
+
+    // Make a variable and give it the value from 'how-many-balls'
+    var preOidvIteration1 = req.session.data['pre-oidv-iteration-1']
+
+    // Check whether the variable matches a condition
+    if (preOidvIteration1 == "create-an-account"){
+      // Send user to Register page
+      res.redirect('/auth/dev-ready/register/start')
+    } else {
+      // Send user to Sign in page
+      res.redirect('/auth/dev-ready/sign-in')
+    }
+
+  })
+
+  // Run this code when a form is submitted to '/pre-oidv/iteration-2/routes'
+  router.post('/pre-oidv/iteration-2/routes', function (req, res) {
+
+    // Make a variable and give it the value from 'how-many-balls'
+    var preOidvIteration2 = req.session.data['pre-oidv-iteration-2']
+
+    // Check whether the variable matches a condition
+    if (preOidvIteration2 == "sign-in"){
+      // Send user to Register page
+      res.redirect('/auth/dev-ready/sign-in')
+    } else {
+      // Send user to Register in page
+      res.redirect('/auth/dev-ready/register/start')
+    }
+
+  })
+
   module.exports = router

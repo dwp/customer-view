@@ -1,39 +1,106 @@
-{% set isHMRCPage = true %}
-
+{% set isHMRCPage = false %}
+{% set serviceName = "Confirm who you are" %}
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-The information you gave does not match our records
+  We cannot confirm who you are - GOV.UK 
 {% endblock %}
 
-{% block serviceName %}
-{% endblock %}
+{% block beforeContent %}
 
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      The information you gave does not match our records
+      We cannot confirm who you are
     </h1>
     <p class="govuk-body">
-      This means that some or all of the details you entered were incorrect.
+      This means that some or all of the details you gave were incorrect.
     </p>
 
     <p class="govuk-body">
-      You cannot use documents containing out of date information to confirm
-      your identity. If you have changed your personal details, like your name
-      for example, you must make sure your documents and records with HMRC and
-      other organisations are up to date.
+      You <strong>must</strong> make sure your documents and records with HMRC and other organisations are up to date.
     </p>
 
     <p class="govuk-body">
-      More detailed help and advice on confirming your identity is available
-      below.
+      We cannot confirm your identity if you use documents containing out of date information. For example, your name or address has changed.
+    </p>
+
+    <p class="govuk-body">
+      More detailed help is available below.
     </p>
 
     <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default-2">
+      <!-- UK passport -->
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+
+            <button type="button" id="accordion-default-heading-4" aria-controls="accordion-default-2-content-3"
+              class="govuk-accordion__section-button" aria-expanded="false">
+              UK Passport
+              <span class="govuk-accordion__icon" aria-hidden="true"></span></button>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content"
+          aria-labelledby="accordion-default-heading-4">
+          <p>To be able to use this option, your passport must be:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>issued in the UK</li>
+            <li>not expired or cancelled</li>
+            <li>not reported as lost or stolen</li>
+          </ul>
+
+          <p>
+            Make sure you enter the details exactly as they appear on your
+            passport. You will need to tell us:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>your passport number and the expiry date</li>
+            <li>your surname and given names as shown on your passport</li>
+          </ul>
+
+          <p class="govuk-body">
+            The data we use to match is provided by HMPO, and you will be asked
+            to give your consent to us sharing the details you enter with them
+            before you start.
+          </p>
+
+          <p class="govuk-body">Has this helped you?</p>
+
+          <div class="govuk-button-group">
+            <form action="choose-2-items" method="post" class="form">
+              <button class="govuk-button govuk-button--secondary" href="choose-2-items" data-module="govuk-button">
+                Yes, try again
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
       <!-- Payslip or P60 -->
       <div class="govuk-accordion__section">
         <div class="govuk-accordion__section-header">
@@ -89,95 +156,6 @@ The information you gave does not match our records
           </ul>
 
           <p>Enter the exact amount in pounds and pence, for example 167.31</p>
-
-          <p class="govuk-body">Has this helped you?</p>
-
-          <div class="govuk-button-group">
-            <form action="choose-2-items" method="post" class="form">
-              <button class="govuk-button govuk-button--secondary" href="choose-2-items" data-module="govuk-button">
-                Yes, try again
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- Tax Credits -->
-      <div class="govuk-accordion__section">
-        <div class="govuk-accordion__section-header">
-          <h2 class="govuk-accordion__section-heading">
-
-            <button type="button" id="accordion-default-heading-2" aria-controls="accordion-default-2-content-2"
-              class="govuk-accordion__section-button" aria-expanded="false">
-              Tax Credits
-              <span class="govuk-accordion__icon" aria-hidden="true"></span></button>
-          </h2>
-        </div>
-        <div id="accordion-default-content-2" class="govuk-accordion__section-content"
-          aria-labelledby="accordion-default-heading-2">
-          <p>
-            The details you give must be from a current claim. You will be asked
-            to tell us:
-          </p>
-
-          <ul class="govuk-list govuk-list--bullet">
-            <li>
-              the last 4 digits of the bank account your Tax Credits are paid
-              into. You can find these details on your bank card, statement,
-              online banking or a paying-in or cheque book
-            </li>
-            <li>
-              the amount of a recent Tax Credit payment that has been made to
-              you. Enter the exact amount, including pence. You may find it
-              useful to refer to your bank account to get this information.
-            </li>
-          </ul>
-
-          <p class="govuk-body">Has this helped you?</p>
-
-          <div class="govuk-button-group">
-            <form action="choose-2-items" method="post" class="form">
-              <button class="govuk-button govuk-button--secondary" href="choose-2-items" data-module="govuk-button">
-                Yes, try again
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- UK passport -->
-      <div class="govuk-accordion__section">
-        <div class="govuk-accordion__section-header">
-          <h2 class="govuk-accordion__section-heading">
-
-            <button type="button" id="accordion-default-heading-4" aria-controls="accordion-default-2-content-3"
-              class="govuk-accordion__section-button" aria-expanded="false">
-              UK Passport
-              <span class="govuk-accordion__icon" aria-hidden="true"></span></button>
-          </h2>
-        </div>
-        <div id="accordion-default-content-4" class="govuk-accordion__section-content"
-          aria-labelledby="accordion-default-heading-4">
-          <p>To be able to use this option, your passport must be:</p>
-
-          <ul class="govuk-list govuk-list--bullet">
-            <li>issued in the UK</li>
-            <li>not expired or cancelled</li>
-            <li>not reported as lost or stolen</li>
-          </ul>
-
-          <p>
-            Make sure you enter the details exactly as they appear on your
-            passport. You will need to tell us:
-          </p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>your passport number and the expiry date</li>
-            <li>your surname and given names as shown on your passport</li>
-          </ul>
-
-          <p class="govuk-body">
-            The data we use to match is provided by HMPO, and you will be asked
-            to give your consent to us sharing the details you enter with them
-            before you start.
-          </p>
 
           <p class="govuk-body">Has this helped you?</p>
 
@@ -248,6 +226,48 @@ The information you gave does not match our records
           </div>
         </div>
       </div>
+      <!-- Tax Credits -->
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+
+            <button type="button" id="accordion-default-heading-2" aria-controls="accordion-default-2-content-2"
+              class="govuk-accordion__section-button" aria-expanded="false">
+              Tax Credits
+              <span class="govuk-accordion__icon" aria-hidden="true"></span></button>
+          </h2>
+        </div>
+        <div id="accordion-default-content-2" class="govuk-accordion__section-content"
+          aria-labelledby="accordion-default-heading-2">
+          <p>
+            The details you give must be from a current claim. You will be asked
+            to tell us:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              the last 4 digits of the bank account your Tax Credits are paid
+              into. You can find these details on your bank card, statement,
+              online banking or a paying-in or cheque book
+            </li>
+            <li>
+              the amount of a recent Tax Credit payment that has been made to
+              you. Enter the exact amount, including pence. You may find it
+              useful to refer to your bank account to get this information.
+            </li>
+          </ul>
+
+          <p class="govuk-body">Has this helped you?</p>
+
+          <div class="govuk-button-group">
+            <form action="choose-2-items" method="post" class="form">
+              <button class="govuk-button govuk-button--secondary" href="choose-2-items" data-module="govuk-button">
+                Yes, try again
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
       <!-- credit reference -->
       <div class="govuk-accordion__section">
         <div class="govuk-accordion__section-header">
@@ -306,7 +326,10 @@ The information you gave does not match our records
     </div>
 
     <p class="govuk-body">
-      <b>You have 3 more attempts</b> to prove your identity.
+      <strong>You have 3 more attempts</strong> to prove your identity.
+    </p>
+    <p class="govuk-body">
+      If you cannot give us details to confirm your identity, you can <a href="more-information" class="govuk-link">confirm your identity another way</a>
     </p>
     <form action="choose-2-items" method="post" class="form">
       <button class="govuk-button" data-module="govuk-button">Try again</button>

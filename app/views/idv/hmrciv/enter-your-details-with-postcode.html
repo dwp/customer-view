@@ -1,94 +1,68 @@
-{% set isHMRCPage = true %}
+{% set isHMRCPage = false %}
+{% set serviceName = "Confirm who you are" %}
 
 {% extends "layouts/main.html" %}
 
+{% set pageHeading = 'What is your postcode?' %}
+
+{% set formQuestionHeading %}
+  <span class="govuk-caption-xl">Check your identity</span>
+  {{pageHeading}}
+{% endset %}
+
 {% block pageTitle %}
-Enter your details
+  {{pageHeading}} - GOV.UK 
 {% endblock %}
 
-{% block serviceName %}
+{% block beforeContent %}
+
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+
 {% endblock %}
-
-
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl ">
-      Enter your details
-    </h1>
-    <p class="govuk-body-l">
-      This is to confirm who you are, so we know what questions to ask you.
-    </p>
-    <form method="post" action="choose-2-items" name="">
+    <form method="post" action="confirm-your-identity-start" name="">
 
-      <div class="govuk-form-group" data-required="" data-error="">
-        <label class="govuk-label govuk-label--m " for="first-name">
-          First name
-        </label>
+      {{ govukInput({
+        label: {
+          html: formQuestionHeading | safe,
+          classes: "govuk-label--xl",
+          isPageHeading: true
+        },
+        classes: "govuk-input--width-10",
+        hint: {
+          text: "For example SW1A 2AA"
+        },
+        id: "event-name",
+        name: "event-name"
+      }) }}
 
-        <input class="govuk-input govuk-input--width-20" id="last-name" name="last-name" type="text">
-      </div>
-
-      <div class="govuk-form-group" data-required="" data-error="">
-        <label class="govuk-label govuk-label--m " for="last-name">
-          Last name
-        </label>
-
-        <input class="govuk-input govuk-input--width-20" id="first-name" name="first-name" type="text">
-      </div>
-
-      <div class="govuk-form-group" data-required="" data-error="">
-        <label class="govuk-label govuk-label--m " for="postcode">
-          Postcode
-        </label>
-
-        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text">
-      </div>
-
-      <div class="govuk-form-group" data-required="" data-error="">
-        <label class="govuk-label govuk-label--m " for="dob">
-        Date of birth
-        </label>
-
-        <div id="dob-hint" class="govuk-hint">
-                For example, 31 3 1980
-                </div>
-                <div class="govuk-date-input" id="dob">
-                <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-day">
-                        Day
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="text" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric"></div>
-                </div>
-                <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-month">
-                        Month
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="text" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric"></div>
-                </div>
-                <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="dob-year">
-                        Year
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="text" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric"></div>
-                </div>
-                </div>
-        </div>  
-
-        <button type="submit" class="govuk-button">
-            Continue
-        </button>
-
+      <input class="govuk-button " type="submit" value="Continue">
 
     </form>
 
-</div>
-
+  </div>
 </div>
 
 {% endblock %}

@@ -9,6 +9,78 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // ! ----------------------------------------------------------------------------------------------------------------------------------
 
+// ! OIDV
+
+const utils = require('../lib/utils')
+const config = require('./config.json')
+
+var useViewVersioning = (config.useViewVersioning === true)
+
+// Import version-specific routes
+const cxpRoutes = require('./routes/cxp')
+const authRoutes = require('./routes/auth')
+const idvRoutes = require('./routes/idv')
+const kbvRoutes = require('./routes/kbv-uplift')
+
+router.use('/', cxpRoutes)
+router.use('/', authRoutes)
+router.use('/', idvRoutes)
+router.use('/', kbvRoutes)
+
+if (useViewVersioning) {
+  router.get('/*/default/*', utils.redirectToVersion, function (req, res, next) {
+    next()
+  })
+}
+
+if (useViewVersioning) {
+  router.get('/*/v*/*', utils.checkVersion, function (req, res, next) {
+    next()
+  })
+}
+
+// Prototype-wide routing
+router.post('/prototype-submit', (req, res, next) => {
+  const currentUrl = req.protocol + '://' + req.get('host')
+  // Get journey start and service name from journey-start value
+  const journeyDetails = req.session.data['journey-start']
+  const journeyDetailsArr = journeyDetails.split(',')
+  const journeyStart = journeyDetailsArr[0]
+  const serviceName = req.session.data[
+    journeyDetailsArr[1] === 'carers' ? 'carers-service-name': 'dss-service-name'
+  ]
+  req.session.data['service-name'] = serviceName
+
+  // Other variables
+  const citizenName = req.session.data['citizen-name']
+  const citizenBenefits = req.session.data['citizen-benefits']
+  const cxp = req.session.data['cxp']
+  const esaStatus = req.session.data['esa-status']
+  const pipStatus = req.session.data['pip-status']
+  const auth = req.session.data['auth']
+  const idv = req.session.data['idv']
+  const idvHappy = req.session.data['idvHappy']
+  req.session.data['generated-link'] = currentUrl + journeyStart + '?' + 
+    'citizen-name=' + citizenName + '&' + 
+    'service-name=' + serviceName + '&' + 
+    'citizen-benefits=' + citizenBenefits + '&' + 
+    'cxp=' + cxp  + '&' + 
+    'esa-status=' + esaStatus  + '&' + 
+    'pip-status=' + pipStatus  + '&' + 
+    'auth=' + auth  + '&' + 
+    'idv=' + idv  + '&' + 
+    'idvHappy=' + idvHappy 
+  const action = req.session.data['action']
+  if (action === 'generateLink') {
+    res.redirect('/generate-link')
+  } else {
+    res.redirect(journeyStart)
+  }
+})
+
+// ! ----------------------------------------------------------------------------------------------------------------------------------
+
+
 // ! Discovery Prototypes
   // Put these in a separate routes file as they were dated and hefty.
 
@@ -681,6 +753,63 @@ router.post('/check-your-payment/v3/digital-service/pob-esa', function (req, res
 })
 
 
+// * ------------------------ Baseline ------------------------
+
+router.post('/change-bank-details/baseline/check-you-can-change-bank-details/are-you-expecting-a-payment-in-the-next-six-working-days-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'are-you-expecting-a-payment-in-the-next-six-working-days'
+  var areYouExpectingaPaymentInTheNextSixWorkingDays = req.session.data['are-you-expecting-a-payment-in-the-next-six-working-days']
+
+  // Check whether the variable matches a condition
+  if (areYouExpectingaPaymentInTheNextSixWorkingDays == "yes"){
+      // Send user to next page
+      res.redirect('/change-bank-details/baseline/check-you-can-change-bank-details/you-can-use-service-payment-due')
+    } else if (areYouExpectingaPaymentInTheNextSixWorkingDays == "no"){
+    // Send user to next page
+    res.redirect('/change-bank-details/baseline/check-you-can-change-bank-details/you-can-use-service-no-payment-due')
+  } else {
+    // Inactive
+    res.redirect('/change-bank-details/baseline/check-you-can-change-bank-details/you-can-use-service-unsure-payment-due')
+  }
+
+})
+
+router.post('/change-bank-details/baseline/change-bank-details/benefits-you-need-to-change-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'are-you-expecting-a-payment-in-the-next-six-working-days'
+  var areYouExpectingaPaymentInTheNextSixWorkingDays = req.session.data['are-you-expecting-a-payment-in-the-next-six-working-days']
+
+  // Check whether the variable matches a condition
+  if (areYouExpectingaPaymentInTheNextSixWorkingDays == "yes"){
+      // Send user to next page
+      res.redirect('/change-bank-details/baseline/change-bank-details/your-next-payment-old-account')
+    } else if (areYouExpectingaPaymentInTheNextSixWorkingDays == "no"){
+    // Send user to next page
+    res.redirect('/change-bank-details/baseline/change-bank-details/your-next-payment-new-account')
+  } else {
+    // Inactive
+    res.redirect('/change-bank-details/baseline/change-bank-details/your-next-payment-old-account')
+  }
+
+})
+
+
+router.post('/change-bank-details/baseline/change-bank-details/enter-bank-details-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'how-do-you-need-your-benefits-to-be-paid'
+  var howDoYouNeedYourBenefitsToBePaid = req.session.data['how-do-you-need-your-benefits-to-be-paid']
+
+  // Check whether the variable matches a condition
+  if (howDoYouNeedYourBenefitsToBePaid == "Pay my benefits into separate accounts"){
+      // Send user to next page
+      res.redirect('/change-bank-details/baseline/change-bank-details/enter-bank-details-2.html')
+    } else {
+    // Send user to next page
+    res.redirect('/change-bank-details/baseline/change-bank-details/check-your-details')
+  } 
+
+})
+      
 
 // ! ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -956,70 +1085,6 @@ router.post('/V42_2-Change-bank-details-user-testing-2/Change-bank-details-user-
   }
 
 })
-
-
-
-
-
-
-
-
-//OIDV ROUTES
-//IDV HMRC IDVSELECTION
-
-// Import version-specific routes
-const cxpRoutes = require('./routes/cxp')
-const authRoutes = require('./routes/auth')
-const idvRoutes = require('./routes/idv')
-const idnRoutes = require('./routes/idn')
-const idpRoutes = require('./routes/idp')
-
-router.use('/', cxpRoutes)
-router.use('/', authRoutes)
-router.use('/', idvRoutes)
-router.use('/', idnRoutes)
-router.use('/', idpRoutes)
-
-// Prototype-wide routing
-router.post('/prototype-submit', (req, res, next) => {
-  const currentUrl = req.protocol + '://' + req.get('host')
-  // Get journey start and service name from journey-start value
-  const journeyDetails = req.session.data['journey-start']
-  const journeyDetailsArr = journeyDetails.split(',')
-  const journeyStart = journeyDetailsArr[0]
-  const serviceName = req.session.data[
-    journeyDetailsArr[1] === 'carers' ? 'carers-service-name': 'dss-service-name'
-  ]
-  req.session.data['service-name'] = serviceName
-
-  // Other variables
-  const citizenName = req.session.data['citizen-name']
-  const citizenBenefits = req.session.data['citizen-benefits']
-  const cxp = req.session.data['cxp']
-  const esaStatus = req.session.data['esa-status']
-  const pipStatus = req.session.data['pip-status']
-  const auth = req.session.data['auth']
-  const idv = req.session.data['idv']
-  const idvHappy = req.session.data['idvHappy']
-  req.session.data['generated-link'] = currentUrl + journeyStart + '?' +
-    'citizen-name=' + citizenName + '&' +
-    'service-name=' + serviceName + '&' +
-    'citizen-benefits=' + citizenBenefits + '&' +
-    'cxp=' + cxp  + '&' +
-    'esa-status=' + esaStatus  + '&' +
-    'pip-status=' + pipStatus  + '&' +
-    'auth=' + auth  + '&' +
-    'idv=' + idv  + '&' +
-    'idvHappy=' + idvHappy
-  const action = req.session.data['action']
-  if (action === 'generateLink') {
-    res.redirect('/generate-link')
-  } else {
-    res.redirect(journeyStart)
-  }
-})
-
-
 
 
 //Alpha assessment prototype start here

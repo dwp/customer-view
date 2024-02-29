@@ -1,15 +1,37 @@
-{% set isHMRCPage = true %}
-
+{% set isHMRCPage = false %}
+{% set serviceName = "Confirm who you are" %}
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Your pay
+Your pay - GOV.UK 
 {% endblock %}
 
 {% block serviceName %}
 {% endblock %}
 
+{% block beforeContent %}
 
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
 
 {% block content %}
 
@@ -64,7 +86,7 @@ Your pay
               {% elif tcKbv === "true" %} 
                 "./tax-credits-question-1"
               {% elif tuKbv === "true" %} 
-                "./tu-question-1" 
+                "./credit-record-questions-consent" 
               {% elif voiceId === "true" %} 
                 "./voice-id"
               {% else %} 

@@ -159,36 +159,38 @@ router.get('/idv/default/kbv-submit', (req, res) => {
   }
 })
 
+// HMRC IV
+
 router.post('/idv/hmrciv/idvselection', (req, res) => {
-  const passportConsent = req.session.data['passport-consent'];
+  const passportConsent = req.session.data['ukPassport'];
   const payslipOrP60 = req.session.data['payslipOrP60'];
   const selfAssessment = req.session.data['self-assessment'];
   const voiceID = req.session.data['tcOptions'];
-  const tuConsent = req.session.data['cra-consent'];
+  const tuConsent = req.session.data['transunion'];
 
   // Passport and payslip
   if (passportConsent == 'true' && payslipOrP60 == 'payslip') {
-    res.redirect('./your-passport-details?payslip=true')
+    res.redirect('./your-passport-details-consent?payslip=true')
   }
   // Passport and P60 
   else if (passportConsent == 'true' && payslipOrP60 == 'p60') {
-    res.redirect('./your-passport-details?p60=true')
+    res.redirect('./your-passport-details-consent?p60=true')
   }
   // Passport and Self Assessment 
   else if (passportConsent == 'true' && selfAssessment == 'true') {
-    res.redirect('./your-passport-details?sa=true')
+    res.redirect('./your-passport-details-consent?sa=true')
   }
   // Passport and tax credits KBV
   else if (passportConsent == 'true' && voiceID == 'voiceIdNo') {
-    res.redirect('./your-passport-details?tcKbv=true')
+    res.redirect('./your-passport-details-consent?tcKbv=true')
   }
   // Passport and tax credits voice ID
   else if (passportConsent == 'true' && voiceID == 'voiceIdYes') {
-    res.redirect('./your-passport-details?voiceId=true')
+    res.redirect('./your-passport-details-consent?voiceId=true')
   }
   // Passport and Transunion
   else if (passportConsent == 'true' && tuConsent == 'true') {
-    res.redirect('./your-passport-details?tuKbv=true')
+    res.redirect('./your-passport-details-consent?tuKbv=true')
   }
 
   // Payslip and tax credits KBV
@@ -252,7 +254,6 @@ router.post('/idv/hmrciv/idvselection', (req, res) => {
   }
 })
 
-
 router.post('/idv/hmrciv/payslip', (req, res) => {
   res.redirect('./payslip-question-1');
 })
@@ -266,11 +267,11 @@ router.post('/idv/hmrciv/tcKbv', (req, res) => {
 })
 
 router.post('/idv/hmrciv/tuKbv', (req, res) => {
-  res.redirect('./tu-question-1');
+  res.redirect('./credit-record-questions-consent');
 })
 
 router.post('/idv/hmrciv/voiceId', (req, res) => {
-  res.redirect("/carers/voice-id");
+  res.redirect("./voice-id");
 })
 
 

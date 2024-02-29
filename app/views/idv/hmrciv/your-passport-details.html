@@ -1,15 +1,37 @@
-{% set isHMRCPage = true %}
-
+{% set isHMRCPage = false %}
+{% set serviceName = "Confirm who you are" %}
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Your passport details
+Your passport details - GOV.UK 
 {% endblock %}
 
 {% block serviceName %}
 {% endblock %}
 
+{% block beforeContent %}
 
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
 
 {% block content %}
 
@@ -36,20 +58,20 @@ Your passport details
       {% elif tcKbv === "true" %} 
         "/idv/hmrciv/tcKbv"
       {% elif tuKbv === "true" %} 
-        "/idv/hmrciv/tuKbv" 
+        "/idv/hmrciv/credit-record-questions-consent" 
       {% elif voiceId === "true" %} 
-        "/idv/hmrciv/voice-id"
+        "/idv/hmrciv/voiceId"
       {% endif %}
     >
-
+    
     <div class="govuk-form-group" data-required="" data-error="Enter your given names in the right format">
       <label class="govuk-label govuk-label--m " for="givenNames">
         Given names
       </label>
 
-      <span id="givenNames-hint" class="govuk-hint">
+      <div id="givenNames-hint" class="govuk-hint">
         As they appear on your passport
-      </span>
+      </div>
 
       <input class="govuk-input govuk-input--width-20" id="givenNames" name="firstName" type="text">
     </div>
@@ -59,9 +81,9 @@ Your passport details
         Surname
       </label>
 
-      <span id="surname-hint" class="govuk-hint">
+      <div id="surname-hint" class="govuk-hint">
         As it appears on your passport
-      </span>
+      </div>
 
       <input class="govuk-input govuk-input--width-20" id="surname" name="lastName" type="text">
       </div>
@@ -71,11 +93,11 @@ Your passport details
           Passport number
         </label>
 
-        <span id="passport-hint" class="govuk-hint">
+        <div id="passport-hint" class="govuk-hint">
           Contains up to 9 numbers and no letters
-        </span>
+        </div>
 
-        <input class="govuk-input govuk-input--width-10" id="passport" name="passport" type="text">
+        <input class="govuk-input govuk-input--width-20" id="passport" name="passport" type="text">
       </div>
 
       <div class="govuk-form-group" data-required="" data-error="Enter your passport expiry date in the right format">
@@ -85,9 +107,9 @@ Your passport details
             Date of expiry
           </legend>
 
-          <span id="dob-hint" class="govuk-hint">
+          <div id="dob-hint" class="govuk-hint">
             For example, 31 MAR 26 or 31 03 26
-          </span>
+          </div>
 
           <div class="govuk-date-input" id="ppExpiryDate">
 

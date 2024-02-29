@@ -1,15 +1,37 @@
 {% set isHMRCPage = true %}
-
+{% set serviceName = "Confirm who you are" %}
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Security question (TransUnion UK Limited)
+Security question (TransUnion UK Limited) - GOV.UK 
 {% endblock %}
 
 {% block serviceName %}
 {% endblock %}
 
+{% block beforeContent %}
 
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
 
 {% block content %}
 
@@ -23,13 +45,18 @@ Security question (TransUnion UK Limited)
 
             <div class="govuk-form-group">
                 <span class="govuk-caption-xl">
-                    About your mortgage
+                    About your personal current account
                 </span>
 
-                <h1 class="govuk-heading-xl">
-                    You opened a current account in MONTH YEAR, which provider was it with?
+                <h1 class="govuk-heading-xl" style="margin-bottom:30px;">
+                    When did you last open a personal current account?
                 </h1>
-
+                
+                <ul class="govuk-list govuk-list--bullet"  style="margin-bottom:30px;">
+                    <li>This may have been a joint account</li>
+                    <li>It could include upgrading or changing an existing account</li>
+                </ul>
+     
                 <div class="govuk-radios">
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="tu-account-1" name="tu-account" type="radio"
