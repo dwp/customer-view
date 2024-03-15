@@ -1,0 +1,115 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Which benefits do you get?
+{% endblock %}
+
+{% block beforeContent %}
+
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="where-can-we-send-your-letter" method="post">
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Select what benefits you get, or select ‘My benefit isn’t in the list’",
+              href: "#which-benefits-do-you-get"
+            }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          name: "which-benefits-do-you-get",
+          value: data['which-benefits-do-you-get'],
+          fieldset: {
+            legend: {
+              text: "Which benefits do you get?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          errorMessage: {
+            text: "Select what benefits you get, or select ‘My benefit isn’t in the list’"
+          },
+          items: [
+          {
+            value: "Attendance Allowance",
+            text: "Attendance Allowance"
+          },
+          {
+            value: "Disability Living Allowance (DLA) for adults",
+            text: "Disability Living Allowance (DLA) for adults"
+          },
+          {
+            value: "Employment and Support Allowance (ESA)",
+            text: "Employment and Support Allowance (ESA)"
+          },
+          {
+            value: "Income Support",
+            text: "Income Support"
+          },
+          {
+            value: "Industrial Industries Disablement Benefit",
+            text: "Industrial Industries Disablement Benefit"
+          },
+          {
+            value: "Jobseeker’s Allowance",
+            text: "Jobseeker’s Allowance"
+          },
+          {
+            value: "Pension Credit",
+            text: "Pension Credit"
+          },
+          {
+            value: "Personal Independence Payment (PIP)",
+            text: "Personal Independence Payment (PIP)"
+          },
+          {
+            value: "State Pension",
+            text: "State Pension"
+          }
+        ]
+
+        }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+  hmrcLanguageSelect({
+    language: 'en',
+    en: {
+      href: '?en'
+    },
+    cy: {
+      href: '?cy'
+    }
+  })
+}}
+
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Get a proof of benefit letter
+      </h1>
+
+      <p>Use this service to request a letter to prove you get:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Attendance Allowance</li>
+        <li>Disability Living Allowance (DLA) for adults</li>
+        <li>any type of Employment and Support Allowance (ESA)</li>
+        <li>Income Support</li>
+        <li>Industrial Injuries Disablement Benefit</li>
+        <li>Jobseeker’s Allowance</li>
+        <li>Pension Credit</li>
+        <li>State Pension</li>
+      </ul>
+
+      <p>You must currently get at least one of these benefits to request a letter.</p>
+  
+      <p>When you request a letter, it can take up to one week to arrive in the post.</p>
+
+      <h2 class="govuk-heading-m">
+        If you’re using this service for the first time
+      </h2>
+
+      <p>You will need to register if you have not used this service before.</p>
+      
+      <p>To register, you'll need:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>an email address</li>
+        <li>a mobile phone</li>
+        <li>your National Insurance number</li>
+      </ul>
+
+    
+      <p>We’ll ask you about 2 types of identification to help protect you from fraud.</p>
+
+
+      <p>You may be asked about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a valid UK passport</li>
+        <li>payslips or P60</li>
+        <li>information about tax credits</li>
+        <li>details of your bank accounts, loans, mortgages or credit agreements</li>
+        <li>Self Assessment tax returns if you have a business or other income </li>
+      </ul>
+
+
+      <p><a href="">I do not have any of these</a></p>
+
+      <h2 class="govuk-heading-m">
+        If you have used this service before
+      </h2>
+
+      <p>You’ll need the email address, mobile phone and password you used to register.</p>
+
+
+      {{ govukButton({
+        text: "Start",
+        href: "how-did-you-find-out-about-this-service",
+        isStartButton: true
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
