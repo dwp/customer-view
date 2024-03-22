@@ -44,25 +44,31 @@ Which benefits do you get?
                 Where can we send your letter?
               </h1>
             </legend>
+            <div id="contact-hint" class="govuk-hint">
+              Select one option.
+            </div>
             <div class="govuk-radios govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="whereToSendLetter" name="whereToSendLetter" type="radio" value="yes">
                 <label class="govuk-label govuk-radios__label" for="whereToSendLetter">
-                  Address we usually send letters to
+                  72 Guild Street, London , SE23 6FH
                 </label>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="whereToSendLetter-2" name="whereToSendLetter" type="radio" value="no">
                 <label class="govuk-label govuk-radios__label" for="whereToSendLetter-2">
-                  Home address
+                  12 Gregg Lane, London, SE12 6FH
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereToSendLetter-3" name="whereToSendLetter" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="whereToSendLetter-3">
+                  None of these
                 </label>
               </div>
             </div>
           </fieldset>
         </div>
-
-        <p><a href="">None of these</a></p>
-
 
         {{ govukButton({
           text: "Continue"
