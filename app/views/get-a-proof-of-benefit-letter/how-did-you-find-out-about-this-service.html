@@ -41,15 +41,6 @@ Check if you can use this service
 
       <form class="form" action="identity-check" method="post">
 
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Select how you found out about this service",
-              href: "#how-did-you-find-out-about-this-service"
-            }
-          ]
-        }) }}
 
         {{ govukRadios({
           name: "how-did-you-find-out-about-this-service",
@@ -77,10 +68,7 @@ Check if you can use this service
               text: "Somewhere else",
               visuallyHiddenText: "Did you hear about this service somewhere else"
             }
-          ],
-          errorMessage: {
-            text: "Select how you found out about this service"
-          }
+          ]
         }) }}
 
         {{ govukButton({

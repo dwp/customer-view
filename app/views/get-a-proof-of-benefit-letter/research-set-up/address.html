@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Before we start the user research scenario - address
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="ready" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="researchSetUpAddress-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you have an address that we send letters to? 
+              </h1>
+            </legend>
+            <div id="changedName-hint" class="govuk-hint">
+              This is an address for post and is different to the address you live at.
+            </div>
+            <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="researchSetUpAddress" name="researchSetUpAddress" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="changeresearchSetUpAddressdName">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="researchSetUpAddress-2" name="researchSetUpAddress" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="researchSetUpAddress-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
