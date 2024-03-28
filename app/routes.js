@@ -2036,7 +2036,86 @@ router.post('/V5/iteration-5/eligibility/test-eligibility-without-payment-due/ch
 
 })
 
-//User who gets benefts without (expecting payment/voucher page) prototype end here
+
+// ! Get a proof of benefit letter
+
+// Select address page based on how many benefits are selected by the user.
+router.all('/get-a-proof-of-benefit-letter/list-benefits-answer', function (req, res) {
+
+  var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+
+  // Check whether multiple benefits selected
+  if (researchSetUpBenefits.length > 1)  {
+    // Send user to next page
+    res.redirect('/get-a-proof-of-benefit-letter/select-benefits');
+
+  } else {
+    // Send to single benefit page
+    res.redirect('/get-a-proof-of-benefit-letter/do-you-want-a-letter-for');
+  }
+
+})
+
+// Display mutli address or single address page
+router.post('/get-a-proof-of-benefit-letter/select-benefits-answer', function (req, res) {
+
+  var researchSetUpAddress = req.session.data['researchSetUpAddress']
+  var whichBenefitNeedProof = req.session.data['which-benefits-need-proof']
+
+  // Check if correspondence address is available
+  if (researchSetUpAddress === "yes" && whichBenefitNeedProof != "I need a letter for another benefit")  {
+    // Send user to next page
+    res.redirect('/get-a-proof-of-benefit-letter/where-can-we-send-your-letter');
+
+  } else if (researchSetUpAddress === "no" && whichBenefitNeedProof != "I need a letter for another benefit")  {
+    // Send user to next page
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
+  }
+  
+  else {
+    // Send to home address verification
+    res.redirect('/get-a-proof-of-benefit-letter/you-cannot-get-proof-of-all-your-benefits');
+  }
+
+})
+
+// Drop user if they're address is incorrect
+router.post('/get-a-proof-of-benefit-letter/send-letter-to-address-answer', function (req, res) {
+
+  var confirmLetterSend = req.session.data['confirmLetterSend'];
+  var whereToSendLetter = req.session.data['whereToSendLetter'];
+
+  // Check if address is incorrect
+  if (whereToSendLetter === "none-of-these" || confirmLetterSend === "no")  {
+    // Send user to next page
+    res.redirect('/get-a-proof-of-benefit-letter/contact-us-to-get-proof-of-benefit-letter');
+
+  } else {
+    // Send to home address verification
+    res.redirect('/get-a-proof-of-benefit-letter/check-your-answers');
+  }
+
+})
+
+
+// Drop user if they don't want a letter from a listed benefit
+router.post('/get-a-proof-of-benefit-letter/send-letter-to-address-answer', function (req, res) {
+
+  var confirmLetterSend = req.session.data['doYouWantLetterFor'];
+  var whereToSendLetter = req.session.data['which-benefits-do-you-get'];
+
+  // Check if address is incorrect
+  if (whereToSendLetter === "none-of-these" || confirmLetterSend === "no")  {
+    // Send user to next page
+    res.redirect('/get-a-proof-of-benefit-letter/contact-us-to-get-proof-of-benefit-letter');
+
+  } else {
+    // Send to home address verification
+    res.redirect('/get-a-proof-of-benefit-letter/check-your-answers');
+  }
+
+})
+
 
 
 

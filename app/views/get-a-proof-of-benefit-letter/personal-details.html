@@ -71,25 +71,36 @@ Customer view
         <h2 class="govuk-heading-m">Contact details</h2>
 
         <dl class="govuk-summary-list">
+          {% if (data['researchSetUpAddress'] === "yes") %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Home address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  72 Guild Street<br>London<br>SE23 6FH
+              </dd>
+            </div>
+            
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Postal address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  12 Gregg Lane<br>London<br>SE12 6FH
+              </dd>
+            </div>
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Home address
-            </dt>
-            <dd class="govuk-summary-list__value">
-                72 Guild Street<br>London<br>SE23 6FH
-            </dd>
-          </div>
-          
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Postal address
-            </dt>
-            <dd class="govuk-summary-list__value">
-                12 Gregg Lane<br>London<br>SE12 6FH
-            </dd>
-          </div>
-          
+          {% else %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Home address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  72 Guild Street<br>London<br>SE23 6FH
+              </dd>
+            </div>
+          {% endif %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                 Mobile
@@ -135,14 +146,17 @@ Customer view
           </div>
         </dl>
 
+      <form action="select-benefits-answer">
+
       <h2 class="govuk-heading-m">Get a proof of benefit letter</h2>
 
-      <p>If you need evidence of your benefit payments, we can post you <a href="select-benefits">a proof of benefit letter.</a></p>
+      <p>If you need evidence of your benefit payments, we can post you <a type="submit" data-module="govuk-button" href="list-benefits-answer">a proof of benefit letter.</a></p>
 
       <h2 class="govuk-heading-m">Tell us about a change</h2>
 
-      <p>To change your details, like your address, <a href="select-benefits">contact your benefit office (opens in a new tab).</a></p>
+      <p>To change your details, like your address, <a href="">contact your benefit office (opens in a new tab).</a></p>
 
+    </form>  
     </div>
   </div>
 

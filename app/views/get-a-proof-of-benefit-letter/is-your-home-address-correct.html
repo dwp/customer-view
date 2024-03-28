@@ -35,30 +35,35 @@ Which benefits do you get?
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="are-your-bank-accounts-in-the-UK" method="post">
+      <form class="form" action="send-letter-to-address-answer" method="post">
 
-        <h1 class="govuk-heading-xl">Confirm your home address</h1>
-        
-        <p>Your home address is saved as:</p>
-        <p>Home address line 1 
-          <br>Home address line 2 
-          <br>Town or city 
-          <br>Post code
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1" >Where we send your letter</h1>
+        <div id="home-address-hint" class="govuk-hint govuk-!-margin-bottom-6" >
+          Proof of benefit letters can take one week to be delivered.
+        </div>
+  
+        <p>Your address is saved as:</p>
+
+        <div class="govuk-inset-text">
+        <p>72 Guild Street
+          <br>London
+          <br>SE23 6FH
         </p>
+      </div>
 
-        <h2 class="govuk-heading-m">Can we post your letter to this address?</h2>
+        <h2 class="govuk-heading-m">Is your address correct?</h2>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="confirmLetterSend" name="confirmLetterSend" type="radio" value="england">
+                <input class="govuk-radios__input" id="confirmLetterSend" name="confirmLetterSend" type="radio" value="yes">
                 <label class="govuk-label govuk-radios__label" for="confirmLetterSend">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="confirmLetterSend-2" name="confirmLetterSend" type="radio" value="scotland">
+                <input class="govuk-radios__input" id="confirmLetterSend-2" name="confirmLetterSend" type="radio" value="no">
                 <label class="govuk-label govuk-radios__label" for="confirmLetterSend-2">
                   No
                 </label>

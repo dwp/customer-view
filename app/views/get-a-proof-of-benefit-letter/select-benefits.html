@@ -35,33 +35,20 @@ Which benefits do you get?
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="where-can-we-send-your-letter" method="post">
-
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Select what benefits you get’",
-              href: "#which-benefits-do-you-get"
-            }
-          ]
-        }) }}
+      <form class="form" action="select-benefits-answer" method="post">
 
         {{ govukCheckboxes({
-          name: "which-benefits-do-you-get",
-          value: data['which-benefits-do-you-get'],
+          name: "which-benefits-need-proof",
+          value: data['which-benefits-need-proof'],
           fieldset: {
             legend: {
-              text: "Which benefits do you get?",
+              text: "Which benefits do you need proof of?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "Select all that apply."
-          },
-          errorMessage: {
-            text: "Select what benefits you get’"
+            text: "If you select more than one benefit, you will get separate letters for each benefit."
           },
           items: [
           {
@@ -99,6 +86,10 @@ Which benefits do you get?
           {
             value: "State Pension",
             text: "State Pension"
+          },
+          {
+            value: "I need a letter for another benefit",
+            text: "I need a letter for another benefit"
           }
         ]
 

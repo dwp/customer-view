@@ -43,14 +43,24 @@ Check your details before you send them
         What happens next
       </h2>
 
-      <p>We’ve sent your request to...</p>
+      <p>You have requested a proof of benefit letter for {{ data['researchSetUpBenefits'] | formatList}}</p>
 
-      <p>You should get your proof of benefit letter within one week</p>
+      {% if (data['researchSetUpBenefits'].length > 1) %}
+      <p>Your letters should arrive separately within one week.</p>
+      {% else %}
+      <p>Your letter should arrive within one week.</p>
+      {% endif %}
+
       <p class="govuk-body">
         <a href="#" class="govuk-link">What did you think of this service?
         </a>
         (takes 30 seconds)
       </p>
+
+      {{ govukButton({
+        text: "Sign out",
+        href: "#"
+      }) }}
 
     </div>
   </div>

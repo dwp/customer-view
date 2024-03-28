@@ -4,5 +4,17 @@
 //
 
 window.GOVUKPrototypeKit.documentReady(() => {
-  // Add JavaScript here
+  
+        
+  var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
+
+  if (researchSetUpBenefits.length > 1)  {
+  // Send user to next page
+  document.getElementById("multiWeek").style.display = "block";
+
+  } else {
+  // Send to single benefit page
+  document.getElementById("singleWeek").style.display = "block";
+  }
+
 })
