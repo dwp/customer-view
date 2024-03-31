@@ -10,27 +10,8 @@ Payslip question - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-
-{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
-
-{{
-  hmrcLanguageSelect({
-    language: 'en',
-    en: {
-      href: '?en'
-    },
-    cy: {
-      href: '?cy'
-    }
-  })
-}}
-
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-
-
+{% include 'includes/phase-banner.njk' %}
+{% include 'includes/language-toggle.njk' %}
 {% endblock %}
 
 {% block content %}
@@ -62,12 +43,12 @@ Payslip question - GOV.UK
 
                 <p class="govuk-hint">For example 191.27</p>
 
-                <div class="govuk-form-group">
-                  <div class="govuk-input__wrapper">
-                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                    <input class="govuk-input govuk-input--width-10" id="benefit-amount" name="benefit-amount" type="text" spellcheck="false" aria-describedby="amount-currency">
-                  </div>
+                <div class="currency-input">
+                    <div class="currency-input__symbol" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-10" id="benefit-amount" name="benefit-amount"
+                        type="text" aria-describedby="amount-currency">
                 </div>
+
                 </fieldset>
             </div>
 

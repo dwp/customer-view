@@ -10,27 +10,8 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
-
-{{
-  hmrcLanguageSelect({
-    language: 'en',
-    en: {
-      href: '?en'
-    },
-    cy: {
-      href: '?cy'
-    }
-  })
-}}
-
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-  
-
+  {% include 'includes/phase-banner.njk' %}
+{% include 'includes/language-toggle.njk' %}
 {% endblock %}
 
 {% block content %}
