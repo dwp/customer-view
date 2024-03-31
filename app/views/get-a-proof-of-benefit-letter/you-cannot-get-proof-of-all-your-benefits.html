@@ -39,17 +39,20 @@ Check your details before you send them
         You cannot get proof of all your benefits using this service
       </h1>
 
-        <p>
-          You can get a letter for [benefit A] using this service.
-        </p>
-
-        <p>
-          You can get a letter for [benefit A] and [benefit B] using this service.
-        </p>
-
-        <p>
-          You can get a letter for [benefit A], [benefit B] and [benefit C] using this service.</a>
-        </p>
+      {% if (data['which-benefits-need-proof'].length == 2) %}
+        <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
+      {% elseif (data['which-benefits-need-proof'].length == 3) %}
+        <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
+      {% elseif (data['which-benefits-need-proof'].length == 4) %}
+        <p>We can send you letters for:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for benefit in data['which-benefits-need-proof'] %}
+            <li>{{ benefit }}</li>
+          {% else %}
+            <p>No benefit selected</p>
+          {% endfor %}    
+        </ul>
+      {% endif %}
 
         <p>
           You cannot get a proof of benefit letter for other benefits online yet.</a>
@@ -60,13 +63,16 @@ Check your details before you send them
         </p>
 
         <p>
-          Find their contact details in a letter they’ve sent to you, or <a href="">in guidance about the benefit (opens in a new tab).</a>
+          Find their contact details in a letter they’ve sent to you, or <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">in guidance about the benefit (opens in a new tab).</a>
         </p>
 
-        {{ govukButton({
-          text: "Sign out",
-          href: "#"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        
+          <a class="govuk-link" href="">Sign out</a>
+        </div>
 
     </div>
   </div>

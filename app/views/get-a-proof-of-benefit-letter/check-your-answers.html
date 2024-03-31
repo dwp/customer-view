@@ -47,19 +47,24 @@ Check your details before you send them
               Benefit
             </dt>
             <dd class="govuk-summary-list__value">
-              {% for benefit in data['researchSetUpBenefits'] %}
+              {% for benefit in data['which-benefits-need-proof'] %}
               <p class="govuk-body">{{ benefit }}<br>
               {% else %}
                 <p>No benefit selected</p>
               {% endfor %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> benefits</span></a>
+              <a class="govuk-link" href="select-benefits">Change<span class="govuk-visually-hidden"> benefits</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Address we send proof of benefit letter to
+              {% if data['which-benefits-need-proof'].length > 1 %}
+              Address we send your proof of benefit letters to
+              {% else %}
+              Address we send your proof of benefit letter to
+              </p>
+              {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['researchSetUpAddress'] === "yes") %}
@@ -72,7 +77,7 @@ Check your details before you send them
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+              <a class="govuk-link" href="select-benefits">Change<span class="govuk-visually-hidden"> address</span></a>
             </dd>
           </div>
         </dl>

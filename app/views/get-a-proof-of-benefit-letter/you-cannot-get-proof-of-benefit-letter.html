@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+Manage your benefits and State Pension
+{% endset%}
+
+{% block pageTitle %}
+Check your details before you send them
+{% endblock %}
+
+{% block beforeContent %}
+
+  {%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+
+  {{
+    hmrcLanguageSelect({
+      language: 'en',
+      en: {
+        href: '?en'
+      },
+      cy: {
+        href: '?cy'
+      }
+    })
+  }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot get a proof of benefit letter using this service
+      </h1>
+
+        <p>
+          This is because you can only get a proof of benefit letter for some benefits online, and your benefit is not online yet.
+        </p>
+
+        <p>
+          To get proof of another benefit, contact the office that pays your benefit.
+        </p>
+
+        <p>
+          Find their contact details in a letter they’ve sent to you, or <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">in guidance about the benefit (opens in a new tab).</a>
+        </p>
+
+        {{ govukButton({
+          text: "Sign out",
+          href: "#"
+        }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

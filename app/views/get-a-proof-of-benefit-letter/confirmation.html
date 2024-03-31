@@ -43,9 +43,9 @@ Check your details before you send them
         What happens next
       </h2>
 
-      <p>You have requested a proof of benefit letter for {{ data['researchSetUpBenefits'] | formatList}}.</p>
+      <p>You have requested a proof of benefit letter for {{ data['which-benefits-need-proof'] | formatList}}.</p>
 
-      {% if (data['researchSetUpBenefits'].length > 1) %}
+      {% if (data['which-benefits-need-proof'].length > 1) %}
       <p>Your letters should arrive separately within one week.</p>
       {% else %}
       <p>Your letter should arrive within one week.</p>
