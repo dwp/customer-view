@@ -35,45 +35,48 @@ Check your details before you send them
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        You cannot get proof of all your benefits using this service
-      </h1>
+      <form class="form" action="cant-get-proof-all-benefits-answer" method="post">
 
-      {% if (data['which-benefits-need-proof'].length == 2) %}
-        <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
-      {% elseif (data['which-benefits-need-proof'].length == 3) %}
-        <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
-      {% elseif (data['which-benefits-need-proof'].length == 4) %}
-        <p>We can send you letters for:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          {% for benefit in data['which-benefits-need-proof'] %}
-            <li>{{ benefit }}</li>
-          {% else %}
-            <p>No benefit selected</p>
-          {% endfor %}    
-        </ul>
-      {% endif %}
 
-        <p>
-          You cannot get a proof of benefit letter for other benefits online yet.</a>
-        </p>
+        <h1 class="govuk-heading-l">
+          You cannot get proof of all your benefits using this service
+        </h1>
 
-        <p>
-          To get proof of another benefit, contact the office that pays your benefit.</a>
-        </p>
+        {% if (data['which-benefits-need-proof'].length == 2) %}
+          <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
+        {% elseif (data['which-benefits-need-proof'].length == 3) %}
+          <p>You can get a letter for {{ data['which-benefits-need-proof'] | formatList }} using this service.</p>
+        {% elseif (data['which-benefits-need-proof'].length == 4) %}
+          <p>We can send you letters for:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            {% for benefit in data['which-benefits-need-proof'] %}
+              <li>{{ benefit }}</li>
+            {% else %}
+              <p>No benefit selected</p>
+            {% endfor %}    
+          </ul>
+        {% endif %}
 
-        <p>
-          Find their contact details in a letter they’ve sent to you, or <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">in guidance about the benefit (opens in a new tab).</a>
-        </p>
+          <p>
+            You cannot get a proof of benefit letter for other benefits online yet.</a>
+          </p>
 
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-        
-          <a class="govuk-link" href="">Sign out</a>
-        </div>
+          <p>
+            To get proof of another benefit, contact the office that pays your benefit.</a>
+          </p>
 
+          <p>
+            Find their contact details in a letter they’ve sent to you, or <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">in guidance about the benefit (opens in a new tab).</a>
+          </p>
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          
+            <a class="govuk-link" href="">Sign out</a>
+          </div>
+      </form>
     </div>
   </div>
 

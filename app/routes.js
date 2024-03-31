@@ -2136,6 +2136,27 @@ router.post('/get-a-proof-of-benefit-letter/send-letter-to-address-answer', func
 })
 
 
+// Place user back into journey from you cant get a proof for all benefits
+router.post('/get-a-proof-of-benefit-letter/cant-get-proof-all-benefits-answer', function (req, res) {
+
+  var researchSetUpAddress = req.session.data['researchSetUpAddress']
+
+  // Check if correspondence address is available
+  if (researchSetUpAddress === "yes")  {
+    // Send user to multi address page
+    res.redirect('/get-a-proof-of-benefit-letter/where-can-we-send-your-letter');
+
+  } else  {
+    // Send user to single address page
+    res.redirect('/get-a-proof-of-benefit-letter/is-your-home-address-correct');
+
+  } 
+
+})
+
+
+
+
 
 
 
