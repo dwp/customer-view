@@ -27,7 +27,7 @@ Account home
     },
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
-  
+
 {% endblock %}
 
 
@@ -53,11 +53,11 @@ Account home
              {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
              <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
                {% endif %}
-      
+
                {% if 'State Pension' in data['inScope'] and data['inScope']|length > 1 %}
                <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits and State Pension</a></p>
                  {% endif %}
-      
+
                  {% if 'State Pension' not in data['inScope'] %}
                  <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
                    {% endif %}
