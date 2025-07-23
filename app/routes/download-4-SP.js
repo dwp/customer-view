@@ -146,7 +146,7 @@ router.post('/get-a-proof-of-benefit-letter/download/download-4-SP/send-letter-t
 
 
   // Check if user selected no on single address page
-  if (confirmLetterSend == "no")  {
+  if (confirmLetterSend == "No")  {
     // Send user to contact us page
     res.redirect('/get-a-proof-of-benefit-letter/download/download-4-SP/you-cannot-use-this-service-incorrect-address');
   }
@@ -293,28 +293,6 @@ router.post('/get-a-proof-of-benefit-letter/download/ni/select-benefits-answer',
     }
 
 })
-
-
-// Drop user if they state their address is incorrect
-router.post('/get-a-proof-of-benefit-letter/practice/snacks-answer', function (req, res) {
-
-  var confirmLetterSend = req.session.data['confirmLetterSend']
-
-
-  // Check if user selected no on single address page
-  if (confirmLetterSend == "no")  {
-    // Send user to contact us page
-    res.redirect('/get-a-proof-of-benefit-letter/download/ni/you-cannot-use-this-service-incorrect-address');
-  }
-
-  else {
-    // Send user to check answers
-    res.redirect('/get-a-proof-of-benefit-letter/download/ni/check-your-answers');
-  }
-
-})
-
-
 
 
 
