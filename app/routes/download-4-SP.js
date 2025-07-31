@@ -159,8 +159,9 @@ router.post('/get-a-proof-of-benefit-letter/download/download-4-SP/send-letter-t
 })
 
 
-// Drop user if they state their address is incorrect on change link page
-router.post('/change-link', function (req, res) {
+
+// Drop user if they state their address is incorrect for change link page
+router.post('/get-a-proof-of-benefit-letter/download/download-4-SP/change-link', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
 
@@ -173,10 +174,12 @@ router.post('/change-link', function (req, res) {
 
   else {
     // Send user to check answers
-    res.redirect('/get-a-proof-of-benefit-letter/download/download-4-SP/check-your-answers.html');
+    res.redirect('/get-a-proof-of-benefit-letter/download/download-4-SP/check-your-answers');
   }
 
 })
+
+
 
 
 
