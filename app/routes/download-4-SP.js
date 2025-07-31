@@ -157,6 +157,39 @@ router.post('/get-a-proof-of-benefit-letter/download/download-4-SP/send-letter-t
   }
 
 })
+
+
+// Drop user if they state their address is incorrect on change link page
+router.post('/change-link', function (req, res) {
+
+  var confirmLetterSend = req.session.data['confirmLetterSend']
+
+
+  // Check if user selected no on single address page
+  if (confirmLetterSend == "No")  {
+    // Send user to contact us page
+    res.redirect('/get-a-proof-of-benefit-letter/download/download-4-SP/you-cannot-use-this-service-incorrect-address');
+  }
+
+  else {
+    // Send user to check answers
+    res.redirect('/get-a-proof-of-benefit-letter/download/download-4-SP/check-your-answers.html');
+  }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 //On check answers page, if selected letter, send to conf, if not, send to download
 router.post('/get-a-proof-of-benefit-letter/download/download-4-SP/check-your-answers-answer', function (req, res) {
 

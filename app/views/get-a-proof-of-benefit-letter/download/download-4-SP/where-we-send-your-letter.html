@@ -42,7 +42,7 @@ Where we send your letters
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="send-letter-to-address-answer" method="post">
+      <form class="form" action="/send-letter-to-address-answer" method="post">
 
 
 
@@ -88,11 +88,13 @@ Where we send your letters
               items: [
                 {
                   value: "Yes",
-                  text: "Yes"
+                  text: "Yes",
+                  checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("Yes")
                 },
                 {
                   value: "No",
-                  text: "No"
+                  text: "No",
+                  checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("No")
                 }
               ]
             }) }}

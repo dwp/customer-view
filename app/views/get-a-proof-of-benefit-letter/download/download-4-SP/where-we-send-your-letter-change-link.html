@@ -44,7 +44,7 @@ Where we send your letters
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="send-letter-to-address-answer" method="post">
+      <form class="form" action="/change-link" method="post">
 
 
 
@@ -91,19 +91,19 @@ Where we send your letters
             {
               value: "Yes",
               text: "Yes",
-              checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("yes")
+              checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("no")
+              checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("No")
             }
           ]
         }) }}
 
         {{ govukButton({
           text: "Continue",
-          attribute: "check-your-answers"
+          attributes: "govuk-button"
         }) }}
 
       </form>
