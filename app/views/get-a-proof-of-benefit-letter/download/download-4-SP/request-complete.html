@@ -78,12 +78,8 @@ Request complete
             <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
               {% endif %}
               {% else %}
-              <h2 class="govuk-heading-m">Save proof of your benefit to your device</h2>
+              <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
             {% endif %}
-
-
-
-
 
     {% if data['inScope'].length == 1 %}
     <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ data['inScope'][0] }} (PDF, 4.2KB)</a></p>
@@ -116,13 +112,6 @@ Request complete
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
-
-
-
-
-
-
-
     {% if data['digitalOrLetter'] != "Download a file" and data['digitalOrLetter'] != "Download files" %}
 
       <h2 class="govuk-heading-m">
@@ -130,75 +119,113 @@ Request complete
       </h2>
 
 
-
-      <!-- Shows different messages based on number of benefits requested:
+<!-- Shows different messages based on number of benefits requested:
            - Single benefit: Shows simple message
            - Two benefits: Uses formatList filter to show both
            - Three or more: Shows as bullet points -->
 
-           <!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
-      {% if data['inScope'].length === 1 %}
-        <p>You have requested proof of {{ data['inScope'][0] }}.</p>
-
-         {% if (data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post" )%}
-            <p>Your letter should arrive within one week.</p>
-
-            {% elif (data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post")%}
-            <p>Your letter should arrive within one week.</p>
-            {% endif %}
+<!-- If user has one in scope benefits, and has chosen letter / digital or both-->
 
 
+  
 
+          
 
+<!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
+      
+{% if data['inScope'].length === 1 %}
+<p>You have requested proof of {{ data['inScope'][0] }}.</p>
 
-            {% elif data['which-benefits-need-proof'].length === 1 %}
-            <p>You have requested proof of {{ data['inScope'][0] }}.</p>
+ {% if (data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post" )%}
+    <p>Your letter should arrive within one week.</p>
 
-             {% if (data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post")%}
-                <p>Your letter should arrive within one week.</p>
-
-                {% elif (data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post")%}
-                <p>Your letter should arrive within one week.</p>
-                {% endif %}
+    {% elif (data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post")%}
+    <p>Your letter should arrive within one week.</p>
+    {% endif %}
 
 
 
 
 
-<!-- If user has two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['which-benefits-need-proof'].length === 2 %}
-        <p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
+    {% elif data['which-benefits-need-proof'].length === 1 %}
+    <p>You have requested proof of {{ data['inScope'][0] }}.</p>
 
-        {% if (data['digitalOrLetter'] == "Letter in the post" or "Letters in the post")%}
-            <p>Separate letters should arrive within one week.</p>
+     {% if (data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post")%}
+        <p>Your letter should arrive within one week.</p>
+
+        {% elif (data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post")%}
+        <p>Your letter should arrive within one week.</p>
+        {% endif %}
 
 
+   <!-- If user has two in scope benefits, and has chosen letter / digital or both -->
+{% elif data['which-benefits-need-proof'].length === 2 %}
+  
+<p>You have requested proof of {{ data['which-benefits-need-proof'] | formatList }}.</p>
+ 
+ 
+  {% if data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post" %}
+    
+<p>Separate letters should arrive within one week.</p>
+ 
+ 
+  {% elif data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post" %}
+    
+<p>Separate letters should arrive within one week.</p>
 
-            {% elif (data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post" )%}
-            <p>Separate letters should arrive within one week.</p>
-            {% endif %}
+{% endif %}
 
-<!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
-      {% elif data['which-benefits-need-proof'].length > 2 %}
-        <p>You have requested proof of:</p>
+<!-- If user has more than two in scope benefits, and has chosen letter / digital or both -->
+{% elif data['which-benefits-need-proof'].length > 2 %}
+  
+<p>You have requested proof of:</p>
         <ul class="govuk-list govuk-list--bullet">
             {% for benefit in data['which-benefits-need-proof'] %}
               <li>{{ benefit }}</li>
           {% else %}
               <p>No benefit selected</p>
-          {% endfor %}
+          {% endfor %}    
         </ul>
+ 
+ 
+  {% if data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post" %}
+    
+<p>Separate letters should arrive within one week.</p>
+ 
+ 
+  {% elif data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post" %}
+    
+<p>Separate letters should arrive within one week.</p>
+ 
+  {% endif %}
+{% endif %}
+{% endif %}
 
-        {% if (data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post")%}
-        <p>Separate letters should arrive within one week.</p>
-
-        {% elseif (data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post")%}
-        <p>Separate letters should arrive within one week.</p>
-        {% endif %}
 
 
-      {% endif %}
-      {% endif %}
+<!-- If user has more than two in scope benefits, and has chosen letter / digital or both-->
+  
+  
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       <!-- Shows different messages and layouts based on number of out-of-scope benefits:
