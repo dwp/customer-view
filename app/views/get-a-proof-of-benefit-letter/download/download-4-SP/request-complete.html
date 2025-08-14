@@ -148,7 +148,7 @@ Request complete
 
 
     {% elif data['which-benefits-need-proof'].length === 1 %}
-    <p>You have requested proof of {{ data['inScope'][0] }}.</p>
+    <p>You have requested proof of {{ data['which-benefits-need-proof'][0] }}.</p>
 
      {% if (data['digitalOrLetter'] == "Letter in the post" or data['digitalOrLetter'] == "Letters in the post")%}
         <p>Your letter should arrive within one week.</p>
