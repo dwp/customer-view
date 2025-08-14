@@ -52,7 +52,7 @@ Request complete
       {% if (data['digitalOrLetter'] == "Download a file" or data['digitalOrLetter'] == "Get both - download a file and get a letter in the post" or data['digitalOrLetter'] == "Get both - download files and get a letters in the post" or data['digitalOrLetter'] == "Download files")%}
 
         <!-- Check if there is any data in which-benefits-need-proofs -->
-        {% if data['which-benefits-need-proof']%}
+        {% if data['inScope'] %}
       <!-- 1. User selects only SP at the start-->
          {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
         <h2 class="govuk-heading-m">Save proof of your State Pension to your device</h2>
