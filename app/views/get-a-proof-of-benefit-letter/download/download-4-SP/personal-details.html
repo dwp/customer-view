@@ -150,20 +150,36 @@ href: "javascript:window.history.back()"
       </div>
     </div>
 
+
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
+        {% if 'State Pension' in data['inScope'] %}
+        <h2 class="govuk-summary-card__title">
+          Your payments
+        </h2>
+        {% elif 'State Pension' not in data['inScope'] %}
         <h2 class="govuk-summary-card__title">
           Your benefits
         </h2>
+        {% endif %}
         <ul class="govuk-summary-card__actions">
         </ul>
       </div>
+
+         
       <div class="govuk-summary-card__content">
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
+            {% if 'State Pension' in data['inScope'] %}
+            <dt class="govuk-summary-list__key">
+              Payments
+            </dt>
+            {% elif 'State Pension' not in data['inScope'] %}
             <dt class="govuk-summary-list__key">
               Benefits
             </dt>
+            {% endif %}
+
             <dd class="govuk-summary-list__value">
               {% for benefit in data['researchSetUpBenefits'] %}
               {% if benefit !== 'I need a letter for another benefit' %}
