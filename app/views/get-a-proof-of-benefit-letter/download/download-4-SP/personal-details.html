@@ -4,16 +4,26 @@
 
 {{ super() }}
 
-  {{ govukServiceNavigation({
-    serviceName: "View your personal details",
-    serviceUrl: "/",
-    navigation: [
-    {
-      href: "#",
-      text: "Sign out"
-    }
-  ]
-  }) }}
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
+  }
+</style>
+
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
+
+{{ govukServiceNavigation({
+
+serviceName: "View your personal details",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
+}) }}
 
 {% endblock %}
 

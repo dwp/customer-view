@@ -8,15 +8,25 @@
 
 {{ super() }}
 
-{{ govukServiceNavigation({
-  serviceName: "Get proof of your benefits",
-  serviceUrl: "/",
-  navigation: [
-  {
-    href: "#",
-    text: "Sign out"
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
   }
-]
+</style>
+
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
+
+{{ govukServiceNavigation({
+
+serviceName: "Get proof of your benefits",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
 }) }}
 
 {% endblock %}
