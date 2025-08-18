@@ -2,31 +2,37 @@
 
 {% block header %}
 
-  {{ hmrcHeader({
-    serviceName: "Get a proof of benefit letter",
-    serviceUrl : "/",
-    useTudorCrown: "true"
-  }) }}
+{{ super() }}
 
-{% endblock %}
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
+  }
+</style>
 
-{% block pageTitle %}
-You cannot get a proof of benefit letter using this service
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
+
+{{ govukServiceNavigation({
+
+serviceName: "Get proof of your benefits and State Pension",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
+}) }}
+
 {% endblock %}
 
 {% block beforeContent %}
 
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
-  }) }}
-
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 
 {% endblock %}
 

@@ -4,6 +4,15 @@
   Customer View internal prototype homepage
 {% endblock %}
 
+{% block header %}
+  {{ super() }}
+
+  {{ govukServiceNavigation({
+    serviceName: "Manage your benefits and State Pension",
+    serviceUrl: "/"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
