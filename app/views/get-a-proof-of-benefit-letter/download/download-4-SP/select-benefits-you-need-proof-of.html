@@ -58,16 +58,28 @@ Which benefits do you need proof of?
         <!-- This section displays information about benefits that cannot be handled by this service -->
         <!-- It shows different messages based on whether the user has Universal Credit or other out-of-scope benefits -->
         {% if data['oOScope'].length > 0 or data['uCBenefit'] == true %}
+        {% if data['inScope'] and data['inScope'].includes('State Pension') %}
+        <h1 class="govuk-heading-l">Getting proof of your benefits and State Pension</h1>
+        
+        <p>You can get proof of some of your payments using this service, but not all of them. </p>
+        
+        <p>This is because not all of your payments are online yet.</p>
+        
+        
+        {% else %}
 
         <h1 class="govuk-heading-l">Getting proof of your benefits</h1>
-
+        
         <p>You can get proof of some of your benefits using this service, but not all of them. </p>
+        
+        <p>This is because not all of your benefits are online yet.</p>
+        {% endif %}
 
-        {% if data['uCBenefit'] == false %}
+        <!--{% if data['uCBenefit'] == false %}
 
         <p>This is because not all of your benefits are online yet.</p>
 
-        {% endif %}
+        {% endif %}-->
 
         <h2 class="govuk-heading-m">Benefits you cannot get proof of using this service</h2>
 
@@ -106,7 +118,16 @@ Which benefits do you need proof of?
         <!-- SECTION 4: In-Scope Benefits Display -->
         <!-- Shows the benefits that can be handled by this service -->
         <!-- Uses different formats based on the number of benefits (1, 2, or more) -->
+
+        {% if data['inScope'] and data['inScope'].includes('State Pension') %}
+        <h2 class="govuk-heading-m">What you can get proof of using this service</h2>
+      
+        {% else %}
+
         <h2 class="govuk-heading-m">Benefits you can get proof of using this service</h2>
+
+        {% endif %}
+
 
         {% if data['inScope'].length === 1 %}
           <p>If you continue, you can request proof of {{ data['inScope'][0] }}.</p>
