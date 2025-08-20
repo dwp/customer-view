@@ -56,7 +56,7 @@ You cannot get a proof of benefit letter using this service
 
 
       {% if 'State Pension' in data.researchSetUpBenefits and data.researchSetUpBenefits|length > 1 %}
-      <h1 class="govuk-heading-l">You cannot get proof of your benefits and State Pension using this service</h1>
+      <h1 class="govuk-heading-l">You cannot get proof of your benefits or State Pension using this service</h1>
     {% elif 'State Pension' in data.researchSetUpBenefits %}
       <h1 class="govuk-heading-l">You cannot get proof of your State Pension using this service</h1>
     {% elif data.researchSetUpBenefits %}
