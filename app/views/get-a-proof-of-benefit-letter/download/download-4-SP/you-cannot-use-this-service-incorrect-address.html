@@ -71,6 +71,7 @@ You cannot get a proof of benefit letter using this service
            3. If other benefits (no State Pension), show general message -->
 
        <!-- 2. User selects multiple benefits and state pension at start then just state pension -->
+       
        {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
        <p>Before you can get proof of your State Pension, you need to <a href="https://www.gov.uk/contact-pension-service/report-changes" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service to correct your address (opens in a new tab)</a>.</p>
          {% endif %}
