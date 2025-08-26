@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+{{ super() }}
+
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
+  }
+</style>
+
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
+
+{{ govukServiceNavigation({
+
+serviceName: "Check your next payment",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
+}) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Where we send your letters
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+              <div class="govuk-form-group">
+              <!--
+                <p class="govuk-body-m">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;<a href="ni-number">Change</a></p>
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <p class="govuk-caption-l">{{ data['full-name'] }}</p>
+              -->
+        
+                  <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                          <h1 class="govuk-fieldset__heading">
+                            Your next payment
+                          </h1>
+                    </legend>
+                    
+                    <!--First Box-->
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+        
+                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                      <p>Employment and Support Allowance (ESA)<span class="govuk-heading-xl" style="margin-bottom:0px;">£56.70</span>20 September 2025</p>
+        
+                    </details>
+        
+                    </div>
+        
+                    <!--Second Box-->
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+        
+                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                      <p>Carer's Allowance<span class="govuk-heading-xl" style="margin-bottom:0px;">£60.60</span>15 September 2025</p>
+                    </details>
+        
+                    </div>
+        </div>
+        </div>
+        </div>
+           
+            <!--<p class="govuk-!-font-size-16"><a href="" target="_blank">Print</a> <br><br> <a class="govuk-!-font-size-16"><a href="" target="_blank">Download</a></p>-->
+            
+          <br>
+          <a class="govuk-button" href="/payments/v1/account-home">
+           Go back to account home
+          </a>
+          </form>
+          </div>
+        </div>
+        
+
+{% endblock %}

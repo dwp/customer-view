@@ -2092,4 +2092,10 @@ router.use('/', download4)
 const downloadNotifications = require('./routes/download-notifications')
 router.use('/', downloadNotifications)
 
+// payments sections
+
+const payments1 = require('./routes/payments-v1')
+router.use('/', payments1)
+
+
 
