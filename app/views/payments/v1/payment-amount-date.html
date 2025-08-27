@@ -28,7 +28,7 @@ serviceName: "Check your next payment",
 {% endblock %}
 
 {% block pageTitle %}
-Where we send your letters
+Your next payment
 {% endblock %}
 
 {% block beforeContent %}
@@ -49,6 +49,7 @@ Where we send your letters
 
 {% block content %}
 
+
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
             <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
@@ -65,28 +66,104 @@ Where we send your letters
                             Your next payment
                           </h1>
                     </legend>
+
+                    <!--dynamic content for different benefit types-->
+
+                    {% for benefit in data.inScope %} 
+                    {% if benefit == 'Attendance Allowance' %}
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+        
+                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                      <p>Attendance Allowance<span class="govuk-heading-xl" style="margin-bottom:0px;">£110.40</span>03 October 2025</p>
+                    </details>
+                  </div>
+
+                  {% elseif benefit == 'Disability Living Allowance (DLA) for adults' %}
+        
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+        
+                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                      <p>Disability Living Allowance (DLA) for adults<span class="govuk-heading-xl" style="margin-bottom:0px;">£187.45</span>10 October 2025</p>
+                    </details>
+                    </div>
+
+                    {% elseif benefit == 'Employment and Support Allowance (ESA)' %}
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                            
+                        <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                          <p>Employment and Support Allowance (ESA)<span class="govuk-heading-xl" style="margin-bottom:0px;">£259.00</span>15 October 2025</p>
+                        </details>
+                        </div>
+
+                        {% elseif benefit == 'Income Support' %}
+        
+                      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                  
+                        <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                          <p>Income Support<span class="govuk-heading-xl" style="margin-bottom:0px;">£92.05</span>21 October 2025</p>
+                        </details>
+                        </div>
+
+                        {% elseif benefit == 'Jobseeker’s Allowance' %}
+        
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                    
+                          <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                            <p>Jobseeker’s Allowance<span class="govuk-heading-xl" style="margin-bottom:0px;">£183.40</span>29 October 2025</p>
+                          </details>
+                          </div>
+
+                          {% elseif benefit == 'Pension Credit' %}
+        
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                    
+                          <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                            <p>Pension Credit<span class="govuk-heading-xl" style="margin-bottom:0px;">£436.30</span>27 October 2025</p>
+                          </details>
+                          </div>
+
+                          {% elseif benefit == 'Personal Independence Payment (PIP)' %}
+        
+                          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                      
+                            <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                              <p>Personal Independence Payment (PIP)<span class="govuk-heading-xl" style="margin-bottom:0px;">£290.60</span>14 October 2025</p>
+                            </details>
+                            </div>
+                            
+                            {% elseif benefit == 'State Pension' %}
+        
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                        
+                              <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                                <p>State Pension<span class="govuk-heading-xl" style="margin-bottom:0px;">£884.80</span>06 October 2025</p>
+                              </details>
+                              </div>
+
+                    {% endif %}
+                    {% endfor %}
                     
-                    <!--First Box-->
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
-        
-                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
-                      <p>Employment and Support Allowance (ESA)<span class="govuk-heading-xl" style="margin-bottom:0px;">£56.70</span>20 September 2025</p>
-        
-                    </details>
-        
-                    </div>
-        
-                    <!--Second Box-->
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
-        
-                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
-                      <p>Carer's Allowance<span class="govuk-heading-xl" style="margin-bottom:0px;">£60.60</span>15 September 2025</p>
-                    </details>
-        
-                    </div>
+
+
         </div>
         </div>
+
+        <div class="govuk-grid-column-one-third-from-desktop">
+          <h2 class="govuk-heading-m">Do another thing</h2>
+
+          <p><a href="payment-history">View your payment history</a></p>
+
+          <p><a href="personal-details">View your personal details</a></p>
+
+          <p><a href="select-benefits-you-need-proof-of">Get proof of your benefits and State Pension </a></p>
+
+
         </div>
+      
+
+        </div>
+
+       
            
             <!--<p class="govuk-!-font-size-16"><a href="" target="_blank">Print</a> <br><br> <a class="govuk-!-font-size-16"><a href="" target="_blank">Download</a></p>-->
             

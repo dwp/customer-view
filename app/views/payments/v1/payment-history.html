@@ -1,0 +1,80 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+{{ super() }}
+
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
+  }
+</style>
+
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
+
+{{ govukServiceNavigation({
+
+serviceName: "Check your next payment",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
+}) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Your next payment
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+              <div class="govuk-form-group">
+              <!--
+                <p class="govuk-body-m">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;<a href="ni-number">Change</a></p>
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <p class="govuk-caption-l">{{ data['full-name'] }}</p>
+              -->
+        
+                  <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                          <h1 class="govuk-fieldset__heading">
+                            Your payment history
+                          </h1>
+                    </legend>
+
+                    
+          <br>
+          <a class="govuk-button" href="/payments/v1/account-home">
+           Go back to account home
+          </a>
+          </form>
+          </div>
+        </div>
+        
+
+{% endblock %}
