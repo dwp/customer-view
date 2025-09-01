@@ -25,11 +25,62 @@
       <p class="govuk-body-l">This journey lets people get a proof of benefit letter sent in the post.</p>
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+<!----------------------- Version 11 ---------------------->
+
+      <span class="govuk-caption-m">August 2025</span>
+      <h2 class="govuk-heading-l">Version 11 - release 4 - Download, including alternative formats</h2>
 
 
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "The dynamic content in this design is for user testing only.",
+        iconFallbackText: "Warning"
+      }) }}
+      
+      <p>This design includes some content changes to the confirmation page for alternative formats users, this needs to be included for public beta.</p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Change log
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>Since version 10, we have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Added a page into the research set up to find out if the user gets standard letters or alternative formats</li>
+            <li>Added dynamic content to the request complete page for user's who get alternative formats</li>
+            <li>Changed the H1 on the 'where we send your letters' page to 'Confirm your address'. Previously said 'Where we send your letters'. This was confusing for people who had requested download only</li>
+            <li>Removed this bullet point from the start page 'need a letter in an alternative format, like braille'</li>
+          </ul>
+        </div>
+      </details>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      <div class="govuk-button-group">
+
+
+        {{ govukButton({
+          text: "View design: Download design              ",
+          href: "../get-a-proof-of-benefit-letter/download/download-5-AF/research-set-up/intro"
+        }) }}
+
+      </div>
+
+
+      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
+        <p>The Online Identity and Verification (OIDV) service is not included in this
+          design</p>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+<!----------------------- Version 10 ---------------------->
 
       <span class="govuk-caption-m">May 2025</span>
-      <h2 class="govuk-heading-l">Version 10 - release 4 - Download, including State Pension</h2>
+      <h2 class="govuk-heading-l">Version 10 - Download, including State Pension</h2>
 
 
       {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
@@ -93,7 +144,7 @@
 
 
 
-
+<!----------------------- Version 9 ---------------------->
 
 
       <span class="govuk-caption-m">May 2025</span>
@@ -168,7 +219,7 @@
 
       
 
-
+<!----------------------- Version 8 ---------------------->
 
       <span class="govuk-caption-m">April 2025</span>
       <h2 class="govuk-heading-l">Version 8 - release 3 - Download</h2>
@@ -222,6 +273,8 @@
       </div>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<!----------------------- Version 7 ---------------------->
 
       <span class="govuk-caption-m">March 2025 - April</span>
       <h2 class="govuk-heading-l">Version 7: Download</h2>

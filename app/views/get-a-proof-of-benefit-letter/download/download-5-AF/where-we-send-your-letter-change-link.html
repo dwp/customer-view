@@ -49,10 +49,12 @@ Where we send your letters
 
 {% block content %}
 
+<!--This page is duplicated here - "/get-a-proof-of-benefit-letter/download/download-4-SP/where-we-send-your-letter" - so if content changes it needs updating on both pages. This page is connected to the change link on check you answers page and joureny from this page takes you back to check your answers-->
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="send-letter-to-address-answer" method="post">
+      <form class="form" action="change-link" method="post">
 
 
 
@@ -61,7 +63,7 @@ Where we send your letters
              - If researchSetUpAddress is anything else, shows "The address we send your letters to is saved as:"
              This allows us to test  different content variations during research sessions -->
 
-             <h1 class="govuk-heading-l" >Confirm your address</h1>
+             <h1 class="govuk-heading-l" >Where we send your letters</h1>
 
              {% if data.researchSetUpAddress === 'home' %}
                <p>Your address is saved as:</p>
@@ -86,32 +88,33 @@ Where we send your letters
         <!-- Radio button group to confirm if address is correct
              If user selects 'No', they will be redirected to cannot-use-service page
              If user selects 'Yes', they will proceed to check-your-answers page -->
-             {{ govukRadios({
-              name: "confirmLetterSend",
-              fieldset: {
-                legend: {
-                  text: "Is your address correct?",
-                  isPageHeading: false,
-                  classes: "govuk-fieldset__legend--m"
-                }
-              },
-              items: [
-                {
-                  value: "Yes",
-                  text: "Yes",
-                  checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("Yes")
-                },
-                {
-                  value: "No",
-                  text: "No",
-                  checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("No")
-                }
-              ]
-            }) }}
-    
-            {{ govukButton({
-              text: "Continue"
-            }) }}
+        {{ govukRadios({
+          name: "confirmLetterSend",
+          fieldset: {
+            legend: {
+              text: "Is your address correct?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: true if data['confirmLetterSend']|length and data['confirmLetterSend'].includes("No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          attributes: "govuk-button"
+        }) }}
 
       </form>
 
