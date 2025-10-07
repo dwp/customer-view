@@ -1,0 +1,222 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Before we start the user research scenario - benefits
+{% endblock %}
+
+
+
+
+
+{% block header %}
+  {{ super() }}
+
+  {{ govukServiceNavigation({
+    serviceName: "Get proof of your benefits and State Pension",
+    serviceUrl: "/"
+  }) }}
+{% endblock %}
+
+
+
+
+
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="ready" method="post">
+        <span class="govuk-caption-xl">Setting up the prototype</span>
+
+        <h1 class="govuk-heading-l">The user researcher will help you for this part of the session</h1>
+
+        <div id="account-number-hint" class="govuk-hint">
+          Your answers will determine what content appears during user testing.
+        </div>
+
+        <!--
+          Checkbox group for benefit selection.
+          We do this so research participants see only the benefits they actually receive in the test.
+          Selected benefits are categorized into three groups:
+
+          1. inScope array:
+             - Benefits that we can provide proof of to users through this service
+
+          2. oOScope array (out of scope):
+             - Benefits that we cannot provide proof of through this service
+             - Users will need to contact relevant departments for these benefits
+
+          3. uCBenefit boolean (Universal Credit):
+             - Technically an out of scope benefit but handled separately
+             - Tracked independently because it requires specific messaging to users
+             - Users are directed to their UC portal instead
+        -->
+
+
+
+
+
+
+
+
+
+
+  <!--<form action="/alt-formats-list/ready" method="post" data-module="govuk-radios">
+    {% for format in altFormats %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id=" altFormats" name=" altFormats" type="radio" value="{{ format }}">
+        <label class="govuk-label govuk-radios__label" for=" altFormats">
+          {{ format }}
+        </label>
+      </div>
+    {% endfor %}
+  </div>
+  </div>-->
+
+
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats1" name="altFormats" type="radio" value="Audio">
+        <label class="govuk-label govuk-radios__label" for="altFormats1">
+          Audio
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats2" name="altFormats" type="radio" value="Audio recording of interview">
+        <label class="govuk-label govuk-radios__label" for="altFormats2">
+          Audio recording of interview
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats3" name="altFormats" type="radio" value="Braille">
+        <label class="govuk-label govuk-radios__label" for="altFormats3">
+          Braille
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats4" name="altFormats" type="radio" value="British Sign Language or finger spelling">
+        <label class="govuk-label govuk-radios__label" for="altFormats4">
+          British Sign Language or finger spelling
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats5" name="altFormats" type="radio" value="Easy Read">
+        <label class="govuk-label govuk-radios__label" for="altFormats5">
+          Easy Read
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats6" name="altFormats" type="radio" value="Hands on signing">
+        <label class="govuk-label govuk-radios__label" for="altFormats6">
+          Hands on signing
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats7" name="altFormats" type="radio" value="Large Print">
+        <label class="govuk-label govuk-radios__label" for="altFormats7">
+          Large Print
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats8" name="altFormats" type="radio" value="Large Print 16+">
+        <label class="govuk-label govuk-radios__label" for="altFormats8">
+          Large Print 16+
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats9" name="altFormats" type="radio" value="Lipspeaking">
+        <label class="govuk-label govuk-radios__label" for="altFormats9">
+          Lipspeaking
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats10" name="altFormats" type="radio" value="Coloured paper">
+        <label class="govuk-label govuk-radios__label" for="altFormats10">
+          Coloured paper
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats11" name="altFormats" type="radio" value="Relay UK">
+        <label class="govuk-label govuk-radios__label" for="altFormats11">
+          Relay UK
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats12" name="altFormats" type="radio" value="Sign Supported English">
+        <label class="govuk-label govuk-radios__label" for="altFormats12">
+          Sign Supported English
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats13" name="altFormats" type="radio" value="SMS Text">
+        <label class="govuk-label govuk-radios__label" for="altFormats13">
+          SMS Text
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats14" name="altFormats" type="radio" value="Telephone">
+        <label class="govuk-label govuk-radios__label" for="altFormats14">
+          Telephone
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats15" name="altFormats" type="radio" value="Textphone">
+        <label class="govuk-label govuk-radios__label" for="altFormats15">
+          Textphone
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="altFormats16" name="altFormats" type="radio" value="Video Relay Service">
+        <label class="govuk-label govuk-radios__label" for="altFormats16">
+          Video Relay Service
+        </label>
+      </div>
+
+        
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
