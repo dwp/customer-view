@@ -319,22 +319,15 @@ router.post('/get-a-proof-of-benefit-letter/download/ni/select-benefits-answer',
 router.get('/get-a-proof-of-benefit-letter/download/download-6-AF/research-set-up/alt-formats-list', function (req, res) {
   res.render('/get-a-proof-of-benefit-letter/download/download-6-AF/research-set-up/alt-formats-list', {
     altFormats: [
-      "Audio",
-      "Audio recording of interview",
+      "Audio recording",
       "Braille",
-      "British Sign Language or finger spelling",
-      "Easy Read",
-      "Hands on signing",
-      "Large Print",
-      "Large Print 16+",
-      "Lipspeaking",
+      "British Sign Language (BSL)",
       "Coloured paper",
-      "Relay UK",
-      "Sign Supported English",
-      "SMS Text",
-      "Telephone",
-      "Textphone",
-      "Video Relay Service"
+      "Easy Read",
+      "Accessible email",
+      "Large Print",
+      "Accessible PDF",
+      "Word document"
     ]
   });
 });
