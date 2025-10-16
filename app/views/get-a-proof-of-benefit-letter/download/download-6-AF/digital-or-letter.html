@@ -169,14 +169,35 @@ serviceName: "Get proof of your benefits and State Pension",
 <!--dynamic content for radio 2-->
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
            <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="digitalOrLetter1" name="altFormat" type="checkbox" value="{{data['altFormats']}}">
+            
+      <input class="govuk-checkboxes__input" id="digitalOrLetter1" name="altFormat" type="checkbox" value="{{data['altFormats']}}" 
+{% if data['altFormat'] and data['altFormat'] == data['altFormats'] %}
+        checked
+      {% endif %}>
+
       <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
         {{data['altFormats']}}
       </label>
       <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
-              Hint text
-      </div>
+              This is the format you have asked for.
+
+        {% if data['altFormats'] in ["Braille", "Word document"] %}
+         You will also get a standard letter with this.
+        {% endif %}
+
+
+         {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+       1 month.
+
+      {% elif data['altFormats'] in ["Large Print"] %}
+      8 days.
+
+      {% else %}
+      8 days.
+      {% endif %}
     </div>
+    </div>
+
           <div class="govuk-checkboxes__item">
             {% if data['inScope'].length === 1 %}
             <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
@@ -198,6 +219,9 @@ serviceName: "Get proof of your benefits and State Pension",
             {% endif %}
             <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
               Save to your device within minutes.
+              {% if data['altFormats'] in ["Audio recording", "Braille", "British Sign Language (BSL)", "Coloured paper", "Easy Read", "Accessible email", "Large Print", "Accessible PDF", "Word document"] %}
+                This is a standard file and is not yet compatible with assistive technology.
+              {% endif %}
             </div>
           </div>
 
@@ -210,7 +234,12 @@ serviceName: "Get proof of your benefits and State Pension",
             checked
           {% endif %}>
             <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter4">
-              Letter in the post
+               {% if data['altFormats'] in ["Audio recording", "Braille", "British Sign Language (BSL)", "Coloured paper", "Easy Read", "Accessible email", "Large Print", "Accessible PDF", "Word document"] %}
+              Standard letter
+              {% else %}
+              Letter
+              {% endif %}
+              in the post
             </label>
             {% else %}
              <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
@@ -218,19 +247,29 @@ serviceName: "Get proof of your benefits and State Pension",
             checked
           {% endif %}>
             <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter5">
-              Letters in the post
+              {% if data['altFormats'] in ["Audio recording", "Braille", "British Sign Language (BSL)", "Coloured paper", "Easy Read", "Accessible email", "Large Print", "Accessible PDF", "Word document"] %}
+              Standard letters
+              {% else %}
+              Letters
+              {% endif %}
+              in the post
             </label>
             {% endif %}
             {% if data['inScope'].length === 1 %}
             <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
-              Arrives within one week.
+              Arrives within 8 days.
             </div>
             {% else %}
             <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
-              Arrive within one week.
+              Arrive within 8 days.
             </div>
             {% endif %}
           </div>
+
+
+      
+
+          
           
 
 <!--dynamic content for radio 3-->

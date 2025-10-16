@@ -58,7 +58,7 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
 
 
 
-    {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) or data['altFormat'] is defined %}
+  
     <!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
 
     {% if data['inScope']|length == 1 %}
@@ -85,7 +85,7 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
       {% endfor %}
     </ul>
     {% endif %}
-    {% endif %}
+    
 
     
 
@@ -202,14 +202,51 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
     <!--end of download section-->
 
 
-
-    <!-- Letters and Alt format dynamic content -->
-
-{% if data['altFormat'] %}
-
+ {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) or data['altFormat'] is defined %}
     <h2 class="govuk-heading-m">
       What happens next
     </h2>
+     {% endif %}
+
+    <!--Letter section-->
+
+    {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) %}
+    
+
+  <div class="govuk-body">
+    {% if data['inScope'] and data['inScope']|length == 1 %}
+    Your standard letter should arrive within 8 days.
+  </div>   
+
+  <div class="govuk-body">
+    {% elif data['which-benefits-need-proof']|length == 1 %}
+    Your standard letter should arrive within 8 days.
+  </div>
+
+  <div class="govuk-body">
+    {% elif data['which-benefits-need-proof']|length == 2 %}
+    Seperate letters should arrive within 8 days.    
+  </div>
+
+  <div class="govuk-body">
+    {% elif data['which-benefits-need-proof']|length > 2 %}
+    Seperate letters should arrive within 8 days.    
+    {% endif %}
+</div>
+</div>
+</div>
+{% endif %}
+
+<!--End of Letter section-->
+
+   
+
+
+
+    <!-- Alt format dynamic content -->
+
+{% if data['altFormat'] %}
+
 
     <!-- Shows different messages based on number of benefits requested:
            - Single benefit: Shows simple message
@@ -221,7 +258,9 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
     <!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
 
      {% if data['inScope'] and data['inScope']|length == 1 %}
-    
+
+
+
     <div class="govuk-body">
       You will get
       {% if data['altFormats'] in ["Braille", "Coloured paper", "Large Print", "Large print", "Word document"] %}
@@ -232,11 +271,11 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
       {{data['altFormats']}}
       version of your letter within
 
-      {% if data['altFormats'] in ["Braille", "Word document"] %}
-      3 weeks.
+      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+       1 month.
 
-      {% elif data['altFormats'] in ["Large Print", "Coloured paper"] %}
-      1 week.
+      {% elif data['altFormats'] in ["Large Print"] %}
+      8 days.
 
       {% else %}
       1 month.
@@ -250,8 +289,9 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
     <!-- if the users has more than one in scope benefit but chooses to get proof of only in benefit-->
     {% elif data['which-benefits-need-proof']|length == 1 %}
 
+
+
     <div class="govuk-body">
-      
       You will get
       {% if data['altFormats'] in ["Braille", "Coloured paper", "Large Print", "Large print", "Word document"] %}
       a
@@ -261,11 +301,11 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
       {{data['altFormats']}}
       version of your letter within
 
-      {% if data['altFormats'] in ["Braille", "Word document"] %}
-      3 weeks.
+      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+       1 month.
 
-      {% elif data['altFormats'] in ["Large Print", "Coloured paper"] %}
-      1 week.
+      {% elif data['altFormats'] in ["Large Print"] %}
+      8 days.
 
       {% else %}
       1 month.
@@ -279,18 +319,23 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
     <!-- If user has two in scope benefits, and has chosen letter / digital or both -->
 
     {% elif data['which-benefits-need-proof']|length == 2 %}
+
+
+
   <div class="govuk-body">
     You will get
     
     {{ data['altFormats'] }} versions of your letters within
 
-    {% if data['altFormat'][0] in ["Braille", "Word document"] %}
-      3 weeks.
-    {% elif data['altFormat'][0] in ["Large Print", "Coloured paper"] %}
-      1 week.
-    {% else %}
+    {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+       1 month.
+
+      {% elif data['altFormats'] in ["Large Print"] %}
+      8 days.
+
+      {% else %}
       1 month.
-    {% endif %}
+      {% endif %}
 
     {% if data['altFormat'][0] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
       <p>This will include standard letters in the same envelope.</p>
@@ -302,6 +347,8 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
     <!-- If user has more than two in scope benefits, and has chosen letter / digital or both -->
     {% elif data['which-benefits-need-proof']|length > 2 %}
 
+
+
     <div class="govuk-body">
       
       You will get
@@ -309,18 +356,18 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
       {{data['altFormats']}}
       versions of your letters within
 
-      {% if data['altFormats'] in ["Braille", "Word document"] %}
-      3 weeks.
+      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+       1 month.
 
-      {% elif data['altFormats'] in ["Large Print", "Coloured paper"] %}
-      1 week.
+      {% elif data['altFormats'] in ["Large Print"] %}
+      8 days.
 
       {% else %}
       1 month.
       {% endif %}
 
     {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
-      <p>This will include a standard letters in the same envelope.
+      <p>This will include standard letters in the same envelope.
       </p>
   {% endif %}
     </div>

@@ -52,109 +52,263 @@ serviceName: "Get proof of your benefits and State Pension",
 
 {% block content %}
 
-<!--This page is duplicated here - "/get-a-proof-of-benefit-letter/download/download-4-SP/digital-or-letter-error.html" - so if content changes it needs updating on both pages. This page is connected to the change link on check you answers page and joureny from this page takes you back to check your answers-->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+     <form class="form" action="check-your-answers" method="post">
 
-    <form class="form" action="check-your-answers" method="post">
-      <!--dynamic content for the h1's-->
-          <div class="govuk-form-group">
-            {% if 'State Pension' in data.researchSetUpBenefits and data.researchSetUpBenefits|length > 1 %}
-            <fieldset class="govuk-fieldset">
+      <div class="govuk-form-group">
+
+          <!-- 1. User selects only SP at the start-->
+        {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
+
+        <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    
+
+        <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Tell us how you want to get proof of your State Pension
+            </h1>
+          </legend>
+
+
+       <!-- Looking to see if there is NOT SP in initial selections -->
+          {% elif 'State Pension' not in data['inScope'] and data['inScope']|length == 1 %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits
+              </h1>
+            </legend>
+
+            {% elif 'State Pension' not in data['inScope'] and data['inScope']|length > 1 %}
+         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits
+              </h1>
+            </legend>
+
+
+
+
+
+
+            <!-- Check if there is any data in which-benefits-need-proof -->
+
+            <!-- 2. User selects multiple benefits and state pension at start then just state pension -->
+          {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length == 1 %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your State Pension
+              </h1>
+            </legend>
+
+
+
+          <!-- 3. User selects multiple benefits and state pension at start then state pension other benefits -->
+
+            {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length > 1 %}
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
                   Tell us how you want to get proof of your benefits and State Pension
                 </h1>
               </legend>
-              {% elif 'State Pension' in data.researchSetUpBenefits %}
-              <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                  <h1 class="govuk-fieldset__heading">
-                    Tell us how you want to get proof of your State Pension
-                  </h1>
-                </legend>
-                {% elif data.researchSetUpBenefits %}
-                <fieldset class="govuk-fieldset">
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                      Tell us how you want to get proof of your benefits
-                    </h1>
-                  </legend>
-                  {% endif %}
 
 
-      <!--dynamic content for radio 1-->
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  {% if data['inScope'].length === 1 %}
-                  <input class="govuk-radios__input" id="howYouWantProof" name="howYouWantProof" type="radio" value="Download a file">
-                  <label class="govuk-label govuk-radios__label" for="howYouWantProof">
-                    Download a file
-                  </label>
-                  {% else %}
-                  <input class="govuk-radios__input" id="howYouWantProofs" name="howYouWantProof" type="radio" value="Download files">
-                  <label class="govuk-label govuk-radios__label" for="howYouWantProofs">
-                    Download files
-                  </label>
-                  {% endif %}
-                  <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                    Save to your device within minutes.
-                  </div>
-                </div>
+              <!--- checking SP in second selection -->
+                    {% elif 'State Pension' not in data['which-benefits-need-proof'] %}
+                    <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          Tell us how you want to get proof of your benefits
+                        </h1>
+                      </legend>
+                {% endif %}
 
-      <!--dynamic content for radio 2-->
-                <div class="govuk-radios__item">
 
-                  {% if data['inScope'].length === 1 %}
-                  <input class="govuk-radios__input" id="howYouWantProof-2" name="howYouWantProof" type="radio" value="Letter in the post">
-                  <label class="govuk-label govuk-radios__label" for="howYouWantProof-2">
-                    Letter in the post
-                  </label>
-                  {% else %}
-                  <input class="govuk-radios__input" id="howYouWantProof-2s" name="howYouWantProof" type="radio" value="Letters in the post">
-                  <label class="govuk-label govuk-radios__label" for="howYouWantProof-2s">
-                    Letters in the post
-                  </label>
-                  {% endif %}
-                  {% if data['inScope'].length === 1 %}
-                  <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                    Arrives within one week.
-                  </div>
-                  {% else %}
-                  <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                    Arrive within one week.
-                  </div>
-                  {% endif %}
-                </div>
 
-      <!--dynamic content for radio 3-->
-                <div class="govuk-radios__item">
 
-                  {% if data['inScope'].length === 1 %}
-                  <input class="govuk-radios__input" id="howYouWantProof-3" name="howYouWantProof" type="radio" value="Get both - download a file and get a letter in the post">
-                  <label class="govuk-label govuk-radios__label" for="howYouWantProof-3">
-                    Get both - download a file and get a letter in the post
-                  </label>
-                  {% else %}
-                  <input class="govuk-radios__input" id="howYouWantProof-3s" name="howYouWantProof" type="radio" value="Get both - download a files and get a letters in the post">
-                  <label class="govuk-label govuk-radios__label" for="howYouWantProof-3s">
-                    Get both - download a files and get a letters in the post
-                  </label>
-                  {% endif %}
-                  {% if data['inScope'].length === 1 %}
-                  <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                    Save your file within minutes and get a letter within one week.
-                  </div>
-                  {% else %}
-                  <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                    Save your files within minutes and get letters within one week.
-                  </div>
-                  {% endif %}
-                </div>
-              </div>
-            </fieldset>
+
+
+
+<!--
+    <div class="govuk-form-group">
+      {% if 'State Pension' in data.researchSetUpBenefits and data.researchSetUpBenefits|length > 1 %}
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Tell us how you want to get proof of your benefits and State Pension
+          </h1>
+        </legend>
+        {% elif 'State Pension' in data.researchSetUpBenefits %}
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Tell us how you want to get proof of your State Pension
+            </h1>
+          </legend>
+          {% elif data.researchSetUpBenefits %}
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits
+              </h1>
+            </legend>
+            {% endif %}-->
+
+
+
+             <!--dynamic content for radio 1-->   
+  
+
+
+<!--dynamic content for radio 2-->
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+           <div class="govuk-checkboxes__item">
+            
+      <input class="govuk-checkboxes__input" id="digitalOrLetter1" name="altFormat" type="checkbox" value="{{data['altFormats']}}" 
+{% if data['altFormat'] and data['altFormat'] == data['altFormats'] %}
+        checked
+      {% endif %}>
+
+      <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
+        {{data['altFormats']}}
+      </label>
+      <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              This is the format you have asked for.
+
+        {% if data['altFormats'] in ["Braille", "Word document"] %}
+         You will also get a standard letter with this.
+        {% endif %}
+
+
+         {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+       1 month.
+
+      {% elif data['altFormats'] in ["Large Print"] %}
+      8 days.
+
+      {% else %}
+      8 days.
+      {% endif %}
+    </div>
+    </div>
+
+          <div class="govuk-checkboxes__item">
+            {% if data['inScope'].length === 1 %}
+            <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
+            <input class="govuk-checkboxes__input" id="digitalOrLetter2" name="digitalOrLetter" type="checkbox" value="Download a file"{% if data['digitalOrLetter'] and 'Download a file' in data['digitalOrLetter'] %}
+            checked
+          {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter2">
+              Download a file
+            </label>
+            {% else %}
+            <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
+            <input class="govuk-checkboxes__input" id="digitalOrLetter3" name="digitalOrLetter" type="checkbox" value="Download files"
+            {% if data['digitalOrLetter'] and 'Download files' in data['digitalOrLetter'] %}
+            checked
+          {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter3">
+              Download files
+            </label>
+            {% endif %}
+            <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              Save to your device within minutes.
+              {% if data['altFormats'] in ["Audio recording", "Braille", "British Sign Language (BSL)", "Coloured paper", "Easy Read", "Accessible email", "Large Print", "Accessible PDF", "Word document"] %}
+                This is a standard file and is not yet compatible with assistive technology.
+              {% endif %}
+            </div>
           </div>
+
+<!--dynamic content for radio 3-->
+          <div class="govuk-checkboxes__item">
+
+            {% if data['inScope'].length === 1 %}
+             <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
+            <input class="govuk-checkboxes__input" id="digitalOrLetter4" name="digitalOrLetter" type="checkbox" value="Letter in the post"{% if data['digitalOrLetter'] and 'Letter in the post' in data['digitalOrLetter'] %}
+            checked
+          {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter4">
+               {% if data['altFormats'] in ["Audio recording", "Braille", "British Sign Language (BSL)", "Coloured paper", "Easy Read", "Accessible email", "Large Print", "Accessible PDF", "Word document"] %}
+              Standard letter
+              {% else %}
+              Letter
+              {% endif %}
+              in the post
+            </label>
+            {% else %}
+             <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
+            <input class="govuk-checkboxes__input" id="digitalOrLetter5" name="digitalOrLetter" type="checkbox" value="Letters in the post"{% if data['digitalOrLetter'] and 'Letters in the post' in data['digitalOrLetter'] %}
+            checked
+          {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter5">
+              {% if data['altFormats'] in ["Audio recording", "Braille", "British Sign Language (BSL)", "Coloured paper", "Easy Read", "Accessible email", "Large Print", "Accessible PDF", "Word document"] %}
+              Standard letters
+              {% else %}
+              Letters
+              {% endif %}
+              in the post
+            </label>
+            {% endif %}
+            {% if data['inScope'].length === 1 %}
+            <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              Arrives within 8 days.
+            </div>
+            {% else %}
+            <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              Arrive within 8 days.
+            </div>
+            {% endif %}
+          </div>
+
+
+      
+
+          
+          
+
+<!--dynamic content for radio 3-->
+          <!--<div class="govuk-checkboxes__item">
+
+            {% if data['inScope'].length === 1 %}
+              The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
+            <!--<input class="govuk-checkboxes__input" id="digitalOrLetter" name="digitalOrLetter" type="radio" value="Get both - download a file and get a letter in the post"{% if data['digitalOrLetter'] and 'Get both - download a file and get a letter in the post' in data['digitalOrLetter'] %}
+            checked
+          {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter">
+              Get both - download a file and get a letter in the post
+            </label>
+            {% else %}-->
+             <!-- The if statement within the tag below is to make the radio button remember the choice the user has selected if they use the change link from 'check your answers' -->
+            <!--<input class="govuk-checkboxes__input" id="digitalOrLetter" name="digitalOrLetter" type="radio" value="Get both - download files and get a letters in the post"{% if data['digitalOrLetter'] and 'Get both - download files and get a letters in the post' in data['digitalOrLetter'] %}
+            checked
+          {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter">
+              Get both - download files and get a letters in the post
+            </label>
+            {% endif %}
+            {% if data['inScope'].length === 1 %}
+            <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              Save your file within minutes and get a letter within one week.
+            </div>
+            {% else %}
+            <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
+              Save your files within minutes and get letters within one week.
+            </div>
+            {% endif %}
+          </div>
+        </div>-->
+
+<br>
+        <a href="/get-a-proof-of-benefit-letter/download/download-6-AF/alt-format-signposting" class="govuk-link" rel="noreferrer noopener" target="_blank">I need a different format</a>
+
+            <br>
+            <br>
 
         {{ govukButton({
           text: "Continue",
