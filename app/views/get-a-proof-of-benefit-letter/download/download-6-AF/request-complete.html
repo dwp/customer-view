@@ -89,58 +89,58 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
 
     
 
-<!--this is what makes the download content show when its the only option selected -->
-{% if data['digitalOrLetter'] is defined and ("Download a file" in data['digitalOrLetter'] or "Download files" in data['digitalOrLetter']) %}
-  {% if data['altFormat'] is defined %}
-    <p></p><!-- Content for download + altFormat -->
-  {% else %}
-  {% from "govuk/components/button/macro.njk" import govukButton %}
+    <!--this is what makes the download content show when its the only option selected -->
+    {% if data['digitalOrLetter'] is defined and ("Download a file" in data['digitalOrLetter'] or "Download files" in data['digitalOrLetter']) %}
+      {% if data['altFormat'] is defined %}
+        <p></p><!-- Content for download + altFormat -->
+      {% else %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-    <!-- Check if there is any data in which-benefits-need-proofs -->
-    {% if data['inScope'] %}
-    <!-- 1. User selects only SP at the start-->
-    {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
-    <h2 class="govuk-heading-m">Save proof of your State Pension to your device</h2>
-    <!-- Looking to see if there is SP in initial selections -->
-    {% elif 'State Pension' not in data['inScope'] and data['inScope']|length == 1 %}
-    <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
+        <!-- Check if there is any data in which-benefits-need-proofs -->
+        {% if data['inScope'] %}
+        <!-- 1. User selects only SP at the start-->
+        {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
+        <h2 class="govuk-heading-m">Save proof of your State Pension to your device</h2>
+        <!-- Looking to see if there is SP in initial selections -->
+        {% elif 'State Pension' not in data['inScope'] and data['inScope']|length == 1 %}
+        <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
 
-    {% elif 'State Pension' not in data['inScope'] and data['inScope']|length > 1 %}
-    <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
-
-
-
-    <!-- 2. User selects multiple benefits and state pension at start then just state pension -->
-    {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length == 1 %}
-    <h2 class="govuk-heading-m">Save proof of your State Pension to your device</h2>
+        {% elif 'State Pension' not in data['inScope'] and data['inScope']|length > 1 %}
+        <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
 
 
-    <!-- 3. User selects multiple benefits and state pension at start then state pension other benefits -->
-    {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length > 1 %}
-    <h2 class="govuk-heading-m">Save proof of your benefits and State Pension to your device</h2>
 
-    {% elif 'State Pension' not in data['which-benefits-need-proof'] %}
-    <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
+        <!-- 2. User selects multiple benefits and state pension at start then just state pension -->
+        {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length == 1 %}
+        <h2 class="govuk-heading-m">Save proof of your State Pension to your device</h2>
+
+
+        <!-- 3. User selects multiple benefits and state pension at start then state pension other benefits -->
+        {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length > 1 %}
+        <h2 class="govuk-heading-m">Save proof of your benefits and State Pension to your device</h2>
+
+        {% elif 'State Pension' not in data['which-benefits-need-proof'] %}
+        <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
+        {% endif %}
+        {% else %}
+        <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
+        {% endif %}
+
+        {% if data['inScope'].length == 1 %}
+        <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ data['inScope'][0] }} (PDF,
+            4.2KB)</a></p>
+        {% endif %}
+
+        {% if data['inScope'].length > 1 %}
+        {% for benefit in data['which-benefits-need-proof'] %}
+        {% if benefit in data['which-benefits-need-proof'] %}
+        <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <!-- Content above for when only download has been selected -->
+      {% endif %}
     {% endif %}
-    {% else %}
-    <h2 class="govuk-heading-m">Save proof of your benefits to your device</h2>
-    {% endif %}
-
-    {% if data['inScope'].length == 1 %}
-    <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ data['inScope'][0] }} (PDF,
-        4.2KB)</a></p>
-    {% endif %}
-
-    {% if data['inScope'].length > 1 %}
-    {% for benefit in data['which-benefits-need-proof'] %}
-    {% if benefit in data['which-benefits-need-proof'] %}
-    <p><a href="/public/images/Proof of Benefit.pdf" download="">Download proof of {{ benefit }} (PDF, 4.2KB)</a></p>
-    {% endif %}
-    {% endfor %}
-    {% endif %}
-    <!-- Content above for when only download has been selected -->
-  {% endif %}
-{% endif %}
 
 
 
@@ -202,179 +202,179 @@ html: 'This is a new service. Help us improve it and <a class="govuk-link" href=
     <!--end of download section-->
 
 
- {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) or data['altFormat'] is defined %}
-    <h2 class="govuk-heading-m">
-      What happens next
-    </h2>
-     {% endif %}
-
-    <!--Letter section-->
-
-    {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) %}
-    
-
-  <div class="govuk-body">
-    {% if data['inScope'] and data['inScope']|length == 1 %}
-    Your standard letter should arrive within 8 days.
-  </div>   
-
-  <div class="govuk-body">
-    {% elif data['which-benefits-need-proof']|length == 1 %}
-    Your standard letter should arrive within 8 days.
-  </div>
-
-  <div class="govuk-body">
-    {% elif data['which-benefits-need-proof']|length == 2 %}
-    Seperate letters should arrive within 8 days.    
-  </div>
-
-  <div class="govuk-body">
-    {% elif data['which-benefits-need-proof']|length > 2 %}
-    Seperate letters should arrive within 8 days.    
-    {% endif %}
-</div>
-</div>
-</div>
-{% endif %}
-
-<!--End of Letter section-->
-
-   
-
-
-
-    <!-- Alt format dynamic content -->
-
-{% if data['altFormat'] %}
-
-
-    <!-- Shows different messages based on number of benefits requested:
-           - Single benefit: Shows simple message
-           - Two benefits: Uses formatList filter to show both
-           - Three or more: Shows as bullet points -->
-
-    <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
-
-    <!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
-
-     {% if data['inScope'] and data['inScope']|length == 1 %}
-
-
-
-    <div class="govuk-body">
-      You will get
-      {% if data['altFormats'] in ["Braille", "Coloured paper", "Large Print", "Large print", "Word document"] %}
-      a
-      {% else %}
-      an
-      {% endif %}
-      {{data['altFormats']}}
-      version of your letter within
-
-      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
-       1 month.
-
-      {% elif data['altFormats'] in ["Large Print"] %}
-      8 days.
-
-      {% else %}
-      1 month.
+    {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) or data['altFormat'] is defined %}
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
       {% endif %}
 
-    {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
-      <p>This will include a standard letter in the same envelope.</p>
-    {% endif %}
-    </div>
+      <!--Letter section-->
 
-    <!-- if the users has more than one in scope benefit but chooses to get proof of only in benefit-->
-    {% elif data['which-benefits-need-proof']|length == 1 %}
-
-
-
-    <div class="govuk-body">
-      You will get
-      {% if data['altFormats'] in ["Braille", "Coloured paper", "Large Print", "Large print", "Word document"] %}
-      a
-      {% else %}
-      an
-      {% endif %}
-      {{data['altFormats']}}
-      version of your letter within
-
-      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
-       1 month.
-
-      {% elif data['altFormats'] in ["Large Print"] %}
-      8 days.
-
-      {% else %}
-      1 month.
-      {% endif %}
-
-    {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
-      <p>This will include a standard letter in the same envelope.</p>
-      {% endif %}
-    </div>
-
-    <!-- If user has two in scope benefits, and has chosen letter / digital or both -->
-
-    {% elif data['which-benefits-need-proof']|length == 2 %}
-
-
-
-  <div class="govuk-body">
-    You will get
-    
-    {{ data['altFormats'] }} versions of your letters within
-
-    {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
-       1 month.
-
-      {% elif data['altFormats'] in ["Large Print"] %}
-      8 days.
-
-      {% else %}
-      1 month.
-      {% endif %}
-
-    {% if data['altFormat'][0] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
-      <p>This will include standard letters in the same envelope.</p>
-    {% endif %}
-  </div>
-
-    
-
-    <!-- If user has more than two in scope benefits, and has chosen letter / digital or both -->
-    {% elif data['which-benefits-need-proof']|length > 2 %}
-
-
-
-    <div class="govuk-body">
+      {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) %}
       
-      You will get
-      
-      {{data['altFormats']}}
-      versions of your letters within
 
-      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
-       1 month.
+    <div class="govuk-body">
+      {% if data['inScope'] and data['inScope']|length == 1 %}
+      Your standard letter should arrive within 8 days.
+    </div>   
 
-      {% elif data['altFormats'] in ["Large Print"] %}
-      8 days.
+    <div class="govuk-body">
+      {% elif data['which-benefits-need-proof']|length == 1 %}
+      Your standard letter should arrive within 8 days.
+    </div>
 
-      {% else %}
-      1 month.
+    <div class="govuk-body">
+      {% elif data['which-benefits-need-proof']|length == 2 %}
+      Seperate letters should arrive within 8 days.    
+    </div>
+
+    <div class="govuk-body">
+      {% elif data['which-benefits-need-proof']|length > 2 %}
+      Seperate letters should arrive within 8 days.    
+      {% endif %}
+      </div>
+    
       {% endif %}
 
-    {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
-      <p>This will include standard letters in the same envelope.
-      </p>
-  {% endif %}
+    <!--End of Letter section-->
+
+    
+
+
+
+      <!-- Alt format dynamic content -->
+
+      {% if data['altFormat'] %}
+
+
+      <!-- Shows different messages based on number of benefits requested:
+            - Single benefit: Shows simple message
+            - Two benefits: Uses formatList filter to show both
+            - Three or more: Shows as bullet points -->
+
+      <!-- If user has one in scope benefits, and has chosen letter / digital or both-->
+
+      <!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
+
+      {% if data['inScope'] and data['inScope']|length == 1 %}
+
+
+
+      <div class="govuk-body">
+        <p>You will get
+        {% if data['altFormats'] in ["Braille", "Coloured paper", "Large Print", "Large print", "Word document"] %}
+        a
+        {% else %}
+        an
+        {% endif %}
+        {{data['altFormats']}}
+        version of your letter within
+
+        {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+        1 month.
+
+        {% elif data['altFormats'] in ["Large Print"] %}
+        8 days.
+
+        {% else %}
+        1 month.</p>
+        {% endif %}
+
+      {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
+        <p>This will include a standard letter in the same envelope.</p>
+      {% endif %}
+      </div>
+
+      <!-- if the users has more than one in scope benefit but chooses to get proof of only in benefit-->
+      {% elif data['which-benefits-need-proof']|length == 1 %}
+
+
+
+      <div class="govuk-body">
+        <p>You will get
+        {% if data['altFormats'] in ["Braille", "Coloured paper", "Large Print", "Large print", "Word document"] %}
+        a
+        {% else %}
+        an
+        {% endif %}
+        {{data['altFormats']}}
+        version of your letter within
+
+        {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+        1 month.
+
+        {% elif data['altFormats'] in ["Large Print"] %}
+        8 days.
+
+        {% else %}
+        1 month.</p>
+        {% endif %}
+
+      {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
+        <p>This will include a standard letter in the same envelope.</p>
+        {% endif %}
+      </div>
+
+      <!-- If user has two in scope benefits, and has chosen letter / digital or both -->
+
+      {% elif data['which-benefits-need-proof']|length == 2 %}
+
+
+
+      <div class="govuk-body">
+      <p>You will get
+      
+      {{ data['altFormats'] }} versions of your letters within
+
+      {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+        1 month.
+
+        {% elif data['altFormats'] in ["Large Print"] %}
+        8 days.
+
+        {% else %}
+        1 month.</p>
+        {% endif %}
+
+      {% if data['altFormat'][0] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
+        <p>This will include standard letters in the same envelope.</p>
+      {% endif %}
+      </div>
+
+      
+
+      <!-- If user has more than two in scope benefits, and has chosen letter / digital or both -->
+      {% elif data['which-benefits-need-proof']|length > 2 %}
+
+
+
+      <div class="govuk-body">
+        
+        <p>You will get
+        
+        {{data['altFormats']}}
+        versions of your letters within
+
+        {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+        1 month.
+
+        {% elif data['altFormats'] in ["Large Print"] %}
+        8 days.
+
+        {% else %}
+        1 month.</p>
+        {% endif %}
+
+      
+      {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
+        <p>This will include standard letters in the same envelope.</p>
+    {% endif %}
     </div>
-   {% endif %}
-  {% endif %}
+    
+    {% endif %}
+    {% endif %}
   
-<!-- End Letters and Alt format dynamic content -->
+    <!-- End Letters and Alt format dynamic content -->
 
 
     <!-- Shows different messages and layouts based on number of out-of-scope benefits:

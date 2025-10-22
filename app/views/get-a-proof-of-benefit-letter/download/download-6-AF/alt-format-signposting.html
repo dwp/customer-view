@@ -44,7 +44,7 @@ serviceName: "Get proof of your benefits and State Pension",
 
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:window.history.back()"
+    href: "digital-or-letter"
   }) }}
 
 {% endblock %}
@@ -79,23 +79,78 @@ serviceName: "Get proof of your benefits and State Pension",
       </p>
 
 
+ 
+ <p>For Attendance Allowance, Disability Living Allowance (DLA) for adults, or Personal Independence Payment (PIP),
+  <a href="https://www.gov.uk/disability-service-centre" class="govuk-link" rel="noreferrer noopener" target="_blank"> contact the Disability Service Centre (opens in a new tab)</a>.<p>
+
+  <p>For State Pension, or Pension Credit, 
+  <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.</p>
+ 
+  <p>For Employment and Support Allowance (ESA), Income Support, or Jobseeker’s Allowance, 
+  <a href="https://www.gov.uk/contact-jobcentre-plus" class="govuk-link" rel="noreferrer noopener" target="_blank">contact Jobcentre Plus (opens in a new tab)</a>.</p>
+  <br>
+ 
 
 
-{% if data['uCBenefit'] == true %}
-      <p>For Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.
-{% endif %}
 
-{% if 'State Pension' in data['inScope'] and data['inScope']|length > 1 %}
-      <p>You can also <a href="https://www.gov.uk/universal-credit/contact-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Universal Credit helpline (opens in a new tab)</a>.
-{% endif %}
+<!--Alison this content below was me making a start at making this dynamic-->
+<!--{% set benefitsList = ["Employment and Support Allowance (ESA)", "Income Support", "Jobseeker’s Allowance"] %}
+{% for benefit in data['researchSetUpBenefits'] %}
+  {% if benefit in benefitsList %}
+    <p>For {{ data['researchSetUpBenefits'] | formatList }}, 
+  <a href="https://www.gov.uk/contact-jobcentre-plus" class="govuk-link" rel="noreferrer noopener" target="_blank">contact Jobcentre Plus (opens in a new tab)</a>.
+  {% endif %}
+{% endfor %}
 
-{% if 'State Pension' not in data['inScope'] %}
-      <p>For Attendance Allowance, Disability Living Allowance and Personal Independence Payment, <a href="https://www.gov.uk/disability-service-centre" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Disability Service Centre (opens in a new tab)</a>.
-{% endif %}
 
-{% if 'State Pension' not in data['inScope'] %}
-      <p>For Pension Credit and State Pension, <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.
-{% endif %}
+{% set benefitsList = ["State Pension", "Pension Credit"] %}
+{% for benefit in data['researchSetUpBenefits'] %}
+  {% if benefit in benefitsList %}
+    <p>For {{ data['researchSetUpBenefits'] | formatList }}, 
+  <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.
+  {% endif %}
+{% endfor %}
+
+
+{% set benefitsList = ["Universal Credit"] %}
+{% for benefit in data['researchSetUpBenefits'] %}
+  {% if benefit in benefitsList %}
+    <p>For {{ data['researchSetUpBenefits'] | formatList }}, 
+  <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.
+  {% endif %}
+{% endfor %}
+
+
+{% set benefitsList = ["Attendance Allowance", "Disability Living Allowance (DLA) for adults", "Personal Independence Payment (PIP)"] %}
+{% for benefit in data['researchSetUpBenefits'] %}
+  {% if benefit in benefitsList %}
+    <p>For {{ data['researchSetUpBenefits'] | formatList }}, 
+  <a href="https://www.gov.uk/disability-service-centre" class="govuk-link" rel="noreferrer noopener" target="_blank"> contact the Disability Service Centre (opens in a new tab)</a>.
+  {% endif %}
+{% endfor %}-->
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
