@@ -89,46 +89,26 @@ Which benefits do you need proof of?
         <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
         {% endif %}
 
-
-
-        {% if "Carer’s Allowance" in data['researchSetUpBenefits'] %}
-        <p>To get proof Carer's Allowance,<a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank"> contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
-        {% endif %}
-
-
-
-
         <!-- SECTION 3: Dynamic Content for Out of Scope Benefits -->
         <!-- This section generates different messages based on how many out-of-scope benefits the user has -->
         <!-- It handles cases for 1, 2, or more than 2 benefits differently -->
-        
+        {% if data['oOScope'].length === 1 %}
+          <p>To get proof of {{ data['oOScope'][0] }}, you need to contact them.</p>
 
-{% set filteredScope = [] %}
-{% for benefit in data['oOScope'] %}
-  {% if benefit !== "Carer’s Allowance" %}
-    {% set filteredScope = filteredScope.concat([benefit]) %}
-  {% endif %}
-{% endfor %}
+        {% elif data['oOScope'].length === 2 %}
+          <p>To get proof of {{ data['oOScope'] | formatList }}, you need to contact them.</p>
 
-{% if filteredScope.length === 1 %}
-  <p>To get proof of {{ filteredScope[0] }}, you need to contact them.</p>
-
-{% elif filteredScope.length === 2 %}
-  <p>To get proof of {{ filteredScope | formatList }}, you need to contact them.</p>
-
-{% elif filteredScope.length > 2 %}
-  <p>You cannot use this service to get proof of:</p>
-  <ul class="govuk-list govuk-list--bullet">
-    {% for benefit in filteredScope %}
-      <li>{{ benefit }}</li>
-    {% else %}
-      <p>No benefit selected</p>
-    {% endfor %}
-  </ul>
-  <p>You will need to contact them to get proof of your benefits.</p>
-{% endif %}
-
-
+        {% elif data['oOScope'].length > 2 %}
+          <p>You cannot use this service to get proof of:</p>
+          <ul class="govuk-list govuk-list--bullet">
+              {% for benefit in data['oOScope'] %}
+                <li>{{ benefit }}</li>
+              {% else %}
+                <p>No benefit selected</p>
+              {% endfor %}
+          </ul>
+          <p>You will need to contact them to get proof of your benefits.</p>
+        {% endif %}
 
 
         {% if data['oOScope'].length > 0 %}
