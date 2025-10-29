@@ -1,37 +1,27 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
 {% block header %}
 
-{{ super() }}
 
-<style>
-  .govuk-service-navigation__wrapper{
-      flex-grow: 1;
-  }
-</style>
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
 
-{% set navigationEnd %}
-<li class="govuk-service-navigation__item" style="margin-left: auto;">
-  <a class="govuk-service-navigation__link" href="#">Sign out</a>
-</li>
-{% endset %}
-
-{{ govukServiceNavigation({
-
-serviceName: "Get proof of your benefits and State Pension",
-
-  slots: {
-      navigationEnd: navigationEnd
-  }
-}) }}
 
 {% endblock %}
 
-
+{% block pageTitle %}
+What type of letter we send
+{% endblock %}
 
 {% block beforeContent %}
 
@@ -42,7 +32,7 @@ serviceName: "Get proof of your benefits and State Pension",
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-  {{ govukBackLink({
+    {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}

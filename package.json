@@ -15,6 +15,7 @@
     "@x-govuk/govuk-prototype-filters": "2.0.0",
     "express": "^4.21.2",
     "govuk-frontend": "^5.10.2",
+    "govuk-one-login-service-header": "github:govuk-one-login/service-header",
     "govuk-prototype-kit": "13.18.1",
     "hmrc-frontend": "6.69.0",
     "jquery": "3.7.1",

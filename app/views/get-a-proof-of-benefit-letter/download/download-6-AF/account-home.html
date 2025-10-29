@@ -1,28 +1,21 @@
 {% extends "layouts/main.html" %}
 
 {% block header %}
-  {{ super() }}
 
-  <style>
-    .govuk-service-navigation__wrapper{
-        flex-grow: 1;
-    }
-</style>
 
-{% set navigationEnd %}
-  <li class="govuk-service-navigation__item" style="margin-left: auto;">
-    <a class="govuk-service-navigation__link" href="#">Sign out</a>
-  </li>
-{% endset %}
-
-{{ govukServiceNavigation({
-
-  serviceName: "Manage your benefits and State Pension",
-
-    slots: {
-        navigationEnd: navigationEnd
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Manage your benefits and State Pension",
+      navigationLabel: "index.html"
+      
     }
   }) }}
+
 
 {% endblock %}
 

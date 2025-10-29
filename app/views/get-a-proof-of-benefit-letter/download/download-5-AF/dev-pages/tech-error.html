@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Create one login account or sign in
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">There is a problem with the service</h1>
+
+      <p class="govuk-body">Try again later</p>
+
+      <p class="govuk-body">To get proof of your benefits or State Pension another way - for example, on the phone, contact the benefit team directly.</p>
+
+      <p class="govuk-body">Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link govuk-link--no-visited-state">guidance about the benefit on GOV.UK (opens in a new tab)</a>.</p>
+ 
+    </div>
+  </div>
+{% endblock %}

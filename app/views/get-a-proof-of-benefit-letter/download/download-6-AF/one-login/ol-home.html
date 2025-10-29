@@ -1,0 +1,171 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Successfully verified idnetification
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Your services</h1>
+
+  
+  <p class="govuk-body">you're signed in as email@address.com</p>
+
+  <h1 class="govuk-heading-m">Your accounts</h1>
+
+  <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+  <ul class="govuk-list your-services__list">
+<li class="your-services__card">
+  <h3 class="govuk-heading-s your-services__card__heading" data test-id="account-card-heading">GOV.UK email subscriptions</h3>
+  </div>
+<div class="your-services__card__content">
+  <p class="govuk-body">See and manage the updates you get about GOV.UK pages you’re interested in.</p>
+</div>
+
+
+</div>
+
+
+</li>
+    <li>
+      List item
+    </li>
+    <li>
+      List item
+    </li>
+    <li>
+      List item
+    </li>
+  </ul>"
+
+  <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h2 class="govuk-summary-card__title">
+      GOV.UK email subscriptions
+    </h2>
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        
+        <dd class="govuk-summary-list__value">
+          See and manage the updates you get about GOV.UK pages you’re interested in.
+        </dd>
+       
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Nationality
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UK national resident in UK
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> nationality (Lead tenant)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Working situation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Part time – less than 30 hours a week
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> working situation (Lead tenant)</span></a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+<div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h2 class="govuk-summary-card__title">
+      Person 2
+    </h2>
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Details known
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> whether details are known (Person 2)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Relationship to lead tenant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Partner
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> relationship to lead tenant (Person 2)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Age
+        </dt>
+        <dd class="govuk-summary-list__value">
+          42
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> age (Person 2)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Working situation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Unable to work because of long-term sickness or disability
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> working situation (Person 2)</span></a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+      
+
+
+ 
+          
+
+      
+
+
+    
+
+
+
+    
+{% endblock %}
