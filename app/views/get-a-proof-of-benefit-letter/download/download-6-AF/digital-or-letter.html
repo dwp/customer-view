@@ -171,13 +171,13 @@ What type of letter we send
       <div id="signIn-item-hint" class="govuk-hint govuk-checkboxes__hint">
               This is the format you have asked for.
 
-        {% if data['altFormats'] in ["Braille", "Word document"] %}
+        {% if data['altFormats'] in ["Braille", "Audio recording", "British Sign Language (BSL)"] %}
          You will also get a standard letter with this.
         {% endif %}
 
         Arrives within
 
-         {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper"] %}
+         {% if data['altFormats'] in ["Braille", "Word document", "Coloured paper", "Audio recording", "British Sign Language (BSL)", "Easy Read", "Accessible email", "Accessible PDF"] %}
        1 month.
 
       {% elif data['altFormats'] in ["Large Print"] %}
