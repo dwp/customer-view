@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Successfully verified idnetification
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Continue to the service you want to use
+      </h1>
+
+      <p class="govuk-body">
+          You've successfully proved your identity. You can now continue to the service you want to use.
+      </p>
+
+      <p class="govuk-body">
+          Some of the information you shared when you proved your identitiy might be used to automaticaly fill in forms within the service.
+      </p>
+
+      <form class="form" action="/get-a-proof-of-benefit-letter/download/download-7-OL/account-home" method="post">
+        <button class="govuk-button" action="/get-a-proof-of-benefit-letter/download/download-6-AF/account-home" data-module="govuk-button">
+          Continue
+        </button>
+    </form>
+
+</div>
+
+  <!-- <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m">
+      Get help
+    </h2>
+    <h3 class="govuk-heading-s">
+      England, Scotland and Wales
+    </h3>
+    <p><a href="../contact-pension-service&help" target="_blank">Contact us by phone to get help with the online service (opens in new tab)</a></p>
+
+    <h3 class="govuk-heading-s">
+      Northern Ireland
+    </h3>
+    <p><a href="https://www.nidirect.gov.uk/contacts/nidirect-account-support" target="_blank">Contact us by phone to get help with the online service (opens in new tab)</a></p>
+  </div> -->
+</div>
+</div>
+
+    
+{% endblock %}
