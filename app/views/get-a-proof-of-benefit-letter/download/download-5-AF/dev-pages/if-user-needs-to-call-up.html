@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-7-OL/signout.html",
+    oneLoginLink: "/test-one-login"
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Request complete
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Sorry, there is a problem with the service
+      </h1>
+
+      <p>
+        You cannot get proof of your benefits or State Pension using this service right now.
+      </p>
+
+      <p>
+        To get proof of your benefits another way, like on the phone, you need to contact the benefit team.
+      </p>
+
+      <p>
+        Find their contact details in a letter they’ve sent to you, or in <a class="govuk-link" href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+      </p>
+
+      {{ govukButton({
+        text: "Sign out",
+        href: "../signingout"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
