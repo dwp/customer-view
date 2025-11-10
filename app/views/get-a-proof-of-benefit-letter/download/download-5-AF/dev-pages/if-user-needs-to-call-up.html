@@ -1,19 +1,11 @@
+
+
 {% extends "layouts/main.html" %}
 
-{% block header %}
 
-
-  {{ govukOneLoginServiceHeader({
-    homepageLink: "/index.html",
-    signOutLink: "/get-a-proof-of-benefit-letter/download/download-7-OL/signout.html",
-    oneLoginLink: "/test-one-login"
-  }) }}
-
-
-{% endblock %}
 
 {% block pageTitle %}
-Request complete
+Error page - problem with the service
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,7 +16,6 @@ Request complete
     },
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
-
 
 {% endblock %}
 
@@ -53,10 +44,7 @@ Request complete
         Find their contact details in a letter they’ve sent to you, or in <a class="govuk-link" href="https://www.gov.uk/browse/benefits">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
       </p>
 
-      {{ govukButton({
-        text: "Sign out",
-        href: "../signingout"
-      }) }}
+     
 
     </div>
   </div>
