@@ -1,0 +1,88 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-7-OL/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Account home
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+   {{ govukBackLink({
+  text: "Back",
+  href: "/get-a-proof-of-benefit-letter/unmoderated-research-v1/digital-or-letter"
+}) }}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        How to get proof of your benefits and State Pension in another format
+      </h1>
+      <p>
+        You need to contact the benefit team directly.
+      </p>
+
+
+      <p>For Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.
+
+
+
+      <p>You can also <a href="https://www.gov.uk/universal-credit/contact-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Universal Credit helpline (opens in a new tab)</a>.
+
+
+
+      <p>For Attendance Allowance, Disability Living Allowance and Personal Independence Payment, <a href="https://www.gov.uk/disability-service-centre" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Disability Service Centre (opens in a new tab)</a>.
+
+
+      <p>For Pension Credit and State Pension, <a href="https://www.gov.uk/contact-pension-service" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Pension Service (opens in a new tab)</a>.
+
+
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Sign out",
+            href: "signout"
+          }) }}
+
+          {{ govukButton({
+            text: "Go back to account home",
+            href: "account-home",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}
