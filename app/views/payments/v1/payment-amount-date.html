@@ -2,33 +2,25 @@
 
 {% block header %}
 
-{{ super() }}
 
-<style>
-  .govuk-service-navigation__wrapper{
-      flex-grow: 1;
-  }
-</style>
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Check your next payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
 
-{% set navigationEnd %}
-<li class="govuk-service-navigation__item" style="margin-left: auto;">
-  <a class="govuk-service-navigation__link" href="#">Sign out</a>
-</li>
-{% endset %}
-
-{{ govukServiceNavigation({
-
-serviceName: "Check your next payment",
-
-  slots: {
-      navigationEnd: navigationEnd
-  }
-}) }}
 
 {% endblock %}
 
 {% block pageTitle %}
-Your next payment
+Account home
 {% endblock %}
 
 {% block beforeContent %}
@@ -40,7 +32,7 @@ Your next payment
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-  {{ govukBackLink({
+   {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}
@@ -80,7 +72,7 @@ Your next payment
 
                       <!------- for out of scope benefits -------->
 
-                    {% if data['oOScope'].length > 0 or data['uCBenefit'] == true %}
+                    <!--{% if data['oOScope'].length > 0 or data['uCBenefit'] == true %}
                     {% if data['inScope'] and data['inScope'].includes('State Pension') %}
                     
                     <p>You can check some of your payments using this service, but not all of them. </p>
@@ -94,22 +86,22 @@ Your next payment
                     
                     <p>This is because not all of your benefits are online yet.</p>
                     {% endif %}
-                    {% endif %}
+                    {% endif %}-->
             
                     
             
-                    <h2 class="govuk-heading-m">Payments you cannot check using this service</h2>
+                   <!-- <h2 class="govuk-heading-m">Payments you cannot check using this service</h2>
             
                     <!-- SECTION 2: Universal Credit Special Handling -->
                     <!-- Universal Credit is handled separately with a direct link to their account -->
-                    {% if data['uCBenefit'] == true %}
+                   <!-- {% if data['uCBenefit'] == true %}
                     <p>To check you Universal Credit payment, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.</p>
-                    {% endif %}
+                    {% endif %}-->
             
                     <!-- SECTION 3: Dynamic Content for Out of Scope Benefits -->
                     <!-- This section generates different messages based on how many out-of-scope benefits the user has -->
                     <!-- It handles cases for 1, 2, or more than 2 benefits differently -->
-                    {% if data['oOScope'].length === 1 %}
+                    <!--{% if data['oOScope'].length === 1 %}
                       <p>To check your payment for {{ data['oOScope'][0] }}, you need to contact them.</p>
             
                     {% elif data['oOScope'].length === 2 %}
@@ -130,7 +122,7 @@ Your next payment
             
                     {% if data['oOScope'].length > 0 %}
                     <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
-                    {% endif %}
+                    {% endif %}-->
 
                     <!--dynamic content to show payment amount and date for different benefit types-->
 
@@ -211,20 +203,6 @@ Your next payment
 
 
         </div>
-        </div>
-        <br>
-        <br>
-        <div class="govuk-grid-column-one-third-from-desktop">
-          <h2 class="govuk-heading-m">Do another thing</h2>
-
-          <p><a href="payment-history">View your payment history</a></p>
-
-          <p><a href="personal-details">View your personal details</a></p>
-
-          <p><a href="select-benefits-you-need-proof-of">Get proof of your benefits and State Pension </a></p>
-
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
         </div>
       </div>
 

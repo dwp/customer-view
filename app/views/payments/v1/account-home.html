@@ -56,19 +56,21 @@ Account home
 
 <h2 class="govuk-heading-m">Payments</h2>
 
-<p class="govuk-body">
+ {% if data['inScope'].length === 1 %}
+      <p class="govuk-body">
   <a href="/payments/v1/payment-amount-date" class="govuk-link">Check your next payment</a>
 </p>
+ {% else %}
+         <p class="govuk-body">
+  <a href="/payments/v1/payment-amount-date" class="govuk-link">Check your next payments</a>
+</p>
+{% endif %}
 
 <p class="govuk-body">
-  <a href="#" class="govuk-link">View your payments history</a>
+  <a href="/payments/v1/payment-history" class="govuk-link">View your payments history</a>
 </p>
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-
-
-
 
 <!--------------------------------------------------------------- Personal details -------------------------------------------------------------------------->
 

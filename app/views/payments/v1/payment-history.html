@@ -2,33 +2,25 @@
 
 {% block header %}
 
-{{ super() }}
 
-<style>
-  .govuk-service-navigation__wrapper{
-      flex-grow: 1;
-  }
-</style>
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Check your next payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
 
-{% set navigationEnd %}
-<li class="govuk-service-navigation__item" style="margin-left: auto;">
-  <a class="govuk-service-navigation__link" href="#">Sign out</a>
-</li>
-{% endset %}
-
-{{ govukServiceNavigation({
-
-serviceName: "Check your next payment",
-
-  slots: {
-      navigationEnd: navigationEnd
-  }
-}) }}
 
 {% endblock %}
 
 {% block pageTitle %}
-Your next payment
+Account home
 {% endblock %}
 
 {% block beforeContent %}
@@ -40,7 +32,7 @@ Your next payment
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-  {{ govukBackLink({
+   {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}
@@ -66,6 +58,33 @@ Your next payment
                             Your payment history
                           </h1>
                     </legend>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Date</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Benefit</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Amount</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">First 6 weeks</th>
+      <td class="govuk-table__cell">£109.80 per week</td>
+      <td class="govuk-table__cell">£59.10 per week</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Next 33 weeks</th>
+      <td class="govuk-table__cell">£159.80 per week</td>
+      <td class="govuk-table__cell">£89.10 per week</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Total estimated pay</th>
+      <td class="govuk-table__cell">£4,282.20</td>
+      <td class="govuk-table__cell">£2,182.20</td>
+    </tr>
+  </tbody>
+</table>
 
                     
           <br>
