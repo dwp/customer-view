@@ -1,28 +1,21 @@
 {% extends "layouts/main.html" %}
 
 {% block header %}
-  {{ super() }}
 
-  <style>
-    .govuk-service-navigation__wrapper{
-        flex-grow: 1;
-    }
-</style>
 
-{% set navigationEnd %}
-  <li class="govuk-service-navigation__item" style="margin-left: auto;">
-    <a class="govuk-service-navigation__link" href="#">Sign out</a>
-  </li>
-{% endset %}
-
-{{ govukServiceNavigation({
-
-  serviceName: "Manage your benefits and State Pension",
-
-    slots: {
-        navigationEnd: navigationEnd
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Manage your benefits and State Pension",
+      navigationLabel: "index.html"
+      
     }
   }) }}
+
 
 {% endblock %}
 
@@ -39,7 +32,14 @@ Account home
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -54,7 +54,7 @@ Account home
 
 <!--------------------------------------------------------------- Payments -------------------------------------------------------------------------->
 
-<h2 class="govuk-heading-m">Payments</h2>
+<h2 class="govuk-heading-m">Payment</h2>
 
  {% if data['inScope'].length === 1 %}
       <p class="govuk-body">
