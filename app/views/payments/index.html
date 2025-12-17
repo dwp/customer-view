@@ -22,14 +22,14 @@
         Payments
       </h1>
 
-      <p class="govuk-body-l">This journey lets people check next payment date, and amount.</p>
+      <p class="govuk-body-l">This journey lets people check next payment date, amount, and the past 6 months of payment history.</p>
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 
 <!------------------------- Version 1 ------------------------------->
 
-      <span class="govuk-caption-m">September 2025</span>
-      <h2 class="govuk-heading-l">Version 1</h2>
+      <span class="govuk-caption-m">December 2025</span>
+      <h2 class="govuk-heading-l">Version 1 - happy path only</h2>
 
 
       {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
@@ -38,7 +38,7 @@
         text: "The dynamic content in this design is for user testing only.",
         iconFallbackText: "Warning"
       }) }}
-      <p>This design lets users know check their next payment date and amount.</p>
+      <p>This design lets users check their next payment date, amount, and the past 6 months of payment history</p>
       
 
 
@@ -51,7 +51,12 @@
         <div class="govuk-details__text">
             <p>This version includes:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>On this version the address is set to 'home'</li>
+              <li>Design is based on the happy path</li>
+                <ul class="govuk-list govuk-list--bullet">
+                <li>Payments for inscope benefits only</li>
+                <li>Payment data is accurate (3 working days before they get paid)</li>
+                <li>The payment amount is the same as what the user is expecting</li>
+              </ul>
              </ul>
         </div>
       </details>
@@ -66,12 +71,6 @@
           href: "/payments/v1/research-set-up/intro"
         }) }}
 
-      </div>
-
-
-      <div class="govuk-!-padding-4 govuk-!-margin-bottom-6" style="background-color:#ECF2F9; border-radius:5px;">
-        <p>The Online Identity and Verification (OIDV) service is not included in this
-          design</p>
       </div>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
