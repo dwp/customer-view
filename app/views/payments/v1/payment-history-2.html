@@ -107,32 +107,32 @@ Payment history
   
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">12 January 2026</td>
+      <td class="govuk-table__cell">20 October 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">05 January 2026</td>
+      <td class="govuk-table__cell">13 October 2026</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
      <tr class="govuk-table__row">
-      <td class="govuk-table__cell">15 December 2025</td>
+      <td class="govuk-table__cell">22 September 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">08 December 2025</td>
+      <td class="govuk-table__cell">15 September 2025</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">17 November 2025</td>
+      <td class="govuk-table__cell">25 August 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">10 November 2025</td>
+      <td class="govuk-table__cell">18 August 2025</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
@@ -142,32 +142,32 @@ Payment history
 
       <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">19 December 2025</td>
+      <td class="govuk-table__cell">24 October 2025</td>
       <td class="govuk-table__cell">Pension Credit</td>
       <td class="govuk-table__cell">£908.40</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">16 December 2025</td>
+      <td class="govuk-table__cell">21 October 2025</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
      <tr class="govuk-table__row">
-      <td class="govuk-table__cell">08 December 2025</td>
+      <td class="govuk-table__cell">10 November 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">21 November 2025</td>
+      <td class="govuk-table__cell">26 September 2025</td>
       <td class="govuk-table__cell">Pension Credit</td>
       <td class="govuk-table__cell">£908.40</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">18 November 2025</td>
+      <td class="govuk-table__cell">23 September 2025</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">10 November 2025</td>
+      <td class="govuk-table__cell">13 October 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
@@ -178,9 +178,13 @@ Payment history
     {% endif %}
  </table>
 
+
+
+
+{% if data['inScope'].length === 2 %}
 <nav class="govuk-pagination" aria-label="Pagination">
   <div class="govuk-pagination__prev">
-    <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+    <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history" rel="prev">
       <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
         <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
       </svg>
@@ -196,7 +200,34 @@ Payment history
       </a>
     </li>
     <li class="govuk-pagination__item govuk-pagination__item--current">
-      <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history-2" aria-label="Page 2" aria-current="page">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history-2" aria-label="Page 2">
+        2
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% elif data['inScope'].length > 2 %}
+
+<nav class="govuk-pagination" aria-label="Pagination">
+    <div class="govuk-pagination__prev">
+    <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history" rel="prev">
+      <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+      </svg>
+      <span class="govuk-pagination__link-title">
+        Previous<span class="govuk-visually-hidden"> page</span>
+      </span>
+    </a>
+  </div>
+  <ul class="govuk-pagination__list">
+    <li class="govuk-pagination__item">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history" aria-label="Page 1" aria-current="page">
+        1
+      </a>
+    </li>
+    <li class="govuk-pagination__item govuk-pagination__item--current">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history-2" aria-label="Page 2">
         2
       </a>
     </li>
@@ -207,7 +238,7 @@ Payment history
     </li>
   </ul>
   <div class="govuk-pagination__next">
-    <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+    <a class="govuk-link govuk-pagination__link" href="/payments/v1/payment-history-3" rel="next">
       <span class="govuk-pagination__link-title">
         Next<span class="govuk-visually-hidden"> page</span>
       </span>
@@ -217,6 +248,12 @@ Payment history
     </a>
   </div>
 </nav>
+{% endif %}
+
+
+
+
+
               
           <br>
           <a class="govuk-button" href="/payments/v1/account-home">
