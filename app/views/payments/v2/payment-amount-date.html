@@ -1,0 +1,285 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Check your next benefit and State Pension payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Check your next payments
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+   {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        
+    <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+      <div class="govuk-form-group">
+              
+<!--- out of scope only --->
+
+        {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
+          <h1 class="govuk-heading-xl">You cannot check your next payments using this service</h1>
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+<!--- out of scope and UC --->               
+        {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
+          <h1 class="govuk-heading-xl">You cannot check your next payments using this service</h1>
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+<!--- 1 in scope ---> 
+        {% elif data['inScope'].length === 1 %}
+         <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your next payment
+               </h1>
+             </legend>
+
+<!--- More than 1 in scope --->
+        {% else %}
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your next payments
+              </h1>
+            </legend>
+        {% endif %}
+
+            
+
+                    {% for benefit in data.inScope %} 
+                    {% if benefit == 'Attendance Allowance' %}
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+        
+                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                      <p>Attendance Allowance<span class="govuk-heading-xl" style="margin-bottom:0px;">£110.40</span>23 January 2026</p>
+                    </details>
+                  </div>
+
+                  {% elseif benefit == 'Disability Living Allowance (DLA) for adults' %}
+        
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+        
+                    <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                      <p>Disability Living Allowance (DLA) for adults<span class="govuk-heading-xl" style="margin-bottom:0px;">£187.45</span>26 January 2026</p>
+                    </details>
+                    </div>
+
+                    {% elseif benefit == 'Employment and Support Allowance (ESA)' %}
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                            
+                        <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                          <p>Employment and Support Allowance (ESA)<span class="govuk-heading-xl" style="margin-bottom:0px;">£259.00</span>30 January 2026</p>
+                        </details>
+                        </div>
+
+                        {% elseif benefit == 'Income Support' %}
+        
+                      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                  
+                        <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                          <p>Income Support<span class="govuk-heading-xl" style="margin-bottom:0px;">£92.05</span>05 February 2026</p>
+                        </details>
+                        </div>
+
+                        {% elseif benefit == 'Jobseeker’s Allowance' %}
+        
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                    
+                          <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                            <p>Jobseeker’s Allowance<span class="govuk-heading-xl" style="margin-bottom:0px;">£183.40</span>02 February 2026</p>
+                          </details>
+                          </div>
+
+                          {% elseif benefit == 'Pension Credit' %}
+        
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                    
+                          <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                            <p>Pension Credit<span class="govuk-heading-xl" style="margin-bottom:0px;">£436.30</span>16 February 2026</p>
+                          </details>
+                          </div>
+
+                          {% elseif benefit == 'Personal Independence Payment (PIP)' %}
+        
+                          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                      
+                            <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                              <p><span class="govuk-heading-m" style="margin-bottom:0px;">Your Personal Independence Payment (PIP) payment information is not ready yet</span><br>Come back 3 working days before your payment date.</p>
+                            </details>
+                            </div>
+                            
+                            {% elseif benefit == 'State Pension' %}
+        
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--hidden">
+                                                        
+                              <div class="govuk-!-padding-5"style="border:1px solid #bbbbbb; background:#ffffff">
+                                <p>State Pension<span class="govuk-heading-xl" style="margin-bottom:0px;">£884.80</span>12 February 2026</p>
+                              </details>
+                              </div>
+
+                    {% endif %}
+                    {% endfor %}
+                    
+
+
+        </div>
+
+
+
+      {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
+        <h2 class="govuk-heading-m">Payments you cannot check using this service</h2>
+
+       {% elif data['inScope'].length > 0 and data['uCBenefit'] == true %}
+       <h2 class="govuk-heading-m">Payments you cannot check using this service</h2>
+
+      {% elif data['oOScope'].length > 0 or data['uCBenefit'] == true %}
+       <h2 class="govuk-heading-m">How to check your next payments</h2>
+      
+      {% elif data['oOScope'] | length > 0 %}
+        <h2 class="govuk-heading-m">How to check your next payments</h2>
+      {% endif %}
+
+
+
+      {% if data['uCBenefit'] == true %}
+        <p>To check your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+      {% endif %}
+
+
+      {% set benefits = data.researchSetUpBenefits or [] %}
+
+      {% if "Carer’s Allowance" in benefits %}
+        <p>For Carer's Allowance, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
+      {% endif %}
+
+
+<!------------------------------------ 1 out of scope benefit ----------------------------------------->
+
+    {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
+    <p>To check your {{ data['oOScope'][0] }} payments, you need to contact them.</p>
+
+
+    <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+
+
+<!------------------------------------ 2 out of scope benefits ----------------------------------------->
+
+{% elif data['oOScope'].length === 2 %}
+
+
+
+    <p>To check your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
+
+    <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+
+<!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
+
+
+    {% elif data['oOScope'].length > 2 %}
+
+    <p>You cannot use this service to check your payments for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for benefit in data['oOScope'] %}
+      <li>{{ benefit }}</li>
+      {% else %}
+      <p>No benefit selected</p>
+      {% endfor %}
+    </ul>
+
+    <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+    {% endif %}
+
+
+    <!------------------------------------- If soemthing looks wrong section ------------------------------------------>
+
+    {% if data['inScope'] | length > 0 %}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">If something looks wrong</h2>
+
+    <p class="govuk-body">If your payment is not what you expected, contact the benefit team that pays you.</p>
+
+    <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+    {% endif %}
+
+
+         <!--<p class="govuk-!-font-size-16"><a href="" target="_blank">Print</a> <br><br> <a class="govuk-!-font-size-16"><a href="" target="_blank">Download</a></p>-->
+            
+          <br>
+          <a class="govuk-button" href="/payments/v2/account-home">
+           Go back to account home
+          </a>
+          </form>
+          </div>
+
+
+<!------------------------------------ one third nav panel ---------------------------------->
+
+        
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Related content</h2>
+
+          <p class="govuk-body">
+   <a href="/payments/v2/payment-history" class="govuk-link">Check your payment history</a></p>
+         <p class="govuk-body">
+   <a href="/payments/v2/personal-details" class="govuk-link">View your personal details</a></p>
+       
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+  </main>
+</div>     
+
+
+
+{% endblock %}

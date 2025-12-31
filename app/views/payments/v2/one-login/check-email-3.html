@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Successfully verified idnetification
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+    {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Check your email</h1>
+
+      <div class="govuk-inset-text">
+  We have sent an email to: email@address.com
+      </div>
+      
+
+
+ 
+          
+
+      <p class="govuk-body">
+          The email contains a 6 digit security code.
+      </p>
+
+      <p class="govuk-body">
+          Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.
+      </p>
+
+      <p class="govuk-body">
+          The code will expire after one hour.
+      </p>
+
+      <div class="govuk-form-group">
+  <label class="govuk-label" for="width-10">
+    Enter the 6 digit security code
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text">
+</div>
+
+
+    
+
+      <form class="form" action="/payments/v2/one-login/idv-success" method="post">
+        <button class="govuk-button" action="idv-success" data-module="govuk-button">
+          Continue
+        </button>
+    </form>
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Problems with the code?
+    </span>
+  </summary>
+<div class="govuk-details__text">
+   We can <a class="govuk-link" href="#">send the code again</a> or you can <a class="govuk-link" href="#">use a different email address</a>.
+  </div>
+</details>
+
+    
+{% endblock %}

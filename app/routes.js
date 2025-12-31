@@ -2110,5 +2110,10 @@ router.use('/', unmoderated1)
 const payments1 = require('./routes/payments-v1')
 router.use('/', payments1)
 
+const payments2 = require('./routes/payments-v2')
+router.use('/', payments2)
+
+
+
 
 
