@@ -9,7 +9,7 @@ var uCBenefit = false;
 var oOScope = [];
 var carersBenefit = false;
 
-router.all('/payments/v2/research-set-up/PoB-clear-data', function (req, res) {
+router.all('/payments/v2-no-payment-ready/research-set-up/PoB-clear-data', function (req, res) {
 
   req.session.data = {}
   inScope = [];
@@ -29,13 +29,13 @@ router.all('/payments/v2/research-set-up/PoB-clear-data', function (req, res) {
 
   })
 
-  router.post('/payments/v2/research-set-up/benefits-answer', function (req, res) {
+  router.post('/payments/v2-no-payment-ready/research-set-up/benefits-answer', function (req, res) {
 
     var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
 
   if (!researchSetUpBenefits || researchSetUpBenefits.length === 0) {
-    return res.redirect('/payments/v2/research-set-up/ready');
+    return res.redirect('/payments/v2-no-payment-ready/research-set-up/ready');
   }
 
 
@@ -84,69 +84,69 @@ router.all('/payments/v2/research-set-up/PoB-clear-data', function (req, res) {
     console.log(carersBenefit)
   
 
-  res.redirect('/payments/v2/research-set-up/ready');
+  res.redirect('/payments/v2-no-payment-ready/research-set-up/ready');
 
    })
 
 
 
 // Drop user if they were not invited to use the service
-router.post('/payments/v2/how-did-you-find-out-about-this-service-answer', function (req, res) {
+router.post('/payments/v2-no-payment-ready/how-did-you-find-out-about-this-service-answer', function (req, res) {
 
   var howDidYouFindOutAboutThisService = req.session.data['how-did-you-find-out-about-this-service']
 
 
   if (howDidYouFindOutAboutThisService === "heard-about-on-phone" || howDidYouFindOutAboutThisService === "job-centre")  {
-    res.redirect('/payments/v2/go-to-identity-check');
+    res.redirect('/payments/v2-no-payment-ready/go-to-identity-check');
 
   } else {
-    res.redirect('/payments/v2/cannot-get-a-proof-of-benefit-letter');
+    res.redirect('/payments/v2-no-payment-ready/cannot-get-a-proof-of-benefit-letter');
   }
 })
 
 // Select which benefit selection page to show based on number of benefits available for user.
-router.all('/payments/v2/list-benefits-answer', function (req, res) {
+router.all('/payments/v2-no-payment-ready/list-benefits-answer', function (req, res) {
 
   var researchSetUpBenefits = req.session.data['researchSetUpBenefits']
 
   if (researchSetUpBenefits == [] || researchSetUpBenefits == undefined)  {
-    res.redirect('/payments/v2/you-cannot-use-this-service-no-benefits');
+    res.redirect('/payments/v2-no-payment-ready/you-cannot-use-this-service-no-benefits');
     return
 
   } else if ((researchSetUpBenefits.length > 0) && (inScope.length > 0 ))   {
-      res.redirect('/payments/v2/select-benefits-you-need-proof-of');
+      res.redirect('/payments/v2-no-payment-ready/select-benefits-you-need-proof-of');
 
   } else if (inScope.length === 0 )  {
-    res.redirect('/payments/v2/you-cannot-get-proof-of-benefit-letter');
+    res.redirect('/payments/v2-no-payment-ready/you-cannot-get-proof-of-benefit-letter');
 
   }
 
 })
 
-router.post('/payments/v2/select-benefits-answer', function (req, res) {
+router.post('/payments/v2-no-payment-ready/select-benefits-answer', function (req, res) {
 
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
 
     if (doYouWantLetterFor === 'no') {
-      res.redirect('/payments/v2/contact-us-for-different-benefit-letter');
+      res.redirect('/payments/v2-no-payment-ready/contact-us-for-different-benefit-letter');
     }
 
     else {
-      res.redirect('/payments/v2/where-we-send-your-letter');
+      res.redirect('/payments/v2-no-payment-ready/where-we-send-your-letter');
     }
 
 })
 
-router.post('/payments/v2/select-benefits-answer-change-link', function (req, res) {
+router.post('/payments/v2-no-payment-ready/select-benefits-answer-change-link', function (req, res) {
 
   var doYouWantLetterFor = req.session.data['doYouWantLetterFor']
 
     if (doYouWantLetterFor === 'no') {
-      res.redirect('/payments/v2/contact-us-for-different-benefit-letter');
+      res.redirect('/payments/v2-no-payment-ready/contact-us-for-different-benefit-letter');
     }
 
     else {
-      res.redirect('/payments/v2/check-your-answers');
+      res.redirect('/payments/v2-no-payment-ready/check-your-answers');
     }
 
 })
@@ -154,7 +154,7 @@ router.post('/payments/v2/select-benefits-answer-change-link', function (req, re
 
 
 // Drop user if they state their address is incorrect
-router.post('/payments/v2/send-letter-to-address-answer', function (req, res) {
+router.post('/payments/v2-no-payment-ready/send-letter-to-address-answer', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
 
@@ -162,12 +162,12 @@ router.post('/payments/v2/send-letter-to-address-answer', function (req, res) {
   // Check if user selected no on single address page
   if (confirmLetterSend == "No")  {
     // Send user to contact us page
-    res.redirect('/payments/v2/you-cannot-use-this-service-incorrect-address');
+    res.redirect('/payments/v2-no-payment-ready/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
     // Send user to check answers
-    res.redirect('/payments/v2/digital-or-letter');
+    res.redirect('/payments/v2-no-payment-ready/digital-or-letter');
   }
 
 })
@@ -175,7 +175,7 @@ router.post('/payments/v2/send-letter-to-address-answer', function (req, res) {
 
 
 // Drop user if they state their address is incorrect for change link page
-router.post('/payments/v2/change-link', function (req, res) {
+router.post('/payments/v2-no-payment-ready/change-link', function (req, res) {
 
   var confirmLetterSend = req.session.data['confirmLetterSend']
 
@@ -183,12 +183,12 @@ router.post('/payments/v2/change-link', function (req, res) {
   // Check if user selected no on single address page
   if (confirmLetterSend == "No")  {
     // Send user to contact us page
-    res.redirect('/payments/v2/you-cannot-use-this-service-incorrect-address');
+    res.redirect('/payments/v2-no-payment-ready/you-cannot-use-this-service-incorrect-address');
   }
 
   else {
     // Send user to check answers
-    res.redirect('/payments/v2/check-your-answers');
+    res.redirect('/payments/v2-no-payment-ready/check-your-answers');
   }
 
 })
@@ -208,15 +208,15 @@ router.post('/payments/v2/change-link', function (req, res) {
 
 
 //On check answers page, if selected letter, send to conf, if not, send to download
-router.post('/payments/v2/check-your-answers-answer', function (req, res) {
+router.post('/payments/v2-no-payment-ready/check-your-answers-answer', function (req, res) {
 
   var digitalOrLetter = req.session.data['digitalOrLetter']
 
   if (digitalOrLetter === 'Posted letter') {
-    res.redirect('/payments/v2/request-complete');
+    res.redirect('/payments/v2-no-payment-ready/request-complete');
 
  }  else {
-      res.redirect('/payments/v2/request-complete');
+      res.redirect('/payments/v2-no-payment-ready/request-complete');
  }
 
 })

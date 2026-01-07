@@ -10,7 +10,7 @@
     
     serviceNavigationParams: { 
       
-      serviceName: "Check your benefit and State Pension payment history",
+      serviceName: "View your benefit and State Pension payment history",
       navigationLabel: "index.html"
       
     }
@@ -56,6 +56,11 @@ Payment history
  <!--- out of scope and UC --->               
         {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
           <h1 class="govuk-heading-xl">You cannot check your payment history using this service</h1>
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+<!--- out of scope and carersBenefit --->               
+        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
+          <h1 class="govuk-heading-xl">You cannot check your next payments using this service</h1>
             <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
             <!--- 1 in scope ---> 
@@ -294,28 +299,29 @@ Payment history
  <!------------------------------------ Out of scope benfit info ------------------------------------>
 
       {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
-        <h2 class="govuk-heading-m">Payments you cannot check using this service</h2>
+        <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
 
        {% elif data['inScope'].length > 0 and data['uCBenefit'] == true %}
-       <h2 class="govuk-heading-m">Payments you cannot check using this service</h2>
+       <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
 
       {% elif data['oOScope'].length > 0 or data['uCBenefit'] == true %}
-       <h2 class="govuk-heading-m">How to check your next payments</h2>
+       <h2 class="govuk-heading-m">How to view your next payments</h2>
+
+       {% elif data['oOScope'].length > 0 or data['carersBenefit'] == true %}
+      <h2 class="govuk-heading-m">How to view your next payments</h2>
       
       {% elif data['oOScope'] | length > 0 %}
-        <h2 class="govuk-heading-m">How to check your next payments</h2>
+        <h2 class="govuk-heading-m">How to view your next payments</h2>
       {% endif %}
 
 
 
       {% if data['uCBenefit'] == true %}
-        <p>To check your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
       {% endif %}
+      
 
-
-      {% set benefits = data.researchSetUpBenefits or [] %}
-
-      {% if "Carer’s Allowance" in benefits %}
+        {% if data['carersBenefit'] == true %}
         <p>For Carer's Allowance, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
       {% endif %}
 
@@ -323,7 +329,7 @@ Payment history
  <!------------------------------------ 1 out of scope benefit ----------------------------------------->
 
     {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
-    <p>To check your {{ data['oOScope'][0] }} payments, you need to contact them.</p>
+    <p>To view your {{ data['oOScope'][0] }} payments, you need to contact them.</p>
 
 
     <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
@@ -338,7 +344,7 @@ Payment history
 
 
 
-    <p>To check your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
+    <p>To view your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
 
     <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
         class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
@@ -350,7 +356,7 @@ Payment history
 
     {% elif data['oOScope'].length > 2 %}
 
-    <p>You cannot use this service to check your payments for:</p>
+    <p>You cannot use this service to view your payments for:</p>
     <ul class="govuk-list govuk-list--bullet">
       {% for benefit in data['oOScope'] %}
       <li>{{ benefit }}</li>
@@ -400,7 +406,7 @@ Payment history
         <h2 class="govuk-heading-m">Related content</h2>
 
           <p class="govuk-body">
-   <a href="/payments/v2/payment-history" class="govuk-link">Check your payment history</a></p>
+   <a href="/payments/v2/payment-amount-date" class="govuk-link">Check your next payment</a></p>
          <p class="govuk-body">
    <a href="/payments/v2/personal-details" class="govuk-link">View your personal details</a></p>
        

@@ -8,7 +8,7 @@
   {{ super() }}
 
   {{ govukServiceNavigation({
-    serviceName: "Manage your benefits and State Pension",
+    serviceName: "Check your next benefit and State Pension payments",
     serviceUrl: "/"
   }) }}
 {% endblock %}
@@ -27,7 +27,7 @@
 
 
 
-<!------------------------- Version 2 + 3 ------------------------------->
+<!------------------------- Version 2 ------------------------------->
 
       <span class="govuk-caption-m">December 2025</span>
       <h2 class="govuk-heading-l">Version 1a - including unhappy paths</h2>
@@ -52,34 +52,51 @@
         <div class="govuk-details__text">
             <p>This version includes:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>*</li>
+              <li>Sign posting for out of scope benefits</li>
+              <li>Sign posting for when payemnt information looks wrong</li>
+              <li>Content for when there is no benefits on record</li>
+              <li>6 months of payemnt history</li>
              </ul>
         </div>
       </details>
 
-      {% from "govuk/components/button/macro.njk" import govukButton %}
-      <div class="govuk-button-group">
-
-
-        <!-------------------- This is v2 on the prototype ------------->
+        <div>
         {{ govukButton({
           text: "Scenario: Some payments are ready, PIP is not ready",
           href: "/payments/v2/research-set-up/intro"
         }) }}
+        </div>
 
+        <div>
         {{ govukButton({
           text: "Scenario: No payments are ready",
-          href: "#"
+          href: "/payments/v2-no-payment-ready/research-set-up/intro"
         }) }}
+        </div>
 
-      </div>
+        <div>
+        {{ govukButton({
+          text: "Static page: No payment history",
+          href: "/payments/v2/no-payment-history"
+        }) }}
+        </div>
+
+        <div>
+         {{ govukButton({
+          text: "Static page: No benefits on record",
+          href: "/payments/v2/no-benefits-on-record"
+        }) }}
+        </div>
+        
+
+      
+
+      <h2 class="govuk-heading-m">Tech fail pages</h2>
+
+      <p><a href="/payments/v2/tech-fails/try-again-later" class="govuk-link" rel="noreferrer noopener" target="_blank">Try again later</a>
+      <p><a href="/payments/v2/tech-fails/problem-with-service" class="govuk-link" rel="noreferrer noopener" target="_blank">Service failed</a>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-<!------------------------------------------- End of Version 2 + 3 --------------------------------------------->
-
-
-
 
 
 <!------------------------- Version 1 ------------------------------->

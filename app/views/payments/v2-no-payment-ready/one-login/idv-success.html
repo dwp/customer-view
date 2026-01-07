@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Create one login account - enter email address 
+  Successfully verified idnetification
 {% endblock %}
 
 {% block header %}
@@ -18,11 +18,6 @@
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-    {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -30,38 +25,20 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      
-
-      <fieldset class="govuk-fieldset">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-    <h1 class="govuk-fieldset__heading">
-      Enter your email address
-    </h1>
-  </legend>
-  
-    <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1">
- 
-</fieldset>
-
-      <h2 class="govuk-heading-s">Agree to the GOV.UK One Login terms of use</h2>
- 
-          
+      <h1 class="govuk-heading-l">
+        Continue to the service you want to use
+      </h1>
 
       <p class="govuk-body">
-          By continuing, you confirm that you agree to our:
+          You've successfully proved your identity. You can now continue to the service you want to use.
       </p>
 
-      <ul>
-        <li>
-          <a href="#" class="govuk-link">privacy notice (opens in a new tab)</a>, which explains how we use your personal information 
-        </li>
-        <li>
-          <a href="#" class="govuk-link">terms and conditions (opens in a new tab)</a>
-        </li>
-      </ul> 
+      <p class="govuk-body">
+          Some of the information you shared when you proved your identitiy might be used to automaticaly fill in forms within the service.
+      </p>
 
-      <form class="form" action="/payments/v2/one-login/check-email-3" method="post">
-        <button class="govuk-button" action="check-email-3" data-module="govuk-button">
+      <form class="form" action="/payments/v2-no-payment-ready/account-home" method="post">
+        <button class="govuk-button" action="/get-a-proof-of-benefit-letter/download/download-6-AF/account-home" data-module="govuk-button">
           Continue
         </button>
     </form>

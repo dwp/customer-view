@@ -2,25 +2,32 @@
 
 {% block header %}
 
+{{ super() }}
 
-  {{ govukOneLoginServiceHeader({
-    homepageLink: "/index.html",
-    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
-    oneLoginLink: "/test-one-login",
-    
-    serviceNavigationParams: { 
-      
-      serviceName: "Check your next benefit and State Pension payments",
-      navigationLabel: "index.html"
-      
-    }
-  }) }}
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
+  }
+</style>
 
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
 
+{{ govukServiceNavigation({
+
+serviceName: "Get proof of your benefits and State Pension",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
+}) }}
 {% endblock %}
 
 {% block pageTitle %}
-Contact us
+Contact us to get a proof of benefit letter
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,7 +39,7 @@ Contact us
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-   {{ govukBackLink({
+  {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}
@@ -41,35 +48,22 @@ Contact us
 
 {% block content %}
 
-
-
-
-
-
-
-
-
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Contact us
+        Contact us to get proof of your benefits
       </h1>
 
       <p>
-        We cannot find a record of the benefits you currently get.
+        Our records show that you get {{ data['inScope'] }}.
       </p>
 
       <p>
-        If you think this is wrong, contact the benefit team that pays you.
-
-    
+        If you expect to see another benefit, you will need to contact them.
       </p>
 
-      <p>Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
-
-        <br><br>
+      <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
 
         <div class="govuk-button-group">
           {{ govukButton({
@@ -86,7 +80,5 @@ Contact us
 
     </div>
   </div>
-
-        
 
 {% endblock %}

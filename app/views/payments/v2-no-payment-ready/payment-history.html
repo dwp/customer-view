@@ -41,10 +41,47 @@ Payment history
 
 {% block content %}
 
-    <div class="govuk-width-container">
-      <main class="govuk-main-wrapper">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <!--- out of scope only --->
+
+        {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
+          <h1 class="govuk-heading-xl">You cannot check your payment history using this service</h1>
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+ <!--- out of scope and UC --->               
+        {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
+          <h1 class="govuk-heading-xl">You cannot check your payment history using this service</h1>
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+<!--- out of scope and carersBenefit --->               
+        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
+          <h1 class="govuk-heading-xl">You cannot check your next payments using this service</h1>
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+            <!--- 1 in scope ---> 
+        {% elif data['inScope'].length === 1 %}
+         <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your payment history
+               </h1>
+             </legend>
+
+ <!--- More than 1 in scope --->
+        {% else %}
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your payment history
+              </h1>
+            </legend>
+        {% endif %}
+
             <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
               <div class="govuk-form-group">
               <!--
@@ -53,14 +90,18 @@ Payment history
                 <p class="govuk-caption-l">{{ data['full-name'] }}</p>
               -->
         
-                  <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+                  <!-- <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                           <h1 class="govuk-fieldset__heading">
                             Your payment history
                           </h1>
-                    </legend>
+                    </legend> -->
 
-<table class="govuk-table">
+
+
+    {% if data['inScope'].length === 1 %}
+
+    <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header app-custom-class">Date</th>
@@ -69,8 +110,6 @@ Payment history
     </tr>
   </thead>
 
-    {% if data['inScope'].length === 1 %}
-
       <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">12 January 2026</td>
@@ -78,33 +117,42 @@ Payment history
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">05 January 2026</td>
-      <td class="govuk-table__cell">Attendance Allowance</td>
-      <td class="govuk-table__cell">£295.60</td>
-    </tr>
-     <tr class="govuk-table__row">
       <td class="govuk-table__cell">15 December 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">08 December 2025</td>
-      <td class="govuk-table__cell">Attendance Allowance</td>
-      <td class="govuk-table__cell">£295.60</td>
-    </tr>
-    <tr class="govuk-table__row">
+     <tr class="govuk-table__row">
       <td class="govuk-table__cell">17 November 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">10 November 2025</td>
+      <td class="govuk-table__cell">20 October 2025</td>
+      <td class="govuk-table__cell">Attendance Allowance</td>
+      <td class="govuk-table__cell">£295.60</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">22 September 2025</td>
+      <td class="govuk-table__cell">Attendance Allowance</td>
+      <td class="govuk-table__cell">£295.60</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">25 August 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
   </tbody>
                 
     {% elif data['inScope'].length === 2 %}
+
+    <table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Date</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Benefit</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Amount</th>
+    </tr>
+  </thead>
   
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
@@ -141,34 +189,43 @@ Payment history
 
     {% elif data['inScope'].length > 2 %}
 
+    <table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Date</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Benefit</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Amount</th>
+    </tr>
+  </thead>
+
       <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">29 August 2025</td>
+      <td class="govuk-table__cell">19 December 2025</td>
       <td class="govuk-table__cell">Pension Credit</td>
       <td class="govuk-table__cell">£908.40</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">26 August 2025</td>
+      <td class="govuk-table__cell">16 December 2025</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
      <tr class="govuk-table__row">
-      <td class="govuk-table__cell">15 September 2025</td>
+      <td class="govuk-table__cell">08 December 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">01 August 2025</td>
+      <td class="govuk-table__cell">21 November 2025</td>
       <td class="govuk-table__cell">Pension Credit</td>
       <td class="govuk-table__cell">£908.40</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">29 July 2025</td>
+      <td class="govuk-table__cell">18 November 2025</td>
       <td class="govuk-table__cell">State Pension</td>
       <td class="govuk-table__cell">£921.00</td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__cell">18 August 2025</td>
+      <td class="govuk-table__cell">10 November 2025</td>
       <td class="govuk-table__cell">Attendance Allowance</td>
       <td class="govuk-table__cell">£295.60</td>
     </tr>
@@ -179,40 +236,69 @@ Payment history
     {% endif %}
  </table>
 
-<nav class="govuk-pagination" aria-label="Pagination">
-  <div class="govuk-pagination__prev">
-    <a class="govuk-link govuk-pagination__link" href="/payments/v2/payment-history-2" rel="prev">
-      <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-        <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-      </svg>
-      <span class="govuk-pagination__link-title">
-        Previous<span class="govuk-visually-hidden"> page</span>
-      </span>
-    </a>
-  </div>
+
+ {% if data['inScope'].length === 2 %}
+ <nav class="govuk-pagination" aria-label="Pagination">
   <ul class="govuk-pagination__list">
-    <li class="govuk-pagination__item">
-      <a class="govuk-link govuk-pagination__link" href="/payments/v2/payment-history" aria-label="Page 1">
+    <li class="govuk-pagination__item govuk-pagination__item--current">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history" aria-label="Page 1" aria-current="page">
         1
       </a>
     </li>
     <li class="govuk-pagination__item">
-      <a class="govuk-link govuk-pagination__link" href="/payments/v2/payment-history-2" aria-label="Page 2">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history-2" aria-label="Page 2">
         2
       </a>
     </li>
+  </ul>
+  <div class="govuk-pagination__next">
+    <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history-2" rel="next">
+      <span class="govuk-pagination__link-title">
+        Next<span class="govuk-visually-hidden"> page</span>
+      </span>
+      <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2-no-payment-ready-no-payment-readyh12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+      </svg>
+    </a>
+  </div>
+ </nav>
+
+ {% elif data['inScope'].length > 2 %}
+
+ <nav class="govuk-pagination" aria-label="Pagination">
+  <ul class="govuk-pagination__list">
     <li class="govuk-pagination__item govuk-pagination__item--current">
-      <a class="govuk-link govuk-pagination__link" href="/payments/v2/payment-history-3" aria-label="Page 3" aria-current="page">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history" aria-label="Page 1" aria-current="page">
+        1
+      </a>
+    </li>
+    <li class="govuk-pagination__item">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history-2" aria-label="Page 2">
+        2
+      </a>
+    </li>
+    <li class="govuk-pagination__item">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history-3" aria-label="Page 3">
         3
       </a>
     </li>
   </ul>
-</nav>
+  <div class="govuk-pagination__next">
+    <a class="govuk-link govuk-pagination__link" href="/payments/v2-no-payment-ready-no-payment-ready/payment-history-2" rel="next">
+      <span class="govuk-pagination__link-title">
+        Next<span class="govuk-visually-hidden"> page</span>
+      </span>
+      <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2-no-payment-ready-no-payment-readyh12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+      </svg>
+    </a>
+  </div>
+ </nav>
+ {% endif %}
 
+ <!------------------------------------ Out of scope benfit info ------------------------------------>
 
-<!------------------------------------ Out of scope benfit info ------------------------------------>
-
-       {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
+      {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
         <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
 
        {% elif data['inScope'].length > 0 and data['uCBenefit'] == true %}
@@ -233,16 +319,14 @@ Payment history
       {% if data['uCBenefit'] == true %}
         <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
       {% endif %}
+      
 
-
-      {% set benefits = data.researchSetUpBenefits or [] %}
-
-      {% if "Carer’s Allowance" in benefits %}
+        {% if data['carersBenefit'] == true %}
         <p>For Carer's Allowance, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
       {% endif %}
 
 
-<!------------------------------------ 1 out of scope benefit ----------------------------------------->
+ <!------------------------------------ 1 out of scope benefit ----------------------------------------->
 
     {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
     <p>To view your {{ data['oOScope'][0] }} payments, you need to contact them.</p>
@@ -254,20 +338,20 @@ Payment history
 
 
 
-<!------------------------------------ 2 out of scope benefits ----------------------------------------->
+ <!------------------------------------ 2 out of scope benefits ----------------------------------------->
 
-{% elif data['oOScope'].length === 2 %}
+ {% elif data['oOScope'].length === 2 %}
 
 
 
-    <p>To View your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
+    <p>To view your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
 
     <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
         class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
         new tab)</a>.</p>
 
 
-<!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
+ <!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
 
 
     {% elif data['oOScope'].length > 2 %}
@@ -288,7 +372,7 @@ Payment history
     {% endif %}
 
 
-<!------------------------------------- If soemthing looks wrong section ------------------------------------------>
+ <!------------------------------------- If soemthing looks wrong section ------------------------------------------>
 
     {% if data['inScope'] | length > 0 %}
 
@@ -304,32 +388,39 @@ Payment history
         
     {% endif %}
 
+
                     
           <br>
-          <a class="govuk-button" href="/payments/v2/account-home">
+          <a class="govuk-button" href="/payments/v2-no-payment-ready-no-payment-ready/account-home">
            Go back to account home
           </a>
           </form>
-          </div>
-        </div>
+</div>  
+</div> 
 
-
-         <!------------------------------------ one third nav panel ---------------------------------->
+      
+ <!------------------------------------ one third nav panel ---------------------------------->
 
         
       <div class="govuk-grid-column-one-third">
         <h2 class="govuk-heading-m">Related content</h2>
 
           <p class="govuk-body">
-   <a href="/payments/v2/payment-amount-date" class="govuk-link">Check your next payment</a></p>
+   <a href="/payments/v2-no-payment-ready-no-payment-ready/payment-amount-date" class="govuk-link">Check your next payment</a></p>
          <p class="govuk-body">
-   <a href="/payments/v2/personal-details" class="govuk-link">View your personal details</a></p>
+   <a href="/payments/v2-no-payment-ready-no-payment-ready/personal-details" class="govuk-link">View your personal details</a></p>
        
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </div>
     </div>
   </main>
-</div> 
+</div>     
+
+
+
+
+
+          
         
 
 {% endblock %}

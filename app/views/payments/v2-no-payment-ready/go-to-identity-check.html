@@ -1,18 +1,18 @@
 {% extends "layouts/main.html" %}
 
+{% block header %}
 
+{{ super() }}
 
-{% block pageTitle %}
-Before we start the user research scenario - ready
+{{ govukServiceNavigation({
+  serviceName: "Get proof of your benefits and State Pension",
+  serviceUrl: "/"
+}) }}
+
 {% endblock %}
 
-{% block header %}
-  {{ super() }}
-
-  {{ govukServiceNavigation({
-    serviceName: "Check your next benefit and State Pension payments",
-    serviceUrl: "/"
-  }) }}
+{% block pageTitle %}
+We are taking you to our identity checking service
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,14 +31,21 @@ Before we start the user research scenario - ready
 
 {% endblock %}
 
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/payments/v2/one-login/create-account-1" method="post">
+      <form class="form" action="account-home" method="post">
 
-        <h1 class="govuk-heading-l">The research is about to start</h1>
+        <h1 class="govuk-heading-l">
+          We are taking you to our identity checking service
+        </h1>
+
+        <p>To keep your information secure, you’ll need to register or sign in before you can access your details.</p>
+
+        <p>If you need to register, we will ask you security questions.</p>
 
         {{ govukButton({
           text: "Continue"
