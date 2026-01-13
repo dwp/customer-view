@@ -51,40 +51,11 @@ Account home
 
 <h2 class="govuk-heading-m">Payment</h2>
 
-{% set benefits = data['researchSetUpBenefits'] %}
-
-
-{% if not benefits or benefits|length == 0 %}
-  <a href="/payments/v2-no-payment-ready/no-benefits-on-record" class="govuk-link">Check your next payment</a>
-</p>
-
-   {% else %}
-
- {% if data['inScope'].length === 1 %}
-      <p class="govuk-body">
-  <a href="/payments/v2-no-payment-ready/payment-amount-date" class="govuk-link">Check your next payment</a>
-</p>
- {% else %}
-         <p class="govuk-body">
-  <a href="/payments/v2-no-payment-ready/payment-amount-date" class="govuk-link">Check your next payments</a>
-</p>
-{% endif %}
-{% endif %}
-
-{% set benefits = data['researchSetUpBenefits'] %}
-
-
-{% if not benefits or benefits|length == 0 %}
-  <a href="/payments/v2-no-payment-ready/no-benefits-on-record" class="govuk-link">View your recent payments</a>
-</p>
-
-   {% else %}
 
 <p class="govuk-body">
-  <a href="/payments/v2-no-payment-ready/payment-history" class="govuk-link">View your recent payments</a>
+  <a href="/payments/v2/payment-amount-date" class="govuk-link">Check your next payments</a>
 </p>
 
-{% endif %}
 
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -104,21 +75,8 @@ Account home
 
 
       <h2 class="govuk-heading-m">Documents</h2>
-
-             {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
-             <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
-               {% endif %}
-
-               {% if 'State Pension' in data['inScope'] and data['inScope']|length > 1 %}
+   
                <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits and State Pension</a></p>
-                 {% endif %}
-
-                 {% if 'State Pension' not in data['inScope'] %}
-                 <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
-                   {% endif %}
-
-              
-              
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">                   
 

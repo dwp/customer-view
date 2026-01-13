@@ -1,26 +1,19 @@
 {% extends "layouts/main.html" %}
 
-
 {% block header %}
+
 
   {{ govukOneLoginServiceHeader({
     homepageLink: "/index.html",
-    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
-    oneLoginLink: "/test-one-login",
-    
-    serviceNavigationParams: { 
-      
-      serviceName: "Check your next benefit and State Pension payments",
-      navigationLabel: "index.html"
-      
-    }
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-7-OL/signout.html",
+    oneLoginLink: "/test-one-login"
   }) }}
 
 
 {% endblock %}
 
 {% block pageTitle %}
-Problem with the service
+Error page - Problem with the service
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,7 +25,6 @@ Problem with the service
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
- 
 
 {% endblock %}
 
