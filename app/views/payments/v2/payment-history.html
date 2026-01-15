@@ -50,17 +50,17 @@ Payment history
       <!--- out of scope only --->
 
         {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
-          <h1 class="govuk-heading-xl">You cannot check your recent payments using this service</h1>
+          <h1 class="govuk-heading-xl">You cannot view your recent payments using this service</h1>
             <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
  <!--- out of scope and UC --->               
         {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
-          <h1 class="govuk-heading-xl">You cannot check your recent payments using this service</h1>
+          <h1 class="govuk-heading-xl">You cannot view your recent payments using this service</h1>
             <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
 <!--- out of scope and carersBenefit --->               
         {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
-          <h1 class="govuk-heading-xl">You cannot check your recent payments using this service</h1>
+          <h1 class="govuk-heading-xl">You cannot view your recent payments using this service</h1>
             <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
             <!--- 1 in scope ---> 
