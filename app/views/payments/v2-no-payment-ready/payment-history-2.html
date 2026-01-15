@@ -10,7 +10,7 @@
     
     serviceNavigationParams: { 
       
-      serviceName: "View your benefit and State Pension payment history",
+      serviceName: "View your benefit and State Pension recent payments",
       navigationLabel: "index.html"
       
     }
@@ -242,13 +242,13 @@ Payment history
        <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
 
       {% elif data['oOScope'].length > 0 or data['uCBenefit'] == true %}
-       <h2 class="govuk-heading-m">How to view your next payments</h2>
+       <h2 class="govuk-heading-m">How to view your recent payments</h2>
 
        {% elif data['oOScope'].length > 0 or data['carersBenefit'] == true %}
-      <h2 class="govuk-heading-m">How to view your next payments</h2>
+      <h2 class="govuk-heading-m">How to view your recent payments</h2>
       
       {% elif data['oOScope'] | length > 0 %}
-        <h2 class="govuk-heading-m">How to view your next payments</h2>
+        <h2 class="govuk-heading-m">How to view your recent payments</h2>
       {% endif %}
 
 
