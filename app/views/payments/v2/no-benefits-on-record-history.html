@@ -32,10 +32,23 @@ Contact us
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
 
 {% endblock %}
 
@@ -50,7 +63,7 @@ Contact us
 
 
 
-  <div class="govuk-grid-row">
+ 
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
@@ -58,11 +71,11 @@ Contact us
       </h1>
 
       <p>
-        We cannot find a record of the benefits you currently get.
+        We do not have any payment record for you.
       </p>
 
       <p>
-        If you think this is wrong, contact the benefit team that pays you.
+        If you think this is wrong, contact the benefit team direct.
 
     
       </p>

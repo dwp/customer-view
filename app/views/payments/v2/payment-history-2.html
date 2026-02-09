@@ -32,28 +32,44 @@ Payment history
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
 
 {% endblock %}
 
 {% block content %}
 
 
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
+
       <div class="govuk-grid-column-two-thirds">
-        <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
-          <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                   <h1 class="govuk-fieldset__heading">
                   Your recent payments
                   </h1>
               </legend>
+              </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+          <div class="govuk-form-group">
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -208,6 +224,9 @@ Payment history
       {% elif data['oOScope'].length > 0 or data['uCBenefit'] == true %}
        <h2 class="govuk-heading-m">How to view your recent payments</h2>
 
+      {% elif data['inScope'].length > 0 and data['carersBenefit'] == true %}
+      <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
+
        {% elif data['oOScope'].length > 0 or data['carersBenefit'] == true %}
       <h2 class="govuk-heading-m">How to view your recent payments</h2>
       
@@ -225,7 +244,7 @@ Payment history
       {% set benefits = data.researchSetUpBenefits or [] %}
 
       {% if "Carer’s Allowance" in benefits %}
-        <p>For Carer's Allowance, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
+        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
       {% endif %}
 
 
@@ -308,20 +327,28 @@ Payment history
 
       <!------------------------------------ one third nav panel ---------------------------------->
 
-        
       <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-m">Related content</h2>
 
-          <p class="govuk-body">
-   <a href="/payments/v2/payment-amount-date" class="govuk-link">Check your next payment</a></p>
-         <p class="govuk-body">
-   <a href="/payments/v2/personal-details" class="govuk-link">View your personal details</a></p>
-       
-        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="/payments/v2/payment-amount-date" class="govuk-link">Check your next payment</a>
+            </li>
+            <li>
+              <a href="/payments/v2/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
       </div>
+
     </div>
   </main>
-</div> 
+</div>
 
 
        

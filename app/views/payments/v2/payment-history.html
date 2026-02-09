@@ -32,10 +32,24 @@ Payment history
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
-   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
 
 {% endblock %}
 
@@ -43,25 +57,20 @@ Payment history
 
 
 
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
+
       <div class="govuk-grid-column-two-thirds">
       <!--- out of scope only --->
 
         {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
           <h1 class="govuk-heading-xl">You cannot view your recent payments using this service</h1>
-            <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
  <!--- out of scope and UC --->               
         {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
           <h1 class="govuk-heading-xl">You cannot view your recent payments using this service</h1>
-            <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
 <!--- out of scope and carersBenefit --->               
         {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
           <h1 class="govuk-heading-xl">You cannot view your recent payments using this service</h1>
-            <p class="govuk-body">Your benefits are not available on this service yet.</p>
 
             <!--- 1 in scope ---> 
         {% elif data['inScope'].length === 1 %}
@@ -81,21 +90,30 @@ Payment history
               </h1>
             </legend>
         {% endif %}
+        </div>
 
-            <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+            {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+ <!--- out of scope and UC --->               
+        {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+<!--- out of scope and carersBenefit --->               
+        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+            {% endif %}
+
+
+      <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
               <div class="govuk-form-group">
-              <!--
-                <p class="govuk-body">Your national insurance number: <br><strong><bold>{{ data['national-insurance-number'] }}</bold></strong>&nbsp;&nbsp;<a href="ni-number">Change</a></p>
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-                <p class="govuk-caption-l">{{ data['full-name'] }}</p>
-              -->
-        
-                  <!-- <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-                          <h1 class="govuk-fieldset__heading">
-                            Your payment history
-                          </h1>
-                    </legend> -->
+              
 
 
 
@@ -259,6 +277,9 @@ Payment history
       {% elif data['oOScope'].length > 0 or data['uCBenefit'] == true %}
        <h2 class="govuk-heading-m">How to view your recent payments</h2>
 
+      {% elif data['inScope'].length > 0 and data['carersBenefit'] == true %}
+      <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
+
        {% elif data['oOScope'].length > 0 or data['carersBenefit'] == true %}
       <h2 class="govuk-heading-m">How to view your recent payments</h2>
       
@@ -274,7 +295,7 @@ Payment history
       
 
         {% if data['carersBenefit'] == true %}
-        <p>For Carer's Allowance, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
+        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
       {% endif %}
 
 
@@ -353,8 +374,32 @@ Payment history
       
  <!------------------------------------ one third nav panel ---------------------------------->
 
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="/payments/v2/payment-amount-date" class="govuk-link">Check your next payment</a>
+            </li>
+            <li>
+              <a href="/payments/v2/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      </div>
+
+    </div>
+  </main>
+</div>
+
         
-      <div class="govuk-grid-column-one-third">
+      <!--<div class="govuk-grid-column-one-third">
+        
         <h2 class="govuk-heading-m">Related content</h2>
 
           <p class="govuk-body">
@@ -366,7 +411,7 @@ Payment history
       </div>
     </div>
   </main>
-</div>     
+</div>-->     
 
 
 

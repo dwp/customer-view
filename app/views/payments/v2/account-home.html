@@ -32,12 +32,20 @@ Account home
     html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
   }) }}
 
+  {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+
 {% endblock %}
 
 
 
 {% block content %}
-
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
