@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-7-OL/signout.html",
+    oneLoginLink: "/test-one-login"
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Error page - Try again later
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+    {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Sorry, there is a problem with the service
+      </h1>
+
+      <p class="govuk-body">
+        Try again later.
+      </p>
+
+      <p class="govuk-body">
+        To check your payments another way, like on the phone, you will need to contact the benefit team.
+      </p>
+
+      <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+
+        <br><br>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Sign out",
+            href: "signout"
+          }) }}
+
+        </div>
+
+    </div>
+  </div>
+
+        
+
+{% endblock %}

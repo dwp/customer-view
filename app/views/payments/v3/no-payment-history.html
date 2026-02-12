@@ -1,0 +1,144 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "View your benefit and State Pension recent payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Payment history
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+      <div class="govuk-grid-column-two-thirds">
+ 
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                You do not have any recent payments
+              </h1>
+            </legend>
+
+            <p class="govuk-body">Come back when you have had a benefit payment.</p>
+
+      
+
+      <p>
+        If you think this is wrong, contact the benefit team that pays you.
+
+      </p>
+
+      <p>Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+
+       
+
+            <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+              <div class="govuk-form-group">
+             
+
+
+
+    
+ 
+
+
+ 
+
+
+
+ 
+
+
+                    
+          <br>
+          <a class="govuk-button" href="/payments/v3/account-home">
+           Go back to account home
+          </a>
+          </form>
+</div>  
+</div>
+</div> 
+
+      
+ <!------------------------------------ one third nav panel ---------------------------------->
+
+        
+   <div class="govuk-grid-column-one-third govuk-!-margin-top-9">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="/payments/v3/payment-amount-date" class="govuk-link">Check your next payment</a>
+            </li>
+            <li>
+              <a href="/payments/v3/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      </div>
+
+    </div>
+  </main>
+</div>    
+
+
+
+
+
+          
+        
+
+{% endblock %}

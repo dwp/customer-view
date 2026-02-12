@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "View your benefit and State Pension recent payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Contact us
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+ 
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You do not have any recent payments
+      </h1>
+
+      <p>
+        We can only show payments that have been made in the past 3 months.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        If something looks wrong
+      </h2>
+
+      <p>
+        If you think this is wrong, contact the benefit team directly.
+      </p>
+
+      <p>Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+
+        <br><br>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Sign out",
+            href: "signout"
+          }) }}
+
+          {{ govukButton({
+            text: "Go back to account home",
+            href: "account-home",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+    </div>
+  </div>
+
+        
+
+{% endblock %}
