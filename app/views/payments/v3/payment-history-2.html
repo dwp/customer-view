@@ -251,32 +251,14 @@ Payment history
 <!------------------------------------ 1 out of scope benefit ----------------------------------------->
 
     {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
-    <p>To view your {{ data['oOScope'][0] }} payments, you need to contact them.</p>
+    <p>You cannot use this service to view your payments for  {{ data['oOScope'][0] }}, you need to contact them.</p>
 
-
-    <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>
-
-
-
-<!------------------------------------ 2 out of scope benefits ----------------------------------------->
-
-{% elif data['oOScope'].length === 2 %}
-
-
-
-    <p>To view your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
-
-    <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>
 
 
 <!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
 
 
-    {% elif data['oOScope'].length > 2 %}
+    {% elif data['oOScope'].length > 1 %}
 
     <p>You cannot use this service to view your payments for:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -287,10 +269,6 @@ Payment history
       {% endfor %}
     </ul>
 
-    <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>
-
     {% endif %}
 
 
@@ -298,13 +276,13 @@ Payment history
 
     {% if data['inScope'] | length > 0 %}
 
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-m">If something looks wrong</h2>
+    <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
 
-    <p class="govuk-body">If your payment is not what you expected, contact the benefit team that pays you.</p>
+    <p class="govuk-body">If a payment doesn't look right or you need more information, contact the benefit team directly. </p>
 
-    <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+    <p class="govuk-body">Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
         class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
         new tab)</a>.</p>
         
