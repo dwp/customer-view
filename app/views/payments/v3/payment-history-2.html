@@ -216,43 +216,36 @@ Payment history
 <!------------------------------------ Out of scope benfit info ------------------------------------>
 
     {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
-        <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
+        <h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
 
        {% elif data['inScope'].length > 0 and data['uCBenefit'] == true %}
-       <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
+       <h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
 
       {% elif data['oOScope'].length > 0 or data['uCBenefit'] == true %}
-       <h2 class="govuk-heading-m">How to view your recent payments</h2>
+       <h2 class="govuk-heading-m">To get your payment information</h2>
 
-      {% elif data['inScope'].length > 0 and data['carersBenefit'] == true %}
-      <h2 class="govuk-heading-m">Payments you cannot view using this service</h2>
+       {% elif data['inScope'].length > 0 and data['carersBenefit'] == true %}
+      <h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
 
-       {% elif data['oOScope'].length > 0 or data['carersBenefit'] == true %}
-      <h2 class="govuk-heading-m">How to view your recent payments</h2>
+      {% elif data['oOScope'].length > 0 or data['carersBenefit'] == true %}
+      <h2 class="govuk-heading-m">To get your payment information</h2>
       
       {% elif data['oOScope'] | length > 0 %}
-        <h2 class="govuk-heading-m">How to view your recent payments</h2>
+        <h2 class="govuk-heading-m">To get your payment information</h2>
       {% endif %}
 
 
-
-      {% if data['uCBenefit'] == true %}
-        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
-      {% endif %}
-
-
-      {% set benefits = data.researchSetUpBenefits or [] %}
-
-      {% if "Carer’s Allowance" in benefits %}
-        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
-      {% endif %}
-
+<!------------------------------------ 1 out of scope benefit and in scope benefits ----------------------------------------->
+  {% if data.oOScope | length == 1 and data.inScope | length > 0 and data.oOScope[0] != "Carer’s Allowance" %}
+    <p>You cannot use this service to view your payments for {{ data['oOScope'][0] }}, you need to contact them.</p>
+    {% endif %}
 
 <!------------------------------------ 1 out of scope benefit ----------------------------------------->
 
-    {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
-    <p>You cannot use this service to view your payments for  {{ data['oOScope'][0] }}, you need to contact them.</p>
 
+
+    {% if data.oOScope|length == 1 and data.inScope == 0 and data.oOScope[0] != "Carer’s Allowance" %}
+    <p>You can contact the {{ data['oOScope'][0] }} team directly.</p>
 
 
 <!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
@@ -260,7 +253,7 @@ Payment history
 
     {% elif data['oOScope'].length > 1 %}
 
-    <p>You cannot use this service to view your payments for:</p>
+    <p>You can contact each benefit team directly:</p>
     <ul class="govuk-list govuk-list--bullet">
       {% for benefit in data['oOScope'] %}
       <li>{{ benefit }}</li>
@@ -270,6 +263,35 @@ Payment history
     </ul>
 
     {% endif %}
+
+
+ <!--------------------------------------------- Out of scope benefits UC and CA ----------------------------------------------->
+
+ <!--------------- UC or CA only----------------->     
+{% if (data.carersBenefit and not data.uCBenefit) 
+      or (data.uCBenefit and not data.carersBenefit) %}
+    {% if data.oOScope | length == 0 %}
+    {% if data.inScope | length == 0 %}
+        <p>You can contact the benefit team directly.</p>
+    {% endif %}
+{% endif %}
+{% endif %}
+
+<!--------------- UC and CA -----------------> 
+      {% if (data.carersBenefit and data.uCBenefit) and data.oOScope | length == 0 %}
+      {% if data.inScope | length == 0 %}
+      <p>You can contact each benefit team directly.</p>
+      {% endif %}
+      {% endif %}
+
+           {% if data['uCBenefit'] == true %}
+        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+      {% endif %}
+      
+
+        {% if data['carersBenefit'] == true %}
+        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
+      {% endif %}
 
 
 <!------------------------------------- If soemthing looks wrong section ------------------------------------------>
