@@ -246,9 +246,26 @@ Payment history
 
     {% if data.oOScope|length == 1 and data.inScope == 0 and data.oOScope[0] != "Carer’s Allowance" %}
     <p>You can contact the {{ data['oOScope'][0] }} team directly.</p>
+{% endif %}
 
 
-<!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
+
+   
+ <!------------------------------------- 2 or more out of scope benefits and in scope ------------------------------------------>
+
+
+{% if (data['oOScope'] | length) > 1 and (data.inScope | default([]) | length) > 0 %}
+
+  <p>You cannot use this service to view payments for:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    {% for benefit in data['oOScope'] %}
+      <li>{{ benefit }}</li>
+    {% else %}
+      <p>No benefit selected</p>
+    {% endfor %}
+  </ul>
+
+<!------------------------------------- 2 or more out of scope benefits ------------------------------------------>
 
 
     {% elif data['oOScope'].length > 1 %}
