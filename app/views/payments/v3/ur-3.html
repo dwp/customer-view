@@ -1,0 +1,208 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "View your benefit and State Pension recent payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Payment history
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+          Your recent payments
+        </h1>
+        </div>
+
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+              <div class="govuk-form-group">
+              
+
+
+
+    
+                
+  
+
+    <table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Date</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Benefit</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Amount</th>
+    </tr>
+  </thead>
+  
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">14 April 2026</td>
+      <td class="govuk-table__cell">Attendance Allowance</td>
+      <td class="govuk-table__cell">£110.40</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">06 April 2026</td>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell">£884.80</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <td class="govuk-table__cell">17 March 2026</td>
+      <td class="govuk-table__cell">Attendance Allowance</td>
+      <td class="govuk-table__cell">£110.40</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">09 March 2026</td>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">17 February 2026</td>
+      <td class="govuk-table__cell">Attendance Allowance</td>
+      <td class="govuk-table__cell">£110.40</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">09 February 2026</td>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell">£884.80</td>
+    </tr>
+  </tbody>
+ </table>
+
+ 
+
+ <!------------------------------------ Out of scope benfit info ------------------------------------>
+
+ 
+      <h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
+
+    <p class="govuk-body">You cannot use this service to view your payments for Widow's Benefit, you need to contact them.</p>
+  
+
+
+
+
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+    <p class="govuk-body">If a payment doesn't look right or you need more information, contact the benefit team directly. </p>
+
+    <p class="govuk-body">Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+     
+                    
+          <br>
+          <a class="govuk-button" href="/payments/v3/account-home">
+           Go back to account home
+          </a>
+          </form>
+</div>  
+</div> 
+
+      
+ <!------------------------------------ one third nav panel ---------------------------------->
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="/payments/v3/payment-amount-date" class="govuk-link">Check your next payment</a>
+            </li>
+            <li>
+              <a href="/payments/v3/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+        
+      <!--<div class="govuk-grid-column-one-third">
+        
+        <h2 class="govuk-heading-m">Related content</h2>
+
+          <p class="govuk-body">
+   <a href="/payments/v3/payment-amount-date" class="govuk-link">Check your next payment</a></p>
+         <p class="govuk-body">
+   <a href="/payments/v3/personal-details" class="govuk-link">View your personal details</a></p>
+       
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+  </main>
+</div>-->     
+
+
+
+
+
+          
+        
+
+{% endblock %}
