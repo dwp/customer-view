@@ -1,0 +1,175 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "/index.html",
+    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
+    oneLoginLink: "/test-one-login",
+    
+    serviceNavigationParams: { 
+      
+      serviceName: "Check your next benefit and State Pension payments",
+      navigationLabel: "index.html"
+      
+    }
+  }) }}
+
+
+{% endblock %}
+
+{% block pageTitle %}
+Check your next payment
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+    Your next payments
+    </h1>
+  </div>
+
+
+<div class="govuk-grid-column-two-thirds">      
+
+      <p class="govuk-body">It is too early to view your payment amount and date for:</p>
+
+       <ul class="govuk-list govuk-list--bullet">
+        <li class="govuk-body">Personal Independence Payment (PIP)</li>
+        <li class="govuk-body">Employment and Support Allowance (ESA)</li>
+      </ul>
+        
+      <p class="govuk-body">We will show next payment information about 3 days before you get paid. This does not include weekends or bank holidays.</p>
+
+      <p class="govuk-body">Come back closer to your payment date</p>
+
+  <!--<div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Attendance Allowance
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body"><strong>£110.40</strong><br>To be paid on 20 April 2026</p>
+    </div>
+  </div>
+
+   <div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Maternity Allowance
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body"><strong>£194.32</strong><br>To be paid on 28 April 2026</p>
+    </div>
+  </div>
+
+   <div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Payments information not ready
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body">It is too early to view your payment information for:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li class="govuk-body">Carer's Allowance</li>
+        <li class="govuk-body">Personal Independence Payment (PIP)</li>
+      </ul>
+      <p class="govuk-body">We can only show payment information about 3 days before you get paid (not including weekends or bank holidays).</p>
+    </div>
+  </div>-->
+      
+          
+
+
+<div>
+  
+
+
+    <!------------------------------------- If something looks wrong section ------------------------------------------>
+
+     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+    <p class="govuk-body">If a payment doesn't look right or you need more information, contact the benefit team directly. </p>
+
+    <p class="govuk-body">Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+  
+            
+          <br>
+          <a class="govuk-button" href="/payments/v3/pp12-box/account-home-12">
+           Go back to account home
+          </a>
+          </form>
+          </div>
+          </div>
+
+<!------------------------------------ one third nav panel ---------------------------------->
+
+<div class="govuk-grid-column-one-third">
+
+       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="/payments/v3/pp12-box/payment-history-12" class="govuk-link">View your recent payments</a>
+            </li>
+            <li>
+              <a href="/payments/v3/pp12-box/personal-details-12" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+{% endblock %}
