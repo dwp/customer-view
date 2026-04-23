@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-Check your next payment
+Your next payment
 {% endblock %}
 
 {% block beforeContent %}
@@ -66,31 +66,36 @@ Check your next payment
   </div>
 
 
-<div class="govuk-grid-column-two-thirds">      
+<div class="govuk-grid-column-two-thirds">
 
-      <p class="govuk-body">It is too early to view your payment amount and date for:</p>
+  <!--<p class="govuk-body">You can view your next payment information, including payment amount and date, before you get paid.</p>-->
 
-       <ul class="govuk-list govuk-list--bullet">
-        <li class="govuk-body">Personal Independence Payment (PIP)</li>
-        <li class="govuk-body">Employment and Support Allowance (ESA)</li>
-      </ul>
-        
-      <p class="govuk-body">We will show next payment information about 3 days before you get paid. This does not include weekends or bank holidays.</p>
-
-      <p class="govuk-body">Come back closer to your payment date.</p>
-
- 
-      
-          
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Personal Independence Payment (PIP)
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body"><strong>£240.65</strong><br>To be paid on 27 April 2026</p>
+    </div>
+  </div>
 
 
+   <div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Payments being processed
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body">It is too early to view your payment amount and date for Employment and Support Allowance (ESA).</p>
+     
+      <p class="govuk-body">We can only show next payment information, about 3 days before you get paid (not including weekends or bank holiday).</p>
+    </div>
+  </div>  
 <div>
   
-
-
-    <!------------------------------------- If something looks wrong section ------------------------------------------>
-
-     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
     <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
 
@@ -114,7 +119,7 @@ Check your next payment
 
 <div class="govuk-grid-column-one-third">
 
-       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
           Related content
         </h2>
