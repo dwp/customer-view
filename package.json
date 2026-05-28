@@ -17,12 +17,12 @@
     "express": "^4.21.2",
     "govuk-frontend": "^5.10.2",
     "govuk-one-login-service-header": "github:govuk-one-login/service-header",
-    "govuk-prototype-kit": "13.18.1",
     "hmrc-frontend": "6.105.0",
     "jquery": "3.7.1",
     "nhsapp-frontend": "^5.0.3",
     "notifications-node-client": "8.2.1",
     "path-to-regexp": "^0.1.10",
-    "qs": "^6.15.0"
+    "qs": "^6.15.0",
+    "@dwp-govuk/govuk-prototype-kit": "latest"
   }
 }
