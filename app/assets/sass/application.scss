@@ -6,7 +6,10 @@
 // Add extra styles here
 // @import "node_modules/nhsapp-frontend/dist/nhsapp/all";
 // @import "node_modules/nhsapp-frontend/all";
-
+$govuk-suppressed-warnings: (
+  "govuk-text-colour": true
+);
+@import "govuk-one-login-service-header/dist/styles/service-header-no-imports";
 .white-link {
   color:#ffffff !important;
   text-align: right;
@@ -1823,7 +1826,6 @@ color: #0b0c0c;
   text-overflow: ellipsis;
 }/*# sourceMappingURL=nhsapp.css.map */
 
-@charset "UTF-8";
 :root {
   --nhsuk-frontend-version: "10.4.2";
   --nhsuk-breakpoint-mobile: 20rem;
