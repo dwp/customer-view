@@ -119,7 +119,7 @@ function getKbvSet(citizenBenefits) {
   }
 }
 
-router.get(/.*/, (req, res, next) => {
+router.get('*', (req, res, next) => {
   // Reset nextKbvIndex when any non-KBV page is hit
   if (!req.url.includes('kbv')) {
     nextKbvIndex = 0
@@ -127,7 +127,7 @@ router.get(/.*/, (req, res, next) => {
   return next()
 })
 
-router.get(/^\/idv\/default\/kbv\/.*$/, (req, res, next) => {
+router.get('/idv/default/kbv/*', (req, res, next) => {
   // When any KBV is hit, update nextKbvIndex accordingly
   const kbvArr = getKbvSet(req.session.data['citizen-benefits'])
   const path = req.path
