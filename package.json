@@ -4,17 +4,14 @@
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
   },
-  "name": "govuk-prototype-kit",
+  "name": "customer-view",
   "dependencies": {
-    "@dwp-govuk/govuk-prototype-kit": "^13.20.2",
     "@dwp/dwp-frontend": "4.1.0",
     "@govuk-prototype-kit/common-templates": "3.0.0",
-    "@govuk-prototype-kit/step-by-step": "3.0.0",
     "@govuk-prototype-kit/task-list": "2.0.0",
     "@ministryofjustice/frontend": "^9.0.0",
     "@scottish-government/design-system": "4.1.1",
     "@x-govuk/govuk-prototype-filters": "2.1.0",
-    "axios": "^1.17.0",
     "express": "^5.2.1",
     "govuk-frontend": "^6.2.0",
     "govuk-one-login-service-header": "github:govuk-one-login/service-header",
