@@ -1,4 +1,7 @@
 {
+  "engines":{
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
@@ -15,7 +18,6 @@
     "@x-govuk/govuk-prototype-filters": "2.1.0",
     "express": "^5.2.1",
     "govuk-frontend": "^6.2.0",
-    "govuk-one-login-service-header": "npm:@govuk-one-login/service-header@^6.0.0",
     "govuk-prototype-kit": "npm:@dwp-govuk/govuk-prototype-kit@13.20.1",
     "hmrc-frontend": "7.19.0",
     "jquery": "4.0.0",

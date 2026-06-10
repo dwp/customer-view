@@ -9,7 +9,7 @@
 $govuk-suppressed-warnings: (
   "govuk-text-colour": true
 );
-@import "govuk-one-login-service-header/dist/styles/service-header-no-imports";
+@import "../../../node_modules/@govuk-one-login/service-header/dist/styles/service-header-no-imports.scss";
 .white-link {
   color:#ffffff !important;
   text-align: right;
