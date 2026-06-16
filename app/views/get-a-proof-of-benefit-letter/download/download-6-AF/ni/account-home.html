@@ -1,13 +1,22 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
 
-  {{ hmrcHeader({
-    serviceName: "Manage your benefits and State Pension",
-    serviceUrl : "/",
-    signOutHref : "signout",
-    useTudorCrown: "true"
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
   }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Manage your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
 

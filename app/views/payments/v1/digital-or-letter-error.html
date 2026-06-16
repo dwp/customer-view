@@ -1,17 +1,22 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
 
 {% block header %}
 
-  {{ hmrcHeader({
-    serviceName: "Get proof of your benefits and State Pension",
-    serviceUrl : "/",
-    signOutHref : "signout",
-    useTudorCrown: "true"
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
   }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
 

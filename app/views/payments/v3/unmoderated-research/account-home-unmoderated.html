@@ -1,3 +1,4 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
@@ -6,18 +7,19 @@
  {{ govukOneLoginServiceHeader({
     homepageLink: "#",
     signOutLink: "#",
-    oneLoginLink: "#",
+    oneLoginLink: "#"
     
-    serviceNavigationParams: { 
-      
-      serviceName: "Manage your benefits and State Pension",
-      navigationLabel: "index.html"
-      
-    }
+    
   }) }}
 
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Manage your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
+
 
 {% block pageTitle %}
 Account home

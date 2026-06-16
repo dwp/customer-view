@@ -1,23 +1,26 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Get a proof of benefit letter
-{% endblock %}
 
 {% block header %}
 
-  {{ hmrcHeader({
-    serviceName: "Get proof of your benefits",
-    serviceUrl : "/",
-    signOutHref : "signout",
-    useTudorCrown: "true"
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
   }) }}
 
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits",
+      navigationLabel: "index.html"
+    }) }}
+
 {% endblock %}
 
-{% block beforeContent %}
 
-{% endblock %}
 
 {% block content %}
 

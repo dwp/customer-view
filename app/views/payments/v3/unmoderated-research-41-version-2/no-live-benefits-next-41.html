@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+{{ super() }}
+
+<style>
+  .govuk-service-navigation__wrapper{
+      flex-grow: 1;
+  }
+</style>
+
+{% set navigationEnd %}
+<li class="govuk-service-navigation__item" style="margin-left: auto;">
+  <a class="govuk-service-navigation__link" href="#">Sign out</a>
+</li>
+{% endset %}
+
+{{ govukServiceNavigation({
+
+serviceName: "Check your next benefit and State Pension payments",
+
+  slots: {
+      navigationEnd: navigationEnd
+  }
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+No next payments record
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        No next payments record
+      </h1>
+
+      <p>
+        We do not have a record of next payments for you.
+      </p>
+
+      <p>
+        This can be because:
+      </p>
+     <ul class="govuk-list govuk-list--bullet">
+      <li>we are still processing your application</li>
+      <li>you dont get benefits or your benefits have stopped</li>
+     </ul>
+
+     <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+     <p>Contact the benefit team directly</p>
+
+      <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Sign out",
+            href: "signout"
+          }) }}
+
+          {{ govukButton({
+            text: "Go back to account home",
+            href: "account-home",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,15 +1,25 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
 
-{{ super() }}
 
-{{ govukServiceNavigation({
-  serviceName: "Get proof of your benefits and State Pension",
-  serviceUrl: "/"
-}) }}
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
+
 
 {% block pageTitle %}
 We are taking you to our identity checking service

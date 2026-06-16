@@ -1,3 +1,4 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
@@ -6,18 +7,19 @@
  {{ govukOneLoginServiceHeader({
     homepageLink: "#",
     signOutLink: "#",
-    oneLoginLink: "#",
+    oneLoginLink: "#"
     
-    serviceNavigationParams: { 
-      
-      serviceName: "View your benefit and State Pension recent payments",
-      navigationLabel: "index.html"
-      
-    }
+    
   }) }}
 
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "View your benefit and State Pension recent payments",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
+
 
 {% block pageTitle %}
 Your recent payments

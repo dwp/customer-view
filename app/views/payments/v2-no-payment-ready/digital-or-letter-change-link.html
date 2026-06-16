@@ -1,33 +1,22 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
 
 {% block header %}
 
-{{ super() }}
 
-<style>
-  .govuk-service-navigation__wrapper{
-      flex-grow: 1;
-  }
-</style>
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
 
-{% set navigationEnd %}
-<li class="govuk-service-navigation__item" style="margin-left: auto;">
-  <a class="govuk-service-navigation__link" href="#">Sign out</a>
-</li>
-{% endset %}
-
-{{ govukServiceNavigation({
-
-serviceName: "Get proof of your benefits and State Pension",
-
-  slots: {
-      navigationEnd: navigationEnd
-  }
-}) }}
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
 

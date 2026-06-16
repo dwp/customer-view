@@ -1,21 +1,22 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
 
 
-  {{ govukOneLoginServiceHeader({
-    homepageLink: "/index.html",
-    signOutLink: "/get-a-proof-of-benefit-letter/download/download-6-AF/signout.html",
-    oneLoginLink: "/test-one-login",
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
     
-    serviceNavigationParams: { 
-      
-      serviceName: "Get proof of your benefits and State Pension",
-      navigationLabel: "index.html"
-      
-    }
+    
   }) }}
 
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
 

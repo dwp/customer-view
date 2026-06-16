@@ -1,0 +1,118 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Check your recent benefit and State Pension payments",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+ We can only show some of your recent payments
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+    We can show recent payments only for some benefits
+    </h1>
+
+
+ <p class="govuk-body">This is because not all benefits are on this service yet.</p>
+
+  <h2 class="govuk-heading-m">Payments you can view on this service</h2>
+
+  <p class="govuk-body">Use this service to view your payments for:</p>
+
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li class="govuk-body">Employment and Support Allowance (ESA)</li>
+        <li class="govuk-body">Personal Independence Payment (PIP)</li>
+      </ul>
+     
+  
+<h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
+
+<p>You cannot use this service to view your payments for:</p>
+
+ <ul class="govuk-list govuk-list--bullet">
+        <li class="govuk-body">Incapacity Benefit</li>
+      </ul>
+
+      <p class="govuk-body">You will need to contact each benefit team directly.</p>
+
+<p class="govuk-body">Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+  <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+
+
+<div class="govuk-button-group">
+  <a type="submit" class="govuk-button" data-module="govuk-button" href="/payments/v3/unmoderated-research-41/payment-history-12">
+    Continue to recent payments
+  </a>
+  
+  <a type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" href="/payments/v3/unmoderated-research-41/account-home-unmoderated">
+    Go back to account home 
+  </a>
+</div>
+
+
+          </form>
+          </div>
+          </div>
+
+    </div>
+  </main>
+</div>
+
+{% endblock %}

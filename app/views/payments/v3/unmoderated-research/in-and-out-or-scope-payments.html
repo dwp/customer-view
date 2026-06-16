@@ -1,23 +1,25 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
 
 
-  {{ govukOneLoginServiceHeader({
+ {{ govukOneLoginServiceHeader({
     homepageLink: "#",
     signOutLink: "#",
-    oneLoginLink: "#",
+    oneLoginLink: "#"
     
-    serviceNavigationParams: { 
-      
-      serviceName: "Check your next benefit and State Pension payments",
-      navigationLabel: "index.html"
-      
-    }
+    
   }) }}
 
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Check your next benefit and State Pension payments",
+      navigationLabel: "index.html"
+    }) }}
 
 {% endblock %}
+
 
 {% block pageTitle %}
  We can only show some of your next payments
