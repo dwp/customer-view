@@ -1,0 +1,119 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Check your next benefit and State Pension payments",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+No next payment record
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+      <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+ 
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        No next payments record
+      </h1>
+
+      <p class="govuk-body">
+        We do not have a record of next payments for you.
+      </p>
+
+      <p class="govuk-body">
+        This can be because:
+         </p>
+
+        <ul>
+          <li>
+            <p class="govuk-body">we are still processing your application</p> 
+          </li>
+           <li>
+            <p class="govuk-body">you don't get benefits or your benefits have stopped</p> 
+          </li>
+        </ul>
+
+        <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+        <p class="govuk-body">Contact the benefit team directly.</p>
+     
+
+      <p>Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+
+        <br><br>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Sign out",
+            href: "signout"
+          }) }}
+
+          {{ govukButton({
+            text: "Go back to account home",
+            href: "account-home",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+    
+    </div>
+  </div>
+
+        
+
+{% endblock %}

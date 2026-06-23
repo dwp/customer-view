@@ -1,22 +1,21 @@
-{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% extends "layouts/main.html" %}
 
 {% block header %}
 
 
- {{ govukOneLoginServiceHeader({
+  {{ govukOneLoginServiceHeader({
     homepageLink: "#",
     signOutLink: "#",
-    oneLoginLink: "#"
+    oneLoginLink: "#",
     
-    
-  }) }}
-
-    {{ govukServiceNavigation({
-      navigation: [],
+    serviceNavigationParams: { 
+      
       serviceName: "Check your next benefit and State Pension payments",
       navigationLabel: "index.html"
-    }) }}
+      
+    }
+  }) }}
+
 
 {% endblock %}
 
@@ -90,11 +89,7 @@ Your next payment
       </h2>
     </div>
     <div class="nhsuk-card__content">
-      <p class="govuk-body">It is too early to view your payment amount and date for:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Employment and Support Allowance (ESA)</li>
-     </ul>
+      <p class="govuk-body">It is too early to view your payment amount and date for Employment and Support Allowance (ESA).</p>
      
       <p class="govuk-body">We can only show next payment information, about 3 days before you get paid (not including weekends or bank holidays).</p>
     </div>
@@ -113,7 +108,7 @@ Your next payment
   
             
           <br>
-          <a class="govuk-button" href="/payments/v3/unmoderated-research-41/account-home-unmoderated">
+          <a class="govuk-button" href="/payments/v3/unmoderated-research/account-home-unmoderated">
            Go back to account home
           </a>
           </form>
@@ -131,10 +126,10 @@ Your next payment
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="/payments/v3/unmoderated-research-41/in-and-out-or-scope-payments-recent" class="govuk-link">View your recent payments</a>
+              <a href="/payments/v3/unmoderated-research/in-and-out-or-scope-payments-recent" class="govuk-link">View your recent payments</a>
             </li>
             <li>
-              <a href="/payments/v3/unmoderated-research-41/personal-details-12" class="govuk-link">View your personal details</a>
+              <a href="/payments/v3/unmoderated-research/personal-details-12" class="govuk-link">View your personal details</a>
             </li>
           </ul>
         </nav>

@@ -1,0 +1,154 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Manage your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Account home
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Account home</span>
+      <h1 class="govuk-heading-xl">
+        Sarah Phillips
+      </h1>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<!--------------------------------------------------------------- Payments -------------------------------------------------------------------------->
+
+<h2 class="govuk-heading-m">Payments</h2>
+
+{% set benefits = data['researchSetUpBenefits'] %}
+
+
+{% if not benefits or benefits|length == 0 %}
+  <a href="/payments/v4/no-benefits-on-record" class="govuk-link">Check your next payment</a>
+</p>
+
+   {% else %}
+
+ {% if data['inScope'].length === 1 %}
+      <p class="govuk-body">
+  <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payment</a>
+</p>
+ {% else %}
+
+ {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
+      <p class="govuk-body">
+  <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a>
+</p>
+ {% else %}
+         <p class="govuk-body">
+  <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payments</a>
+</p>
+{% endif %}
+{% endif %}
+{% endif %}
+
+{% set benefits = data['researchSetUpBenefits'] %}
+
+
+{% if not benefits or benefits|length == 0 %}
+  <a href="/payments/v4/no-benefits-on-record-history" class="govuk-link">View your recent payments</a>
+</p>
+
+  {% else %}
+
+ {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
+      <p class="govuk-body">
+  <a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a>
+</p>
+
+   {% else %}
+
+<p class="govuk-body">
+  <a href="/payments/v4/payment-history" class="govuk-link">View your recent payments</a>
+</p>
+
+{% endif %}
+{% endif %}
+
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<!--------------------------------------------------------------- Personal details -------------------------------------------------------------------------->
+
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+
+      <p class="govuk-body">
+        <a href="personal-details" class="govuk-link">View your personal details</a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<!--------------------------------------------------------------- Documents -------------------------------------------------------------------------->
+
+
+      <h2 class="govuk-heading-m">Documents</h2>
+
+             {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
+             <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
+               {% endif %}
+
+               {% if 'State Pension' in data['inScope'] and data['inScope']|length > 1 %}
+               <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits and State Pension</a></p>
+                 {% endif %}
+
+                 {% if 'State Pension' not in data['inScope'] %}
+                 <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
+                   {% endif %}
+
+              
+              
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">                   
+
+
+</div>
+</div>
+
+{% endblock %}
