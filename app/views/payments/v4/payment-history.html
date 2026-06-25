@@ -61,57 +61,20 @@ Payment history
 
 
       <div class="govuk-grid-column-two-thirds">
-      <!--- out of scope only --->
 
-        {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
-          <h1 class="govuk-heading-xl">We cannot show your recent payments on this service</h1>
-
- <!--- out of scope and UC --->               
-        {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
-          <h1 class="govuk-heading-xl">We cannot show your recent payments on this service</h1>
-
-<!--- out of scope and carersBenefit --->               
-        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
-          <h1 class="govuk-heading-xl">We cannot show your recent payments on this service</h1>
-
-            <!--- 1 in scope ---> 
-        {% elif data['inScope'].length === 1 %}
-         <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                Your recent payments
-               </h1>
-             </legend>
-
- <!--- More than 1 in scope --->
-        {% else %}
           <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
                 Your recent payments
               </h1>
             </legend>
-        {% endif %}
-        </div>
+
+          </div>
+        
 
 
 
-    <div class="govuk-grid-column-two-thirds">
-
-
-            {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
-            <p class="govuk-body">Your benefits are not available on this service yet.</p>
-
- <!--- out of scope and UC --->               
-        {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
-            <p class="govuk-body">Your benefits are not available on this service yet.</p>
-
-<!--- out of scope and carersBenefit --->               
-        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
-            <p class="govuk-body">Your benefits are not available on this service yet.</p>
-
-            {% endif %}
-
+<div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
               <div class="govuk-form-group">
@@ -275,107 +238,7 @@ Payment history
  </nav>
  {% endif %}
 
- <!------------------------------------ Out of scope benfit info ------------------------------------>
-
-  <!--- out of scope only --->
-
-        {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
-          <h2 class="govuk-heading-m">To get your payment information</h2>
-
-<!--- out of scope and UC --->               
-        {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
-          <h2 class="govuk-heading-m">To get your payment information</h2>
-
-<!--- out of scope and UC ---> 
-        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
-          <h2 class="govuk-heading-m">To get your payment information</h2>
-    
-<!--- out of scope and carersBenefit and UC --->               
-        {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
-          <h2 class="govuk-heading-m">To get your payment information</h2>
-   {% endif %}
-                   
-      {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
-        <h2 class="govuk-heading-m">To get your payment information</h2>
-
-       {% elif data['inScope'].length > 0 and data['uCBenefit'] == true %}
-       <h2 class="govuk-heading-m">To get your payment information</h2>
-
-       {% elif data['inScope'].length > 0 and data['carersBenefit'] == true %}
-      <h2 class="govuk-heading-m">To get your payment information</h2>
-      {% endif %}
-
-
-
-      <!--------------------------- Body text -------------------------------------->
-
-
-
-    {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
-  <p class="govuk-body">You can contact the {{ data['oOScope'] | formatList }} team directly.</p>
-
-{% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
-<p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>
-{% endif %}
-
-{% endif %}
-
-  
-{% if (data['uCBenefit'] or data['carersBenefit']) and (data['inScope'] | length == 0) and (data['oOScope'] | length == 0) %}
-  <p class="govuk-body">You can contact the benefit team directly.</p>
-{% endif %}
-
-
-    {% if data['oOScope'].length > 1 %}
-
-    <p>You cannot use this service to view your payments for:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      {% for benefit in data['oOScope'] %}
-      <li>{{ benefit }}</li>
-      {% else %}
-      <p>No benefit selected</p>
-      {% endfor %}
-    </ul>
-
-    {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
-<p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>
-{% endif %}
-    
-    {% endif %}
-
-  
-   
-
-
-
-
-
-
-
-
-      <!-------------- sign posting links -------------->
-
-
-
-
-  {% if data['uCBenefit'] == true %}
-        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
-      {% endif %}
-
-
-     
-      {% if data['carersBenefit'] %}
-        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
-      {% endif %}
-
-
  <!------------------------------------- If soemthing looks wrong section ------------------------------------------>
-
-    {% if data['inScope'] | length > 0 %}
 
     <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
 
@@ -384,10 +247,7 @@ Payment history
     <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits"
         class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
         new tab)</a>.</p>
-        
-    {% endif %}
-
-
+ 
                     
           <br>
           <a class="govuk-button" href="/payments/v4/account-home">
@@ -422,28 +282,6 @@ Payment history
     </div>
   </main>
 </div>
-
-        
-      <!--<div class="govuk-grid-column-one-third">
-        
-        <h2 class="govuk-heading-m">Related content</h2>
-
-          <p class="govuk-body">
-   <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payment</a></p>
-         <p class="govuk-body">
-   <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a></p>
        
-        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-      </div>
-    </div>
-  </main>
-</div>-->     
-
-
-
-
-
-          
-        
 
 {% endblock %}

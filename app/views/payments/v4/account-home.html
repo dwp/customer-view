@@ -47,108 +47,126 @@ Account home
 
 
 {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">Account home</span>
+    <h1 class="govuk-heading-xl">Sarah Phillips</h1>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">Account home</span>
-      <h1 class="govuk-heading-xl">
-        Sarah Phillips
-      </h1>
+    {# Set safe defaults to avoid undefined errors #}
+    {% set benefits = data['researchSetUpBenefits'] if data['researchSetUpBenefits'] else [] %}
+    {% set inScope = data['inScope'] if data['inScope'] else [] %}
+    {% set oOScope = data['oOScope'] if data['oOScope'] else [] %}
 
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <!--- Payments --->
+    <h2 class="govuk-heading-m">Payments</h2>
 
-<!--------------------------------------------------------------- Payments -------------------------------------------------------------------------->
+{% if benefits|length == 0 %}
+  <p class="govuk-body"><a href="/payments/v4/no-benefits-on-record" class="govuk-link">Check your next payment</a></p>
 
-<h2 class="govuk-heading-m">Payments</h2>
+{% elif inScope|length == 0 and oOScope|length == 0 and data['uCBenefit'] == true and data['carersBenefit'] != true %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-next" class="govuk-link">Check your next payment</a></p>
 
-{% set benefits = data['researchSetUpBenefits'] %}
+{% elif inScope|length == 0 and oOScope|length == 0 and data['carersBenefit'] == true %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-next" class="govuk-link">Check your next payment</a></p>
 
+{% elif inScope|length == 0 and oOScope|length == 1 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-next" class="govuk-link">Check your next payment</a></p>
 
-{% if not benefits or benefits|length == 0 %}
-  <a href="/payments/v4/no-benefits-on-record" class="govuk-link">Check your next payment</a>
-</p>
+{% elif inScope|length == 0 and oOScope|length > 1 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-next" class="govuk-link">Check your next payments</a></p>
 
-   {% else %}
+{% elif inScope|length == 0 and data['uCBenefit'] == true and oOScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-next" class="govuk-link">Check your next payments</a></p>
 
- {% if data['inScope'].length === 1 %}
-      <p class="govuk-body">
-  <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payment</a>
-</p>
- {% else %}
+{% elif inScope|length == 0 and data['carersBenefit'] == true and oOScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-next" class="govuk-link">Check your next payments</a></p>
 
- {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
-      <p class="govuk-body">
-  <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a>
-</p>
- {% else %}
-         <p class="govuk-body">
-  <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payments</a>
-</p>
+{% elif inScope|length == 1 and oOScope|length == 0 and data['uCBenefit'] != true and data['carersBenefit'] != true %}
+  <p class="govuk-body"><a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payment</a></p>
+
+{% elif inScope|length == 1 and oOScope|length == 0 and data['uCBenefit'] == true %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+
+{% elif inScope|length == 1 and oOScope|length == 0 and data['carersBenefit'] == true %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+
+{% elif inScope|length == 1 and oOScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+
+{% elif inScope|length > 1 and oOScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a></p>
+
+{% elif data['uCBenefit'] == true and inScope|length == 1 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+
+{% elif data['uCBenefit'] == true and inScope|length > 1 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a></p>
+
+{% elif data['carersBenefit'] == true and inScope|length == 1 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+
+{% elif data['carersBenefit'] == true and inScope|length > 1 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a></p>
+
+{% else %}
+  <p class="govuk-body"><a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payments</a></p>
 {% endif %}
+
+
+{% if benefits|length == 0 %}
+  <p class="govuk-body"><a href="/payments/v4/no-benefits-on-record-history" class="govuk-link">View your recent payments</a></p>
+
+{% elif inScope|length == 0 and oOScope|length == 0 and data['uCBenefit'] == true and data['carersBenefit'] != true %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif inScope|length == 0 and oOScope|length == 0 and data['carersBenefit'] == true %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif inScope|length == 0 and oOScope|length == 1 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif inScope|length == 0 and oOScope|length > 1 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif inScope|length == 0 and data['uCBenefit'] == true and oOScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif inScope|length == 0 and data['carersBenefit'] == true and oOScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/all-out-of-scope-benefits-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif oOScope|length > 0 and inScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif data['uCBenefit'] and inScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a></p>
+
+{% elif data['carersBenefit'] and inScope|length > 0 %}
+  <p class="govuk-body"><a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a></p>
+
+{% else %}
+ <p class="govuk-body"><a href="/payments/v4/payment-history" class="govuk-link">View your recent payments</a></p>
 {% endif %}
-{% endif %}
 
-{% set benefits = data['researchSetUpBenefits'] %}
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+    <!--- Personal details --->
+    <h2 class="govuk-heading-m">Personal details</h2>
+    <p class="govuk-body"><a href="personal-details" class="govuk-link">View your personal details</a></p>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-{% if not benefits or benefits|length == 0 %}
-  <a href="/payments/v4/no-benefits-on-record-history" class="govuk-link">View your recent payments</a>
-</p>
+    <!--- Documents --->
+    <h2 class="govuk-heading-m">Documents</h2>
 
-  {% else %}
+    {% if 'State Pension' in inScope and inScope|length == 1 %}
+      <p><a href="list-benefits-answer" class="govuk-link">Get proof of your State Pension</a></p>
+    {% elif 'State Pension' in inScope and inScope|length > 1 %}
+      <p><a href="list-benefits-answer" class="govuk-link">Get proof of your benefits and State Pension</a></p>
+    {% else %}
+      <p><a href="list-benefits-answer" class="govuk-link">Get proof of your benefits</a></p>
+    {% endif %}
 
- {% if data['oOScope'] | length > 0 and data['inScope'] | length > 0 %}
-      <p class="govuk-body">
-  <a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a>
-</p>
-
-   {% else %}
-
-<p class="govuk-body">
-  <a href="/payments/v4/payment-history" class="govuk-link">View your recent payments</a>
-</p>
-
-{% endif %}
-{% endif %}
-
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-<!--------------------------------------------------------------- Personal details -------------------------------------------------------------------------->
-
-
-      <h2 class="govuk-heading-m">Personal details</h2>
-
-      <p class="govuk-body">
-        <a href="personal-details" class="govuk-link">View your personal details</a>
-      </p>
-
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-<!--------------------------------------------------------------- Documents -------------------------------------------------------------------------->
-
-
-      <h2 class="govuk-heading-m">Documents</h2>
-
-             {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
-             <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your State Pension</a></p>
-               {% endif %}
-
-               {% if 'State Pension' in data['inScope'] and data['inScope']|length > 1 %}
-               <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits and State Pension</a></p>
-                 {% endif %}
-
-                 {% if 'State Pension' not in data['inScope'] %}
-                 <p><a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a></p>
-                   {% endif %}
-
-              
-              
-
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">                   
-
-
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
 </div>
-</div>
-
 {% endblock %}

@@ -72,103 +72,67 @@
   <p class="govuk-body">Continue to next payments to view your payments for:</p>
 
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li class="govuk-body">Employment and Support Allowance (ESA)</li>
-        <li class="govuk-body">Personal Independence Payment (PIP)</li>
-      </ul>
+      {% if data['inScope'] and data['inScope']|length > 0 %}
 
-  
-<h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
+  <ul class="govuk-list govuk-list--bullet">
+    {% for benefit in data['inScope'] %}
+      <li>{{ benefit }}</li>
+    {% endfor %}
+  </ul>
+
+{% endif %}
+
+      <h2 class="govuk-heading-m">Payments you cannot view on this service</h2>
 
 <p>You cannot use this service to view your payments for:</p>
 
- <ul class="govuk-list govuk-list--bullet">
-        <li class="govuk-body">Incapacity Benefit</li>
-        <li class="govuk-body">Universal Credit</li>
-      </ul>
-<!--Alison use this for in a and out of scope stuff its from the H2 for out of scope stuff on the old payment-amount-date-->
-      <!--- out of scope and UC --->               
-       <!-- {% elif data['uCBenefit'] == true and data['inScope'] | length == 0 %}
-            <p class="govuk-body">We do not have a record of next payments for you.</p>-->
 
-<!------ out of scope and carersBenefit --->               
-       <!-- {% elif data['carersBenefit'] == true and data['inScope'] | length == 0 %}
-            <p class="govuk-body">We do not have a record of next payments for you.</p>-->
+{% if data['oOScope'] and data['oOScope']|length > 0 or data['uCBenefit'] or data['carersBenefit'] %}
 
-            <!--{% if data['uCBenefit'] == true %}
-        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
-      {% endif %}
-
-
-     
-      {% if data['carersBenefit'] == true %}
-        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
-      {% endif %}
-
-
-<!------------------------------------ 1 out of scope benefit ----------------------------------------->
-
-   <!-- {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" %}
-    <p>To view your {{ data['oOScope'][0] }} payments, you need to contact them.</p>
-
-
-    <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>-->
-
-
-
-<!------------------------------------ 2 out of scope benefits ----------------------------------------->
-
-<!--{% elif data['oOScope'].length === 2 %}
-
-
-
-<p>To view your payments for {{ data['oOScope'] | formatList }}, you need to contact them.</p>
-
-
-
-    <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>-->
-
-
-<!------------------------------------- more than 2 out of scope benefits ------------------------------------------>
-
-
-    <!--{% elif data['oOScope'].length > 2 %}
-
-    <p>You cannot use this service to view your payments for:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      {% for benefit in data['oOScope'] %}
+  <ul class="govuk-list govuk-list--bullet">
+    {% for benefit in data['oOScope'] %}
       <li>{{ benefit }}</li>
-      {% else %}
-      <p>No benefit selected</p>
-      {% endfor %}
-    </ul>
+    {% endfor %}
 
-    <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
-        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
-        new tab)</a>.</p>
+    {% if data['uCBenefit'] %}
+      <li>Universal Credit</li>
+    {% endif %}
 
-    {% endif %}-->
+    {% if data['carersBenefit'] %}
+      <li>Carer's Allowance</li>
+    {% endif %}
+  </ul>
+
+{% endif %}
+
 
 
 <p class="govuk-body">You will need to contact each benefit team directly.</p>
 
 
- <p class="govuk-body">Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+  {% if data['oOScope'] | length > 0 %}
+<p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
         class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
         new tab)</a>.</p>
+ {% endif %}
 
-  <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
 
-<div class="govuk-button-group">
-  <a type="submit" class="govuk-button" data-module="govuk-button" href="/payments/v3/unmoderated-research-41/next-payment-12-vb">
+  {% if data['uCBenefit'] %}
+        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+  {% endif %}
+
+
+     
+ {% if data['carersBenefit'] %}
+        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
+  {% endif %}
+
+  <div class="govuk-button-group">
+  <a type="submit" class="govuk-button" data-module="govuk-button" href="/payments/v4/payment-amount-date">
     Continue to next payments
   </a>
   
-  <a type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" href="/payments/v3/unmoderated-research-41/account-home-unmoderated">
+  <a type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" href="/payments/v4/account-home">
     Go back to account home 
   </a>
 </div>

@@ -1,0 +1,149 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "View your benefit and State Pension recent payments",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+
+{% block pageTitle %}
+We cannot show your recent payments on this service
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">We cannot show your recent payments on this service</h1>
+           
+            <p class="govuk-body">Your benefits are not available on this service yet.</p>
+
+           <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+          <div class="govuk-form-group">
+
+
+
+          <h2 class="govuk-heading-m">To get your payment information</h2>
+
+
+<!--------------------------- Body text -------------------------------------->
+
+
+
+    {% if data.oOScope | length == 1 and data.oOScope[0] != "Carer’s Allowance" and data['inScope'] | length == 0%}
+  <p class="govuk-body">You can contact the {{ data['oOScope'] | formatList }} team directly.</p>
+
+{% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
+<p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+{% endif %}
+{% endif %}
+
+
+{% if (data['uCBenefit'] or data['carersBenefit']) and (data['inScope'] | length == 0) and (data['oOScope'] | length == 0) %}
+  <p class="govuk-body">You can contact the benefit team directly.</p>
+{% endif %}
+
+
+
+    {% if data['oOScope']|length > 1 and data['inScope'] | length == 0 %}
+
+    <p>You can contact each benefit team directly:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for benefit in data['oOScope'] %}
+      <li>{{ benefit }}</li>
+      {% else %}
+      <p>No benefit selected</p>
+      {% endfor %}
+    </ul>
+
+    {% if data['oOScope'] | length > 0 and data['inScope'] | length == 0 %}
+<p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+{% endif %}
+    
+    {% endif %}
+
+  
+      <!-------------- sign posting links -------------->
+
+  {% if data['uCBenefit'] and data['inScope'] | length == 0 %}
+        <p>To view your Universal Credit payments, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link" rel="noreferrer noopener" target="_blank">sign in to your Universal Credit account (opens in a new tab)</a>.</p>
+      {% endif %}
+
+     
+      {% if data['carersBenefit'] and data['inScope'] | length == 0 %}
+        <p>For Carer's Allowance, <a href="https://www.gov.uk/carers-allowance-unit" class="govuk-link" rel="noreferrer noopener" target="_blank">contact the Carer's Allowance Unit (opens in a new tab)</a>.</p>
+      {% endif %}
+  
+
+
+         <!--<p class="govuk-!-font-size-16"><a href="" target="_blank">Print</a> <br><br> <a class="govuk-!-font-size-16"><a href="" target="_blank">Download</a></p>-->
+            
+          <br>
+          <a class="govuk-button" href="/payments/v4/account-home">
+           Go back to account home
+          </a>
+          </form>
+          </div>
+          </div>
+   
+    </div>
+  </main>
+</div>
+ 
+
+
+
+{% endblock %}
