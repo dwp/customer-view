@@ -260,6 +260,12 @@ Payment history
       
  <!------------------------------------ one third nav panel ---------------------------------->
 
+ {# Set safe defaults to avoid undefined errors #}
+    {% set benefits = data['researchSetUpBenefits'] if data['researchSetUpBenefits'] else [] %}
+    {% set inScope = data['inScope'] if data['inScope'] else [] %}
+    {% set oOScope = data['oOScope'] if data['oOScope'] else [] %}
+
+
     <div class="govuk-grid-column-one-third">
 
       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
@@ -267,14 +273,108 @@ Payment history
           Related content
         </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payment</a>
-            </li>
-            <li>
+
+            {% if inScope|length == 1 and oOScope|length == 0 and data['uCBenefit'] != true and data['carersBenefit'] != true %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payment</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif inScope|length == 1 and oOScope|length == 0 and data['uCBenefit'] == true %}
+             <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+              </li>
+                    <li>
               <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
             </li>
-          </ul>
+              </ul>
+
+            {% elif inScope|length == 1 and oOScope|length == 0 and data['carersBenefit'] == true %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif inScope|length == 1 and oOScope|length > 0 %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif inScope|length > 1 and oOScope|length > 0 %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif data['uCBenefit'] == true and inScope|length == 1 %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif data['uCBenefit'] == true and inScope|length > 1 %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif data['carersBenefit'] == true and inScope|length == 1 %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payment</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% elif data['carersBenefit'] == true and inScope|length > 1 %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/new-page-in-and-out-of-scope" class="govuk-link">Check your next payments</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+
+            {% else %}
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+              <a href="/payments/v4/payment-amount-date" class="govuk-link">Check your next payments</a></p>
+              </li>
+              <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+              </li>
+            </ul>
+            {% endif %}
+
         </nav>
       </aside>
       </div>

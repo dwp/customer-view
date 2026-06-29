@@ -110,7 +110,36 @@
 {% endif %}
 
 
-      <p class="govuk-body">You will need to contact each benefit team directly.</p>
+{% if data['oOScope'] | length > 1 and data['carersBenefit'] != true and data['uCBenefit'] != true %}
+<p class="govuk-body">You will need to contact each benefit team directly.</p>
+{% endif %}
+
+{% if data['oOScope'] | length == 1 and data['carersBenefit'] != true and data['uCBenefit'] != true %}
+<p class="govuk-body">You will need to contact the benefit team directly.</p>
+{% endif %}
+
+{% if data['uCBenefit'] and data['oOScope'] | length == 0 and data['carersBenefit'] != true %}
+<p class="govuk-body">You will need to contact the benefit team directly.</p>
+{% endif %}
+
+{% if data['carersBenefit'] and data['oOScope'] | length == 0 and data['uCBenefit'] != true %}
+<p class="govuk-body">You will need to contact the benefit team directly.</p>
+{% endif %}
+
+{% if data['carersBenefit'] if data['uCBenefit'] %}
+<p class="govuk-body">You will need to contact each benefit team directly.</p>
+{% endif %}
+
+{% if data['uCBenefit'] and data['oOScope'] | length > 0 and data['carersBenefit'] != true %}
+<p class="govuk-body">You will need to contact each benefit team directly.</p>
+{% endif %}
+
+{% if data['carersBenefit'] and data['oOScope'] | length > 0 and data['uCBenefit'] != true%}
+<p class="govuk-body">You will need to contact each benefit team directly.</p>
+{% endif %}
+
+
+
 
   {% if data['oOScope'] | length > 0 %}
 <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"

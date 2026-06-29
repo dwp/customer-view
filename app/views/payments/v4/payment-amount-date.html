@@ -227,7 +227,10 @@ Check your next payment
 
 <!------------------------------------ one third nav panel ---------------------------------->
 
- 
+ {# Set safe defaults to avoid undefined errors #}
+    {% set benefits = data['researchSetUpBenefits'] if data['researchSetUpBenefits'] else [] %}
+    {% set inScope = data['inScope'] if data['inScope'] else [] %}
+    {% set oOScope = data['oOScope'] if data['oOScope'] else [] %}
 
 <div class="govuk-grid-column-one-third">
 
@@ -238,19 +241,49 @@ Check your next payment
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="/payments/v4/payment-history" class="govuk-link">View your recent payments</a>
+              {% if oOScope|length > 0 and inScope|length > 0 %}
+              <a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a></p>
             </li>
             <li>
               <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
             </li>
           </ul>
+          
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              {% elif data['uCBenefit'] and inScope|length > 0 %}
+              <a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a></p>
+            </li>
+            <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+
+          <ul class="govuk-list govuk-!-font-size-16">
+             <li>
+              {% elif data['carersBenefit'] and inScope|length > 0 %}
+              <a href="/payments/v4/new-page-in-and-out-of-scope-recent" class="govuk-link">View your recent payments</a></p>
+            </li>
+            <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+
+        
+          <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+              {% else %}
+              <a href="/payments/v4/payment-history" class="govuk-link">View your recent payments</a></p>
+            </li>
+            <li>
+              <a href="/payments/v4/personal-details" class="govuk-link">View your personal details</a>
+            </li>
+          </ul>
+          {% endif %}
+
         </nav>
       </aside>
-     
-      
-      
-
-    
+ 
   </main>
 </div>
 
