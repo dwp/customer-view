@@ -83,11 +83,22 @@ What type of letter we send
         {% endif %}
 
         <!-- Intro paragraph -->
-        {% if benefitCount === 1 %}
-          <p class="govuk-body">An online, accessible letter is available to view or download after you have confirmed your request. You can also get additional formats.</p>
-        {% elif benefitCount > 1 %}
-          <p class="govuk-body">Online, accessible letters are available to view or download once you have confirmed your request. You can also get additional formats.</p>
-        {% endif %}
+
+
+{% if data['inScope'] is string %}
+  {% set benefitCount = 1 %}
+{% else %}
+  {% set benefitCount = data['inScope'].length if data['inScope'] else 0 %}
+{% endif %}
+
+{% if benefitCount === 1 %}
+  <p class="govuk-body">An online, accessible letter is available to view or download after you have confirmed your request. You can also get additional formats.</p>
+{% elif benefitCount > 1 %}
+  <p class="govuk-body">Online, accessible letters are available to view or download once you have confirmed your request. You can also get additional formats.</p>
+{% endif %}
+
+
+      
 
         <!-- Alt format reminder text -->
         {% if data['altFormats'] %}
