@@ -1,0 +1,202 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+What type of letter we send
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+    {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     <form class="form" action="check-your-answers" method="post">
+
+      <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits
+              </h1>
+            </legend>
+
+           {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}  
+{% if hasESA and hasPIP %}
+        <p class="govuk-body">Online, accessible letters are available to view or download once you have confirmed your request. You can also get additional formats.</p>
+        
+
+          {% elif hasESA %}
+      <p class="govuk-body">
+        An online letter is available to view or download once you have confirmed your request. You'll find this in your letters and messages.
+      </p>
+     
+
+      {% elif hasPIP %}
+      <p class="govuk-body">
+        An online letter is available to view or download once you have confirmed your request. You'll find this in your letters and messages.
+      </p>
+      {% endif %}
+
+      <br>
+
+          
+ <div class="govuk-form-group">
+  {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}
+  <fieldset class="govuk-fieldset" aria-describedby="letterInpost-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+     
+      {% if hasESA and hasPIP %}
+      <h2 class="govuk-fieldset__heading">
+        Do you also want letters in the post?
+      </h2>
+      
+
+       {% elif hasESA %}
+      <h2 class="govuk-fieldset__heading">
+        Do you also want a letter in the post?
+      </h2>
+      
+
+      {% elif hasPIP %}
+      <h2 class="govuk-fieldset__heading">
+        Do you also want a letter in the post?
+      </h2>
+      {% endif %}
+    </legend>
+
+     {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}
+     <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+         {% if hasESA and hasPIP %}
+        <input class="govuk-radios__input" id="digitalOrLetter6" name="digitalOrLetter" type="radio" value="Online letters only" 
+       
+ {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}
+
+        aria-describedby="signIn-item-hint">
+        <label class="govuk-label govuk-radios__label" for="digitalOrLetter6">
+          No
+        </label>
+
+             {% elif hasESA %}
+        <input class="govuk-radios__input" id="digitalOrLetter6" name="digitalOrLetter" type="radio" value="Online letter only" 
+       
+ {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}
+
+        aria-describedby="signIn-item-hint">
+        <label class="govuk-label govuk-radios__label" for="digitalOrLetter6">
+          No
+        </label>
+
+                    {% elif hasPIP %}
+        <input class="govuk-radios__input" id="digitalOrLetter6" name="digitalOrLetter" type="radio" value="Online letter only" 
+       
+ {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}
+
+        aria-describedby="signIn-item-hint">
+        <label class="govuk-label govuk-radios__label" for="digitalOrLetter6">
+          No
+        </label>
+        {% endif %}
+       
+
+        {% if hasESA and hasPIP %}
+        <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+        I'll use the online versions.
+
+        {% elif hasESA %}
+        <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+          I'll use the online version.
+        </div>
+
+         {% elif hasPIP %}
+        <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+          I'll use the online version.
+        </div>
+        
+
+        </div>
+        {% endif %}
+
+      </div>
+
+          {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}
+
+<div class="govuk-radios__item">
+  {% if hasESA and hasPIP %}
+    <input class="govuk-radios__input" id="digitalOrLetter7" name="digitalOrLetter" type="radio" value="Letters in the post"
+      {% if data['digitalOrLetter'] == "Letters in the post" %}checked{% endif %}
+      aria-describedby="signIn-2-item-hint">
+  {% elif hasESA or hasPIP %}
+    <input class="govuk-radios__input" id="digitalOrLetter7" name="digitalOrLetter" type="radio" value="Letter in the post"
+      {% if data['digitalOrLetter'] == "Letter in the post" %}checked{% endif %}
+      aria-describedby="signIn-2-item-hint">
+  {% endif %}
+  <label class="govuk-label govuk-radios__label" for="digitalOrLetter7">
+    Yes
+  </label>
+  <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+    Arrives within 8 days.
+  </div>
+</div>
+
+    
+  </fieldset>
+</div>
+
+<br>
+<br>
+        {{ govukButton({
+          text: "Continue",
+          attributes: "govuk-button"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

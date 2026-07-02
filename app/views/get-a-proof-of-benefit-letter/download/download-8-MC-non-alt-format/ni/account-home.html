@@ -1,0 +1,59 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Manage your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Account home
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Account home</span>
+      <h1 class="govuk-heading-xl">
+        Sarah Phillips
+      </h1>
+
+      <p>
+        <a type="submit" data-module="govuk-button" href="list-benefits-answer">Get proof of your benefits</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="personal-details" class="govuk-link">View your personal details</a>
+      </p>
+
+</div>
+</div>
+
+{% endblock %}

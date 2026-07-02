@@ -1,0 +1,215 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+
+
+{% block pageTitle %}
+Request complete
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Request complete
+      </h1>
+    </div>
+
+                  <dd class="govuk-summary-list__value">
+ {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
+{% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}  
+{% if hasESA and hasPIP %}
+      <p class="govuk-body">You have requested proof of:</p>
+      <ul>
+        <li class="govuk-body">Employment and Support Allowance (ESA)</li>
+        <li class="govuk-body">Personal Independance Payment (PIP)</li>
+      </ul>
+        
+   {% elif hasESA %}
+      <p class="govuk-body">You have requested proof of Employment and Support Allowance (ESA).</p>
+    
+
+     {% elif hasPIP %}
+      <p class="govuk-body">You have requested proof of Personal Independance Payment (PIP).</p>
+    {% endif %}
+ 
+</dd>
+
+
+
+  
+    
+
+    <h2 class="govuk-heading-m">View your proof of benefits online</h2>
+
+    <p class="govuk-body"><a href="/get-a-proof-of-benefit-letter/download/download-8-MC/inbox" class="govuk-link">Go to your letters, messages and downloads</a>
+</p>
+
+
+    {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) %}
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+     {% endif %}
+
+<!--Letter section-->
+
+    {% if (data['digitalOrLetter'] is defined and ("Letter in the post" in data['digitalOrLetter'] or "Letters in the post" in data['digitalOrLetter'])) %}
+    
+
+  <div class="govuk-body"> 
+    {% if data['benefit'] and data['benefit']|length == 1 %}
+    A standard letter for your benefit should arrive within 8 days.
+  </div>   
+
+  <div class="govuk-body">
+    {% elif data['benefit']|length == 1 %}
+   A standard letter for your benefit should arrive within 8 days.
+  </div>
+
+  <div class="govuk-body">
+    {% elif data['benefit']|length == 2 %}
+    Standard letters for each benefit should arrive within 8 days.    
+  </div>
+
+  <div class="govuk-body">
+    {% elif data['benefit']|length > 2 %}
+    Standard letters for each benefit should arrive within 8 days.    
+    {% endif %}
+</div>
+</div>
+</div>
+
+{% endif %}
+
+<!--End of Letter section-->
+
+
+    <!-- Shows different messages and layouts based on number of out-of-scope benefits:
+           - Single benefit: Simple message with link
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Bullet point list -->
+   <!--- {% if data['oOScope'].length === 1 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+    <p>To get proof of {{ data['oOScope'][0] }}, you need to contact them.</p>
+
+
+    <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+    {% elif data['oOScope'].length === 2 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+
+    <p>To get proof of {{ data['oOScope'] | formatList }}, you need to contact them.</p>
+
+    <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+
+    {% elif data['oOScope'].length > 2 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+    <p>You will need to contact each benefit to get proof of benefit letters for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for benefit in data['oOScope'] %}
+      <li>{{ benefit }}</li>
+      {% else %}
+      <p>No benefit selected</p>
+      {% endfor %}
+    </ul>
+
+    <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+    {% endif %}-->
+
+    
+
+    <!-- Special handling for Universal Credit (uCBenefit flag)
+           Shows UC guidance either with or without a heading depending on
+           whether there are other out-of-scope benefits -->
+   <!-- {% if data['uCBenefit'] == true %}
+    {% if data['oOScope'].length === 0 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+    <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link"
+        rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.
+    </p>
+
+    {% else %}
+    <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link"
+        rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.
+    </p>
+    {% endif %}
+    {% endif %}-->
+
+    <br>
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+      text: "Sign out",
+      href: "signout",
+      classes: "govuk-button"
+      }) }}
+
+      {{ govukButton({
+      text: "Go back to account home",
+      href: "account-home",
+      classes: "govuk-button--secondary"
+      }) }}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

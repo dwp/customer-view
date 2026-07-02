@@ -1,0 +1,275 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+  {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+  }) }}
+
+  {{ govukServiceNavigation({
+    navigation: [],
+    serviceName: "Get proof of your benefits and State Pension",
+    navigationLabel: "index.html"
+  }) }}
+{% endblock %}
+
+{% block pageTitle %}
+What type of letter we send
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: "Beta" },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% set benefitCount = data['benefit'].length if data['benefit'] else 0 %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-your-answers" method="post">
+      <div class="govuk-form-group">
+
+        <!-- H1 conditions -->
+        {% if 'State Pension' in data['inScope'] and data['inScope']|length == 1 %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your State Pension
+              </h1>
+            </legend>
+
+        {% elif 'State Pension' not in data['inScope'] and data['inScope']|length >= 1 %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits
+              </h1>
+            </legend>
+
+        {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length == 1 %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your State Pension
+              </h1>
+            </legend>
+
+        {% elif 'State Pension' in data['which-benefits-need-proof'] and data['which-benefits-need-proof']|length > 1 %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits and State Pension
+              </h1>
+            </legend>
+
+        {% elif 'State Pension' not in data['which-benefits-need-proof'] %}
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Tell us how you want to get proof of your benefits
+              </h1>
+            </legend>
+        {% endif %}
+
+        <!-- Intro paragraph -->
+        {% if benefitCount === 1 %}
+          <p class="govuk-body">An online, accessible letter is available to view or download after you have confirmed your request. You can also get additional formats.</p>
+        {% elif benefitCount > 1 %}
+          <p class="govuk-body">Online, accessible letters are available to view or download once you have confirmed your request. You can also get additional formats.</p>
+        {% endif %}
+
+        <!-- Alt format reminder text -->
+        {% if data['altFormats'] %}
+          {% if benefitCount === 1 %}
+            {% if data['altFormats'] in ["Braille"] %}
+              <p class="govuk-body">You previously told us that braille is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["Audio recording"] %}
+              <p class="govuk-body">You previously told us that audio recording is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["Large Print"] %}
+              <p class="govuk-body">You previously told us that large print is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["Easy Read"] %}
+              <p class="govuk-body">You previously told us that Easy Read is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["Word document"] %}
+              <p class="govuk-body">You previously told us that Word document is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["Accessible email"] %}
+              <p class="govuk-body">You previously told us that accessible email is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["Coloured paper"] %}
+              <p class="govuk-body">You previously told us that a letter on coloured paper is your preferred format. This comes with a standard letter.</p>
+            {% elif data['altFormats'] in ["British Sign Language (BSL)"] %}
+              <p class="govuk-body">You previously told us that British Sign Language video is your preferred format. This comes with a standard letter.</p>
+            {% endif %}
+          {% elif benefitCount > 1 %}
+            {% if data['altFormats'] in ["Braille"] %}
+              <p class="govuk-body">You previously told us that braille is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["Audio recording"] %}
+              <p class="govuk-body">You previously told us that audio recording is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["Large Print"] %}
+              <p class="govuk-body">You previously told us that large print is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["Easy Read"] %}
+              <p class="govuk-body">You previously told us that Easy Read is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["Word document"] %}
+              <p class="govuk-body">You previously told us that Word document is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["Accessible email"] %}
+              <p class="govuk-body">You previously told us that accessible email is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["Coloured paper"] %}
+              <p class="govuk-body">You previously told us that letters on coloured paper is your preferred format. This will come with standard letters.</p>
+            {% elif data['altFormats'] in ["British Sign Language (BSL)"] %}
+              <p class="govuk-body">You previously told us that British Sign Language video is your preferred format. This will come with standard letters.</p>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        <br>
+
+        <!-- Checkboxes -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                What format do you want?
+              </h2>
+            </legend>
+            <div id="waste-hint" class="govuk-hint">
+              You can select more than one.
+            </div>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+              <!-- dynamic content for checkbox 1 - alt format -->
+              {% if data['altFormats'] not in ["Coloured paper and large print"] %}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="digitalOrLetter1" name="digitalOrLetter" type="checkbox" value="{{data['altFormats']}}"
+                  {% if data['altFormat'] and data['altFormat'] == data['altFormats'] %}checked{% endif %}>
+
+                {% if data['altFormats'] in ["Braille", "Audio recording"] %}
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
+                    {{data['altFormats']}}
+                  </label>
+                {% elif data['altFormats'] in ["British Sign Language (BSL)"] %}
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
+                    British Sign Language video
+                  </label>
+                {% elif data['altFormats'] in ["Coloured paper"] %}
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
+                    {% if benefitCount === 1 %}Letter on coloured paper{% else %}Letters on coloured paper{% endif %}
+                  </label>
+                {% elif data['altFormats'] in ["Large Print"] %}
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
+                    {% if benefitCount === 1 %}Large print letter{% else %}Large print letters{% endif %}
+                  </label>
+                {% elif data['altFormats'] in ["Easy Read", "Accessible email", "Word document"] %}
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter1">
+                    {{data['altFormats']}}
+                  </label>
+                {% endif %}
+
+                <div class="govuk-hint govuk-checkboxes__hint">
+                  {% if data['altFormats'] in ["Braille", "Coloured paper", "Audio recording", "British Sign Language (BSL)"] %}
+                    Arrives by post within 1 month.
+                  {% elif data['altFormats'] in ["Large Print"] %}
+                    Arrives by post within 8 days.
+                  {% elif data['altFormats'] in ["Easy Read"] %}
+                    Arrives by email within 3 weeks.
+                  {% elif data['altFormats'] in ["Word document", "Accessible email"] %}
+                    Arrives by email within 1 month.
+                  {% endif %}
+                </div>
+              </div>
+              {% endif %}
+
+              <!-- Coloured paper and large print -->
+              {% if 'Coloured paper and large print' in data['altFormats'] %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="digitalOrLetter-coloured" name="digitalOrLetter" type="checkbox" value="Coloured paper"
+                    {% if data['digitalOrLetter'] and 'Coloured paper' in data['digitalOrLetter'] %}checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter-coloured">
+                    {% if benefitCount === 1 %}Letter on coloured paper{% else %}Letters on coloured paper{% endif %}
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">
+                    Arrives by post within 1 month.
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="digitalOrLetter-largeprint" name="digitalOrLetter" type="checkbox" value="Large print"
+                    {% if data['digitalOrLetter'] and 'Large print' in data['digitalOrLetter'] %}checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter-largeprint">
+                    {% if benefitCount === 1 %}Large print letter{% else %}Large print letters{% endif %}
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">
+                    Arrives by post within 1 month.
+                  </div>
+                </div>
+              {% endif %}
+
+              <!-- Standard letter -->
+              <div class="govuk-checkboxes__item">
+                {% if benefitCount === 1 %}
+                  <input class="govuk-checkboxes__input" id="digitalOrLetter4" name="digitalOrLetter" type="checkbox" value="Standard letter"
+                    {% if data['digitalOrLetter'] and 'Standard letter' in data['digitalOrLetter'] %}checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter4">
+                    Standard letter on its own
+                  </label>
+                {% else %}
+                  <input class="govuk-checkboxes__input" id="digitalOrLetter5" name="digitalOrLetter" type="checkbox" value="Standard letters"
+                    {% if data['digitalOrLetter'] and 'Standard letters' in data['digitalOrLetter'] %}checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter5">
+                    Standard letters on their own
+                  </label>
+                {% endif %}
+                <div class="govuk-hint govuk-checkboxes__hint">
+                  Arrives by post within 8 days.
+                </div>
+              </div>
+
+              <div class="govuk-checkboxes__divider">or</div>
+
+              <!-- Online letter -->
+              <div class="govuk-checkboxes__item">
+                {% if benefitCount === 1 %}
+                  <input class="govuk-checkboxes__input" id="digitalOrLetter2" name="digitalOrLetter" type="checkbox" value="Online letter" data-behaviour="exclusive"
+                    {% if data['digitalOrLetter'] and 'Online letter' in data['digitalOrLetter'] %}checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter2">
+                    Online letter only
+                  </label>
+                {% else %}
+                  <input class="govuk-checkboxes__input" id="digitalOrLetter3" name="digitalOrLetter" type="checkbox" value="Online letters" data-behaviour="exclusive"
+                    {% if data['digitalOrLetter'] and 'Online letters' in data['digitalOrLetter'] %}checked{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="digitalOrLetter3">
+                    Online letters only
+                  </label>
+                {% endif %}
+                <div class="govuk-hint govuk-checkboxes__hint">
+                  Available within minutes in your letters and messages.
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <br>
+        <a href="/get-a-proof-of-benefit-letter/download/download-6-AF/alt-format-signposting" class="govuk-link" rel="noreferrer noopener" target="_blank">I need a different format</a>
+        <br><br>
+
+        {{ govukButton({
+          text: "Continue",
+          attributes: "govuk-button"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

@@ -2104,6 +2104,12 @@ router.use('/', download7)
 const unmoderated1 = require('./routes/unmoderated-research-v1')
 router.use('/', unmoderated1)
 
+const download8 = require('./routes/download-8-MC')
+router.use('/', download8)
+
+const download9 = require('./routes/download-8-MC-non-alt-format')
+router.use('/', download9)
+
 
 // payments sections
 
@@ -2121,6 +2127,8 @@ router.use('/', payments3)
 
 const payments4 = require('./routes/payments-v4')
 router.use('/', payments4)
+
+
 
 
 

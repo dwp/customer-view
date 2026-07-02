@@ -1,0 +1,106 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+{% block pageTitle %}
+Which benefits do you need proof of?
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="select-benefits-answer" method="post">
+
+        <h1 class="govuk-heading-l">Getting proof of your benefits</h1>
+        
+        <p>You can get proof of some of your benefits using this service, but not all of them.</p>
+        
+        <p>This is because not all of your benefits are online yet.</p>
+
+        <h2 class="govuk-heading-m">Benefits you cannot get proof of using this service</h2>
+
+          <p>To get proof of Carer's Allowance, you need to contact them.</p>
+
+   
+        <p>Find their contact details in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits" class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a new tab)</a>.
+
+        <h2 class="govuk-heading-m">Benefits you can get proof of using this service</h2>
+
+          <p>If you continue, you can request proof of Employment and Support Allowance (ESA) and Personal Independence Payment (PIP).</p>
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+        What do you need proof of?
+      </h2>
+    </legend>
+    <div id="waste-hint" class="govuk-hint">
+      You can select more than one.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="ESA" name="benefit" type="checkbox" value="Employment and Support Allowance (ESA)">
+        <label class="govuk-label govuk-checkboxes__label" for="ESA">
+          Employment and Support Allowance (ESA)
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="PIP" name="benefit" type="checkbox" value="Personal Independance Payment (PIP)">
+        <label class="govuk-label govuk-checkboxes__label" for="PIP">
+          Personal Independance Payment (PIP)
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

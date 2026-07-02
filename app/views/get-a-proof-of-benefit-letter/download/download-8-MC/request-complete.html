@@ -1,0 +1,459 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [],
+      serviceName: "Get proof of your benefits and State Pension",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+
+
+{% block pageTitle %}
+Request complete
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Request complete
+      </h1>
+    </div>
+
+
+
+  
+    <!-- If user has one in scope benefits, and has chosen letter / digital or both, need to account for only one in scope benefit from initially research setup, and the second decision of which benefits need proof-->
+
+    {% if data['inScope']|length == 1 %}
+    <p>You have requested proof of {{ data['inScope'][0] }}.</p>
+
+    <!-- if the users has more than one in scope benefit but chooses to get proof of only in benefit-->
+
+    {% elif data['which-benefits-need-proof']|length == 1 %}
+    <p>You have requested proof of {{ data['which-benefits-need-proof'][0] }}.</p>
+
+    <!-- If user has more than one in scope benefits, and has chosen letter / digital or both -->
+    {% elif data['which-benefits-need-proof']|length > 1 %}
+
+    <p>You have requested proof of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for benefit in data['which-benefits-need-proof'] %}
+      <li>{{ benefit }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    
+
+    <h2 class="govuk-heading-m">View your proof of benefits online</h2>
+
+    <p class="govuk-body"><a href="/get-a-proof-of-benefit-letter/download/download-8-MC/inbox" class="govuk-link">Go to your letters, messages and downloads</a>
+</p>
+
+{% if data['digitalOrLetter'] and 
+  'Online letter' not in data['digitalOrLetter'] and 
+  'Online letters' not in data['digitalOrLetter'] %}
+  <h2 class="govuk-heading-m">What happens next</h2>
+{% endif %}
+
+
+
+    
+
+   
+
+
+
+<!-- Alt format dynamic content -->
+     {% if data['digitalOrLetter'] and 
+  data['digitalOrLetter'] != "Standard letter" and 
+  data['digitalOrLetter'] != "Standard letters" and
+  data['digitalOrLetter'] != "Online letter" and
+  data['digitalOrLetter'] != "Online letters" %}
+
+{% if data['inScope'].length === 1 %}
+
+        {% if data['altFormats'] in ["Braille"]  %}
+         <p class="govuk-body"> Your letter in braille should arrive by post within 1 month.</p>
+         {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+         <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+        {% endif %}
+        {% endif %}
+
+
+
+               {% if data['altFormats'] in ["Audio recording"] %}
+          <p class="govuk-body">Your audio recording should arrive by post within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+              
+
+              {% if data['altFormats'] in ["Large Print"] %}
+          <p class="govuk-body">Your large print letter should arrive by post within 8 days.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+               {% if data['altFormats'] in ["Easy Read"] %}
+          <p class="govuk-body">Your Easy Read letter should arrive by email within 3 weeks.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+               {% if data['altFormats'] in ["Word document"] %}
+          <p class="govuk-body">Your Word document should arrive by email within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+                {% if data['altFormats'] in ["Accessible email"] %}
+          <p class="govuk-body">Your accessible email should arrive within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Coloured paper"] %}
+              <p class="govuk-body">Your letter on coloured paper should arrive by post within 1 month.</p>
+              {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+              <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+
+              {% if data['altFormats'] in ["British Sign Language (BSL)"] %}
+               <p class="govuk-body">Your British Sign Language video should arrive by post within 1 month.</p>
+               {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+               <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Coloured paper and large print"] %}
+               <p class="govuk-body">Your letter on coloured paper should arrive by post within 1 month.</p>
+               <p class="govuk-body">Your large print letter should arrive by post within 1 month.</p>
+               {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+               <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+      
+      
+      
+
+      {% if data['digitalOrLetter'] and 
+  data['digitalOrLetter'] != "Standard letter" and 
+  data['digitalOrLetter'] != "Standard letters" and
+  data['digitalOrLetter'] != "Online letter" and
+  data['digitalOrLetter'] != "Online letters" %}
+  
+      {% if data['which-benefits-need-proof']|length == 1 %}
+
+      {% if data['altFormats'] in ["Braille"]  %}
+         <p class="govuk-body"> Your letter in braille should arrive by post within 1 month.</p>
+         {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+         <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+        {% endif %}
+        {% endif %}
+
+               {% if data['altFormats'] in ["Audio recording"] %}
+          <p class="govuk-body">Your audio recording should arrive by post within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Large Print"] %}
+          <p class="govuk-body">Your large print letter should arrive by post within 8 days.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+               {% if data['altFormats'] in ["Easy Read"] %}
+          <p class="govuk-body">Your Easy Read letter should arrive by email within 3 weeks.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+               {% if data['altFormats'] in ["Word document"] %}
+          <p class="govuk-body">Your Word document should arrive by email within 1 month.</p>
+           {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+                {% if data['altFormats'] in ["Accessible email"] %}
+          <p class="govuk-body">Your accessible email should arrive within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Coloured paper"] %}
+              <p class="govuk-body">Your letter on coloured paper should arrive by post within 1 month.</p>
+              {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+              <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+
+              {% if data['altFormats'] in ["British Sign Language (BSL)"] %}
+               <p class="govuk-body">Your British Sign Language video should arrive by post within 1 month.</p>
+               {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+               <p class="govuk-body">This will also come with a standard letter which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Coloured paper and large print"] %}
+               <p class="govuk-body">Your letter on coloured paper should arrive by post within 1 month.</p>
+               <p class="govuk-body">Your large print letter should arrive by post within 1 month.</p>
+               {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+               <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+{% if data['digitalOrLetter'] and 
+  data['digitalOrLetter'] != "Standard letter" and 
+  data['digitalOrLetter'] != "Standard letters" and
+  data['digitalOrLetter'] != "Online letter" and
+  data['digitalOrLetter'] != "Online letters" %}
+
+  {% if data['which-benefits-need-proof']|length > 1 %}
+
+        {% if data['altFormats'] in ["Braille"]  %}
+         <p class="govuk-body">Your letters in braille should arrive by post within 1 month.</p>
+         {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+         <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+        {% endif %}
+        {% endif %}
+
+               {% if data['altFormats'] in ["Audio recording"] %}
+          <p class="govuk-body">Your audio recordings should arrive by post within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Large Print"] %}
+          <p class="govuk-body">Your large print letters should arrive by post within 8 days.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+               {% if data['altFormats'] in ["Easy Read"] %}
+          <p class="govuk-body">Your Easy Read letters should arrive by email within 3 weeks.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+               {% if data['altFormats'] in ["Word document"] %}
+          <p class="govuk-body">Your Word documents should arrive by email within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+                {% if data['altFormats'] in ["Accessible email"] %}
+          <p class="govuk-body">Your accessible emails should arrive within 1 month.</p>
+          {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+          <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Coloured paper"] %}
+              <p class="govuk-body">Your letters on coloured paper should arrive by post within 1 month.</p>
+              <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+
+
+              {% if data['altFormats'] in ["British Sign Language (BSL)"] %}
+               <p class="govuk-body">Your British Sign Language videos should arrive by post within 1 month.</p>
+               {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+               <p class="govuk-body">These will also come with standard letters which should arrive by post within 8 days.</p>
+              {% endif %}
+              {% endif %}
+
+              {% if data['altFormats'] in ["Coloured paper and large print"] %}
+               <p class="govuk-body">Your letters on coloured paper should arrive by post within 1 month.</p>
+               {% if 'Standard letter' not in data['digitalOrLetter'] and 'Standard letters' not in data['digitalOrLetter'] %}
+               <p class="govuk-body">Your large print letters should arrive by post within 1 month.</p>
+              {% endif %}
+              {% endif %}
+
+      {% endif %} 
+    {% endif %}
+  {% endif %}
+      
+
+
+  
+<!-- End Letters and Alt format dynamic content -->
+
+<!--Letter section-->
+
+    {% if (data['digitalOrLetter'] is defined and ("Standard letter" in data['digitalOrLetter'] or "Standard letters" in data['digitalOrLetter'])) %}
+    
+
+  <div class="govuk-body">
+    {% if data['inScope'] and data['inScope']|length == 1 %}
+    A standard letter for your benefit should arrive within 8 days.
+  </div>   
+
+  <div class="govuk-body">
+    {% elif data['which-benefits-need-proof']|length == 1 %}
+   A standard letter for your benefit should arrive within 8 days.
+  </div>
+
+  <div class="govuk-body">
+    {% elif data['which-benefits-need-proof']|length == 2 %}
+    Standard letters for each benefit should arrive within 8 days.    
+  </div>
+
+  <div class="govuk-body">
+    {% elif data['which-benefits-need-proof']|length > 2 %}
+    Standard letters for each benefit should arrive within 8 days.    
+    {% endif %}
+</div>
+</div>
+</div>
+
+{% endif %}
+
+<!--End of Letter section-->
+
+
+    <!-- Shows different messages and layouts based on number of out-of-scope benefits:
+           - Single benefit: Simple message with link
+           - Two benefits: Uses formatList filter to show both
+           - Three or more: Bullet point list -->
+   <!--- {% if data['oOScope'].length === 1 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+    <p>To get proof of {{ data['oOScope'][0] }}, you need to contact them.</p>
+
+
+    <p>Find their details for in a letter they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+    {% elif data['oOScope'].length === 2 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+
+    <p>To get proof of {{ data['oOScope'] | formatList }}, you need to contact them.</p>
+
+    <p>Find their details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+
+    {% elif data['oOScope'].length > 2 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+    <p>You will need to contact each benefit to get proof of benefit letters for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for benefit in data['oOScope'] %}
+      <li>{{ benefit }}</li>
+      {% else %}
+      <p>No benefit selected</p>
+      {% endfor %}
+    </ul>
+
+    <p>Find their contact details in letters they have sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+    {% endif %}-->
+
+    
+
+    <!-- Special handling for Universal Credit (uCBenefit flag)
+           Shows UC guidance either with or without a heading depending on
+           whether there are other out-of-scope benefits -->
+   <!-- {% if data['uCBenefit'] == true %}
+    {% if data['oOScope'].length === 0 %}
+    <h2 class="govuk-heading-m">
+      How to get proof of your other benefits
+    </h2>
+
+    <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link"
+        rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.
+    </p>
+
+    {% else %}
+    <p>To get proof of Universal Credit, <a href="https://www.gov.uk/sign-in-universal-credit" class="govuk-link"
+        rel="noreferrer noopener" target="_blank"> sign in to your Universal Credit account (opens in a new tab)</a>.
+    </p>
+    {% endif %}
+    {% endif %}-->
+
+    <br>
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+      text: "Sign out",
+      href: "signout",
+      classes: "govuk-button"
+      }) }}
+
+      {{ govukButton({
+      text: "Go back to account home",
+      href: "account-home",
+      classes: "govuk-button--secondary"
+      }) }}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
