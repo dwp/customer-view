@@ -60,18 +60,19 @@ What type of letter we send
            {% set hasESA = 'Employment and Support Allowance (ESA)' in data['benefit'] %}
 {% set hasPIP = 'Personal Independance Payment (PIP)' in data['benefit'] %}  
 {% if hasESA and hasPIP %}
-        <p class="govuk-body">Online, accessible letters are available to view or download once you have confirmed your request. You can also get additional formats.</p>
+        <p class="govuk-body">
+Online letters are available to view or download after you have confirmed your request. You'll find these in your letters and messages.</p>
         
 
           {% elif hasESA %}
       <p class="govuk-body">
-        An online letter is available to view or download once you have confirmed your request. You'll find this in your letters and messages.
+        An online letter is available to view or download after you have confirmed your request. You'll find this in your letters and messages.
       </p>
      
 
       {% elif hasPIP %}
       <p class="govuk-body">
-        An online letter is available to view or download once you have confirmed your request. You'll find this in your letters and messages.
+        An online letter is available to view or download after you have confirmed your request. You'll find this in your letters and messages.
       </p>
       {% endif %}
 
