@@ -1,0 +1,394 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [
+      {
+      href: "/payments/v5/new-page-in-and-out-of-scope",
+      text: "Check your next payment"
+    },
+    {
+      href: "/payments/v5/personal-details",
+      text: "View your personal details"
+    }],
+      serviceName: "View your benefit and State Pension payment history",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+
+{% block pageTitle %}
+Payment history
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your payment history
+              </h1>
+            </legend>
+            </fieldset>
+          </div>
+        </div>
+
+      </br>
+
+          <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+
+    <div class="moj-filter" data-module="moj-filter">
+  <div class="moj-filter__header">
+    <div class="moj-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="moj-filter__header-action">
+    </div>
+  </div>
+  <div class="moj-filter__content">
+    <div class="moj-filter__selected">
+      <div class="moj-filter__selected-heading_micro_ui">
+        <div class="moj-filter__heading-title">
+          <h3 class="govuk-heading-m">Selected filters</h3>
+        </div>
+        <div class="moj-filter__heading-action">
+          <p><a class="govuk-link govuk-link--no-visited-state" href="/payments/v5/payment-history">Clear filters</a></p>
+        </div>
+        <div class="govuk-body">
+          <p>Showing 20 results of 26</p>
+        </div>
+      </div>
+     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date range</h3>
+      <ul class="moj-filter-tags">
+        <li><a class="moj-filter__tag" href="/payments/v5/payment-history-date-filter-from-removed-apply-filter-now-remove-to"><span class="govuk-visually-hidden">Remove date to</span>05 April 2026</a></li>
+      </ul>
+    </div>
+    <div class="moj-filter__options">
+      
+    
+ 
+
+
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h3 class="govuk-fieldset__heading govuk-heading-m">
+        Date range
+      </h3>
+    </legend>
+
+    <h4 class="govuk-heading-s">
+        From
+      </h4>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2025
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <h4 class="govuk-heading-s">
+        To
+      </h4>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2026
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric" value="05">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric" value="04">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric" value="2026">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+      <br>
+       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" data-test-id="submit-button">
+        Apply filters
+      </button>
+    </div>
+  </div>
+</div>
+  </div>
+        
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+              <div class="govuk-form-group">
+              
+
+
+
+    
+
+    <table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Payment dates and amounts</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header">From</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+    </tr>
+   </thead>
+   <tbody class="govuk-table__body">
+  <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">11 March 2026</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">11 February 2026</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">14 January 2026</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">17 December 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+       <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">19 November 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">22 October 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">24 September 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">30 July 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">02 July 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">04 June 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">07 May 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">09 April 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">12 March 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">12 February 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+        </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">15 January 2025</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">18 December 2024</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">20 November 2024</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">23 October 2024</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">25 September 2024</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">28 August 2024</th>
+      <td class="govuk-table__cell">State Pension</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£884.80</td>
+  </tbody>
+</table>
+                
+   
+
+ <!--<nav class="govuk-pagination" aria-label="Pagination">
+  <ul class="govuk-pagination__list">
+    <li class="govuk-pagination__item govuk-pagination__item--current">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v5/payment-history" aria-label="Page 1" aria-current="page">
+        1
+      </a>
+    </li>
+    <li class="govuk-pagination__item">
+      <a class="govuk-link govuk-pagination__link" href="/payments/v5/payment-history-2" aria-label="Page 2">
+        2
+      </a>
+    </li>
+  </ul>
+  <div class="govuk-pagination__next">
+    <a class="govuk-link govuk-pagination__link" href="/payments/v5/payment-history-2" rel="next">
+      <span class="govuk-pagination__link-title">
+        Next<span class="govuk-visually-hidden"> page</span>
+      </span>
+      <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v5h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+      </svg>
+    </a>
+  </div>
+ </nav>-->
+
+
+ <!------------------------------------- If soemthing looks wrong section ------------------------------------------>
+
+    <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+    <p class="govuk-body">If a payment doesn't look right or you need more information, contact the benefit team directly.</p>
+
+    <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+ 
+                    
+          <br>
+          <a class="govuk-button" href="/payments/v5/account-home">
+           Go back to account home
+          </a>
+          </form>
+</div>  
+</div> 
+
+      
+
+
+    </div>
+  </main>
+</div>
+       
+
+{% endblock %}

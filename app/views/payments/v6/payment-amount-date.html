@@ -1,0 +1,174 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [
+      {
+      href: "/payments/v6/payment-history",
+      text: "Your payment history"
+    },
+    {
+      href: "/payments/v6/personal-details",
+      text: "View your personal details"
+    }],
+      serviceName: "Check your next benefit and State Pension payments",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+
+{% block pageTitle %}
+Check your next payment
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+      <div class="govuk-grid-column-two-thirds">
+        
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your next payments
+              </h1>
+            </legend>
+            </div>
+            
+       
+ <div class="govuk-grid-column-two-thirds">
+
+           <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+    <div class="govuk-form-group">
+
+           <div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Employment and Support Allowance (ESA)
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body"><strong>£259.00</strong><br>To be paid on 09 September 2026</p>
+    </div>
+  </div>
+        
+   <div class="nhsuk-card">
+    <div class="nhsuk-card__heading-container">
+      <h2 class="govuk-heading-m">
+        Payments being processed
+      </h2>
+    </div>
+    <div class="nhsuk-card__content">
+      <p class="govuk-body">It is too early to view payment information for:</p>
+      <ul>
+        <li>
+          <p class="govuk-body">Disability Living Allowance (DLA) for adults</p>
+        </li>
+      </ul>
+
+      
+     
+      <p class="govuk-body">We can only show payment information about 3 days before you get paid (not including weekends or bank holidays).</p>
+    </div>
+  </div> 
+
+  
+  
+  
+                            
+     
+
+    <!------------------------------------- If something looks wrong section ------------------------------------------>
+
+    
+    <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+    <p class="govuk-body">If a payment doesn't look right or you need more information, contact the benefit team directly.</p>
+
+    <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+
+   
+
+         <!--<p class="govuk-!-font-size-16"><a href="" target="_blank">Print</a> <br><br> <a class="govuk-!-font-size-16"><a href="" target="_blank">Download</a></p>-->
+            
+          <br>
+          <a class="govuk-button" href="/payments/v6/account-home">
+           Go back to account home
+          </a>
+          </form>
+          </div>
+          </div>
+          
+          
+
+
+
+  </main>
+</div>
+
+
+
+        
+     <!-- <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Related content</h2>
+
+          <p class="govuk-body">
+   <a href="/payments/v6/payment-history" class="govuk-link">View your recent payments</a></p>
+         <p class="govuk-body">
+   <a href="/payments/v6/personal-details" class="govuk-link">View your personal details</a></p>
+       
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+  </main>
+</div>  -->   
+
+
+
+{% endblock %}

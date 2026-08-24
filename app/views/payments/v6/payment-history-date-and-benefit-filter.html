@@ -1,0 +1,428 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "layouts/main.html" %}
+
+{% block header %}
+
+
+ {{ govukOneLoginServiceHeader({
+    homepageLink: "#",
+    signOutLink: "#",
+    oneLoginLink: "#"
+    
+    
+  }) }}
+
+    {{ govukServiceNavigation({
+      navigation: [
+      {
+      href: "/payments/v6/payment-amount-date",
+      text: "Check your next payment"
+    },
+    {
+      href: "/payments/v6/personal-details",
+      text: "View your personal details"
+    }],
+      serviceName: "View your benefit and State Pension payment history",
+      navigationLabel: "index.html"
+    }) }}
+
+{% endblock %}
+
+
+{% block pageTitle %}
+Payment history
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+        {% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+        {{ dwpLanguageToggle({
+          selectedLang: "en",
+          href: {
+              en: "#",
+              cy: "#"
+          }
+        }) }}
+    </div>
+  
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Your payment history
+              </h1>
+            </legend>
+            </fieldset>
+          </div>
+        </div>
+
+      </br>
+
+          <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+
+    <div class="moj-filter" data-module="moj-filter">
+  <div class="moj-filter__header">
+    <div class="moj-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="moj-filter__header-action">
+    </div>
+  </div>
+  <div class="moj-filter__content">
+    <div class="moj-filter__selected">
+      <div class="moj-filter__selected-heading_micro_ui">
+        <div class="moj-filter__heading-title">
+          <h3 class="govuk-heading-m">Selected filters</h3>
+        </div>
+        <div class="moj-filter__heading-action">
+          <p><a class="govuk-link govuk-link--no-visited-state" href="/payments/v6/payment-history">Clear filters</a></p>
+        </div>
+         <div class="govuk-body">
+          <p>Showing 26 results of 80</p>
+        </div>
+      </div>
+       <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Benefit</h3>
+      <ul class="moj-filter-tags">
+        <li><a class="moj-filter__tag" href="/path/to/remove/this"><span class="govuk-visually-hidden">Remove benefit selection</span>Employment and Support Allowance (ESA)</a></li>
+      </ul>
+     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date range</h3>
+      <ul class="moj-filter-tags">
+               <li><a class="moj-filter__tag" href="/path/to/remove/this"><span class="govuk-visually-hidden">Remove date from</span>06 April 2025</a></li>
+        <li><a class="moj-filter__tag" href="/path/to/remove/this"><span class="govuk-visually-hidden">Remove date to</span>05 April 2026</a></li>
+      </ul>
+    </div>
+    <div class="moj-filter__options">
+      
+    
+   
+      
+     <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h3 class="govuk-heading-m">Benefit</h3>
+          </legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
+              <label class="govuk-label govuk-checkboxes__label" for="type">
+                Disability Living Allowance (DLA) for adults
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" checked>
+              <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                Employment and Support Allowance (ESA)
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h3 class="govuk-fieldset__heading govuk-heading-m">
+        Date range
+      </h3>
+    </legend>
+
+    <h4 class="govuk-heading-s">
+        From
+      </h4>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2025
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="from-day" name="from-day" type="text" inputmode="numeric" value="06">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="from-month" name="from-month" type="text" inputmode="numeric" value="04">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="from-year" name="from-year" type="text" inputmode="numeric" value="2025">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <h4 class="govuk-heading-s">
+        To
+      </h4>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2026
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="to-day" name="to-day" type="text" inputmode="numeric" value="05">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="to-month" name="to-month" type="text" inputmode="numeric" value="04">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="to-year" name="to-year" type="text" inputmode="numeric" value="2026">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+      <br>
+       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" data-test-id="submit-button">
+        Apply filters
+      </button>
+    </div>
+  </div>
+</div>
+  </div>
+        
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/check-your-payment/v3/digital-service/next-payment" method="post">
+              <div class="govuk-form-group">
+              
+
+
+
+    
+
+    <table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Payment dates and amounts</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header">From</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount</th>
+    </tr>
+   </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">01 April 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">18 March 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">04 March 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">18 February 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">04 February 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">21 January 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">07 January 2026</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">24 Decenber 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">10 Decenber 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">26 November 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">12 November 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">29 October 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">15 October 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">01 October 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">17 September 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">03 September 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">20 August 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">06 August 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">23 July 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">09 July 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">25 June 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">11 June 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+    <tr class="govuk-table__row">
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">28 May 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">14 May 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">30 April 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">16 April 2025</th>
+      <td class="govuk-table__cell">Employment and Support Allowance (ESA)</td>
+      <td class="govuk-table__cell govuk-table__cell--numeric">£259.00</td>
+    </tr>
+  </tbody>
+</table>
+                
+  
+
+
+ <!------------------------------------- If soemthing looks wrong section ------------------------------------------>
+
+    <h2 class="govuk-heading-m">If something is missing or looks wrong</h2>
+
+    <p class="govuk-body">If a payment doesn't look right or you need more information, contact the benefit team directly.</p>
+
+    <p class="govuk-body">Find their contact details in a letter they've sent to you, or in <a href="https://www.gov.uk/browse/benefits"
+        class="govuk-link" rel="noreferrer noopener" target="_blank">guidance about the benefit on GOV.UK (opens in a
+        new tab)</a>.</p>
+ 
+                    
+          <br>
+          <a class="govuk-button" href="/payments/v6/account-home">
+           Go back to account home
+          </a>
+          </form>
+</div>  
+</div> 
+
+      
+
+
+    </div>
+  </main>
+</div>
+       
+
+{% endblock %}

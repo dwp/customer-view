@@ -6,6 +6,13 @@
 // Add extra styles here
 // @import "node_modules/nhsapp-frontend/dist/nhsapp/all";
 // @import "node_modules/nhsapp-frontend/all";
+
+@use "node_modules/govuk-frontend/dist/govuk" as *;
+// @forward "node_modules/@ministryofjustice/frontend/moj/all";
+
+@import "node_modules/@ministryofjustice/frontend/moj/components/pagination/pagination.scss";
+@import "node_modules/@ministryofjustice/frontend/moj/components/filter/filter.scss";
+
 $govuk-suppressed-warnings: (
   "govuk-text-colour": true
 );
@@ -14,6 +21,38 @@ $govuk-suppressed-warnings: (
   color:#ffffff !important;
   text-align: right;
 }
+
+.moj-filter-tags {
+margin-left: 0;
+padding-left: 0;
+
+}
+
+  .moj-filter__tag:after {
+    background-image: url(../images/icon-tag-remove-cross.svg);
+  }
+
+.moj-filter__selected-heading_micro_ui{
+    font-size: 0;
+    text-align: justify;
+  }
+  .moj-filter__selected-heading_micro_ui:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+
+  .cv-filter .moj-filter__selected {
+    box-shadow: none;
+    border-top: 1px solid #b1b4b6;
+    border-bottom: 1px solid #b1b4b6;
+  }
+
+  .clear-filter .moj-filter__selected {
+    background-color: white;
+    box-shadow: none;
+    padding: 10px 0px 5px 20px;
+  }
 
 .white-link a:hover{
   color:#ffffff !important;
@@ -12431,6 +12470,10 @@ a:focus code {
   outline: 4px solid transparent;
   box-shadow: 0 0 0 4px #ffeb3b, 0 0 0 8px #212b32;
 }
+
+
+
+
 /*# sourceMappingURL=nhsuk-frontend.css.map */
 
 
