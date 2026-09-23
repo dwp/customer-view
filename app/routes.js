@@ -2134,6 +2134,9 @@ router.use('/', payments5)
 const payments6 = require('./routes/payments-v6')
 router.use('/', payments6)
 
+const payments7 = require('./routes/payments-v7')
+router.use('/', payments7)
+
 
 
 
