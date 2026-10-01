@@ -82,7 +82,7 @@ router.post('/prototype-submit', (req, res, next) => {
   if (action === 'generateLink') {
     res.redirect('/generate-link')
   } else {
-    res.redirect(journeyStart)
+    res.redirect(url);
   }
 })
 
@@ -2136,6 +2136,9 @@ router.use('/', payments6)
 
 const payments7 = require('./routes/payments-v7')
 router.use('/', payments7)
+
+const payments8 = require('./routes/payments-v8')
+router.use('/', payments8)
 
 
 
